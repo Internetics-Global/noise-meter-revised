@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "NMDecibelLogger.h"
-#import "Testflight.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -16,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [TestFlight takeOff:@"53231ec22508bec8b2ce1a4e1aec5ec6_MjMyMzMyMDExLTA4LTI1IDIwOjIxOjMyLjIwMjQxMA"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
