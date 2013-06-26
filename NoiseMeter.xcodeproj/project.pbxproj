@@ -70,6 +70,8 @@
 		11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44D151181CA00FF47C2 /* home_alarm.aifc */; };
 		11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44E151181CA00FF47C2 /* scifialarm.aifc */; };
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
+		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
+		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
 		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
 		9AB05EAB177AC9690029CB48 /* appicon57x47new.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAA177AC9690029CB48 /* appicon57x47new.png */; };
@@ -160,6 +162,9 @@
 		11FBD44D151181CA00FF47C2 /* home_alarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.aifc; sourceTree = "<group>"; };
 		11FBD44E151181CA00FF47C2 /* scifialarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.aifc; sourceTree = "<group>"; };
 		11FBD44F151181CA00FF47C2 /* siren_wail.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.aifc; sourceTree = "<group>"; };
+		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
+		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
+		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAA177AC9690029CB48 /* appicon57x47new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon57x47new.png; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
 				1140FDD41517FC6400DE0A64 /* MessageUI.framework in Frameworks */,
@@ -181,6 +187,7 @@
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
+				88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +221,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */,
 				1140FDE21518016400DE0A64 /* libz.dylib */,
 				1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */,
 				1140FDD31517FC6400DE0A64 /* MessageUI.framework */,
@@ -323,6 +331,7 @@
 		11AC52F11505D3400093C7AB /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				88376CE2177BB41900F9F477 /* Flurry */,
 				11AC52F21505D3400093C7AB /* Categories */,
 			);
 			path = Support;
@@ -414,6 +423,15 @@
 				11FBD44F151181CA00FF47C2 /* siren_wail.aifc */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		88376CE2177BB41900F9F477 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				88376CE3177BB42700F9F477 /* Flurry.h */,
+				88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */,
+			);
+			name = Flurry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,7 +626,10 @@
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -621,7 +642,10 @@
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

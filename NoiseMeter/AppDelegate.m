@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "NMDecibelLogger.h"
+#import "Flurry.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -15,7 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
