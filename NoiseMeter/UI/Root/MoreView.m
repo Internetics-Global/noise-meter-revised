@@ -90,7 +90,7 @@
 
 -(NSString *)supportText{
 	NSMutableString *string = [[NSMutableString alloc] init];
-	[string appendFormat:@"<br><br><b>Preloaded Information:</b><br>", [[UIDevice currentDevice] uniqueIdentifier]];
+	
 	[string appendFormat:@"<b>System Name:</b> %@ <br>", [[UIDevice currentDevice] systemName]];
 	[string appendFormat:@"<b>System Version:</b> %@ <br>", [[UIDevice currentDevice] systemVersion]];
 	[string appendFormat:@"<b>Model:</b> %@ <br>", [[UIDevice currentDevice] model]];

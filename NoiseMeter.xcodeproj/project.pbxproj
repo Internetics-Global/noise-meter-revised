@@ -736,25 +736,8 @@
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: BIN OUYANG (69NSFGGC2J)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
-				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7E32E267-C589-4D95-9CCB-DFE191DFF0B1";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		110F131414EDD52E00BE4481 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -765,6 +748,27 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		110F131414EDD52E00BE4481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
+				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
