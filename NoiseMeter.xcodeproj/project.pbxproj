@@ -27,9 +27,7 @@
 		1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */; };
 		1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDDC1517FE5100DE0A64 /* AboutView.m */; };
 		1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDE21518016400DE0A64 /* libz.dylib */; };
-		1168C31315195CF800897AA4 /* apple-retina-icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1168C31215195CF800897AA4 /* apple-retina-icon114.png */; };
 		1168C317151966AC00897AA4 /* InstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1168C316151966AB00897AA4 /* InstructionView.m */; };
-		117D94111516B52C002C5479 /* apple-touch-icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94101516B52C002C5479 /* apple-touch-icon57.png */; };
 		117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94131516B5B1002C5479 /* top_logo_scores.png */; };
 		117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94151516B5F7002C5479 /* top_logo_scores@2x.png */; };
 		117D94191516B66A002C5479 /* button_reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94171516B66A002C5479 /* button_reset.png */; };
@@ -78,9 +76,9 @@
 		889FD242177BC4A70046D281 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD241177BC4A70046D281 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
-		9AB05EAB177AC9690029CB48 /* appicon57x47new.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAA177AC9690029CB48 /* appicon57x47new.png */; };
-		9AB05EAD177AC96C0029CB48 /* appicon114x114new.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAC177AC96C0029CB48 /* appicon114x114new.png */; };
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
+		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
+		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,10 +110,8 @@
 		1140FDDB1517FE5100DE0A64 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
 		1140FDDC1517FE5100DE0A64 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		1140FDE21518016400DE0A64 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		1168C31215195CF800897AA4 /* apple-retina-icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-retina-icon114.png"; sourceTree = "<group>"; };
 		1168C315151966AB00897AA4 /* InstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionView.h; sourceTree = "<group>"; };
 		1168C316151966AB00897AA4 /* InstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionView.m; sourceTree = "<group>"; };
-		117D94101516B52C002C5479 /* apple-touch-icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-touch-icon57.png"; sourceTree = "<group>"; };
 		117D94131516B5B1002C5479 /* top_logo_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo_scores.png; sourceTree = "<group>"; };
 		117D94151516B5F7002C5479 /* top_logo_scores@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo_scores@2x.png"; sourceTree = "<group>"; };
 		117D94171516B66A002C5479 /* button_reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_reset.png; sourceTree = "<group>"; };
@@ -202,9 +198,9 @@
 		889FD241177BC4A70046D281 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
-		9AB05EAA177AC9690029CB48 /* appicon57x47new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon57x47new.png; sourceTree = "<group>"; };
-		9AB05EAC177AC96C0029CB48 /* appicon114x114new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon114x114new.png; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,11 +230,9 @@
 		110F12EA14EDD52E00BE4481 = {
 			isa = PBXGroup;
 			children = (
+				9AB05EB2177BDEF10029CB48 /* Icon.png */,
+				9AB05EB0177BDEE50029CB48 /* Icon@2x.png */,
 				9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */,
-				9AB05EAC177AC96C0029CB48 /* appicon114x114new.png */,
-				9AB05EAA177AC9690029CB48 /* appicon57x47new.png */,
-				1168C31215195CF800897AA4 /* apple-retina-icon114.png */,
-				117D94101516B52C002C5479 /* apple-touch-icon57.png */,
 				11AC52F91505D3950093C7AB /* Default@2x.png */,
 				11AC52F71505D3850093C7AB /* Default.png */,
 				110F130114EDD52E00BE4481 /* NoiseMeter */,
@@ -581,7 +575,6 @@
 				11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */,
 				11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */,
 				11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */,
-				117D94111516B52C002C5479 /* apple-touch-icon57.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
@@ -596,13 +589,12 @@
 				11F3E5CB15194CAE00549099 /* button_back@2x.png in Resources */,
 				11F3E5CC15194CAE00549099 /* button_close.png in Resources */,
 				11F3E5CD15194CAE00549099 /* button_close@2x.png in Resources */,
-				1168C31315195CF800897AA4 /* apple-retina-icon114.png in Resources */,
 				9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */,
 				9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */,
-				9AB05EAB177AC9690029CB48 /* appicon57x47new.png in Resources */,
-				9AB05EAD177AC96C0029CB48 /* appicon114x114new.png in Resources */,
 				9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */,
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
+				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
+				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,7 +733,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
@@ -761,7 +753,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
