@@ -114,6 +114,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.trackedViewName = @"ScoreView Screen";
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

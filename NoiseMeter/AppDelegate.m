@@ -10,6 +10,7 @@
 #import "NMDecibelLogger.h"
 #import "Flurry.h"
 #import "Appirater.h"
+#import "GAI.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -18,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self setAppirater];
-    
+    [self setGoogleAnalytics];
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -75,6 +76,17 @@
     [Appirater setSignificantEventsUntilPrompt:-1];
     [Appirater setTimeBeforeReminding:2];
     [Appirater setDebug:NO];
+}
+
+- (void) setGoogleAnalytics {
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    [GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
 }
 
 @end

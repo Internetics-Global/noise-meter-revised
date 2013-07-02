@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface MeterView : UIViewController<UITableViewDelegate, UITableViewDataSource>{
+@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;

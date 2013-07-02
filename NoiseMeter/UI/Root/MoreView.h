@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "GAITrackedViewController.h"
 
-@interface MoreView : UIViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>{
+@interface MoreView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>{
     UITableView *_optionTable;
     MFMailComposeViewController *_mailer;
 }

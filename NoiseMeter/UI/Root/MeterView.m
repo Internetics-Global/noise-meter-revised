@@ -223,6 +223,11 @@
     [super viewDidDisappear:animated];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.trackedViewName = @"MeterView Screen";
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];

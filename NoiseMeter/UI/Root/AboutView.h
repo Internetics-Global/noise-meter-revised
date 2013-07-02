@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface AboutView : UIViewController{
+@interface AboutView : GAITrackedViewController{
     UITextView *_textView;
 }
 

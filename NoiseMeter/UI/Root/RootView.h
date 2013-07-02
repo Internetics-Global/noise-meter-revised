@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAITrackedViewController.h"
 
-@interface RootView : UIViewController{
+@interface RootView : GAITrackedViewController{
     UITabBarController *_tabBarController;
 }
 

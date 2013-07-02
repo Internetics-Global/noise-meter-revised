@@ -166,6 +166,10 @@
     [super viewDidUnload];
     _optionTable = nil;
 }
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.trackedViewName = @"MoreView Screen";
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

@@ -70,6 +70,7 @@
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
+		883788E017839684000BBF3D /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883788DF17839684000BBF3D /* libGoogleAnalytics.a */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
@@ -165,6 +166,12 @@
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		883788DA17839684000BBF3D /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = "Google Analytics/GAI.h"; sourceTree = "<group>"; };
+		883788DB17839684000BBF3D /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = "Google Analytics/GAITrackedViewController.h"; sourceTree = "<group>"; };
+		883788DC17839684000BBF3D /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = "Google Analytics/GAITracker.h"; sourceTree = "<group>"; };
+		883788DD17839684000BBF3D /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransaction.h; path = "Google Analytics/GAITransaction.h"; sourceTree = "<group>"; };
+		883788DE17839684000BBF3D /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = "Google Analytics/GAITransactionItem.h"; sourceTree = "<group>"; };
+		883788DF17839684000BBF3D /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "Google Analytics/libGoogleAnalytics.a"; sourceTree = "<group>"; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -221,6 +228,7 @@
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
 				88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */,
+				883788E017839684000BBF3D /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +373,7 @@
 		11AC52F11505D3400093C7AB /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
 				88376CE2177BB41900F9F477 /* Flurry */,
 				11AC52F21505D3400093C7AB /* Categories */,
@@ -467,6 +476,19 @@
 				88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */,
 			);
 			name = Flurry;
+			sourceTree = "<group>";
+		};
+		883788D917839670000BBF3D /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				883788DA17839684000BBF3D /* GAI.h */,
+				883788DB17839684000BBF3D /* GAITrackedViewController.h */,
+				883788DC17839684000BBF3D /* GAITracker.h */,
+				883788DD17839684000BBF3D /* GAITransaction.h */,
+				883788DE17839684000BBF3D /* GAITransactionItem.h */,
+				883788DF17839684000BBF3D /* libGoogleAnalytics.a */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		889FD23A177BC3C40046D281 /* appirater */ = {
@@ -737,6 +759,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
+					"\"$(SRCROOT)/NoiseMeter/Support/Google Analytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
@@ -757,6 +780,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NoiseMeter/Support/Flurry\"",
+					"\"$(SRCROOT)/NoiseMeter/Support/Google Analytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
