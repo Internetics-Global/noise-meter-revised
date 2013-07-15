@@ -32,5 +32,6 @@
 - (void)playAlarm;
 - (void)ensureLogging;
 - (void) updateReading;
+- (void)alarmComplete;
 
 @end

@@ -44,6 +44,8 @@
 {
     NSLog(@"applicationDidEnterBackground");
     
+    [[NMDecibelLogger defaultLogger] alarmComplete];
+    
     if (isUseLongRunningtTask) {
         //will put background running in addPeriodicTimeObserverForInterval
     } else {
