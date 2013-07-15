@@ -52,6 +52,17 @@
 - (id)init
 {
     self = [super init];
+    
+    NSError *error;
+    
+    AVAudioSession *sesson = [AVAudioSession sharedInstance];
+    [sesson setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    [sesson setMode:AVAudioSessionModeVideoRecording error:&error];
+    if (![sesson setActive:YES error:&error]) {
+        NSLog(@"Error %@",[error localizedDescription]);
+        return NO;
+    }
+    
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
                          [NSNumber numberWithInt:44100],AVSampleRateKey,
@@ -60,11 +71,15 @@
                          [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,
                          [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
                          nil];
-    NSError* error = nil;
     _logging = NO;
     _recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]]  settings:_recorderSettings error:&error];
     _recorder.delegate = self;
     _recorder.meteringEnabled = YES;
+    
+
+    
+    
+    
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     if([def valueForKey:@"alertThreshold"] == nil)
     {
@@ -101,13 +116,26 @@
                 [self stopLogging];
                 AudioServicesPlaySystemSound(audioEffect);
                 _playingAlarm = YES;
-                [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+                
+                if (([UIApplication sharedApplication].applicationState != UIApplicationStateBackground ) && (isUseLongRunningtTask == NO)) {
+                    //we need to keep its status during background
+                    [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];     
+                }
             }
         }
         else 
         {
             NSLog(@"NO file");
         }
+    }
+    
+    if (([UIApplication sharedApplication].applicationState == UIApplicationStateBackground ) && (isUseLongRunningtTask == NO)) {
+        //send local notification
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.alertBody = @"Sound reachs the threshhold";
+        localNotification.fireDate = [NSDate date];
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];	
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
 }
 
@@ -150,10 +178,16 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ensureLogging) userInfo:nil repeats:NO];
 }
 
+
 - (float)rawReading
 {
     [_recorder updateMeters];
     return [_recorder averagePowerForChannel:0];
+}
+
+- (void) updateReading {
+    float temp = [self rawReading];
+    _currentReading = [NSNumber numberWithFloat:(temp + 100)];
 }
 
 - (void)timerFire

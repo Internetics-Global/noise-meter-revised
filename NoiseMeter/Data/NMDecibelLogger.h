@@ -29,5 +29,6 @@
 - (void)stopLogging;
 - (void)playAlarm;
 - (void)ensureLogging;
+- (void) updateReading;
 
 @end

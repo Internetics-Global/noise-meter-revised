@@ -14,3 +14,5 @@
     #import <CoreData/CoreData.h>
     #import "UIViewController+Styling.h"
 #endif
+
+#define isUseLongRunningtTask (NO)

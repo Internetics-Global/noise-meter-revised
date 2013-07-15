@@ -42,8 +42,40 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [[NMDecibelLogger defaultLogger] stopLogging];
+    NSLog(@"applicationDidEnterBackground");
+    
+    if (isUseLongRunningtTask) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    } else {
+        self.backgroundTask = UIBackgroundTaskInvalid;
+        self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
+            NSLog(@"Background handler called. Not running background tasks anymore.");
+            [application endBackgroundTask:self.backgroundTask];
+            self.backgroundTask = UIBackgroundTaskInvalid;
+            [[NMDecibelLogger defaultLogger] stopLogging];
+        }];
+        
+        [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+    }
+	
 }
+
+- (void) recordCallback:(id) sender {
+    NSTimeInterval remainTime = [UIApplication sharedApplication].backgroundTimeRemaining;
+    if (remainTime >0) {
+        NSLog(@"Background time remaining = %.1f seconds", remainTime);
+        
+        [[NMDecibelLogger defaultLogger] updateReading];
+         NSLog(@"%f",[NMDecibelLogger defaultLogger].currentReading.floatValue);
+    } else {
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTask];
+        self.backgroundTask = UIBackgroundTaskInvalid;
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
+    
+}
+
+
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
@@ -88,5 +120,6 @@
     // Create tracker instance.
     id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
 }
+
 
 @end
