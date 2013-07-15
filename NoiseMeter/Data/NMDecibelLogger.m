@@ -167,6 +167,9 @@
 {
     AudioServicesDisposeSystemSoundID(audioEffect);
     _playingAlarm = NO;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];
+    
     [self startLogging];
 }
 
@@ -185,6 +188,7 @@
 
 - (void)startLogging
 {
+    
     _logging = YES;
     if(![_recorder record])
     {
@@ -244,6 +248,7 @@
 {
     _recorder = nil;
     _recorderSettings = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

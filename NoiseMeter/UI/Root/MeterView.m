@@ -23,6 +23,12 @@
     self = [super init];
     self.title = @"Meter";
     self.tabBarItem.image = [UIImage imageNamed:@"icon_meter.png"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(alarmFinishedNotification:)
+                                                 name:@"ALARM_FINISHED_NOTIFICATION"
+                                               object:nil];
+    
     return self;
 }
 
@@ -218,7 +224,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     _peakReading = nil;
-    _captureButton.hidden = YES;
+    //_captureButton.hidden = YES;
     _peakLabel.hidden = YES;
     [super viewDidDisappear:animated];
 }
@@ -243,9 +249,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)alarmFinishedNotification:(NSNotification *)notification {
+    _captureButton.hidden = YES;        
+}
+
 - (void)dealloc
 {
     [self viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
