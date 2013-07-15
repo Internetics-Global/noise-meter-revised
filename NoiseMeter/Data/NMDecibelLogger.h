@@ -23,6 +23,8 @@
 @property (strong, nonatomic) NSNumber *alertThreshold;
 @property (strong, nonatomic) NSString *alarmName;
 
+@property (nonatomic, strong) AVQueuePlayer *player;
+
 + (NMDecibelLogger *)defaultLogger;
 - (float)rawReading;
 - (void)startLogging;

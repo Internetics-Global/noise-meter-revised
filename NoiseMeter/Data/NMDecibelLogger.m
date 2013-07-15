@@ -55,13 +55,8 @@
     
     NSError *error;
     
-    AVAudioSession *sesson = [AVAudioSession sharedInstance];
-    [sesson setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
-    [sesson setMode:AVAudioSessionModeVideoRecording error:&error];
-    if (![sesson setActive:YES error:&error]) {
-        NSLog(@"Error %@",[error localizedDescription]);
-        return NO;
-    }
+    [[AVAudioSession sharedInstance] setDelegate:self];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
@@ -77,6 +72,35 @@
     _recorder.meteringEnabled = YES;
     
 
+    if (isUseLongRunningtTask) {
+        NSArray *queue = @[
+                           [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"demo" withExtension:@"mp3"]]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(playerItemDidReachEnd:)
+                                                     name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:[queue lastObject]];
+        
+        self.player = [[AVQueuePlayer alloc] initWithItems:queue];
+        self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        
+        void (^observerBlock)(CMTime time) = ^(CMTime time) {
+            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                
+            } else {
+                [self updateReading];
+                NSLog(@"Background running: %f",_currentReading.floatValue);
+            }
+        };
+        
+        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
+                                                  queue:dispatch_get_main_queue()
+                                             usingBlock:observerBlock];
+
+        
+        
+        [self.player play];
+    }
     
     
     
@@ -117,7 +141,7 @@
                 AudioServicesPlaySystemSound(audioEffect);
                 _playingAlarm = YES;
                 
-                if (([UIApplication sharedApplication].applicationState != UIApplicationStateBackground ) && (isUseLongRunningtTask == NO)) {
+                if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground ) {
                     //we need to keep its status during background
                     [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];     
                 }
@@ -129,7 +153,7 @@
         }
     }
     
-    if (([UIApplication sharedApplication].applicationState == UIApplicationStateBackground ) && (isUseLongRunningtTask == NO)) {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
         //send local notification
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         localNotification.alertBody = @"Sound reachs the threshhold";
@@ -176,6 +200,12 @@
 {
     [self stopLogging];
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ensureLogging) userInfo:nil repeats:NO];
+}
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    [self.player seekToTime:kCMTimeZero];
+    [self.player play];
+    
 }
 
 

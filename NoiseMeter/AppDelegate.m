@@ -45,7 +45,7 @@
     NSLog(@"applicationDidEnterBackground");
     
     if (isUseLongRunningtTask) {
-        [[NMDecibelLogger defaultLogger] stopLogging];
+        //will put background running in addPeriodicTimeObserverForInterval
     } else {
         self.backgroundTask = UIBackgroundTaskInvalid;
         self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
@@ -55,7 +55,7 @@
             [[NMDecibelLogger defaultLogger] stopLogging];
         }];
         
-        [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+        [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
     }
 	
 }

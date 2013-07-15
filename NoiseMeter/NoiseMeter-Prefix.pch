@@ -15,4 +15,4 @@
     #import "UIViewController+Styling.h"
 #endif
 
-#define isUseLongRunningtTask (NO)
+#define isUseLongRunningtTask (YES)
