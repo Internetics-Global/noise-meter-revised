@@ -36,6 +36,7 @@
     [self.view addSubview:_explanation];
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width, 150)];
+    _pickerView.backgroundColor = [UIColor whiteColor];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
@@ -46,7 +47,7 @@
     }
 
     _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _setButton.frame = CGRectMake(20, self.view.frame.size.height - 67, 280, 37);
+    _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 60, 280, 37);
     _setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [_setButton setImage:[UIImage imageNamed:@"button_setalarm.png"] forState:UIControlStateNormal];
     [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];

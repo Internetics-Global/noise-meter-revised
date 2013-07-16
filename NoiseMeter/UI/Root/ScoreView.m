@@ -43,7 +43,7 @@
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_meterBackground];
     
-    _resetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
     _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 79, 73, 29);
