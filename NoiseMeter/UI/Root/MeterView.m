@@ -127,7 +127,7 @@
     if (flag == FALSE) {
         CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 44, self.view.bounds.size.width, 50);
         adView = [[ADBannerView alloc] initWithFrame:rect];
-        adView.backgroundColor = [UIColor grayColor];
+        adView.backgroundColor = [UIColor darkGrayColor];
         adView.delegate = self;
         [self.view addSubview:adView];
         
@@ -135,6 +135,7 @@
         removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 44 - 50 - 24 +3, 24, 24);
         [removeADButton setImage:[UIImage imageNamed:@"remove_ad.png"] forState:UIControlStateNormal];
         [removeADButton addTarget:self action:@selector(removeAD) forControlEvents:UIControlEventTouchDown];
+        removeADButton.showsTouchWhenHighlighted = TRUE;
         [self.view addSubview:removeADButton];
         
     }
@@ -214,19 +215,27 @@
 
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    UIAlertView *alertView;
     for (SKPaymentTransaction *transaction in transactions)
     {
         switch (transaction.transactionState)
         {
-            case SKPaymentTransactionStatePurchased://交易完成
+            case SKPaymentTransactionStatePurchased:
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
                 [self purchaseDoneAfterAction];
                 break;
-            case SKPaymentTransactionStateFailed://交易失败
+            case SKPaymentTransactionStateFailed:
+                alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                                    message:[NSString stringWithFormat:@"Failure to purchase, try again"]
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil, nil];
+                [alertView show];
                 NSLog(@"Fail to purchase");
                 break;
-            case SKPaymentTransactionStateRestored://已经购买过该商品
+            case SKPaymentTransactionStateRestored:
                 NSLog(@"Fail to purchase: have bought this before");
+                [self purchaseDoneAfterAction];
                 break;
             case SKPaymentTransactionStatePurchasing:      //商品添加进列表
                 NSLog(@"Add item into list to purchase");
