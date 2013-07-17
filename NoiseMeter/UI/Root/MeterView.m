@@ -120,6 +120,131 @@
     [self.view addSubview:_topScoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    
+    if (flag == FALSE) {
+        CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 44, self.view.bounds.size.width, 50);
+        adView = [[ADBannerView alloc] initWithFrame:rect];
+        adView.backgroundColor = [UIColor grayColor];
+        adView.delegate = self;
+        [self.view addSubview:adView];
+        
+        removeADButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 44 - 50 - 24 +3, 24, 24);
+        [removeADButton setImage:[UIImage imageNamed:@"remove_ad.png"] forState:UIControlStateNormal];
+        [removeADButton addTarget:self action:@selector(removeAD) forControlEvents:UIControlEventTouchDown];
+        [self.view addSubview:removeADButton];
+        
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Listen to purchase
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+}
+
+- (void) removeAD {
+    
+    if ([SKPaymentQueue canMakePayments]) {
+        
+        NSSet * set = [NSSet setWithArray:@[@"31415926535"]];
+        SKProductsRequest * request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
+        request.delegate = self;
+        [request start];
+        
+    } else {
+        NSLog(@"Failure，forbid to allow for purchase");
+    }
+    
+}
+
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"didFailToReceiveAdWithError, %@",[error description]);
+}
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    NSArray *myProduct = response.products;
+    
+    if (myProduct.count == 0) {
+        NSLog(@"Fail to get purchase info (myProduct.count = 0)");
+        return;
+    }
+    
+    NSArray *invalidProductID = response.invalidProductIdentifiers;
+    if ([invalidProductID count] >0) {
+        NSLog(@"Invalid product ID");
+        return;
+    }
+    
+    skProduct = [myProduct lastObject];
+    NSLog(@"Product title: %@" , skProduct.localizedTitle);
+    NSLog(@"Product description: %@" , skProduct.localizedDescription);
+    NSLog(@"Product price: %@" , skProduct.price);
+    NSLog(@"Product id: %@" , skProduct.productIdentifier);
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                        message:[NSString stringWithFormat:@"Confirm to buy (%@)?",[self localizedPrice:skProduct]]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"OK", nil];
+    [alertView show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        SKPayment * payment = [SKPayment paymentWithProduct:skProduct];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    }
+}
+
+- (NSString *)localizedPrice: (SKProduct *) sk
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:sk.priceLocale];
+    NSString *formattedString = [numberFormatter stringFromNumber:sk.price];
+    return formattedString;
+}
+
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    for (SKPaymentTransaction *transaction in transactions)
+    {
+        switch (transaction.transactionState)
+        {
+            case SKPaymentTransactionStatePurchased://交易完成
+                NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
+                [self purchaseDoneAfterAction];
+                break;
+            case SKPaymentTransactionStateFailed://交易失败
+                NSLog(@"Fail to purchase");
+                break;
+            case SKPaymentTransactionStateRestored://已经购买过该商品
+                NSLog(@"Fail to purchase: have bought this before");
+                break;
+            case SKPaymentTransactionStatePurchasing:      //商品添加进列表
+                NSLog(@"Add item into list to purchase");
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
+
+- (void) purchaseDoneAfterAction {
+    [adView removeFromSuperview];
+    [removeADButton removeFromSuperview];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
+    [userDefaults synchronize];
 }
 
 - (void)capture
@@ -237,6 +362,9 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+    
     _currentReadingLabel = nil;
     _meterBackground = nil;
     [[NMDecibelLogger defaultLogger] stopLogging];

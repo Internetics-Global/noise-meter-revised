@@ -68,11 +68,13 @@
 		11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44D151181CA00FF47C2 /* home_alarm.aifc */; };
 		11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44E151181CA00FF47C2 /* scifialarm.aifc */; };
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
+		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		8833910A1793CEA70051DE50 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883391091793CEA70051DE50 /* demo.mp3 */; };
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
 		883788E017839684000BBF3D /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883788DF17839684000BBF3D /* libGoogleAnalytics.a */; };
+		88607EA81796530B0035CEB9 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88607EA71796530B0035CEB9 /* iAd.framework */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
@@ -165,6 +167,7 @@
 		11FBD44D151181CA00FF47C2 /* home_alarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.aifc; sourceTree = "<group>"; };
 		11FBD44E151181CA00FF47C2 /* scifialarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.aifc; sourceTree = "<group>"; };
 		11FBD44F151181CA00FF47C2 /* siren_wail.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.aifc; sourceTree = "<group>"; };
+		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
 		8833910B1793D0680051DE50 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		883788DD17839684000BBF3D /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransaction.h; path = "Google Analytics/GAITransaction.h"; sourceTree = "<group>"; };
 		883788DE17839684000BBF3D /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = "Google Analytics/GAITransactionItem.h"; sourceTree = "<group>"; };
 		883788DF17839684000BBF3D /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "Google Analytics/libGoogleAnalytics.a"; sourceTree = "<group>"; };
+		88607EA71796530B0035CEB9 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88607EA81796530B0035CEB9 /* iAd.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD242177BC4A70046D281 /* StoreKit.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
@@ -265,6 +270,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88607EA71796530B0035CEB9 /* iAd.framework */,
 				8833910B1793D0680051DE50 /* CoreMedia.framework */,
 				889FD241177BC4A70046D281 /* StoreKit.framework */,
 				889FD23F177BC4960046D281 /* CFNetwork.framework */,
@@ -445,6 +451,7 @@
 				11AC53141505D4190093C7AB /* button_save@2x.png */,
 				11AC53151505D4190093C7AB /* button_setalarm.png */,
 				11AC53161505D4190093C7AB /* button_setalarm@2x.png */,
+				8806B39A179658510085CBF0 /* remove_ad.png */,
 				11AC530F1505D4140093C7AB /* button_capture.png */,
 				11AC53101505D4140093C7AB /* button_capture@2x.png */,
 			);
@@ -634,6 +641,7 @@
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
 				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
+				8806B39B179658510085CBF0 /* remove_ad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,8 +787,8 @@
 					"\"$(SRCROOT)/NoiseMeter/Support/Google Analytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "13F3866E-FD2C-488E-900E-85A5B429FEE2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "13F3866E-FD2C-488E-900E-85A5B429FEE2";
+				PROVISIONING_PROFILE = "228EF887-672B-48F5-A8C7-BFC60B0B3AC6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "228EF887-672B-48F5-A8C7-BFC60B0B3AC6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
