@@ -156,7 +156,7 @@
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
         //send local notification
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.alertBody = @"Sound reachs the threshhold";
+        localNotification.alertBody = @"Hey - keep the noise down! The alarm has triggered!";
         localNotification.fireDate = [NSDate date];
         localNotification.timeZone = [NSTimeZone defaultTimeZone];	
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
