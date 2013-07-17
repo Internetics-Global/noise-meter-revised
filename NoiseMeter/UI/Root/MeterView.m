@@ -151,7 +151,7 @@
     
     if ([SKPaymentQueue canMakePayments]) {
         
-        NSSet * set = [NSSet setWithArray:@[@"31415926535"]];
+        NSSet * set = [NSSet setWithArray:@[IAPProductID]];
         SKProductsRequest * request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
         request.delegate = self;
         [request start];

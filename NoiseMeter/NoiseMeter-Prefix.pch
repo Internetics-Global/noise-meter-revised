@@ -16,3 +16,5 @@
 #endif
 
 #define isUseLongRunningtTask (YES)
+
+#define IAPProductID   @"31415926535"
