@@ -225,12 +225,13 @@
                 [self purchaseDoneAfterAction];
                 break;
             case SKPaymentTransactionStateFailed:
+                /*
                 alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
                                                                     message:[NSString stringWithFormat:@"Failure to purchase, try again"]
                                                                    delegate:self
                                                           cancelButtonTitle:@"OK"
                                                           otherButtonTitles:nil, nil];
-                [alertView show];
+                [alertView show];*/
                 NSLog(@"Fail to purchase");
                 break;
             case SKPaymentTransactionStateRestored:
