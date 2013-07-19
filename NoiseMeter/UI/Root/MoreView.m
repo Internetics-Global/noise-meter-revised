@@ -15,6 +15,7 @@
 #import "InstructionView.h"
 #import "RootView.h"
 #import "MeterView.h"
+#import "PurchaseViewController.h"
 @interface MoreView ()
 
 @end
@@ -193,11 +194,16 @@
 
 
 - (void) buyAction {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
-                                                    message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the AD remove button to buy."
-                                                   delegate:self cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    [alert show];
+    
+    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+    [self.navigationController pushViewController:purchaseViewController animated:YES];
+    
+    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
+//                                                    message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the AD remove button to buy."
+//                                                   delegate:self cancelButtonTitle:@"OK"
+//                                          otherButtonTitles:nil, nil];
+//    [alert show];
 }
 
 @end

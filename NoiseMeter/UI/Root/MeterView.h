@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 #import <iAd/iAd.h>
-#import <StoreKit/StoreKit.h>
 
-@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource, ADBannerViewDelegate, SKProductsRequestDelegate,SKPaymentTransactionObserver, UIAlertViewDelegate>{
+@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;
@@ -27,8 +26,6 @@
     
     ADBannerView *adView;
     UIButton *removeADButton;
-    SKProduct *skProduct;
-    
 }
 
 @end
