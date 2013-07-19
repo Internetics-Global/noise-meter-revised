@@ -72,7 +72,10 @@
     _recorder.meteringEnabled = YES;
     
 
-    if (isUseLongRunningtTask) {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    
+    if ((isUseLongRunningtTask) && (flag == true)) {
         NSArray *queue = @[
                            [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"demo" withExtension:@"mp3"]]];
         

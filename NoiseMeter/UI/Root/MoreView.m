@@ -13,6 +13,8 @@
 #import "AboutView.h"
 #import "SelectAlertView.h"
 #import "InstructionView.h"
+#import "RootView.h"
+#import "MeterView.h"
 @interface MoreView ()
 
 @end
@@ -45,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 7;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,6 +80,11 @@
     else if (indexPath.row == 5)
     {
         cell.textLabel.text = @"Support";
+    }
+    
+    else if (indexPath.row == 6)
+    {
+        cell.textLabel.text = @"Purchase a pro version($0.99)";
     }
     
     return cell;
@@ -130,6 +137,16 @@
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
+    
+    else if(indexPath.row == 6)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
+                                                        message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the remove button to buy."
+                                                       delegate:self cancelButtonTitle:@"I know now"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
     else
     {
         if ([MFMailComposeViewController canSendMail]) 
@@ -160,6 +177,7 @@
         }
     }
 }
+
 
 - (void)viewDidUnload
 {

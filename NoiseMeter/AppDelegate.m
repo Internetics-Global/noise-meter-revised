@@ -46,18 +46,23 @@
     
     [[NMDecibelLogger defaultLogger] alarmComplete];
     
-    if (isUseLongRunningtTask) {
-        //will put background running in addPeriodicTimeObserverForInterval
-    } else {
-        self.backgroundTask = UIBackgroundTaskInvalid;
-        self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
-            NSLog(@"Background handler called. Not running background tasks anymore.");
-            [application endBackgroundTask:self.backgroundTask];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    
+    if (flag) {
+        if (isUseLongRunningtTask) {
+            //will put background running in addPeriodicTimeObserverForInterval
+        } else {
             self.backgroundTask = UIBackgroundTaskInvalid;
-            [[NMDecibelLogger defaultLogger] stopLogging];
-        }];
-        
-        [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+            self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
+                NSLog(@"Background handler called. Not running background tasks anymore.");
+                [application endBackgroundTask:self.backgroundTask];
+                self.backgroundTask = UIBackgroundTaskInvalid;
+                [[NMDecibelLogger defaultLogger] stopLogging];
+            }];
+            
+            [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+        }
     }
 	
 }
