@@ -78,6 +78,8 @@
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		88818C5917993CB3007B386F /* purchase.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5717993CB3007B386F /* purchase.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
+		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
+		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
 		889FD242177BC4A70046D281 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD241177BC4A70046D281 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -187,6 +189,9 @@
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		88818C5717993CB3007B386F /* purchase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase.png; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
+		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
+		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD224177BC3270046D281 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD225177BC3400046D281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -363,6 +368,9 @@
 		11AC52ED1505D2EC0093C7AB /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				88818C601799F58F007B386F /* PurchaseViewController.m */,
+				88818C611799F58F007B386F /* PurchaseViewController.h */,
+				88818C621799F58F007B386F /* PurchaseViewController.xib */,
 				11AC52EE1505D3010093C7AB /* RootView.h */,
 				11AC52EF1505D3010093C7AB /* RootView.m */,
 				11AC531B1505D4420093C7AB /* MeterView.h */,
@@ -634,6 +642,7 @@
 				117D94211516B8A4002C5479 /* close_button.png in Resources */,
 				117D94221516B8A4002C5479 /* overlay02.png in Resources */,
 				88818C5A17993CB3007B386F /* purchase@2x.png in Resources */,
+				88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */,
 				117D94251516B8DE002C5479 /* button_info.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
@@ -677,6 +686,7 @@
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
+				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,
 				1168C317151966AC00897AA4 /* InstructionView.m in Sources */,
 				889FD23E177BC3F90046D281 /* Appirater.m in Sources */,
 			);
