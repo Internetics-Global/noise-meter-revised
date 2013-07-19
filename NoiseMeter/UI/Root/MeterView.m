@@ -125,14 +125,14 @@
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     
     if (flag == FALSE) {
-        CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 44, self.view.bounds.size.width, 50);
+        CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 49, self.view.bounds.size.width, 50);
         adView = [[ADBannerView alloc] initWithFrame:rect];
         adView.backgroundColor = [UIColor darkGrayColor];
         adView.delegate = self;
         [self.view addSubview:adView];
         
         removeADButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 44 - 50 - 24 +3, 24, 24);
+        removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 49 - 50 - 24 +3, 24, 24);
         [removeADButton setImage:[UIImage imageNamed:@"remove_ad.png"] forState:UIControlStateNormal];
         [removeADButton addTarget:self action:@selector(removeAD) forControlEvents:UIControlEventTouchDown];
         removeADButton.showsTouchWhenHighlighted = TRUE;
