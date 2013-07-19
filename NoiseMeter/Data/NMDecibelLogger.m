@@ -177,6 +177,7 @@
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && (flag == false)) {
         //we indirectly call this from applicationDidEnterBackground and we don't it keep running if not been purchased
+        [self stopLogging];
     } else {
         [self startLogging];
     }

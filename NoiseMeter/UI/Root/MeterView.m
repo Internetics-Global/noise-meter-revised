@@ -215,7 +215,6 @@
 
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
-    UIAlertView *alertView;
     for (SKPaymentTransaction *transaction in transactions)
     {
         switch (transaction.transactionState)
@@ -223,22 +222,18 @@
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
                 [self purchaseDoneAfterAction];
+                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
             case SKPaymentTransactionStateFailed:
-                /*
-                alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                                    message:[NSString stringWithFormat:@"Failure to purchase, try again"]
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil, nil];
-                [alertView show];*/
                 NSLog(@"Fail to purchase");
+                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
             case SKPaymentTransactionStateRestored:
                 NSLog(@"Fail to purchase: have bought this before");
                 [self purchaseDoneAfterAction];
+                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
-            case SKPaymentTransactionStatePurchasing:      //商品添加进列表
+            case SKPaymentTransactionStatePurchasing:      
                 NSLog(@"Add item into list to purchase");
                 break;
             default:
@@ -247,6 +242,8 @@
     }
     
 }
+
+
 
 - (void) purchaseDoneAfterAction {
     [adView removeFromSuperview];
