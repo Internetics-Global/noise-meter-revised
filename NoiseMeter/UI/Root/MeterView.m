@@ -248,6 +248,8 @@
 - (void) purchaseDoneAfterAction {
     [adView removeFromSuperview];
     [removeADButton removeFromSuperview];
+    adView.hidden = TRUE;
+    removeADButton.hidden = TRUE;
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:TRUE forKey:@"AD_REMOVED"];

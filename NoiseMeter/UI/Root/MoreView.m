@@ -43,11 +43,22 @@
     _optionTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_optionTable];
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    if (flag == FALSE) {
+        UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
+        buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
+        [buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:buyButton];
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,11 +91,6 @@
     else if (indexPath.row == 5)
     {
         cell.textLabel.text = @"Support";
-    }
-    
-    else if (indexPath.row == 6)
-    {
-        cell.textLabel.text = @"Purchase a pro version($0.99)";
     }
     
     return cell;
@@ -138,15 +144,6 @@
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else if(indexPath.row == 6)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
-                                                        message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the remove button to buy."
-                                                       delegate:self cancelButtonTitle:@"I know now"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    
     else
     {
         if ([MFMailComposeViewController canSendMail]) 
@@ -192,6 +189,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+- (void) buyAction {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
+                                                    message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the AD remove button to buy."
+                                                   delegate:self cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end
