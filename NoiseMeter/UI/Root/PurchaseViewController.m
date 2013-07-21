@@ -137,7 +137,7 @@
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
             case SKPaymentTransactionStateFailed:
-                NSLog(@"Fail to purchase");
+                NSLog(@"Fail to purchase,%@",transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
             case SKPaymentTransactionStateRestored:
