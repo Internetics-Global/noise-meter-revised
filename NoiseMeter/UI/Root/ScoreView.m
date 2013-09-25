@@ -103,6 +103,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.capture = [_scores objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

@@ -218,6 +218,7 @@
         cell.textLabel.textColor = [UIColor whiteColor];
     }
     cell.capture = [_scores objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
