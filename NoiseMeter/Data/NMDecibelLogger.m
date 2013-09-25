@@ -207,7 +207,7 @@
     }
     else 
     {
-        _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
+        _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
     }
 }
 
@@ -244,7 +244,7 @@
         _currentReading = [NSNumber numberWithFloat:([self rawReading] + 100)];
         [self didChangeValueForKey:@"currentReading"];
     }
-    _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
+    _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
 }
 
 - (void)stopLogging
