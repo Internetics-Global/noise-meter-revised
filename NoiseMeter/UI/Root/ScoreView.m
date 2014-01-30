@@ -111,8 +111,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    int index = indexPath.row;
-    NSURL *url = [FileHelper getRecordedAudioFile:index];
+    SoundLevelCapture *caputure = [_scores objectAtIndex:indexPath.row];
+    NSURL *url = [FileHelper getRecordedAudioFile:caputure.recordedAudioFileName];
     [self playAudioFile:url];
 }
 

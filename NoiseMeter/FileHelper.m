@@ -10,9 +10,9 @@
 
 @implementation FileHelper
 
-+ (NSURL *) getRecordedAudioFile:(int) index {
++ (NSURL *) getRecordedAudioFile:(NSString *) fileName {
     NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:
-                            [NSString stringWithFormat:@"record%d.caf",index]]];
+                            fileName]];
     return url;
 }
 

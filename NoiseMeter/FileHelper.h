@@ -10,6 +10,6 @@
 
 @interface FileHelper : NSObject
 
-+ (NSURL *) getRecordedAudioFile:(int) index;
++ (NSURL *) getRecordedAudioFile:(NSString *) fileName;
 
 @end

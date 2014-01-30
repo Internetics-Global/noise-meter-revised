@@ -7,9 +7,6 @@
 //
 
 #import "NMDecibelLogger.h"
-#import "CAFAudioHelper.h"
-#import "SoundLevelCapture.h"
-#import "FileHelper.h"
 
 @implementation NMDecibelLogger
 
@@ -168,12 +165,6 @@
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
     
-    //Record last 10 second audio just before alarm
-    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
-    
-    int index = [[SoundLevelCapture all] count];
-    NSURL *toURL = [FileHelper getRecordedAudioFile:index];
-    [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
     
 }
 
