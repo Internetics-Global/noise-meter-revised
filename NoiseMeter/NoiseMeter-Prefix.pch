@@ -15,7 +15,7 @@
     #import "UIViewController+Styling.h"
 #endif
 
-#define isUseLongRunningtTask (YES)
+#define isUseLongRunningtTask (NO)
 
 #define IAPProductID   @"31415926535"
 
