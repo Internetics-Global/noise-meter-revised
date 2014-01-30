@@ -103,7 +103,7 @@
     SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
     if (cell == nil) {
         cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
@@ -118,6 +118,8 @@
     
     NSURL *url = [FileHelper getRecordedAudioFile:dateString];
     [self playAudioFile:url];
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)viewDidUnload
@@ -142,10 +144,11 @@
 - (void) playAudioFile:(NSURL *) url {
     
     //play audio function need to be purchased
-    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
-    if (flag == FALSE) {
-        return;
-    }
+//    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
+//    flag = TRUE;
+//    if (flag == FALSE) {
+//        return;
+//    }
     
     if (url == nil) {
         NSLog(@"%s:missing audio file",__FUNCTION__);
