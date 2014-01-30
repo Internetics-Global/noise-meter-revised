@@ -141,6 +141,13 @@
         NSLog(@"%s:missing audio file",__FUNCTION__);
     }
     
+    //play audio function need to be purchased
+    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
+    if (flag == FALSE) {
+        return;
+    }
+    
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"only_run_once"]) {
         [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Playback 10 seconds before alarming" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]
          show];
