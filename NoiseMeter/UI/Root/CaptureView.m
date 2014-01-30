@@ -9,6 +9,7 @@
 #import "CaptureView.h"
 #import "SoundLevelCapture.h"
 #import "NMDataManager.h"
+#import "NMDecibelLogger.h"
 
 #import "CAFAudioHelper.h"
 #import "SoundLevelCapture.h"
@@ -106,7 +107,9 @@
 	NSString *dateString = [FileHelper convertDate:date];
     
     NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
+    [[NMDecibelLogger defaultLogger] stopLogging];
     [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
+    [[NMDecibelLogger defaultLogger] startLogging];
     
     SoundLevelCapture *cap = [SoundLevelCapture instance];
     cap.name = _nameField.text;
