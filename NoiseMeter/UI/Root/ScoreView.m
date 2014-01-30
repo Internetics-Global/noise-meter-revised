@@ -155,7 +155,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NMDecibelLogger defaultLogger] stopLogging];
 }
 
 
@@ -184,10 +183,12 @@
     
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"only_run_once"]) {
-        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Playback 10 seconds before alarming" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]
+        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Playback 10 seconds before alarming" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Not show again", nil]
          show];
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"only_run_once"];
+        
     }
+    
+    [[NMDecibelLogger defaultLogger] stopLogging]; 
     
     SystemSoundID soundID;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
@@ -196,6 +197,13 @@
     
 //    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
 //    [audioPlayer play];
+}
+
+#pragma mark – UIAlerViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"only_run_once"];
+    }
 }
 
 
