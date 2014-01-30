@@ -137,13 +137,16 @@
 
 - (void) playAudioFile:(NSURL *) url {
     
-    if (url == nil) {
-        NSLog(@"%s:missing audio file",__FUNCTION__);
-    }
-    
     //play audio function need to be purchased
     BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
     if (flag == FALSE) {
+        return;
+    }
+    
+    if (url == nil) {
+        NSLog(@"%s:missing audio file",__FUNCTION__);
+        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"No recorded audio file" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]
+         show];
         return;
     }
     
