@@ -102,16 +102,16 @@
     //Record last 10 second audio just before alarm
     NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
     
-    long timestamp = [[NSDate date] timeIntervalSince1970];
-    NSString *recordedAudioFileName = [NSString stringWithFormat:@"record%ld.caf",timestamp];
-    NSURL *toURL = [FileHelper getRecordedAudioFile:recordedAudioFileName];
+    NSDate *date = [NSDate date];
+	NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
     [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
     
     SoundLevelCapture *cap = [SoundLevelCapture instance];
     cap.name = _nameField.text;
     cap.soundLevel = [NSDecimalNumber decimalNumberWithString:[_reading stringValue]];
-    cap.date = [NSDate date];
-    cap.recordedAudioFileName = recordedAudioFileName;
+    cap.date = date;
     [[NMDataManager defaultManager] saveContext];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
     [self.navigationController popViewControllerAnimated:YES];

@@ -16,4 +16,16 @@
     return url;
 }
 
++ (NSString *) convertDate: (NSDate *) date {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	NSLocale *au = [[NSLocale alloc] initWithLocaleIdentifier:@"en_AU"];
+	[dateFormatter setLocale:au];
+	[dateFormatter setDateFormat:@"dd.MM.yyyy.HH.mm.ss"];
+	NSString *dateString = [dateFormatter stringFromDate:date];
+    
+    return dateString;
+}
+
+
 @end

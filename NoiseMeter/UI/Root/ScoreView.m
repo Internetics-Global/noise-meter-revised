@@ -112,7 +112,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SoundLevelCapture *caputure = [_scores objectAtIndex:indexPath.row];
-    NSURL *url = [FileHelper getRecordedAudioFile:caputure.recordedAudioFileName];
+    
+    NSDate *date = caputure.date;
+	NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
     [self playAudioFile:url];
 }
 

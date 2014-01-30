@@ -12,4 +12,6 @@
 
 + (NSURL *) getRecordedAudioFile:(NSString *) fileName;
 
++ (NSString *) convertDate: (NSDate *) date;
+
 @end
