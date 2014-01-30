@@ -113,6 +113,11 @@
     }
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
+    
+    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    backgroundView.backgroundColor = [UIColor orangeColor];
+    cell.selectedBackgroundView = backgroundView;
+    
     return cell;
 }
 
