@@ -27,5 +27,16 @@
     return dateString;
 }
 
++ (void) removeAllExceptTMPCAF {
+   NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
+    for (NSString *file in dirContents) {
+        if (![file isEqualToString:@"tmp.caf"]) {
+            [[NSFileManager defaultManager] removeItemAtPath:[NSTemporaryDirectory() stringByAppendingPathComponent:file] error:nil];
+        }
+    }
+    
+    
+}
+
 
 @end

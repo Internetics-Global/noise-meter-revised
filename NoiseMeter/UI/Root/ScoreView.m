@@ -97,6 +97,8 @@
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
     [[NMDataManager defaultManager] saveContext];
+    
+    [FileHelper removeAllExceptTMPCAF];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

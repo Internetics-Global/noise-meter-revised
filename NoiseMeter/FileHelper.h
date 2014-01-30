@@ -14,4 +14,8 @@
 
 + (NSString *) convertDate: (NSDate *) date;
 
+
+//删除tmp目录下的所有文件，除了tmp.caf文件外
++ (void) removeAllExceptTMPCAF;
+
 @end
