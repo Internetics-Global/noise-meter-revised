@@ -10,6 +10,9 @@
 #import "NMDataManager.h"
 #import "SoundLevelCapture.h"
 #import "SoundLevelCaptureCell.h"
+#import <AVFoundation/AVFoundation.h>
+#import "FileHelper.h"
+
 @interface ScoreView ()
 
 @end
@@ -107,6 +110,12 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    int index = indexPath.row;
+    NSURL *url = [FileHelper getRecordedAudioFile:index];
+    [self playAudioFile:url];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -124,5 +133,24 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+- (void) playAudioFile:(NSURL *) url {
+    
+    if (url == nil) {
+        NSLog(@"%s:missing audio file",__FUNCTION__);
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"only_run_once"]) {
+        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Playback 10 seconds before alarming" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]
+         show];
+        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"only_run_once"];
+    }
+    
+    SystemSoundID soundID;
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+}
+
 
 @end

@@ -83,6 +83,8 @@
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
 		889FD242177BC4A70046D281 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD241177BC4A70046D281 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
+		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
@@ -220,6 +222,10 @@
 		889FD23D177BC3F90046D281 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppiraterDelegate.h; path = Appirater/AppiraterDelegate.h; sourceTree = "<group>"; };
 		889FD23F177BC4960046D281 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		889FD241177BC4A70046D281 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		88B47354189A148E005668AC /* CAFAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFAudioHelper.h; path = Data/CAFAudioHelper.h; sourceTree = "<group>"; };
+		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
+		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
+		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -300,6 +306,7 @@
 		110F130114EDD52E00BE4481 /* NoiseMeter */ = {
 			isa = PBXGroup;
 			children = (
+				88B47357189A1819005668AC /* Helper */,
 				11AC52F61505D37B0093C7AB /* Resources */,
 				11AC52F11505D3400093C7AB /* Support */,
 				11AC52E01505CCA30093C7AB /* Data */,
@@ -529,6 +536,17 @@
 			name = appirater;
 			sourceTree = "<group>";
 		};
+		88B47357189A1819005668AC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				88B47354189A148E005668AC /* CAFAudioHelper.h */,
+				88B47355189A148E005668AC /* CAFAudioHelper.m */,
+				88B47358189A182C005668AC /* FileHelper.h */,
+				88B47359189A182C005668AC /* FileHelper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -674,6 +692,7 @@
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
+				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
 				11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */,
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
@@ -682,6 +701,7 @@
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				11A3EE81150F456B00A6496B /* CaptureView.m in Sources */,
+				88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */,
 				1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */,
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,

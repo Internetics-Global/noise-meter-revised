@@ -7,6 +7,9 @@
 //
 
 #import "NMDecibelLogger.h"
+#import "CAFAudioHelper.h"
+#import "SoundLevelCapture.h"
+#import "FileHelper.h"
 
 @implementation NMDecibelLogger
 
@@ -164,6 +167,14 @@
         localNotification.timeZone = [NSTimeZone defaultTimeZone];	
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     }
+    
+    //Record last 10 second audio just before alarm
+    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    
+    int index = [[SoundLevelCapture all] count];
+    NSURL *toURL = [FileHelper getRecordedAudioFile:index];
+    [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
+    
 }
 
 - (void)alarmComplete
@@ -209,6 +220,7 @@
     {
         _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
     }
+
 }
 
 - (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError *)error
@@ -233,6 +245,8 @@
 - (void) updateReading {
     float temp = [self rawReading];
     _currentReading = [NSNumber numberWithFloat:(temp + 100)];
+    
+    
 }
 
 - (void)timerFire
@@ -261,5 +275,6 @@
     _recorderSettings = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 @end
