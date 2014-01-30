@@ -8,6 +8,7 @@
 
 #import "ScoreView.h"
 #import "NMDataManager.h"
+#import "NMDecibelLogger.h"
 #import "SoundLevelCapture.h"
 #import "SoundLevelCaptureCell.h"
 #import <AVFoundation/AVFoundation.h>
@@ -135,6 +136,18 @@
     self.trackedViewName = @"ScoreView Screen";
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NMDecibelLogger defaultLogger] startLogging];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NMDecibelLogger defaultLogger] stopLogging];
+}
+
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -167,6 +180,10 @@
     SystemSoundID soundID;
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
     AudioServicesPlaySystemSound(soundID);
+    
+    
+//    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+//    [audioPlayer play];
 }
 
 
