@@ -313,6 +313,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
     [userDefaults synchronize];
+    NSLog(@"%s:the flag AD_REMOVED is set",__FUNCTION__);
 }
 
 - (void)dealloc
