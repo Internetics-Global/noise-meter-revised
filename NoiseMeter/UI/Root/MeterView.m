@@ -132,7 +132,7 @@
     
     if (isUseGoogleAdmob) {
         _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        _bannerView.adUnitID = @"ca-app-pub-7997291516274354/4936285827";
+        _bannerView.adUnitID = @"a152e9fa5524978";
         _bannerView.delegate = self;
         _bannerView.rootViewController = self;
         [self.view addSubview:_bannerView];
