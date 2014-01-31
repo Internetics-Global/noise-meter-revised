@@ -128,22 +128,34 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     
-    if (flag == FALSE) {
-        CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 49, self.view.bounds.size.width, 50);
-        adView = [[ADBannerView alloc] initWithFrame:rect];
-        adView.backgroundColor = [UIColor darkGrayColor];
-        adView.delegate = self;
-        [self.view addSubview:adView];
+    
+    if (isUseGoogleAdmob) {
+        _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+        _bannerView.adUnitID = @"ca-app-pub-7997291516274354/4936285827";
+        _bannerView.delegate = self;
+        _bannerView.rootViewController = self;
+        [self.view addSubview:_bannerView];
+        [_bannerView loadRequest:[GADRequest request]];
         
-        removeADButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 49 - 50 - 24 +3, 24, 24);
-        [removeADButton setImage:[UIImage imageNamed:@"remove_ad.png"] forState:UIControlStateNormal];
-        [removeADButton addTarget:self action:@selector(goToPurchasePage) forControlEvents:UIControlEventTouchDown];
-        removeADButton.showsTouchWhenHighlighted = TRUE;
-        [self.view addSubview:removeADButton];
         
+    } else {
+        BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+        if (flag == FALSE) {
+            CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 49, self.view.bounds.size.width, 50);
+            adView = [[ADBannerView alloc] initWithFrame:rect];
+            adView.backgroundColor = [UIColor darkGrayColor];
+            adView.delegate = self;
+            [self.view addSubview:adView];
+            
+            removeADButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            removeADButton.frame = CGRectMake(self.view.bounds.size.width - 24 +2, self.view.bounds.size.height - 49 - 50 - 24 +3, 24, 24);
+            [removeADButton setImage:[UIImage imageNamed:@"remove_ad.png"] forState:UIControlStateNormal];
+            [removeADButton addTarget:self action:@selector(goToPurchasePage) forControlEvents:UIControlEventTouchDown];
+            removeADButton.showsTouchWhenHighlighted = TRUE;
+            [self.view addSubview:removeADButton];
+            
+        }
     }
 }
 
@@ -268,7 +280,9 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.trackedViewName = @"MeterView Screen";
+
 }
+
 
 - (void)viewDidUnload
 {
@@ -312,5 +326,30 @@
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"didFailToReceiveAdWithError, %@",[error description]);
 }
+
+
+#pragma mark GADBannerViewDelegate
+
+- (void)adViewDidReceiveAd:(DFPBannerView *)adView {
+    NSLog(@"Received ad successfully");
+    
+    //CGRect rect = self.view.frame;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        _bannerView.center = CGPointMake(self.view.center.x,
+                                         CGRectGetHeight(self.view.frame) - 49 - CGRectGetHeight(_bannerView.frame)/2);
+    } else {
+        _bannerView.center = CGPointMake(self.view.center.x,
+                                         CGRectGetHeight(self.view.frame) - CGRectGetHeight(_bannerView.frame)/2);
+    }
+}
+
+- (void)adView:(DFPBannerView *)view
+didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
+}
+
+
+
+
 
 @end

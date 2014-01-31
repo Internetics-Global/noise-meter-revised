@@ -15,7 +15,9 @@
     #import "UIViewController+Styling.h"
 #endif
 
-#define isUseLongRunningtTask (NO)
+#define isUseLongRunningtTask      (NO)
+
+#define isUseGoogleAdmob           (YES)
 
 #define IAPProductID   @"31415926535"
 

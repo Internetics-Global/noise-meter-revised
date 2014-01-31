@@ -10,7 +10,12 @@
 #import "GAITrackedViewController.h"
 #import <iAd/iAd.h>
 
-@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate>{
+#import "DFPBannerView.h"
+#import "GADAdSizeDelegate.h"
+#import "GADAppEventDelegate.h"
+#import "GADBannerViewDelegate.h"
+
+@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate,GADBannerViewDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;
@@ -26,6 +31,8 @@
     
     ADBannerView *adView;
     UIButton *removeADButton;
+    
+    DFPBannerView *_bannerView;
 }
 
 @end
