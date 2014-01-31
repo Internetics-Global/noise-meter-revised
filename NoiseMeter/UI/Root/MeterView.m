@@ -129,19 +129,18 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    
-    if (isUseGoogleAdmob) {
-        _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-        _bannerView.adUnitID = @"a152e9fa5524978";
-        _bannerView.delegate = self;
-        _bannerView.rootViewController = self;
-        [self.view addSubview:_bannerView];
-        [_bannerView loadRequest:[GADRequest request]];
-        
-        
-    } else {
-        BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
-        if (flag == FALSE) {
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    if (flag == FALSE) {
+        if (isUseGoogleAdmob) {
+            _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+            _bannerView.adUnitID = @"a152e9fa5524978";
+            _bannerView.delegate = self;
+            _bannerView.rootViewController = self;
+            [self.view addSubview:_bannerView];
+            [_bannerView loadRequest:[GADRequest request]];
+            
+            
+        } else {
             CGRect rect = CGRectMake(0, self.view.bounds.size.height - 50 - 49, self.view.bounds.size.width, 50);
             adView = [[ADBannerView alloc] initWithFrame:rect];
             adView.backgroundColor = [UIColor darkGrayColor];
@@ -154,7 +153,6 @@
             [removeADButton addTarget:self action:@selector(goToPurchasePage) forControlEvents:UIControlEventTouchDown];
             removeADButton.showsTouchWhenHighlighted = TRUE;
             [self.view addSubview:removeADButton];
-            
         }
     }
 }

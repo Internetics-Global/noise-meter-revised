@@ -168,11 +168,10 @@
 - (void) playAudioFile:(NSURL *) url {
     
     //play audio function need to be purchased
-//    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
-//    flag = TRUE;
-//    if (flag == FALSE) {
-//        return;
-//    }
+    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
+    if (flag == FALSE) {
+        return;
+    }
     
     if (url == nil) {
         NSLog(@"%s:missing audio file",__FUNCTION__);
