@@ -118,6 +118,8 @@
     [[NMDataManager defaultManager] saveContext];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [NMDecibelLogger defaultLogger].playingAlarm = FALSE;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -16,7 +16,6 @@
     NSNumber *_currentReading;
     NSTimer *_sampleTimer;
     SystemSoundID audioEffect;
-    BOOL _playingAlarm;
 }
 
 @property (strong, nonatomic, readonly) NSNumber *currentReading;
@@ -24,6 +23,8 @@
 @property (strong, nonatomic) NSString *alarmName;
 
 @property (nonatomic, strong) AVQueuePlayer *player;
+
+@property (assign, nonatomic) BOOL playingAlarm;
 
 + (NMDecibelLogger *)defaultLogger;
 - (float)rawReading;
