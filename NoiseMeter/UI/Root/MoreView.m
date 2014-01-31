@@ -48,7 +48,12 @@
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     if (flag == FALSE) {
         UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10 - 49, 280, 37);
+        } else {
+            buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
+        }
+        
         buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
         [buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
