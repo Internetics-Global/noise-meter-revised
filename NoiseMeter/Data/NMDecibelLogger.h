@@ -34,5 +34,6 @@
 - (void)ensureLogging;
 - (void) updateReading;
 - (void)alarmComplete;
+- (BOOL)logging;
 
 @end

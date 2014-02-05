@@ -12,6 +12,8 @@
 #import "SoundLevelCapture.h"
 #import "SoundLevelCaptureCell.h"
 #import "PurchaseViewController.h"
+#import "FileHelper.h"
+#import "PlayHelper.h"
 
 @interface MeterView ()
 
@@ -34,6 +36,8 @@
                                              selector:@selector(purchasedFinishedNotification:)
                                                  name:@"PURCHASE_FINISHED_NOTIFICATION"
                                                object:nil];
+    
+    
     
     return self;
 }
@@ -243,7 +247,24 @@
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     
+    cell.playButton.tag = indexPath.row;
+    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
+    
     return cell;
+}
+
+
+- (void) playRecordedSound: (id) sender {
+    
+    int index = ((UIButton *) sender).tag;
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
+    
+    NSDate *date = caputure.date;
+	NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
+    [PlayHelper playAudioFile:url];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -361,8 +382,6 @@
 didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
-
-
 
 
 

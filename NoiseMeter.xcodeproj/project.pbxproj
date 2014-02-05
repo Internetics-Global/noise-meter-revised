@@ -84,6 +84,8 @@
 		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
+		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
+		88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEFE1918A1EDEE00399680 /* PlayHelper.m */; };
 		88DDF48E189B1ACC00138ADF /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF48D189B1ACC00138ADF /* libGoogleAdMobAds.a */; };
 		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
@@ -223,6 +225,9 @@
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
+		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
+		88BEFE1818A1EDEE00399680 /* PlayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayHelper.h; sourceTree = "<group>"; };
+		88BEFE1918A1EDEE00399680 /* PlayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayHelper.m; sourceTree = "<group>"; };
 		88DDF47E189B1ACC00138ADF /* DFPBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPBannerView.h; path = NoiseMeter/Support/Admob/DFPBannerView.h; sourceTree = SOURCE_ROOT; };
 		88DDF47F189B1ACC00138ADF /* DFPExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPExtras.h; path = NoiseMeter/Support/Admob/DFPExtras.h; sourceTree = SOURCE_ROOT; };
 		88DDF480189B1ACC00138ADF /* DFPInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPInterstitial.h; path = NoiseMeter/Support/Admob/DFPInterstitial.h; sourceTree = SOURCE_ROOT; };
@@ -367,6 +372,8 @@
 				11AC52E41505CCFF0093C7AB /* NMDataManager.m */,
 				11AC52EA1505CDA80093C7AB /* NMDecibelLogger.h */,
 				11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */,
+				88BEFE1818A1EDEE00399680 /* PlayHelper.h */,
+				88BEFE1918A1EDEE00399680 /* PlayHelper.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -479,6 +486,7 @@
 		11AC53021505D3E70093C7AB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */,
 				88BEFE1418A1DEB000399680 /* cancel@2x.png */,
 				1140FDCF1517FBE700DE0A64 /* icon_more.png */,
 				1140FDD01517FBE700DE0A64 /* icon_more@2x.png */,
@@ -705,6 +713,7 @@
 				11AC530C1505D3F20093C7AB /* icon_meter@2x.png in Resources */,
 				11AC530D1505D3F20093C7AB /* icon_scores.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
+				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
 				11AC53171505D4190093C7AB /* button_save.png in Resources */,
@@ -768,6 +777,7 @@
 				88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */,
 				1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */,
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
+				88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
 				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,

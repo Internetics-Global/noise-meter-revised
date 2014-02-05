@@ -13,6 +13,7 @@
 #import "SoundLevelCaptureCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FileHelper.h"
+#import "PlayHelper.h"
 
 @interface ScoreView ()
 
@@ -65,7 +66,6 @@
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
     _scoreTable.backgroundColor = [UIColor clearColor];
     _scoreTable.opaque = YES;
-    _scoreTable.delegate = self;
     _scoreTable.dataSource = self;
     [self.view addSubview:_scoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
@@ -111,28 +111,29 @@
     SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
     if (cell == nil) {
         cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
+
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    backgroundView.backgroundColor = [UIColor orangeColor];
-    cell.selectedBackgroundView = backgroundView;
+    cell.playButton.tag = indexPath.row;
+    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    SoundLevelCapture *caputure = [_scores objectAtIndex:indexPath.row];
+- (void) playRecordedSound: (id) sender {
+    
+    int index = ((UIButton *) sender).tag;
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
     
     NSDate *date = caputure.date;
 	NSString *dateString = [FileHelper convertDate:date];
     
     NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    [self playAudioFile:url];
-
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [PlayHelper playAudioFile:url];
 }
 
 - (void)viewDidUnload
@@ -162,47 +163,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-- (void) playAudioFile:(NSURL *) url {
-    
-    //play audio function need to be purchased
-    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
-    if (flag == FALSE) {
-        return;
-    }
-    
-    if (url == nil) {
-        NSLog(@"%s:missing audio file",__FUNCTION__);
-        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"No recorded audio file" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil]
-         show];
-        return;
-    }
-    
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"only_run_once"]) {
-        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Playback 10 seconds before alarming" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Not show again", nil]
-         show];
-        
-    }
-    
-    [[NMDecibelLogger defaultLogger] stopLogging]; 
-    
-    SystemSoundID soundID;
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID);
-    AudioServicesPlaySystemSound(soundID);
-    
-    
-//    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-//    [audioPlayer play];
-}
-
-#pragma mark – UIAlerViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"only_run_once"];
-    }
 }
 
 

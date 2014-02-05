@@ -37,11 +37,27 @@
         _nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:_nameLabel.font.pointSize];
         [self.contentView addSubview:_nameLabel];
         
+        
         _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_nameLabel.frame.origin.x + _nameLabel.frame.size.width + 5, 0, 50, self.contentView.frame.size.height)];
         _levelLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _levelLabel.backgroundColor = [UIColor clearColor];
         _levelLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_levelLabel];
+        
+        
+        _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playButton setImage:[UIImage imageNamed:@"soundOnButton@2x"] forState:UIControlStateNormal];
+        _playButton.frame = CGRectMake(_levelLabel.frame.origin.x - 30, 13, 20, 15);
+        _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_playButton];
+        _playButton.showsTouchWhenHighlighted = YES;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+        if (flag) {
+            _playButton.hidden = NO;
+        } else {
+            _playButton.hidden = YES;
+        }
         
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, 0, 100, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
