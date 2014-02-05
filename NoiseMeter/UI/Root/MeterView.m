@@ -102,8 +102,8 @@
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(0, _meterBackground.frame.origin.y + 5, 150, 40)];
-    _currentReadingLabel.textAlignment = UITextAlignmentCenter;
+                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 150, 40)];
+    _currentReadingLabel.textAlignment = UITextAlignmentLeft;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
@@ -302,7 +302,7 @@
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
             CGRect rect = _currentReadingLabel.frame;
-            rect.origin.x = 35;
+            rect.origin.x = 50;
             _currentReadingLabel.frame = rect;
         }
     }
@@ -332,7 +332,7 @@
     _captureButton.hidden = YES;
     
     CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 0;
+    rect.origin.x = 10;
     _currentReadingLabel.frame = rect;
 }
 
@@ -359,7 +359,7 @@
     _cancelButton.hidden = YES;
     
     CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 0;
+    rect.origin.x = 10;
     _currentReadingLabel.frame = rect;
 }
 
