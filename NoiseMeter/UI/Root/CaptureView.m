@@ -132,6 +132,7 @@
 {
     [super viewDidUnload];
     _currentReadingLabel = nil;
+    
     _meterBackground = nil;
 }
 

@@ -14,6 +14,7 @@
 #import "GADAdSizeDelegate.h"
 #import "GADAppEventDelegate.h"
 #import "GADBannerViewDelegate.h"
+#import "SoundLevelView.h"
 
 @interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate,GADBannerViewDelegate>{
     UIImageView *_meterBackground;
@@ -34,6 +35,8 @@
     UIButton *removeADButton;
     
     DFPBannerView *_bannerView;
+    
+    SoundLevelView *_soundLevelView;
 }
 
 @end

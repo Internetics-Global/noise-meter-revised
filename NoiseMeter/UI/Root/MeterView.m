@@ -45,6 +45,7 @@
 - (void)failed
 {
     _currentReadingLabel.text = @"N/A";
+    [_soundLevelView setSoundLevelValue:0];
     _currentReadingLabel.textColor = [UIColor redColor];
 }
 
@@ -100,13 +101,18 @@
     _cancelButton.hidden = YES;
     [self.view addSubview:_cancelButton];
     
-    _currentReadingLabel = [[UILabel alloc] initWithFrame:_meterBackground.frame];
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:
+                            CGRectMake(30, _meterBackground.frame.origin.y, 100, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
-    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:90];
-    _currentReadingLabel.center = _meterBackground.center;
+    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_currentReadingLabel];
+    
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(10, _meterBackground.frame.origin.y + 40, 300, _meterBackground.frame.size.height -65)];
+    [_soundLevelView setupSubviews];
+    _soundLevelView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_soundLevelView];
     
     [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
     [[NMDecibelLogger defaultLogger] startLogging];
@@ -273,6 +279,7 @@
     {
         _currentReading = [[NMDecibelLogger defaultLogger] currentReading];
         _currentReadingLabel.text = [NSString stringWithFormat:@"%.1f", [_currentReading floatValue]];
+        [_soundLevelView setSoundLevelValue:[_currentReading floatValue]];
         NSNumber *threshold = [NMDecibelLogger defaultLogger].alertThreshold;
         if ((_peakReading == nil) || ([_peakReading floatValue] < [_currentReading floatValue])) 
         {
@@ -316,12 +323,19 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    _cancelButton.hidden = YES;
+    _captureButton.hidden = YES;
+}
+
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
     _currentReadingLabel = nil;
+    [_soundLevelView setSoundLevelValue:0];
     _meterBackground = nil;
     [[NMDecibelLogger defaultLogger] stopLogging];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];

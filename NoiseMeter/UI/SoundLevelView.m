@@ -1,0 +1,71 @@
+//
+//  SoundLevelView.m
+//  NoiseMeter
+//
+//  Created by Bourne Wang on 14-2-5.
+//  Copyright (c) 2014年 Internetics Pty Ltd. All rights reserved.
+//
+
+#import "SoundLevelView.h"
+
+#define kNumberSlices 20.0
+#define kMaxSoundLevel 100  //min is 0db
+#define kSliceInterval 5.0
+
+@implementation SoundLevelView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+
+- (void) setupSubviews {
+    int maxHeight = CGRectGetHeight(self.frame);
+    int width = CGRectGetWidth(self.frame)/kNumberSlices;
+    
+    for (int i = 1; i <= kNumberSlices; i++) {
+        int height = maxHeight * (i/(kNumberSlices + 5)) + 25;
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((width + kSliceInterval) *(i-1), (maxHeight - height), width, height)];
+        NSString *fileName = [NSString stringWithFormat:@"%d.png",i];
+        [imageView setImage:[UIImage imageNamed:fileName]];
+        imageView.tag = i - 1;
+        [imageView setBackgroundColor:[UIColor clearColor]];
+        [imageView setContentMode:UIViewContentModeScaleToFill];
+        [self addSubview:imageView];
+        imageView.hidden = YES;
+    }
+}
+
+- (void) setSoundLevelValue:(float) val {
+    
+    if (val > kMaxSoundLevel) {
+        val = kMaxSoundLevel;
+    }
+    
+    float inteval = kMaxSoundLevel/kNumberSlices;
+    int no = val/inteval;
+    NSArray *myViews = self.subviews;
+    
+    if (no > [myViews count]) {
+        no = [myViews count];
+    }
+    
+    for (int i = 0; i< no; i++) {
+      [myViews[i] setHidden:NO];
+    }
+    
+    for (int i = no; i< kNumberSlices; i++) {
+      [myViews[i] setHidden:YES];
+    }
+    
+}
+
+
+
+
+@end
