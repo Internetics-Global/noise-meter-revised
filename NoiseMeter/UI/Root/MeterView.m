@@ -102,14 +102,14 @@
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(30, _meterBackground.frame.origin.y, 100, 40)];
+                            CGRectMake(-5, _meterBackground.frame.origin.y, 100, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_currentReadingLabel];
     
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(10, _meterBackground.frame.origin.y + 40, 300, _meterBackground.frame.size.height -65)];
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(10, _meterBackground.frame.origin.y + 40, 310, _meterBackground.frame.size.height -65)];
     [_soundLevelView setupSubviews];
     _soundLevelView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_soundLevelView];
@@ -124,7 +124,7 @@
     _captureButton.hidden = YES;
     [_captureButton addTarget:self action:@selector(capture) forControlEvents:UIControlEventTouchUpInside];
     
-    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y, 200, 29)];
+    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _captureButton.frame.origin.y, 200, 29)];
     _peakLabel.textColor = [UIColor whiteColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_peakLabel];
@@ -301,6 +301,9 @@
             _peakLabel.text = [NSString stringWithFormat:@"Last Peak: %.1f", [_peakReading floatValue]];
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
+            CGRect rect = _currentReadingLabel.frame;
+            rect.origin.x = 25;
+            _currentReadingLabel.frame = rect;
         }
     }
     else 
@@ -327,6 +330,10 @@
     [super viewWillAppear:animated];
     _cancelButton.hidden = YES;
     _captureButton.hidden = YES;
+    
+    CGRect rect = _currentReadingLabel.frame;
+    rect.origin.x = -5;
+    _currentReadingLabel.frame = rect;
 }
 
 
@@ -350,6 +357,10 @@
 - (void)alarmFinishedNotification:(NSNotification *)notification {
     _captureButton.hidden = YES;
     _cancelButton.hidden = YES;
+    
+    CGRect rect = _currentReadingLabel.frame;
+    rect.origin.x = -5;
+    _currentReadingLabel.frame = rect;
 }
 
 

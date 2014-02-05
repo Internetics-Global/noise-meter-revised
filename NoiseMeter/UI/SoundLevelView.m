@@ -9,8 +9,9 @@
 #import "SoundLevelView.h"
 
 #define kNumberSlices 20.0
-#define kMaxSoundLevel 100  //min is 0db
-#define kSliceInterval 5.0
+#define kMaxSoundLevel 100
+#define kMinSoundLevel 30
+#define kSliceInterval 3.0
 
 @implementation SoundLevelView
 
@@ -30,7 +31,7 @@
     
     for (int i = 1; i <= kNumberSlices; i++) {
         int height = maxHeight * (i/(kNumberSlices + 5)) + 25;
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((width + kSliceInterval) *(i-1), (maxHeight - height), width, height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width *(i-1), (maxHeight - height), width - kSliceInterval, height)];
         NSString *fileName = [NSString stringWithFormat:@"%d.png",i];
         [imageView setImage:[UIImage imageNamed:fileName]];
         imageView.tag = i - 1;
@@ -47,8 +48,12 @@
         val = kMaxSoundLevel;
     }
     
-    float inteval = kMaxSoundLevel/kNumberSlices;
-    int no = val/inteval;
+    if (val < kMinSoundLevel) {
+        val = kMinSoundLevel;
+    }
+    
+    float inteval = (kMaxSoundLevel - kMinSoundLevel)/kNumberSlices;
+    int no = (val - kMinSoundLevel)/inteval;
     NSArray *myViews = self.subviews;
     
     if (no > [myViews count]) {
