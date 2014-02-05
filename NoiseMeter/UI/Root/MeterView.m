@@ -96,13 +96,13 @@
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(0, _meterBackground.frame.origin.y, 30, 30);
+    _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y, 30, 30);
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     _cancelButton.hidden = YES;
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(-5, _meterBackground.frame.origin.y, 100, 40)];
+                            CGRectMake(0, _meterBackground.frame.origin.y, 100, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
@@ -302,7 +302,7 @@
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
             CGRect rect = _currentReadingLabel.frame;
-            rect.origin.x = 25;
+            rect.origin.x = 35;
             _currentReadingLabel.frame = rect;
         }
     }
@@ -332,7 +332,7 @@
     _captureButton.hidden = YES;
     
     CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = -5;
+    rect.origin.x = 0;
     _currentReadingLabel.frame = rect;
 }
 
@@ -359,7 +359,7 @@
     _cancelButton.hidden = YES;
     
     CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = -5;
+    rect.origin.x = 0;
     _currentReadingLabel.frame = rect;
 }
 
