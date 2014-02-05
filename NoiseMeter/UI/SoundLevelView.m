@@ -8,8 +8,8 @@
 
 #import "SoundLevelView.h"
 
-#define kNumberSlices 20.0
-#define kMaxSoundLevel 100
+#define kNumberSlices 17.0
+#define kMaxSoundLevel 99
 #define kMinSoundLevel 30
 #define kSliceInterval 3.0
 
