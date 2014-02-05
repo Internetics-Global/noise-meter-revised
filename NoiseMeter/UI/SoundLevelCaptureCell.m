@@ -47,7 +47,7 @@
         
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playButton setImage:[UIImage imageNamed:@"soundOnButton@2x"] forState:UIControlStateNormal];
-        _playButton.frame = CGRectMake(_levelLabel.frame.origin.x - 30, 13, 20, 15);
+        _playButton.frame = CGRectMake(_levelLabel.frame.origin.x - 35, 13, 30, 15);
         _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [self.contentView addSubview:_playButton];
         _playButton.showsTouchWhenHighlighted = YES;
