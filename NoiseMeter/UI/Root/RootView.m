@@ -33,9 +33,9 @@
         _tabBarController = [[UITabBarController alloc] init];
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
             int statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-            CGRect rect = CGRectOffset(self.view.bounds, 0, statusBarHeight);
-            rect.size.height = rect.size.height - statusBarHeight;
-            _tabBarController.view.frame = rect;
+            int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
+            _tabBarController.view.frame = CGRectMake(0, 20, 320, screenHeight - statusBarHeight);
+            
         } else {
             _tabBarController.view.frame = self.view.bounds;
         }

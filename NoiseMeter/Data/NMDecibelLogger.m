@@ -205,7 +205,10 @@
     _logging = YES;
     if(![_recorder record])
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"RecordFail" object:nil];
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+          [[NSNotificationCenter defaultCenter] postNotificationName:@"RecordFail" object:nil];
+        }
+        
     }
     else 
     {

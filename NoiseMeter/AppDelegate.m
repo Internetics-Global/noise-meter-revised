@@ -56,7 +56,7 @@
     
     if (flag) {
         if (isUseLongRunningtTask) {
-            //will put background running in addPeriodicTimeObserverForInterval
+            //will keep runnning in background
         } else {
             self.backgroundTask = UIBackgroundTaskInvalid;
             self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
