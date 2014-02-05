@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>222AE1EF-98ED-4779-B26C-749D5DE10CFA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NoiseMeter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CB2BDDCB-F1E9-4F1B-A69E-C61866F3677D</key>
+		<string>https://github.com/Internetics-Global/noise-meter-revised.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>NoiseMeter.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CB2BDDCB-F1E9-4F1B-A69E-C61866F3677D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Internetics-Global/noise-meter-revised.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CB2BDDCB-F1E9-4F1B-A69E-C61866F3677D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CB2BDDCB-F1E9-4F1B-A69E-C61866F3677D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>noise-meter-revised</string>
+		</dict>
+	</array>
+</dict>
+</plist>
