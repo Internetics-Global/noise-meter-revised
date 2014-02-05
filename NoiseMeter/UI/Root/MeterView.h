@@ -28,6 +28,7 @@
     UILabel *_peakLabel;
     UILabel *_titleLabel;
     UIButton *_infoButton;
+    UIButton *_cancelButton;
     
     ADBannerView *adView;
     UIButton *removeADButton;

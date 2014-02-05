@@ -83,6 +83,7 @@
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
 		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
+		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88DDF48E189B1ACC00138ADF /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF48D189B1ACC00138ADF /* libGoogleAdMobAds.a */; };
 		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
@@ -221,6 +222,7 @@
 		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88DDF47E189B1ACC00138ADF /* DFPBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPBannerView.h; path = NoiseMeter/Support/Admob/DFPBannerView.h; sourceTree = SOURCE_ROOT; };
 		88DDF47F189B1ACC00138ADF /* DFPExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPExtras.h; path = NoiseMeter/Support/Admob/DFPExtras.h; sourceTree = SOURCE_ROOT; };
 		88DDF480189B1ACC00138ADF /* DFPInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DFPInterstitial.h; path = NoiseMeter/Support/Admob/DFPInterstitial.h; sourceTree = SOURCE_ROOT; };
@@ -477,6 +479,7 @@
 		11AC53021505D3E70093C7AB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				88BEFE1418A1DEB000399680 /* cancel@2x.png */,
 				1140FDCF1517FBE700DE0A64 /* icon_more.png */,
 				1140FDD01517FBE700DE0A64 /* icon_more@2x.png */,
 				11AC53031505D3F20093C7AB /* icon_alert.png */,
@@ -716,6 +719,7 @@
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
+				88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */,
 				117D941A1516B66A002C5479 /* button_reset@2x.png in Resources */,
 				117D94211516B8A4002C5479 /* close_button.png in Resources */,
 				117D94221516B8A4002C5479 /* overlay02.png in Resources */,

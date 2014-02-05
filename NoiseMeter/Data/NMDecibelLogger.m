@@ -146,7 +146,7 @@
                 
                 if ([UIApplication sharedApplication].applicationState != UIApplicationStateBackground ) {
                     //we need to keep its status during background
-                    [NSTimer scheduledTimerWithTimeInterval:6.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];     
+                    [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
                 }
             }
         }
