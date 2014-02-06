@@ -97,6 +97,11 @@
         [purchasedItemIDs addObject:productID];
     }
     
+    if ([purchasedItemIDs count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You can not restore since you haven't purchased before." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 
