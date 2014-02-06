@@ -26,6 +26,7 @@
     self = [super init];
     self.title = @"Scores";
     self.tabBarItem.image = [UIImage imageNamed:@"icon_scores.png"];
+    
     return self;
 }
 
@@ -75,7 +76,12 @@
 {
     if (_tableHeader == nil) 
     {
-        _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
+        if ([NSUserDefaultsHelper isAdRemoved]) {
+          _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
+        } else {
+            _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
+        }
+        
     }
     return _tableHeader;
 }

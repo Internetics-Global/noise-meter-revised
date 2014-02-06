@@ -50,8 +50,7 @@
     _optionTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_optionTable];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag == FALSE) {
         _buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {

@@ -71,9 +71,7 @@
     _recorder.delegate = self;
     _recorder.meteringEnabled = YES;
     
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     
     if ((isUseLongRunningtTask) && (flag == true)) {
         NSArray *queue = @[
@@ -172,8 +170,7 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && (flag == false)) {
         //we indirectly call this from applicationDidEnterBackground and we don't it keep running if not been purchased
         [self stopLogging];

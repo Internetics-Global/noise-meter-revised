@@ -74,6 +74,8 @@
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
 		88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6618A33DEC00BF526F /* whyPurchase@2x.png */; };
+		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
+		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
 		88607EA81796530B0035CEB9 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88607EA71796530B0035CEB9 /* iAd.framework */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		88818C5917993CB3007B386F /* purchase.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5717993CB3007B386F /* purchase.png */; };
@@ -207,6 +209,9 @@
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		88570E6618A33DEC00BF526F /* whyPurchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whyPurchase@2x.png"; sourceTree = "<group>"; };
+		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
+		88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
+		88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
 		88607EA71796530B0035CEB9 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -498,6 +503,7 @@
 		11AC52FC1505D3CF0093C7AB /* Top Banner */ = {
 			isa = PBXGroup;
 			children = (
+				88570E6818A340B400BF526F /* top_logo-pro@2x.png */,
 				117D94151516B5F7002C5479 /* top_logo_scores@2x.png */,
 				9AB05EA6177AC92E0029CB48 /* top_logo.png */,
 				9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */,
@@ -601,6 +607,8 @@
 				88B47355189A148E005668AC /* CAFAudioHelper.m */,
 				88B47358189A182C005668AC /* FileHelper.h */,
 				88B47359189A182C005668AC /* FileHelper.m */,
+				88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */,
+				88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -807,6 +815,7 @@
 				11AC531A1505D4190093C7AB /* button_setalarm@2x.png in Resources */,
 				111A18CE1505E38D005655F1 /* background_count.png in Resources */,
 				111A18CF1505E38D005655F1 /* background_count@2x.png in Resources */,
+				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
@@ -857,6 +866,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */,
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,

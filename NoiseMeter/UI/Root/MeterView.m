@@ -150,9 +150,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag == FALSE) {
         if (isUseGoogleAdmob) {
             _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
@@ -374,10 +372,7 @@
     [_bannerView removeFromSuperview];
     _bannerView.hidden = TRUE;
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
-    [userDefaults synchronize];
-    NSLog(@"%s:the flag AD_REMOVED is set",__FUNCTION__);
+    [NSUserDefaultsHelper setAdRemoveFlag:YES];
 }
 
 - (void)dealloc

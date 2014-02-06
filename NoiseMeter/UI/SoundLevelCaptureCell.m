@@ -51,8 +51,8 @@
         _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [self.contentView addSubview:_playButton];
         _playButton.showsTouchWhenHighlighted = YES;
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
+
+        BOOL flag = [NSUserDefaultsHelper isAdRemoved];
         if (flag) {
             _playButton.hidden = NO;
         } else {

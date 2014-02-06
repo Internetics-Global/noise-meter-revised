@@ -17,7 +17,7 @@
     static SystemSoundID audioEffect = 0;
     
     //play audio function need to be purchased
-    BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"AD_REMOVED"];
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag == FALSE) {
         return;
     }

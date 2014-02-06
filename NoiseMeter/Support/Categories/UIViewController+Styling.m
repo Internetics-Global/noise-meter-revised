@@ -28,7 +28,12 @@
         [self.view addSubview:_backButton];
     }
     
-    UIImageView *_topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];
+    UIImageView *_topImage;
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+      _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
+    } else {
+      _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];
+    }
     _topImage.tag = 99;
     if (_backButton != nil) 
     {
