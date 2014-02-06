@@ -32,11 +32,6 @@
                                                  name:@"ALARM_FINISHED_NOTIFICATION"
                                                object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(purchasedFinishedNotification:)
-                                                 name:@"PURCHASE_FINISHED_NOTIFICATION"
-                                               object:nil];
-    
     
     
     return self;
@@ -363,6 +358,8 @@
 
 
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
+    
+    [super purchasedFinishedNotification:notification];
     
     [adView removeFromSuperview];
     [removeADButton removeFromSuperview];

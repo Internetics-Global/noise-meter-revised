@@ -16,7 +16,7 @@
 #import "GADBannerViewDelegate.h"
 #import "SoundLevelView.h"
 
-@interface MeterView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate,GADBannerViewDelegate>{
+@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate,GADBannerViewDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;

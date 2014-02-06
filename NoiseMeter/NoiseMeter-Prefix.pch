@@ -16,6 +16,7 @@
 #endif
 
 #import "NSUserDefaultsHelper.h"
+#import "BaseViewController.h"
 
 //两种后台运行方式：YES，后台驻留运行；NO，只能运行10分钟
 #define isUseLongRunningtTask      (YES)
@@ -26,3 +27,5 @@
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)
+
+#define K_TOP_IMAGEVIEW_TAG 99

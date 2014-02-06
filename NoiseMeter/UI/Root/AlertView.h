@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
-@interface AlertView : GAITrackedViewController<UIPickerViewDelegate, UIPickerViewDataSource>{
+@interface AlertView : BaseViewController<UIPickerViewDelegate, UIPickerViewDataSource>{
     UIPickerView *_pickerView;
     UIPickerView *_alertPickerView;
     UIButton *_setButton;

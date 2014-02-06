@@ -27,11 +27,6 @@
     self.tabBarItem.image = [UIImage imageNamed:@"icon_more.png"];
     self.tabBarItem.title = @"More";
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(purchasedFinishedNotification:)
-                                                 name:@"PURCHASE_FINISHED_NOTIFICATION"
-                                               object:nil];
-    
     return self;
 }
 
@@ -219,6 +214,8 @@
 
 
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
+    [super purchasedFinishedNotification:notification];
+    
     [_buyButton removeFromSuperview];
     _buyButton = nil;
 }

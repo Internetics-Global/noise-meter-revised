@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
-@interface SelectAlertView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource>{
+@interface SelectAlertView : BaseViewController<UITableViewDelegate, UITableViewDataSource>{
     UITableView *_alertTable;
 }
 

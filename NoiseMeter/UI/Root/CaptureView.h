@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
-@interface CaptureView : GAITrackedViewController<UITextFieldDelegate>{
+@interface CaptureView : BaseViewController<UITextFieldDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UIImageView *_formBackground;

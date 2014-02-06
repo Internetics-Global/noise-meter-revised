@@ -34,7 +34,7 @@
     } else {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];
     }
-    _topImage.tag = 99;
+    _topImage.tag = K_TOP_IMAGEVIEW_TAG;
     if (_backButton != nil) 
     {
         _topImage.frame = CGRectMake(0, 34, self.view.frame.size.width, 79);
