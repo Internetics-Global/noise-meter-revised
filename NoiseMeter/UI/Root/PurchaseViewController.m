@@ -139,6 +139,7 @@
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                [self.navigationController popViewControllerAnimated:YES];
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"Fail to purchase,%@",transaction.error.localizedDescription);
@@ -148,6 +149,7 @@
                 NSLog(@"Fail to purchase: have bought this before");
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                [self.navigationController popViewControllerAnimated:YES];
                 break;
             case SKPaymentTransactionStatePurchasing:
                 NSLog(@"Add item into list to purchase");
