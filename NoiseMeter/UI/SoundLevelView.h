@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SoundLevelView : UIView
+@interface SoundLevelView : UIView {
+    NSInteger _maxAllowedSoundLevel;
+    
+}
 
 - (void) setupSubviews;
 - (void) setSoundLevelValue:(float) val;

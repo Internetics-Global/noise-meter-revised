@@ -7,9 +7,10 @@
 //
 
 #import "SoundLevelView.h"
+#import "NMDecibelLogger.h"
 
 #define kNumberSlices 17.0
-#define kMaxSoundLevel 99
+//#define kMaxSoundLevel 99
 #define kMinSoundLevel 30
 #define kSliceInterval 3.0
 
@@ -19,7 +20,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        _maxAllowedSoundLevel = [[NMDecibelLogger defaultLogger] alertThreshold];
     }
     return self;
 }
@@ -44,15 +45,15 @@
 
 - (void) setSoundLevelValue:(float) val {
     
-    if (val > kMaxSoundLevel) {
-        val = kMaxSoundLevel;
+    if (val > _maxAllowedSoundLevel) {
+        val = _maxAllowedSoundLevel;
     }
     
     if (val < kMinSoundLevel) {
         val = kMinSoundLevel;
     }
     
-    float inteval = (kMaxSoundLevel - kMinSoundLevel)/kNumberSlices;
+    float inteval = (_maxAllowedSoundLevel - kMinSoundLevel)/kNumberSlices;
     int no = (val - kMinSoundLevel)/inteval;
     NSArray *myViews = self.subviews;
     
