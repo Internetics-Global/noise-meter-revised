@@ -20,7 +20,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _maxAllowedSoundLevel = [[NMDecibelLogger defaultLogger] alertThreshold];
     }
     return self;
 }
@@ -45,15 +44,17 @@
 
 - (void) setSoundLevelValue:(float) val {
     
-    if (val > _maxAllowedSoundLevel) {
-        val = _maxAllowedSoundLevel;
+     NSInteger maxAllowedSoundLevel = [[[NMDecibelLogger defaultLogger] alertThreshold] integerValue];
+    
+    if (val > maxAllowedSoundLevel) {
+        val = maxAllowedSoundLevel;
     }
     
     if (val < kMinSoundLevel) {
         val = kMinSoundLevel;
     }
     
-    float inteval = (_maxAllowedSoundLevel - kMinSoundLevel)/kNumberSlices;
+    float inteval = (maxAllowedSoundLevel - kMinSoundLevel)/kNumberSlices;
     int no = (val - kMinSoundLevel)/inteval;
     NSArray *myViews = self.subviews;
     
