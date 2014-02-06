@@ -26,6 +26,12 @@
     self = [super init];
     self.tabBarItem.image = [UIImage imageNamed:@"icon_more.png"];
     self.tabBarItem.title = @"More";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(purchasedFinishedNotification:)
+                                                 name:@"PURCHASE_FINISHED_NOTIFICATION"
+                                               object:nil];
+    
     return self;
 }
 
@@ -47,20 +53,21 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     if (flag == FALSE) {
-        UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10 - 49, 280, 37);
+            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10 - 49, 280, 37);
         } else {
-            buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
+            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
         }
         
-        buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        [buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
-        [buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:buyButton];
+        _buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [_buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
+        [_buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_buyButton];
     }
     
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -209,6 +216,18 @@
 //                                                   delegate:self cancelButtonTitle:@"OK"
 //                                          otherButtonTitles:nil, nil];
 //    [alert show];
+}
+
+
+- (void)purchasedFinishedNotification:(NSNotification *)notification {
+    [_buyButton removeFromSuperview];
+    _buyButton = nil;
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

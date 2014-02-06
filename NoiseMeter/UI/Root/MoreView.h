@@ -13,6 +13,8 @@
 @interface MoreView : GAITrackedViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>{
     UITableView *_optionTable;
     MFMailComposeViewController *_mailer;
+    
+    UIButton *_buyButton;
 }
 
 @end
