@@ -36,6 +36,8 @@
     
     [self style];
     
+    _purchasePrice = @"$0.99";
+    
     _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79) style:UITableViewStyleGrouped];
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
@@ -56,8 +58,10 @@
         
         _buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [_buyButton setBackgroundColor:[UIColor darkGrayColor]];
-        //[_buyButton setTitle:@"Get a pro version($0.99)" forState:UIControlStateNormal];
-        [_buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
+        [_buyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_buyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+        [_buyButton setTitle:[NSString stringWithFormat:@"Get a pro version %@ ",_purchasePrice] forState:UIControlStateNormal];
+        [_buyButton setBackgroundImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
         [_buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
         _buyButton.layer.cornerRadius = 5;
         [self.view addSubview:_buyButton];
@@ -191,6 +195,19 @@
     [super viewDidUnload];
     _optionTable = nil;
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSSet *productList = [NSSet setWithObjects:IAPProductID, nil];
+    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productList];
+    productsRequest.delegate = self;
+    
+    // This will trigger the SKProductsRequestDelegate callbacks
+    [productsRequest start];
+}
+
+
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.trackedViewName = @"MoreView Screen";
@@ -227,6 +244,37 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark – SKProductsRequestDelegate
+
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    
+    NSArray *myProduct = response.products;
+    if ([myProduct count] == 0) {
+        return;
+    }
+    
+    SKProduct *skProduct = [myProduct lastObject];
+    _purchasePrice = [self localizedPrice:skProduct];
+    
+    [_buyButton setTitle:[NSString stringWithFormat:@"Get a pro version %@ ",_purchasePrice] forState:UIControlStateNormal];
+    
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    NSLog(@"%s:%@",__FUNCTION__, [error description]);
+}
+
+
+- (NSString *)localizedPrice: (SKProduct *) sk
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:sk.priceLocale];
+    NSString *formattedString = [numberFormatter stringFromNumber:sk.price];
+    return formattedString;
 }
 
 @end

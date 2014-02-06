@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "GAITrackedViewController.h"
+#import <StoreKit/StoreKit.h>
 
-@interface MoreView : BaseViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>{
+@interface MoreView : BaseViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate,SKProductsRequestDelegate>{
     UITableView *_optionTable;
     MFMailComposeViewController *_mailer;
     
     UIButton *_buyButton;
+    
+    NSString *_purchasePrice;
 }
 
 @end
