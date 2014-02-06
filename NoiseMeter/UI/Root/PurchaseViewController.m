@@ -55,6 +55,35 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark – Restore purchase
+
+- (IBAction)restoreAction:(id)sender {
+    
+    [self checkPurchasedItems];
+}
+
+
+- (void) checkPurchasedItems
+{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}// Call This Function
+
+//Then this delegate Function Will be fired
+- (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    NSMutableArray *purchasedItemIDs = [[NSMutableArray alloc] init];
+    
+    NSLog(@"received restored transactions: %i", queue.transactions.count);
+    for (SKPaymentTransaction *transaction in queue.transactions)
+    {
+        NSString *productID = transaction.payment.productIdentifier;
+        [purchasedItemIDs addObject:productID];
+    }
+    
+}
+
+
+#pragma mark – Purchase
 
 - (void) purchaseAction {
     
