@@ -55,8 +55,11 @@
         }
         
         _buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [_buyButton setBackgroundColor:[UIColor darkGrayColor]];
+        //[_buyButton setTitle:@"Get a pro version($0.99)" forState:UIControlStateNormal];
         [_buyButton setImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
         [_buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+        _buyButton.layer.cornerRadius = 5;
         [self.view addSubview:_buyButton];
     }
     
