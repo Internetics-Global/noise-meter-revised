@@ -371,6 +371,9 @@
     adView.hidden = TRUE;
     removeADButton.hidden = TRUE;
     
+    [_bannerView removeFromSuperview];
+    _bannerView.hidden = TRUE;
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
     [userDefaults synchronize];
