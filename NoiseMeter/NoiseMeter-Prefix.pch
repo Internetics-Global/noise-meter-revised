@@ -20,7 +20,7 @@
 
 #define isUseGoogleAdmob           (YES)
 
-#define IAPProductID   @"31415926535"
+#define IAPProductID   @"com.internetics.noisedown.upgrade"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)

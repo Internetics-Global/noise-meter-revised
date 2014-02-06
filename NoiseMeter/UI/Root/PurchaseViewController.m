@@ -71,6 +71,10 @@
     
 }
 
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+  NSLog(@"%@", [error description]);
+}
+
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
     NSArray *myProduct = response.products;
