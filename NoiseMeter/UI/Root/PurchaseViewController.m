@@ -32,11 +32,22 @@
     
     // Listen to purchase
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") == FALSE) {
+        _purchaseButton.frame = CGRectOffset(_purchaseButton.frame, 0, 49);
+        _restoreButton.frame = CGRectOffset(_restoreButton.frame, 0, 49);
+    }\
+    
 }
 
 - (void) viewDidUnload {
     [self setPurchaseButton:nil];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -58,6 +69,12 @@
 #pragma mark – Restore purchase
 
 - (IBAction)restoreAction:(id)sender {
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
     [self checkPurchasedItems];
 }
@@ -86,6 +103,12 @@
 #pragma mark – Purchase
 
 - (void) purchaseAction {
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
     if ([SKPaymentQueue canMakePayments]) {
         

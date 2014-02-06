@@ -12,7 +12,11 @@
 
 @interface PurchaseViewController : BaseViewController < SKProductsRequestDelegate,SKPaymentTransactionObserver,UIAlertViewDelegate> {
     SKProduct *skProduct;
+    
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *purchaseButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *restoreButton;
+
+
 
 @end
