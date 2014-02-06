@@ -73,6 +73,7 @@
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
+		88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6618A33DEC00BF526F /* whyPurchase@2x.png */; };
 		88607EA81796530B0035CEB9 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88607EA71796530B0035CEB9 /* iAd.framework */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		88818C5917993CB3007B386F /* purchase.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5717993CB3007B386F /* purchase.png */; };
@@ -205,6 +206,7 @@
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		88570E6618A33DEC00BF526F /* whyPurchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whyPurchase@2x.png"; sourceTree = "<group>"; };
 		88607EA71796530B0035CEB9 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 		11AC52FB1505D3CF0093C7AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88570E6618A33DEC00BF526F /* whyPurchase@2x.png */,
 				88BEFE3D18A1FC9400399680 /* Meters */,
 				111A18CA1505E384005655F1 /* Backings */,
 				11AC53011505D3E70093C7AB /* Buttons */,
@@ -782,6 +785,7 @@
 				110F130614EDD52E00BE4481 /* InfoPlist.strings in Resources */,
 				11AC52F81505D3850093C7AB /* Default.png in Resources */,
 				11AC52FA1505D3950093C7AB /* Default@2x.png in Resources */,
+				88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */,
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
 				11AC53091505D3F20093C7AB /* icon_alert.png in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
