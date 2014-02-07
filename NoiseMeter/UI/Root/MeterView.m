@@ -86,7 +86,12 @@
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
     _meterBackground.frame = CGRectMake(0, 79, 320, 150);
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    _meterBackground.userInteractionEnabled = YES;
     [self.view addSubview:_meterBackground];
+    UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchLoggingStatus)];
+    singleTapGesture.numberOfTapsRequired = 1;
+    singleTapGesture.numberOfTouchesRequired = 1;
+    [_meterBackground addGestureRecognizer:singleTapGesture];
     
     _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
@@ -107,12 +112,14 @@
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
+    _currentReadingLabel.userInteractionEnabled = YES;
     [self.view addSubview:_currentReadingLabel];
     
     _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(10, _meterBackground.frame.origin.y + 40, 310, _meterBackground.frame.size.height -65)];
     [_soundLevelView setupSubviews];
     _soundLevelView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_soundLevelView];
+    [_soundLevelView addGestureRecognizer:singleTapGesture];
     
     [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
     [[NMDecibelLogger defaultLogger] startLogging];
@@ -428,6 +435,21 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     NSLog(@"Failed to receive ad with error: %@", [error localizedFailureReason]);
 }
 
+#pragma mark – Others
+- (void) switchLoggingStatus {
+    
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Paused. Tap again to resume." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    } else {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
+    
+    
+}
 
 
 @end
