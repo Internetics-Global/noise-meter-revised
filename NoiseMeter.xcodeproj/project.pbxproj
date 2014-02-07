@@ -86,6 +86,9 @@
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
 		88A95E3D18A47FC100E56939 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3C18A47FC100E56939 /* cancel@2x.png */; };
 		88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3E18A47FD200E56939 /* generalBanner@2x.png */; };
+		88A95E4418A4803000E56939 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
+		88A95E4518A4803000E56939 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
+		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
 		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
@@ -253,6 +256,9 @@
 		889FD23F177BC4960046D281 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		88A95E3C18A47FC100E56939 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88A95E3E18A47FD200E56939 /* generalBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generalBanner@2x.png"; sourceTree = "<group>"; };
+		88A95E4118A4803000E56939 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
+		88A95E4218A4803000E56939 /* noads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noads.png; sourceTree = "<group>"; };
+		88A95E4318A4803000E56939 /* recordScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordScreenshot.png; sourceTree = "<group>"; };
 		88B47354189A148E005668AC /* CAFAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFAudioHelper.h; path = Data/CAFAudioHelper.h; sourceTree = "<group>"; };
 		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
@@ -497,6 +503,7 @@
 		11AC52FB1505D3CF0093C7AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88A95E4018A4803000E56939 /* Purchases */,
 				88570E6618A33DEC00BF526F /* whyPurchase@2x.png */,
 				88BEFE3D18A1FC9400399680 /* Meters */,
 				111A18CA1505E384005655F1 /* Backings */,
@@ -606,6 +613,16 @@
 			);
 			name = appirater;
 			path = Support;
+			sourceTree = "<group>";
+		};
+		88A95E4018A4803000E56939 /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				88A95E4118A4803000E56939 /* mic.png */,
+				88A95E4218A4803000E56939 /* noads.png */,
+				88A95E4318A4803000E56939 /* recordScreenshot.png */,
+			);
+			path = Purchases;
 			sourceTree = "<group>";
 		};
 		88B47357189A1819005668AC /* Helper */ = {
@@ -804,6 +821,8 @@
 				11AC52FA1505D3950093C7AB /* Default@2x.png in Resources */,
 				88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */,
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
+				88A95E4418A4803000E56939 /* mic.png in Resources */,
+				88A95E4518A4803000E56939 /* noads.png in Resources */,
 				11AC53091505D3F20093C7AB /* icon_alert.png in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
 				11AC530B1505D3F20093C7AB /* icon_meter.png in Resources */,
@@ -835,6 +854,7 @@
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
+				88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
 				88A95E3D18A47FC100E56939 /* cancel@2x.png in Resources */,
 				88BEFE5518A1FCB100399680 /* 7.png in Resources */,
