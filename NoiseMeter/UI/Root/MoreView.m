@@ -94,7 +94,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 -(NSString *)supportText{
@@ -161,7 +161,7 @@
                 [_mailer setSubject:@"Keep The Noise Down Support"];
                 [_mailer setMessageBody:[NSString stringWithFormat:@"Please enter your support request here:<br><br><br><br>%@", [self supportText]] isHTML:YES];
             }
-            [self presentModalViewController:_mailer animated:YES];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:_mailer animated:YES];
         }
         else 
         {
