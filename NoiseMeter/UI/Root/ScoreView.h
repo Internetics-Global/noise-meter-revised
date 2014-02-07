@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
-@interface ScoreView : BaseViewController<UITableViewDataSource,UIAlertViewDelegate>{
+@interface ScoreView : BaseViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>{
     UITableView *_scoreTable;
     UIImageView *_meterBackground;
     NSArray *_scores;

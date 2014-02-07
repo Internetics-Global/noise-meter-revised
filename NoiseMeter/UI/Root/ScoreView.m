@@ -68,19 +68,17 @@
     _scoreTable.backgroundColor = [UIColor clearColor];
     _scoreTable.opaque = YES;
     _scoreTable.dataSource = self;
+    _scoreTable.delegate= self;
     [self.view addSubview:_scoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (_tableHeader == nil) 
     {
-        if ([NSUserDefaultsHelper isAdRemoved]) {
-          _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
-        } else {
-            _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
-        }
+        _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
         
     }
     return _tableHeader;
