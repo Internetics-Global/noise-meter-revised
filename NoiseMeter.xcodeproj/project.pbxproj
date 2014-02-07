@@ -84,6 +84,8 @@
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
+		88A95E3D18A47FC100E56939 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3C18A47FC100E56939 /* cancel@2x.png */; };
+		88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3E18A47FD200E56939 /* generalBanner@2x.png */; };
 		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
@@ -249,6 +251,8 @@
 		889FD23C177BC3F90046D281 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Appirater/Appirater.m; sourceTree = "<group>"; };
 		889FD23D177BC3F90046D281 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppiraterDelegate.h; path = Appirater/AppiraterDelegate.h; sourceTree = "<group>"; };
 		889FD23F177BC4960046D281 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		88A95E3C18A47FC100E56939 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
+		88A95E3E18A47FD200E56939 /* generalBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generalBanner@2x.png"; sourceTree = "<group>"; };
 		88B47354189A148E005668AC /* CAFAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFAudioHelper.h; path = Data/CAFAudioHelper.h; sourceTree = "<group>"; };
 		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
@@ -543,6 +547,8 @@
 		11AC53021505D3E70093C7AB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				88A95E3E18A47FD200E56939 /* generalBanner@2x.png */,
+				88A95E3C18A47FC100E56939 /* cancel@2x.png */,
 				88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */,
 				88BEFE1418A1DEB000399680 /* cancel@2x.png */,
 				1140FDCF1517FBE700DE0A64 /* icon_more.png */,
@@ -811,6 +817,7 @@
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
 				88BEFE6E18A20E9300399680 /* 20.png in Resources */,
+				88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */,
 				11AC53171505D4190093C7AB /* button_save.png in Resources */,
 				88BEFE5818A1FCB100399680 /* 10.png in Resources */,
 				11AC53181505D4190093C7AB /* button_save@2x.png in Resources */,
@@ -829,6 +836,7 @@
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
+				88A95E3D18A47FC100E56939 /* cancel@2x.png in Resources */,
 				88BEFE5518A1FCB100399680 /* 7.png in Resources */,
 				88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */,
 				117D941A1516B66A002C5479 /* button_reset@2x.png in Resources */,
@@ -999,7 +1007,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1014,7 +1022,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "909E97FC-D82C-40A0-B1B0-D6C12403D4BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DCA96797-2CD3-4034-A48F-E993C04A6F03";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1023,7 +1031,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1038,7 +1046,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "909E97FC-D82C-40A0-B1B0-D6C12403D4BE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DCA96797-2CD3-4034-A48F-E993C04A6F03";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
