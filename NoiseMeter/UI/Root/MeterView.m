@@ -153,12 +153,13 @@
     BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag == FALSE) {
         if (isUseGoogleAdmob) {
-            _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-            _bannerView.adUnitID = @"a152e9fa5524978";
-            _bannerView.delegate = self;
-            _bannerView.rootViewController = self;
-            [self.view addSubview:_bannerView];
-            [_bannerView loadRequest:[GADRequest request]];
+            //we don't need ADMOB function again, keep here for future use
+//            _bannerView = [[DFPBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+//            _bannerView.adUnitID = @"a152e9fa5524978";
+//            _bannerView.delegate = self;
+//            _bannerView.rootViewController = self;
+//            [self.view addSubview:_bannerView];
+//            [_bannerView loadRequest:[GADRequest request]];
             
             
         } else {
@@ -387,8 +388,9 @@
     adView.hidden = TRUE;
     removeADButton.hidden = TRUE;
     
-    [_bannerView removeFromSuperview];
-    _bannerView.hidden = TRUE;
+    //we don't need ADMOB function again, keep here for future use
+//    [_bannerView removeFromSuperview];
+//    _bannerView.hidden = TRUE;
     
     [NSUserDefaultsHelper setAdRemoveFlag:YES];
     
@@ -411,14 +413,14 @@
 - (void)adViewDidReceiveAd:(DFPBannerView *)adView {
     NSLog(@"Received ad successfully");
     
-    //CGRect rect = self.view.frame;
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _bannerView.center = CGPointMake(self.view.center.x,
-                                         CGRectGetHeight(self.view.frame) - 49 - CGRectGetHeight(_bannerView.frame)/2);
-    } else {
-        _bannerView.center = CGPointMake(self.view.center.x,
-                                         CGRectGetHeight(self.view.frame) - CGRectGetHeight(_bannerView.frame)/2);
-    }
+    //we don't need ADMOB function again, keep here for future use
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+//        _bannerView.center = CGPointMake(self.view.center.x,
+//                                         CGRectGetHeight(self.view.frame) - 49 - CGRectGetHeight(_bannerView.frame)/2);
+//    } else {
+//        _bannerView.center = CGPointMake(self.view.center.x,
+//                                         CGRectGetHeight(self.view.frame) - CGRectGetHeight(_bannerView.frame)/2);
+//    }
 }
 
 - (void)adView:(DFPBannerView *)view

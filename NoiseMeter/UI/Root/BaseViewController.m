@@ -8,11 +8,19 @@
 
 #import "BaseViewController.h"
 
+#import "MeterView.h"
+#import "ScoreView.h"
+#import "AlertView.h"
+#import "MoreView.h"
+#import "PurchaseViewController.h"
+
 @interface BaseViewController ()
 
 @end
 
 @implementation BaseViewController
+
+#pragma mark – Life Cycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,29 +36,89 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self setupGeneralADView];
+    
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(purchasedFinishedNotification:)
                                                     name:@"PURCHASE_FINISHED_NOTIFICATION"
                                                    object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark –  Setup AD view, which is used to prompt user to buy a pro version
+
+- (void) buyAction {
+    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+    [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
+
+
+- (void) setupGeneralADView {
+    
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        return;
+    }
+    
+    if ([self isMemberOfClass:[MeterView class]] ||
+        [self isMemberOfClass:[ScoreView class]] ||
+        [self isMemberOfClass:[AlertView class]] ||
+        [self isMemberOfClass:[MoreView class]] ) {
+        
+        if (self.generalADButton == nil) {
+            
+            self.generalADButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.generalADButton.frame = CGRectMake(0, 0, 320, 50);
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                self.generalADButton.center = CGPointMake(self.view.center.x,
+                                                          CGRectGetHeight(self.view.frame) - 49 - 25);
+            } else {
+                self.generalADButton.center = CGPointMake(self.view.center.x,
+                                                          CGRectGetHeight(self.view.frame) - 25);
+            }
+            
+            self.generalADButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+            [self.generalADButton setBackgroundColor:[UIColor redColor]];
+            [self.generalADButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+            [self.generalADButton setBackgroundImage:[UIImage imageNamed:@"generalBanner"] forState:UIControlStateNormal];
+            [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+            [self.view addSubview:self.generalADButton];
+            
+        }
+    }
+}
+
+
+#pragma mark – PURCHASE_FINISHED_NOTIFICATION
+
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
+    
+    //step1: update top logo
     NSArray *viewArray = [self.view subviews];
     for (UIView *myView in viewArray) {
         if ((myView.tag == K_TOP_IMAGEVIEW_TAG) &&
-                ([myView isKindOfClass:[UIImageView class]])) {
+            ([myView isKindOfClass:[UIImageView class]])) {
             [((UIImageView *)myView) setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
             break;
         }
     }
     
+    //step2: remove the AD view
+    [self.generalADButton removeFromSuperview];
+    self.generalADButton = nil;
     
+    
+}
+
+
+#pragma mark – Memory management
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc

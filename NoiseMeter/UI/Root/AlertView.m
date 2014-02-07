@@ -47,7 +47,12 @@
     }
 
     _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 60, 280, 37);
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+      _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 30, 280, 37);
+    } else {
+      _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 60, 280, 37);
+    }
+    
     _setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [_setButton setImage:[UIImage imageNamed:@"button_setalarm.png"] forState:UIControlStateNormal];
     [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];

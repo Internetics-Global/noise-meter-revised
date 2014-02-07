@@ -36,8 +36,6 @@
     
     [self style];
     
-    _purchasePrice = @"$0.99";
-    
     _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79) style:UITableViewStyleGrouped];
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
@@ -46,27 +44,7 @@
     _optionTable.backgroundColor = [UIColor clearColor];
     _optionTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_optionTable];
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    if (flag == FALSE) {
-        _buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 15 - 49, 280, 37);
-        } else {
-            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 15, 280, 37);
-        }
-        
-        _buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-        [_buyButton setBackgroundColor:[UIColor darkGrayColor]];
-        [_buyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_buyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
-        [_buyButton setTitle:[NSString stringWithFormat:@"Upgrade to Pro - just %@ ",_purchasePrice] forState:UIControlStateNormal];
-        [_buyButton setBackgroundImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
-        [_buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
-        _buyButton.layer.cornerRadius = 5;
-        [self.view addSubview:_buyButton];
-    }
-    
+
 }
 
 
@@ -196,17 +174,6 @@
     _optionTable = nil;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    NSSet *productList = [NSSet setWithObjects:IAPProductID, nil];
-    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productList];
-    productsRequest.delegate = self;
-    
-    // This will trigger the SKProductsRequestDelegate callbacks
-    [productsRequest start];
-}
-
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -219,62 +186,10 @@
 }
 
 
-- (void) buyAction {
-    
-    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    [self.navigationController pushViewController:purchaseViewController animated:YES];
-    
-    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"By purchasing a Pro version, you will be able to:"
-//                                                    message:@"\n1.background record support.\n2.no more advertisement.\n\nGo to first page and click the AD remove button to buy."
-//                                                   delegate:self cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:nil, nil];
-//    [alert show];
-}
-
-
-- (void)purchasedFinishedNotification:(NSNotification *)notification {
-    [super purchasedFinishedNotification:notification];
-    
-    [_buyButton removeFromSuperview];
-    _buyButton = nil;
-}
-
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark – SKProductsRequestDelegate
-
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    
-    NSArray *myProduct = response.products;
-    if ([myProduct count] == 0) {
-        return;
-    }
-    
-    SKProduct *skProduct = [myProduct lastObject];
-    _purchasePrice = [self localizedPrice:skProduct];
-    
-    [_buyButton setTitle:[NSString stringWithFormat:@"Upgrade to Pro - just %@ ",_purchasePrice] forState:UIControlStateNormal];
-    
-}
-
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    NSLog(@"%s:%@",__FUNCTION__, [error description]);
-}
-
-
-- (NSString *)localizedPrice: (SKProduct *) sk
-{
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [numberFormatter setLocale:sk.priceLocale];
-    NSString *formattedString = [numberFormatter stringFromNumber:sk.price];
-    return formattedString;
-}
 
 @end
