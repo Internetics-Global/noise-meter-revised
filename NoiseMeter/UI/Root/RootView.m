@@ -74,6 +74,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -96,5 +98,11 @@
 {
     _tabBarController = nil;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+
 
 @end
