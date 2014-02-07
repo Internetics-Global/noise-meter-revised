@@ -39,7 +39,7 @@
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
-        [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UITabBar appearance] setTintColor:[UIColor colorWithRed:64.0/255 green:190.0/255 blue:200.0/255 alpha:1]];
     }
     
     
