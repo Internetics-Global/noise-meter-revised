@@ -35,6 +35,9 @@
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.textColor = [UIColor whiteColor];
         _nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:_nameLabel.font.pointSize];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+          _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        }
         [self.contentView addSubview:_nameLabel];
         
         
