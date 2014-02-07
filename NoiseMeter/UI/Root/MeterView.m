@@ -441,6 +441,8 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     if ([[NMDecibelLogger defaultLogger] logging]) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
+        _currentReadingLabel.text = @"Pause";
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Paused. Tap again to resume." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
