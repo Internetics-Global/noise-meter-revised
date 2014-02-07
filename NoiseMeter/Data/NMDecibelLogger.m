@@ -54,9 +54,24 @@
     self = [super init];
     
     NSError *error;
+    BOOL success;
     
     [[AVAudioSession sharedInstance] setDelegate:self];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    
+    success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    if (!success) {
+      NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+    }
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        if (!success)  {
+            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
+        }
+    } else {
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    }
     
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,

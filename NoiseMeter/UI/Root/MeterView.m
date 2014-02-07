@@ -42,6 +42,11 @@
     _currentReadingLabel.text = @"N/A";
     [_soundLevelView setSoundLevelValue:0];
     _currentReadingLabel.textColor = [UIColor redColor];
+    
+    _cancelButton.hidden = NO;
+    CGRect rect = _currentReadingLabel.frame;
+    rect.origin.x = 50;
+    _currentReadingLabel.frame = rect;
 }
 
 - (void)reloadData
@@ -249,11 +254,26 @@
     cell.playButton.tag = indexPath.row;
     [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
     
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    if (flag) {
+        cell.playButton.hidden = NO;
+    } else {
+        cell.playButton.hidden = YES;
+    }
+    
     return cell;
 }
 
 
 - (void) playRecordedSound: (id) sender {
+    
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _currentReadingLabel.text = @"Playing";
+    });
     
     int index = ((UIButton *) sender).tag;
     
@@ -263,6 +283,7 @@
 	NSString *dateString = [FileHelper convertDate:date];
     
     NSURL *url = [FileHelper getRecordedAudioFile:dateString];
+    
     [PlayHelper playAudioFile:url];
 }
 
@@ -370,6 +391,8 @@
     _bannerView.hidden = TRUE;
     
     [NSUserDefaultsHelper setAdRemoveFlag:YES];
+    
+    [_topScoreTable reloadData];
 }
 
 - (void)dealloc

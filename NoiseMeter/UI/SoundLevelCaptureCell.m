@@ -51,13 +51,6 @@
         _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [self.contentView addSubview:_playButton];
         _playButton.showsTouchWhenHighlighted = YES;
-
-        BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-        if (flag) {
-            _playButton.hidden = NO;
-        } else {
-            _playButton.hidden = YES;
-        }
         
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, 0, 100, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;

@@ -51,16 +51,16 @@
     if (flag == FALSE) {
         _buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10 - 49, 280, 37);
+            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 15 - 49, 280, 37);
         } else {
-            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 10, 280, 37);
+            _buyButton.frame = CGRectMake(20, self.view.bounds.size.height - 37 - 15, 280, 37);
         }
         
         _buyButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [_buyButton setBackgroundColor:[UIColor darkGrayColor]];
-        [_buyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_buyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [_buyButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
-        [_buyButton setTitle:[NSString stringWithFormat:@"Get a pro version %@ ",_purchasePrice] forState:UIControlStateNormal];
+        [_buyButton setTitle:[NSString stringWithFormat:@"Upgrade to Pro - just %@ ",_purchasePrice] forState:UIControlStateNormal];
         [_buyButton setBackgroundImage:[UIImage imageNamed:@"purchase.png"] forState:UIControlStateNormal];
         [_buyButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
         _buyButton.layer.cornerRadius = 5;
@@ -258,7 +258,7 @@
     SKProduct *skProduct = [myProduct lastObject];
     _purchasePrice = [self localizedPrice:skProduct];
     
-    [_buyButton setTitle:[NSString stringWithFormat:@"Get a pro version %@ ",_purchasePrice] forState:UIControlStateNormal];
+    [_buyButton setTitle:[NSString stringWithFormat:@"Upgrade to Pro - just %@ ",_purchasePrice] forState:UIControlStateNormal];
     
 }
 

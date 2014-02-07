@@ -126,6 +126,13 @@
     cell.playButton.tag = indexPath.row;
     [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
     
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    if (flag) {
+        cell.playButton.hidden = NO;
+    } else {
+        cell.playButton.hidden = YES;
+    }
+    
     return cell;
 }
 
@@ -169,6 +176,12 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)purchasedFinishedNotification:(NSNotification *)notification {
+    
+    [super purchasedFinishedNotification:notification];
+    [_scoreTable reloadData];
 }
 
 
