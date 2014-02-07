@@ -36,7 +36,13 @@
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") == FALSE) {
         _purchaseButton.frame = CGRectOffset(_purchaseButton.frame, 0, 49);
         _restoreButton.frame = CGRectOffset(_restoreButton.frame, 0, 49);
-    }\
+    }
+    
+    _isOnlyRequestPrice = YES;
+    NSSet *productList = [NSSet setWithObjects:IAPProductID, nil];
+    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productList];
+    productsRequest.delegate = self;
+    [productsRequest start];
     
 }
 
@@ -130,6 +136,10 @@
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
   NSLog(@"%@", [error description]);
+    
+  if (_isOnlyRequestPrice) {
+    _isOnlyRequestPrice = NO;
+  }
 }
 
 
@@ -159,13 +169,23 @@
     NSLog(@"Product price: %@" , skProduct.price);
     NSLog(@"Product id: %@" , skProduct.productIdentifier);
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:[NSString stringWithFormat:@"Confirm to buy (%@)?",[self localizedPrice:skProduct]]
-                                                       delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              otherButtonTitles:@"OK", nil];
-    alertView.delegate = self;
-    [alertView show];
+    
+    if (_isOnlyRequestPrice) {
+        _isOnlyRequestPrice = NO;
+        
+        NSString *purchasePrice = [self localizedPrice:skProduct];
+        
+        [_purchaseButton setTitle:[NSString stringWithFormat:@"Purchase - %@ ",purchasePrice] forState:UIControlStateNormal];
+        
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                            message:[NSString stringWithFormat:@"Confirm to buy (%@)?",[self localizedPrice:skProduct]]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"OK", nil];
+        alertView.delegate = self;
+        [alertView show];
+    }
 }
 
 
