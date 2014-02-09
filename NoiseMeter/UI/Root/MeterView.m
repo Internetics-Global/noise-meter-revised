@@ -350,12 +350,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _cancelButton.hidden = YES;
-    _captureButton.hidden = YES;
     
-    CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 10;
-    _currentReadingLabel.frame = rect;
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        _cancelButton.hidden = YES;
+        _captureButton.hidden = YES;
+        
+        CGRect rect = _currentReadingLabel.frame;
+        rect.origin.x = 10;
+        _currentReadingLabel.frame = rect;
+    }
 }
 
 
