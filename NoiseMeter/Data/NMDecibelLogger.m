@@ -86,6 +86,13 @@
     _recorder.delegate = self;
     _recorder.meteringEnabled = YES;
     
+    
+    AudioSessionAddPropertyListener (kAudioSessionProperty_AudioRouteChange,
+                                     audioRouteChangeListenerCallback,
+                                     (__bridge void *)(self));
+    
+    
+    
     BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     
     if ((isUseLongRunningtTask) && (flag == true)) {
@@ -279,5 +286,33 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark – kAudioSessionProperty_AudioRouteChange
+
+void audioRouteChangeListenerCallback (
+                                       void                      *inUserData,
+                                       AudioSessionPropertyID    inPropertyID,
+                                       UInt32                    inPropertyValueSize,
+                                       const void                *inPropertyValue
+                                       ) {
+    
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) {
+      return;
+    }
+    
+    //we will force to speaker while not considering whether there is headset or not
+    //i don't think it's a good idea to do this :)
+    BOOL success = FALSE;
+    NSError *error;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        if (!success)  {
+            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
+        }
+    } else {
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    }
+        
+}
 
 @end
