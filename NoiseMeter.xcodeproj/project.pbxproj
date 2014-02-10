@@ -1026,8 +1026,8 @@
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1041,8 +1041,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DCA96797-2CD3-4034-A48F-E993C04A6F03";
+				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1050,8 +1050,8 @@
 		110F131414EDD52E00BE4481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1065,8 +1065,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DCA96797-2CD3-4034-A48F-E993C04A6F03";
+				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

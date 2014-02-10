@@ -178,8 +178,8 @@
         [_purchaseButton setTitle:[NSString stringWithFormat:@"Purchase - %@ ",purchasePrice] forState:UIControlStateNormal];
         
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:[NSString stringWithFormat:@"Confirm to buy (%@)?",[self localizedPrice:skProduct]]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Upgrade to Pro"
+                                                            message:[NSString stringWithFormat:@"Please confirm your upgrade to Noise Down Pro (%@)?",[self localizedPrice:skProduct]]
                                                            delegate:self
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@"OK", nil];
