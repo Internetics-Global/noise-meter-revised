@@ -91,6 +91,11 @@
             } else {
                 [switchView setOn:YES];
             }
+            
+            if ([NSUserDefaultsHelper isAdRemoved]) {
+            } else {
+                [switchView setOn:NO];
+            }
         }
         
         
@@ -235,7 +240,15 @@
 }
 
 - (void) backgroundRunningSwitchClicked: (id) sender {
+    
     UISwitch *myswitch = (UISwitch *)sender;
+    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Purchase to enable this function" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [myswitch setOn:NO];
+        return;
+    }
+    
     if ([myswitch isOn]) {
         [NSUserDefaultsHelper setNotBackgroundRunningFlag:NO];
     } else {
