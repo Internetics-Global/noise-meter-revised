@@ -65,11 +65,9 @@
     if ((indexPath.row == 1) || (indexPath.row == 2)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
-            switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-            cell.accessoryView = switchView;
-        }
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
+        switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+        cell.accessoryView = switchView;
         
         if (indexPath.row == 1) {
             
@@ -225,6 +223,8 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.trackedViewName = @"MoreView Screen";
+    
+    [_optionTable reloadData];
 }
 
 - (void) speakerOutputSwitchClicked: (id) sender {
