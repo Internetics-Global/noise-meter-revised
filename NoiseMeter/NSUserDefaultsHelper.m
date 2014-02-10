@@ -23,4 +23,28 @@
     NSLog(@"%s:the flag AD_REMOVED is set",__FUNCTION__);
 }
 
++ (BOOL) isOutputToEarpiece {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"OUTPUT_EARPIECE"];
+    return flag;
+}
+
++ (void) setOutputToEarpieceFlag:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"OUTPUT_EARPIECE"];
+    [userDefaults synchronize];
+}
+
++ (BOOL) isNotBackgroundRunning {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"NOT_BACKGROUND_RUNNING"];
+    return flag;
+}
+
++ (void) setNotBackgroundRunningFlag:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"NOT_BACKGROUND_RUNNING"];
+    [userDefaults synchronize];
+}
+
 @end

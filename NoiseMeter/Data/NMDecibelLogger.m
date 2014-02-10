@@ -63,15 +63,7 @@
       NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
     }
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-        success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
-        if (!success)  {
-            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
-        }
-    } else {
-        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
-        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
-    }
+    [self audioRoute];
     
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
@@ -299,20 +291,59 @@ void audioRouteChangeListenerCallback (
       return;
     }
     
-    //we will force to speaker while not considering whether there is headset or not
-    //i don't think it's a good idea to do this :)
+    
     BOOL success = FALSE;
     NSError *error;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-        success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+          success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
+        } else {
+            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        }
+        
         if (!success)  {
             NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
         }
     } else {
-        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        UInt32 audioRouteOverride;
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
+        } else {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        }
+        
         AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
     }
         
+}
+
+- (void) audioRoute {
+    BOOL success = FALSE;
+    NSError *error;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
+        } else {
+            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        }
+        
+        if (!success)  {
+            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
+        }
+    } else {
+        UInt32 audioRouteOverride;
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
+        } else {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        }
+        
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    }
 }
 
 @end

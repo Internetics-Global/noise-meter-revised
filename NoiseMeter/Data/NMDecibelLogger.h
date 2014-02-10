@@ -36,4 +36,6 @@
 - (void)alarmComplete;
 - (BOOL)logging;
 
+- (void) audioRoute;
+
 @end

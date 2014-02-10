@@ -16,6 +16,7 @@
 #import "RootView.h"
 #import "MeterView.h"
 #import "PurchaseViewController.h"
+#import "NMDecibelLogger.h"
 @interface MoreView ()
 
 @end
@@ -54,39 +55,76 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    if (indexPath.row == 0)
-    {
-        cell.textLabel.text = @"Select Alert Sound";
-    }
-    else if (indexPath.row == 1)
-    {
-        cell.textLabel.text = @"Instructions / Tips";
-    }
-    else if (indexPath.row == 2) 
-    {
-        cell.textLabel.text = @"About";
-    }
-    else if (indexPath.row == 3) 
-    {
-        cell.textLabel.text = @"Visit developer's website";
-    }
-    else if (indexPath.row == 4) 
-    {
-        cell.textLabel.text = @"Tell a Friend";
-    }
-    else if (indexPath.row == 5)
-    {
-        cell.textLabel.text = @"Support";
+    UITableViewCell *cell;
+    
+    if ((indexPath.row == 1) || (indexPath.row == 2)) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
+        UISwitch *switchView;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
+            switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+            cell.accessoryView = switchView;
+        }
+        
+        if (indexPath.row == 1) {
+            
+            [switchView addTarget:self action:@selector(speakerOutputSwitchClicked:) forControlEvents:UIControlEventValueChanged];
+            
+            [cell.textLabel setText:@"Speaker Output"];
+            if ([NSUserDefaultsHelper isOutputToEarpiece] == YES) {
+                [switchView setOn:NO];
+            } else {
+                [switchView setOn:YES];
+            }
+            
+        } else if (indexPath.row == 2) {
+            [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
+            
+            [cell.textLabel setText:@"Background Running"];
+            if ([NSUserDefaultsHelper isNotBackgroundRunning] == YES) {
+                [switchView setOn:NO];
+            } else {
+                [switchView setOn:YES];
+            }
+        }
+        
+        
+        
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        if (indexPath.row == 0)
+        {
+            cell.textLabel.text = @"Select Alert Sound";
+        }
+        else if (indexPath.row == 3)
+        {
+            cell.textLabel.text = @"Instructions / Tips";
+        }
+        else if (indexPath.row == 4)
+        {
+            cell.textLabel.text = @"About";
+        }
+        else if (indexPath.row == 5)
+        {
+            cell.textLabel.text = @"Visit developer's website";
+        }
+        else if (indexPath.row == 6)
+        {
+            cell.textLabel.text = @"Tell a Friend";
+        }
+        else if (indexPath.row == 7)
+        {
+            cell.textLabel.text = @"Support";
+        }
     }
     
     return cell;
@@ -124,23 +162,23 @@
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 1)
+    else if(indexPath.row == 3)
     {
         InstructionView *about = [[InstructionView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if (indexPath.row == 2) 
+    else if (indexPath.row == 4)
     {
         AboutView *about = [[AboutView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 3)
+    else if(indexPath.row == 5)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else
+    else if ((indexPath.row == 6) || (indexPath.row == 7))
     {
         if ([MFMailComposeViewController canSendMail]) 
         {
@@ -150,7 +188,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 4) 
+            if (indexPath.row == 6)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];
@@ -183,6 +221,29 @@
     [super viewDidAppear:animated];
     self.trackedViewName = @"MoreView Screen";
 }
+
+- (void) speakerOutputSwitchClicked: (id) sender {
+    UISwitch *myswitch = (UISwitch *)sender;
+    if ([myswitch isOn]) {
+        [NSUserDefaultsHelper setOutputToEarpieceFlag:NO];
+    } else {
+        [NSUserDefaultsHelper setOutputToEarpieceFlag:YES];
+    }
+    
+    [[NMDecibelLogger defaultLogger] audioRoute];
+    
+}
+
+- (void) backgroundRunningSwitchClicked: (id) sender {
+    UISwitch *myswitch = (UISwitch *)sender;
+    if ([myswitch isOn]) {
+        [NSUserDefaultsHelper setNotBackgroundRunningFlag:NO];
+    } else {
+        [NSUserDefaultsHelper setNotBackgroundRunningFlag:YES];
+    }
+    
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

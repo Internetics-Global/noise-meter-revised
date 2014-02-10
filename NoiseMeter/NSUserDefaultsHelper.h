@@ -13,4 +13,10 @@
 + (BOOL) isAdRemoved;
 + (void) setAdRemoveFlag:(BOOL) flag;
 
++ (BOOL) isOutputToEarpiece;
++ (void) setOutputToEarpieceFlag:(BOOL) flag;
+
++ (BOOL) isNotBackgroundRunning;
++ (void) setNotBackgroundRunningFlag:(BOOL) flag;
+
 @end

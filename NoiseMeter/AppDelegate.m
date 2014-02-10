@@ -46,11 +46,6 @@
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -58,22 +53,23 @@
     
     [[NMDecibelLogger defaultLogger] alarmComplete];
     
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    
-    if (flag) {
-        if (isUseLongRunningtTask) {
-            //will keep runnning in background
-        } else {
-            self.backgroundTask = UIBackgroundTaskInvalid;
-            self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
-                NSLog(@"Background handler called. Not running background tasks anymore.");
-                [application endBackgroundTask:self.backgroundTask];
+    if ([NSUserDefaultsHelper isNotBackgroundRunning]) {
+      [[NMDecibelLogger defaultLogger] stopLogging];
+    } else {
+        if ([NSUserDefaultsHelper isAdRemoved]) {
+            if (isUseLongRunningtTask) {
+                //do nothing and will keep runnning in background
+            } else {
                 self.backgroundTask = UIBackgroundTaskInvalid;
-                [[NMDecibelLogger defaultLogger] stopLogging];
-            }];
-            
-            [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+                self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
+                    NSLog(@"Background handler called. Not running background tasks anymore.");
+                    [application endBackgroundTask:self.backgroundTask];
+                    self.backgroundTask = UIBackgroundTaskInvalid;
+                    [[NMDecibelLogger defaultLogger] stopLogging];
+                }];
+                
+                [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
+            }
         }
     }
 	
