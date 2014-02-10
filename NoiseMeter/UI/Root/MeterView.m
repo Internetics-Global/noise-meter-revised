@@ -358,7 +358,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([[NMDecibelLogger defaultLogger] logging]) {
+    if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
         _captureButton.hidden = YES;
         
