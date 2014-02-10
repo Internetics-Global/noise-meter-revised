@@ -279,10 +279,6 @@
         [[NMDecibelLogger defaultLogger] stopLogging];
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _currentReadingLabel.text = @"Playing";
-    });
-    
     int index = ((UIButton *) sender).tag;
     
     SoundLevelCapture *caputure = [_scores objectAtIndex:index];
@@ -292,11 +288,22 @@
     
     NSURL *url = [FileHelper getRecordedAudioFile:dateString];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        usleep(10000);
+        _currentReadingLabel.text = @"Playing";
+    });
+    
     [PlayHelper playAudioFile:url];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    if ([PlayHelper isPlaying]) {
+        _currentReadingLabel.text = @"Playing";
+        return;
+    }
+    
+    
     if ([keyPath isEqualToString:@"currentReading"]) 
     {
         _currentReading = [[NMDecibelLogger defaultLogger] currentReading];

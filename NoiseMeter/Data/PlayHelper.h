@@ -12,4 +12,6 @@
 
 + (void) playAudioFile:(NSURL *) url;
 
++ (BOOL) isPlaying;
+
 @end

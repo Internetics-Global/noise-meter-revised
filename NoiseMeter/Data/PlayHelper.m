@@ -74,6 +74,9 @@ static BOOL _isPlaying = NO;
     _isPlaying = FALSE;
 }
 
++ (BOOL) isPlaying {
+    return _isPlaying;
+}
 
 
 @end
