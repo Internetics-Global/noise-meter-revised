@@ -112,7 +112,7 @@
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 150, 40)];
+                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentLeft;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
@@ -311,7 +311,7 @@
     }
     
     if ([NSUserDefaultsHelper isLoggingPause]) {
-        _currentReadingLabel.text = @"Pause";
+        _currentReadingLabel.text = @"Meter off";
         return;
     }
     
@@ -411,7 +411,7 @@
     if ([[NMDecibelLogger defaultLogger] logging]) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
-        _currentReadingLabel.text = @"Pause";
+        _currentReadingLabel.text = @"Meter off";
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
     } else {
@@ -477,10 +477,10 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
-        _currentReadingLabel.text = @"Pause";
+        _currentReadingLabel.text = @"Meter off";
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Paused. Tap again to resume." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
     } else {
