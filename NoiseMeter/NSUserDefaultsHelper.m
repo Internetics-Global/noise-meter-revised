@@ -59,4 +59,17 @@
     [userDefaults synchronize];
 }
 
++ (BOOL) isNotShowMeterOffDialog {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"NOT_SHOW_METEROFF_DIALOG"];
+    return flag;
+}
+
++ (void) setNotShowMeterOffDialogFlag:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"NOT_SHOW_METEROFF_DIALOG"];
+    [userDefaults synchronize];
+}
+
+
 @end

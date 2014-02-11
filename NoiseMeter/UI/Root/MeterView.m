@@ -408,7 +408,7 @@
 
 - (void)pauseLoggingSwitchNotification:(NSNotification *)notification {
     
-    if ([[NMDecibelLogger defaultLogger] logging]) {
+    if ([NSUserDefaultsHelper isLoggingPause]) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
         _currentReadingLabel.text = @"Meter off";
@@ -480,8 +480,10 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
         _currentReadingLabel.text = @"Meter off";
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        if ([NSUserDefaultsHelper isNotShowMeterOffDialog] == NO) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Not show again",nil];
+            [alert show];
+        }
         
     } else {
         [[NMDecibelLogger defaultLogger] startLogging];
@@ -490,6 +492,13 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     
     
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [NSUserDefaultsHelper setNotShowMeterOffDialogFlag:YES];
+    }
+}
+
 
 
 @end

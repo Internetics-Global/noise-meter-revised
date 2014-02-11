@@ -22,4 +22,7 @@
 + (BOOL) isLoggingPause;
 + (void) setLoggingPauseFlag:(BOOL) flag;
 
++ (BOOL) isNotShowMeterOffDialog;
++ (void) setNotShowMeterOffDialogFlag:(BOOL) flag;
+
 @end
