@@ -282,10 +282,6 @@
 
 - (void) playRecordedSound: (id) sender {
     
-    if ([[NMDecibelLogger defaultLogger] logging]) {
-        [[NMDecibelLogger defaultLogger] stopLogging];
-    }
-    
     int index = ((UIButton *) sender).tag;
     
     SoundLevelCapture *caputure = [_scores objectAtIndex:index];

@@ -36,6 +36,10 @@ static BOOL _isPlaying = NO;
         return;
     }
     
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
+    
     if (gAudioEffect != 0) {
         AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
         AudioServicesDisposeSystemSoundID(gAudioEffect);
