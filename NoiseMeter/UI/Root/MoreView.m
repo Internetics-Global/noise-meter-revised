@@ -37,7 +37,12 @@
     
     [self style];
     
-    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79) style:UITableViewStyleGrouped];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 105) style:UITableViewStyleGrouped];
+    } else {
+        _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 65) style:UITableViewStyleGrouped];
+    }
+    
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
     _optionTable.opaque = NO;
@@ -62,14 +67,14 @@
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 1) || (indexPath.row == 2) || (indexPath.row == 3)) {
+    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
         switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
         cell.accessoryView = switchView;
         
-        if (indexPath.row == 1) {
+        if (indexPath.row == 3) {
             
             [switchView addTarget:self action:@selector(speakerOutputSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
@@ -94,14 +99,15 @@
             } else {
                 [switchView setOn:NO];
             }
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 0) {
             [switchView addTarget:self action:@selector(pauseLoggingSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
-            [cell.textLabel setText:@"Pause Logging"];
+            [cell.textLabel setText:@"Meter On/Off"];
             if ([NSUserDefaultsHelper isLoggingPause] == YES) {
-                [switchView setOn:YES];
-            } else {
                 [switchView setOn:NO];
+            } else {
+                [switchView setOn:YES];
+
             }
         }
         
@@ -113,7 +119,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        if (indexPath.row == 0)
+        if (indexPath.row == 1)
         {
             cell.textLabel.text = @"Select Alert Sound";
         }
@@ -169,7 +175,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if(indexPath.row == 0)
+    if(indexPath.row == 1)
     {
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
@@ -252,7 +258,7 @@
     
     UISwitch *myswitch = (UISwitch *)sender;
     if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Purchase to enable this function" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
         [alert show];
         [myswitch setOn:NO];
         return;
@@ -290,6 +296,14 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark – UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [self.navigationController pushViewController:purchaseViewController animated:YES];
+    }
 }
 
 
