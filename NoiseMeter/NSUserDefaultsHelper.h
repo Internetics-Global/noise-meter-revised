@@ -19,4 +19,7 @@
 + (BOOL) isNotBackgroundRunning;
 + (void) setNotBackgroundRunningFlag:(BOOL) flag;
 
++ (BOOL) isLoggingPause;
++ (void) setLoggingPauseFlag:(BOOL) flag;
+
 @end

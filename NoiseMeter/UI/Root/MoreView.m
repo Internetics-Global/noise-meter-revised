@@ -55,14 +55,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return 9;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 1) || (indexPath.row == 2)) {
+    if ((indexPath.row == 1) || (indexPath.row == 2) || (indexPath.row == 3)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
@@ -83,7 +83,7 @@
         } else if (indexPath.row == 2) {
             [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
-            [cell.textLabel setText:@"Background Running"];
+            [cell.textLabel setText:@"Work In Background"];
             if ([NSUserDefaultsHelper isNotBackgroundRunning] == YES) {
                 [switchView setOn:NO];
             } else {
@@ -91,6 +91,15 @@
             }
             
             if ([NSUserDefaultsHelper isAdRemoved]) {
+            } else {
+                [switchView setOn:NO];
+            }
+        } else if (indexPath.row == 3) {
+            [switchView addTarget:self action:@selector(pauseLoggingSwitchClicked:) forControlEvents:UIControlEventValueChanged];
+            
+            [cell.textLabel setText:@"Pause Logging"];
+            if ([NSUserDefaultsHelper isLoggingPause] == YES) {
+                [switchView setOn:YES];
             } else {
                 [switchView setOn:NO];
             }
@@ -108,23 +117,23 @@
         {
             cell.textLabel.text = @"Select Alert Sound";
         }
-        else if (indexPath.row == 3)
+        else if (indexPath.row == 4)
         {
             cell.textLabel.text = @"Instructions / Tips";
         }
-        else if (indexPath.row == 4)
+        else if (indexPath.row == 5)
         {
             cell.textLabel.text = @"About";
         }
-        else if (indexPath.row == 5)
+        else if (indexPath.row == 6)
         {
             cell.textLabel.text = @"Visit developer's website";
         }
-        else if (indexPath.row == 6)
+        else if (indexPath.row == 7)
         {
             cell.textLabel.text = @"Tell a Friend";
         }
-        else if (indexPath.row == 7)
+        else if (indexPath.row == 8)
         {
             cell.textLabel.text = @"Support";
         }
@@ -165,23 +174,23 @@
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 3)
+    else if(indexPath.row == 4)
     {
         InstructionView *about = [[InstructionView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if (indexPath.row == 4)
+    else if (indexPath.row == 5)
     {
         AboutView *about = [[AboutView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 5)
+    else if(indexPath.row == 6)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else if ((indexPath.row == 6) || (indexPath.row == 7))
+    else if ((indexPath.row == 7) || (indexPath.row ==8))
     {
         if ([MFMailComposeViewController canSendMail]) 
         {
@@ -257,6 +266,20 @@
     
 }
 
+
+- (void) pauseLoggingSwitchClicked: (id) sender {
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    
+    if ([myswitch isOn]) {
+        [NSUserDefaultsHelper setLoggingPauseFlag:NO];
+    } else {
+        [NSUserDefaultsHelper setLoggingPauseFlag:YES];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PAUSE_LOGGING_SWITCH_NOTIFICATION" object:nil];
+    
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

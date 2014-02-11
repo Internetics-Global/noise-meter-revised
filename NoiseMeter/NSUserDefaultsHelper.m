@@ -47,4 +47,16 @@
     [userDefaults synchronize];
 }
 
++ (BOOL) isLoggingPause {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"LOGGING_PAUSE"];
+    return flag;
+}
+
++ (void) setLoggingPauseFlag:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"LOGGING_PAUSE"];
+    [userDefaults synchronize];
+}
+
 @end
