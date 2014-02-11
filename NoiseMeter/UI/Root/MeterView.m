@@ -474,7 +474,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 #pragma mark – Others
 - (void) switchLoggingStatus {
     
-    if ([[NMDecibelLogger defaultLogger] logging]) {
+    if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
         _currentReadingLabel.text = @"Pause";
