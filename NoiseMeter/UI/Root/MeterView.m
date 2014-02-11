@@ -477,7 +477,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
         if ([NSUserDefaultsHelper isNotShowMeterOffDialog] == NO) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Not show again",nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:self cancelButtonTitle:@"Don't show again" otherButtonTitles:@"OK",nil];
             [alert show];
         }
         
@@ -490,7 +490,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 0) {
         [NSUserDefaultsHelper setNotShowMeterOffDialogFlag:YES];
     }
 }
