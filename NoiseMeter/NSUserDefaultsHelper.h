@@ -16,8 +16,8 @@
 + (BOOL) isOutputToEarpiece;
 + (void) setOutputToEarpieceFlag:(BOOL) flag;
 
-+ (BOOL) isNotBackgroundRunning;
-+ (void) setNotBackgroundRunningFlag:(BOOL) flag;
++ (BOOL) isNotAllowBackgroundRunning;
++ (void) setNotAllowBackgroundRunningFlag:(BOOL) flag;
 
 + (BOOL) isLoggingPause;
 + (void) setLoggingPauseFlag:(BOOL) flag;

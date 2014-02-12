@@ -53,7 +53,7 @@
     
     [[NMDecibelLogger defaultLogger] alarmComplete];
     
-    if ([NSUserDefaultsHelper isNotBackgroundRunning]) {
+    if ([NSUserDefaultsHelper isNotAllowBackgroundRunning]) {
       [[NMDecibelLogger defaultLogger] stopLogging];
     } else {
         if ([NSUserDefaultsHelper isAdRemoved]) {

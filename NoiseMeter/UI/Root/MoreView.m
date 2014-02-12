@@ -89,7 +89,7 @@
             [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Work In Background"];
-            if ([NSUserDefaultsHelper isNotBackgroundRunning] == YES) {
+            if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == YES) {
                 [switchView setOn:NO];
             } else {
                 [switchView setOn:YES];
@@ -265,9 +265,9 @@
     }
     
     if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setNotBackgroundRunningFlag:NO];
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
     } else {
-        [NSUserDefaultsHelper setNotBackgroundRunningFlag:YES];
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
     }
     
 }

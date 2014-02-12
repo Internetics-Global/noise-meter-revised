@@ -35,13 +35,13 @@
     [userDefaults synchronize];
 }
 
-+ (BOOL) isNotBackgroundRunning {
++ (BOOL) isNotAllowBackgroundRunning {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"NOT_BACKGROUND_RUNNING"];
     return flag;
 }
 
-+ (void) setNotBackgroundRunningFlag:(BOOL) flag {
++ (void) setNotAllowBackgroundRunningFlag:(BOOL) flag {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:flag forKey:@"NOT_BACKGROUND_RUNNING"];
     [userDefaults synchronize];

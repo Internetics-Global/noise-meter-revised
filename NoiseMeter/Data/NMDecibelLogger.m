@@ -103,8 +103,11 @@
             if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
                 
             } else {
-                [self updateReading];
-                NSLog(@"Background running: %f",_currentReading.floatValue);
+                
+                if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
+                    [self updateReading];
+                    NSLog(@"Background running: %f",_currentReading.floatValue);
+                }
             }
         };
         
@@ -253,14 +256,20 @@
 
 - (void)timerFire
 {
+    if (([NSUserDefaultsHelper isNotAllowBackgroundRunning]) && ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
+        return;
+    }
+    
     _sampleTimer = nil;
-    if (!_playingAlarm) 
+    if (!_playingAlarm)
     {
         [self willChangeValueForKey:@"currentReading"];
         _currentReading = [NSNumber numberWithFloat:([self rawReading] + 100)];
         [self didChangeValueForKey:@"currentReading"];
     }
     _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
+    
+    NSLog(@"%s:timeFire",__FUNCTION__);
 }
 
 - (void)stopLogging
