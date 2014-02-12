@@ -27,6 +27,8 @@
     UIButton *_cancelButton;
     
     SoundLevelView *_soundLevelView;
+    
+    UIImageView *_overlayImageView;
 }
 
 @end

@@ -70,11 +70,12 @@
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
+		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
+		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
 		8833910A1793CEA70051DE50 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883391091793CEA70051DE50 /* demo.mp3 */; };
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
-		88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6618A33DEC00BF526F /* whyPurchase@2x.png */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
@@ -206,12 +207,13 @@
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Root/BaseViewController.m; sourceTree = "<group>"; };
+		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
+		88131CD918AB223F00D2541A /* overlay568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay568.png; sourceTree = "<group>"; };
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
 		8833910B1793D0680051DE50 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		88570E6618A33DEC00BF526F /* whyPurchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whyPurchase@2x.png"; sourceTree = "<group>"; };
 		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
 		88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
 		88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
@@ -476,8 +478,9 @@
 		11AC52FB1505D3CF0093C7AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				88131CD818AB223F00D2541A /* overlay@2x.png */,
+				88131CD918AB223F00D2541A /* overlay568.png */,
 				88A95E4018A4803000E56939 /* Purchases */,
-				88570E6618A33DEC00BF526F /* whyPurchase@2x.png */,
 				88BEFE3D18A1FC9400399680 /* Meters */,
 				111A18CA1505E384005655F1 /* Backings */,
 				11AC53011505D3E70093C7AB /* Buttons */,
@@ -767,7 +770,6 @@
 				110F130614EDD52E00BE4481 /* InfoPlist.strings in Resources */,
 				11AC52F81505D3850093C7AB /* Default.png in Resources */,
 				11AC52FA1505D3950093C7AB /* Default@2x.png in Resources */,
-				88570E6718A33DEC00BF526F /* whyPurchase@2x.png in Resources */,
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
 				88A95E4418A4803000E56939 /* mic.png in Resources */,
 				88A95E4518A4803000E56939 /* noads.png in Resources */,
@@ -780,6 +782,7 @@
 				88BEFE5918A1FCB100399680 /* 11.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
+				88131CDB18AB224000D2541A /* overlay568.png in Resources */,
 				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
@@ -799,6 +802,7 @@
 				11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */,
+				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
@@ -974,7 +978,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -987,8 +991,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
+				PROVISIONING_PROFILE = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -997,7 +1001,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1011,7 +1015,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
