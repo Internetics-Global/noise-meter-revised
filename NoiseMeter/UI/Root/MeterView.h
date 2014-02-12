@@ -9,14 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 #import <iAd/iAd.h>
-
-#import "DFPBannerView.h"
-#import "GADAdSizeDelegate.h"
-#import "GADAppEventDelegate.h"
-#import "GADBannerViewDelegate.h"
 #import "SoundLevelView.h"
 
-@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,ADBannerViewDelegate,GADBannerViewDelegate>{
+@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;
@@ -30,11 +25,6 @@
     UILabel *_titleLabel;
     UIButton *_infoButton;
     UIButton *_cancelButton;
-    
-    ADBannerView *adView;
-    UIButton *removeADButton;
-    
-    DFPBannerView *_bannerView;
     
     SoundLevelView *_soundLevelView;
 }
