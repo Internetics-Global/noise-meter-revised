@@ -135,7 +135,7 @@
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 40)];
+                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 50)];
     _currentReadingLabel.textAlignment = UITextAlignmentLeft;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
