@@ -54,6 +54,19 @@
     _currentReadingLabel.frame = rect;
 }
 
+//meter is normal, not over threshold nor failed
+- (void)success
+{
+    if (_cancelButton.hidden == FALSE) {
+        _cancelButton.hidden = YES;
+        _captureButton.hidden = YES;
+        
+        CGRect rect = _currentReadingLabel.frame;
+        rect.origin.x = 10;
+        _currentReadingLabel.frame = rect;
+    }
+}
+
 - (void)reloadData
 {
     _scores = [SoundLevelCapture all];
@@ -309,6 +322,14 @@
     if ([keyPath isEqualToString:@"currentReading"]) 
     {
         _currentReading = [[NMDecibelLogger defaultLogger] currentReading];
+        
+        if ([_currentReading integerValue] < 0) {
+            //mean not right reading, we need to retry. This is important when an incoming call
+            NSLog(@"%s:_currentReading is < 0",__FUNCTION__);
+            [[NMDecibelLogger defaultLogger] startLogging];
+            return;
+        }
+        
         _currentReadingLabel.text = [NSString stringWithFormat:@"%.1f", [_currentReading floatValue]];
         [_soundLevelView setSoundLevelValue:[_currentReading floatValue]];
         NSNumber *threshold = [NMDecibelLogger defaultLogger].alertThreshold;
@@ -317,6 +338,7 @@
             _peakReading = _currentReading;
             
         }
+        
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
         {
             _currentReadingLabel.textColor = [UIColor redColor];
@@ -325,7 +347,10 @@
         else 
         {
             _currentReadingLabel.textColor = [UIColor greenColor];
+            [self success];
         }
+        
+        
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
         {
             _peakLabel.hidden = NO;
@@ -336,6 +361,7 @@
             rect.origin.x = 50;
             _currentReadingLabel.frame = rect;
         }
+        
     }
     else 
     {
