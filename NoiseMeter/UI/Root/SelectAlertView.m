@@ -10,6 +10,8 @@
 #import "NMDecibelLogger.h"
 #import "CreateAlarmSoundViewController.h"
 #import "FileHelper.h"
+#import "PurchaseViewController.h"
+
 @interface SelectAlertView ()
 
 @end
@@ -153,6 +155,14 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.trackedViewName = @"SelectedAlertView Screen";
+}
+
+#pragma mark – UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [self.navigationController pushViewController:purchaseViewController animated:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
