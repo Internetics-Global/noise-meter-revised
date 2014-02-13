@@ -10,32 +10,33 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 @interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate>{
-    AVAudioRecorder *_recorder;
-    NSDictionary *_recorderSettings;
-    BOOL _logging;
-    NSNumber *_currentReading;
-    NSTimer *_sampleTimer;
-    SystemSoundID audioEffect;
+    AVAudioRecorder    *_recorder;
+    NSDictionary       *_recorderSettings;
+    BOOL                _logging;
+    NSNumber           *_currentReading;
+    NSTimer            *_sampleTimer;
+    SystemSoundID       audioEffect;
 }
 
 @property (strong, nonatomic, readonly) NSNumber *currentReading;
-@property (strong, nonatomic) NSNumber *alertThreshold;
-@property (strong, nonatomic) NSString *alarmName;
+@property (strong, nonatomic)           NSNumber *alertThreshold;
+@property (strong, nonatomic)           NSString *alarmName;
 
-@property (nonatomic, strong) AVQueuePlayer *player;
+@property (nonatomic, strong)           AVQueuePlayer *player;
 
-@property (assign, nonatomic) BOOL playingAlarm;
+@property (assign, nonatomic)           BOOL playingAlarm;
 
 + (NMDecibelLogger *)defaultLogger;
-- (float)rawReading;
-- (void)startLogging;
-- (void)stopLogging;
-- (void)playAlarm;
-- (void)ensureLogging;
-- (void) updateReading;
-- (void)alarmComplete;
-- (BOOL)logging;
 
-- (void) audioRoute;
+- (float)rawReading;
+- (void) startLogging;
+- (void) stopLogging;
+- (void) playAlarm;
+- (void) ensureLogging;
+- (void) updateReading;
+- (void) alarmComplete;
+- (BOOL) logging;
+
+- (void) resetAudioRoute;
 
 @end

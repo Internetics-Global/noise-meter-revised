@@ -17,6 +17,10 @@
 
 @property (nonatomic) UIBackgroundTaskIdentifier backgroundTask;
 
+/**
+ *  Used to identify whether current view is on CreateAlarmSoundViewController
+ *  add this because it could conflict with timerFire
+ */
 @property (assign, nonatomic) BOOL isCreatingCustomAlarmFile;
 
 @end

@@ -38,6 +38,7 @@
     _startButton.layer.shadowRadius = 10.0f;
     
     APP_DELEGATE.isCreatingCustomAlarmFile = YES;
+    
     [[NMDecibelLogger defaultLogger] stopLogging];
 }
 

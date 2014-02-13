@@ -250,7 +250,7 @@
         [NSUserDefaultsHelper setOutputToEarpieceFlag:YES];
     }
     
-    [[NMDecibelLogger defaultLogger] audioRoute];
+    [[NMDecibelLogger defaultLogger] resetAudioRoute];
     
 }
 

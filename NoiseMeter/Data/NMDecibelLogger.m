@@ -64,7 +64,7 @@
       NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
     }
     
-    [self audioRoute];
+    [self resetAudioRoute];
     
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
@@ -140,6 +140,12 @@
     return self;
 }
 
+
+/**
+ *  we have two kind of playAlarm file because of history reason
+ *   1. aifc which is located in mainBundle
+ *   2. caf, which is created by user with name of 0.caf, 1.caf  (index from 0)
+ */
 - (void)playAlarm
 {
     if (!_playingAlarm) 
@@ -176,7 +182,7 @@
     }
     
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        //send local notification
+        //send local notification, which is only effective when in background
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
         localNotification.alertBody = @"Hey - keep the noise down! The alarm has triggered!";
         localNotification.fireDate = [NSDate date];
@@ -311,6 +317,7 @@ void audioRouteChangeListenerCallback (
     }
     
     
+    //following codes are same with [self resetAudioRoute]
     BOOL success = FALSE;
     NSError *error;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
@@ -339,7 +346,7 @@ void audioRouteChangeListenerCallback (
         
 }
 
-- (void) audioRoute {
+- (void) resetAudioRoute {
     BOOL success = FALSE;
     NSError *error;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
