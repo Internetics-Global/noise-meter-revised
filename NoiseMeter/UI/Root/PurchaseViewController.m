@@ -66,7 +66,15 @@
         self.webview.frame = rect;
     }
     
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+//    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+    
+    
+    
+    NSString *resourcePath = [ [NSBundle mainBundle] resourcePath];
+    NSString *filePath  = [resourcePath stringByAppendingPathComponent:@"upgradeInstruction.html"];
+    NSString *htmlstring =[[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    [self.webview loadHTMLString:htmlstring  baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
+
 
 }
 

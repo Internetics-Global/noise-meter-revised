@@ -1,0 +1,161 @@
+/*
+Theme Name: Noisedown
+Theme URI: http://www.internetics.net.au
+Description: Noisedown's structure
+Author: Internetics Pty Ltd
+Version: 1.1
+License: Closed
+License URI: n/a
+Tags: noisedown
+*/
+
+
+
+
+
+/*
+Custom CSS: Noisedown
+LAYOUT: Two columns
+DESCRIPTION: CSS particular to Noisedown Content
+*/
+
+body {
+	background: url("images/bg.gif") repeat-x scroll 0 0 #000;
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:16px;
+	color:#FFFFFF;
+	margin:0;
+}
+
+.record {
+	background: url("images/recordScreenshot.png") repeat-x scroll 0 0 #000;
+
+}
+
+.record {
+	background: url("images/mic.png") repeat-x scroll 0 0 #000;
+
+}
+
+.background {
+	background: url("images/recordScreenshot.png") repeat-x scroll 0 0 #000;
+
+}
+
+.ads {
+	background: url("images/noads.png") repeat-x scroll 0 0 #000;
+
+}
+
+.alarms {
+	background: url("images/alarms.png") repeat-x scroll 0 0 #000;
+
+}
+
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+
+
+#logo{
+	background: url("images/logo.png") no-repeat scroll 0 0 transparent;
+	width:320px;
+	min-height:92px;
+	margin:70px 0 0 0;
+}
+.container{
+	margin:0 auto;
+	width:320px;
+	text-align:left;
+
+}
+
+#content{
+	margin-left: 22px;
+    width: 280px;
+    margin-right: 20px;
+}
+
+.phoneAni{
+	background: url("images/phone.png") no-repeat scroll 0 0 transparent;
+	margin: 0 500px;
+	min-height: 588px;
+	position: absolute;
+	top: 72px;
+	width:563px;
+	z-index:-1;
+	
+}
+
+.screens{
+
+ position: absolute;
+    top: 106px;
+    right: 152px;
+
+}
+
+
+.links {
+	margin-top:50px;
+}
+
+
+.links ul a{
+	color:#999;
+	font-size:12px;
+	font-weight:bold;
+	list-style-type: none;
+	text-decoration:none;
+}
+
+.links li{
+	float:left;
+	padding: 0 10px;
+	border-left:1px #999 solid;
+	list-style-type: none;
+}
+
+.links a:hover{
+	color:#fff;
+}
+
+.links li:first-child{
+	border-left:none;
+	padding:0 10px 0 0;
+	margin: 0 0 0 -38px;
+}
+
+.applink{
+	background: url("images/app_link.gif") no-repeat scroll 0 0 transparent;
+	width:177px;
+	min-height:59px;
+	float:left;
+	margin-top:50px;	
+}
+.entry-title{
+	color:#00BCFF;
+}
+
+
+
+
+
+a:visited {
+    color: #00BCFF;
+}
+
+a:hover {
+    color: #00BCFF;
+}
+
+a:link {
+    color: #00BCFF;
+}
+

@@ -73,6 +73,7 @@
 		880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
 		880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */; };
 		880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */ = {isa = PBXBuildFile; fileRef = 880A003418ACB91B00FB84F5 /* upgradeInstruction.html */; };
+		880A003918ACD22C00FB84F5 /* upgrade.css in Resources */ = {isa = PBXBuildFile; fileRef = 880A003818ACD22C00FB84F5 /* upgrade.css */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
@@ -216,6 +217,7 @@
 		880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createCustomAlarmButton.png; sourceTree = "<group>"; };
 		880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "createCustomAlarmButton@2x.png"; sourceTree = "<group>"; };
 		880A003418ACB91B00FB84F5 /* upgradeInstruction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upgradeInstruction.html; sourceTree = "<group>"; };
+		880A003818ACD22C00FB84F5 /* upgrade.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = upgrade.css; sourceTree = "<group>"; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 		11AC52F61505D37B0093C7AB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				880A003818ACD22C00FB84F5 /* upgrade.css */,
 				880A003418ACB91B00FB84F5 /* upgradeInstruction.html */,
 				883391091793CEA70051DE50 /* demo.mp3 */,
 				11FBD43615117B7D00FF47C2 /* Sounds */,
@@ -829,6 +832,7 @@
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
+				880A003918ACD22C00FB84F5 /* upgrade.css in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
 				88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
