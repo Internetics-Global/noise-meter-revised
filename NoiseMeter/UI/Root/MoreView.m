@@ -206,7 +206,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 6)
+            if (indexPath.row == 7)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];
