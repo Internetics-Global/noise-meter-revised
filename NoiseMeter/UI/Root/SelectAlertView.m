@@ -98,11 +98,11 @@
     }
     
     else {
-        cell.textLabel.text = [NSString stringWithFormat:@"CustomAlarm%d",indexPath.row - 4];
+        cell.textLabel.text = [NSString stringWithFormat:@"CustomAlarm%d",indexPath.row - 3];
         cell.backgroundColor = [UIColor whiteColor];
         
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:
-             [NSString stringWithFormat:@"%d",indexPath.row - 4]])
+             [NSString stringWithFormat:@"%d",indexPath.row - 3]])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -128,7 +128,7 @@
         [[NMDecibelLogger defaultLogger] setAlarmName:@"scifialarm"];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [[NMDecibelLogger defaultLogger] setAlarmName:[NSString stringWithFormat:@"%d",(indexPath.row - 4)]];
+        [[NMDecibelLogger defaultLogger] setAlarmName:[NSString stringWithFormat:@"%d",(indexPath.row - 3)]];
         [self.navigationController popViewControllerAnimated:YES];
     }
     
