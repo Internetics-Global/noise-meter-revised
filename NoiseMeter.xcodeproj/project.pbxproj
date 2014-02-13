@@ -70,6 +70,7 @@
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		880A002818AC83D800FB84F5 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
+		880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
@@ -210,6 +211,7 @@
 		11FBD44F151181CA00FF47C2 /* siren_wail.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.aifc; sourceTree = "<group>"; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		880A002718AC83D800FB84F5 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = "<group>"; };
+		880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createCustomAlarmButton.png; sourceTree = "<group>"; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */,
 				88FF307418AC6D1800B6E5BD /* closeButton@2x.png */,
 				88818C5817993CB3007B386F /* purchase@2x.png */,
 				11F3E5C615194CAE00549099 /* button_back.png */,
@@ -838,6 +841,7 @@
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,
 				1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */,
+				880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */,
 				88BEFE5D18A1FCB100399680 /* 15.png in Resources */,
 				11F3E5CA15194CAE00549099 /* button_back.png in Resources */,
 				88BEFE6D18A20E9300399680 /* 19.png in Resources */,

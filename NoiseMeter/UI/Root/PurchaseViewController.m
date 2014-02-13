@@ -212,25 +212,37 @@
     {
         switch (transaction.transactionState)
         {
-            case SKPaymentTransactionStatePurchased:
+            case SKPaymentTransactionStatePurchased: {
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 [self.navigationController popViewControllerAnimated:YES];
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                
                 break;
-            case SKPaymentTransactionStateFailed:
+            }
+            case SKPaymentTransactionStateFailed: {
                 NSLog(@"Fail to purchase,%@",transaction.error.localizedDescription);
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 break;
-            case SKPaymentTransactionStateRestored:
+            }
+            case SKPaymentTransactionStateRestored: {
                 NSLog(@"Fail to purchase: have bought this before");
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 [self.navigationController popViewControllerAnimated:YES];
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restore it" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                
                 break;
-            case SKPaymentTransactionStatePurchasing:
+            }
+            case SKPaymentTransactionStatePurchasing: {
                 NSLog(@"Add item into list to purchase");
                 break;
+            }
             default:
                 break;
         }

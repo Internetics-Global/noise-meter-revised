@@ -13,6 +13,7 @@
 #import "AlertView.h"
 #import "MoreView.h"
 #import "PurchaseViewController.h"
+#import "InternalWebView.h"
 
 @interface BaseViewController ()
 
@@ -48,9 +49,15 @@
 
 #pragma mark –  Setup AD view, which is used to prompt user to buy a pro version
 
-- (void) buyAction {
+//this is the old implementation
+- (void) buyAction2 {
     PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
     [self.navigationController pushViewController:purchaseViewController animated:YES];
+}
+
+- (void) buyAction {
+    InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/upgrade-to-noise-down-pro/"];
+    [self.navigationController pushViewController:web animated:YES];
 }
 
 

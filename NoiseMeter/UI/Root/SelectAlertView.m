@@ -34,6 +34,23 @@
     
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        setButton.frame = CGRectMake(20,  screenHeight - 120, 280, 37);
+    } else {
+        setButton.frame = CGRectMake(20, screenHeight - 71, 280, 37);
+    }
+    
+    setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [setButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];
+    [setButton addTarget:self action:@selector(createCustomAlarmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:setButton];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_alertTable reloadData];
@@ -42,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (3 + 1 + [FileHelper getMaxNumberCreatedAlarmFiles]);
+    return (3 + [FileHelper getMaxNumberCreatedAlarmFiles]);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -52,7 +69,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.accessoryType = UITableViewCellAccessoryNone;
-    if (indexPath.row == 1)
+    if (indexPath.row == 0)
     {
         cell.textLabel.text = @"Alarm";
         cell.backgroundColor = [UIColor whiteColor];
@@ -61,7 +78,7 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    else if (indexPath.row == 2)
+    else if (indexPath.row == 1)
     {
         cell.textLabel.text = @"Siren";
         cell.backgroundColor = [UIColor whiteColor];
@@ -70,7 +87,7 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
-    else if (indexPath.row == 3)
+    else if (indexPath.row == 2)
     {
         cell.textLabel.text = @"Alien";
         cell.backgroundColor = [UIColor whiteColor];
@@ -80,11 +97,7 @@
         }
     }
     
-    else if (indexPath.row == 0)
-    {
-        cell.textLabel.text = @"     Click to create custom alarm";
-        cell.backgroundColor = [UIColor orangeColor];
-    } else {
+    else {
         cell.textLabel.text = [NSString stringWithFormat:@"CustomAlarm%d",indexPath.row - 4];
         cell.backgroundColor = [UIColor whiteColor];
         
@@ -100,30 +113,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 1)
+    if (indexPath.row == 0)
     {
         [[NMDecibelLogger defaultLogger] setAlarmName:@"home_alarm"];
         [self.navigationController popViewControllerAnimated:YES];
     }
-    else if(indexPath.row == 2)
+    else if(indexPath.row == 1)
     {
         [[NMDecibelLogger defaultLogger] setAlarmName:@"siren_wail"];
         [self.navigationController popViewControllerAnimated:YES];
     }
-    else if (indexPath.row == 3)
+    else if (indexPath.row == 2)
     {
         [[NMDecibelLogger defaultLogger] setAlarmName:@"scifialarm"];
         [self.navigationController popViewControllerAnimated:YES];
-    } else if (indexPath.row == 0) {
-        
-        if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
-            [alert show];
-        } else {
-            CreateAlarmSoundViewController *createAlarmSoundViewController = [[CreateAlarmSoundViewController alloc] init];
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:createAlarmSoundViewController animated:YES completion:nil];
-        }
-        
     } else {
         [[NMDecibelLogger defaultLogger] setAlarmName:[NSString stringWithFormat:@"%d",(indexPath.row - 4)]];
         [self.navigationController popViewControllerAnimated:YES];
@@ -131,6 +134,15 @@
     
 }
 
+- (void) createCustomAlarmButtonClicked {
+    if ([NSUserDefaultsHelper isAdRemoved] == NO) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
+        [alert show];
+    } else {
+        CreateAlarmSoundViewController *createAlarmSoundViewController = [[CreateAlarmSoundViewController alloc] init];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:createAlarmSoundViewController animated:YES completion:nil];
+    }
+}
 
 - (void)viewDidUnload
 {
