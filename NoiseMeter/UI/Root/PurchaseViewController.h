@@ -10,10 +10,12 @@
 #import <iAd/iAd.h>
 #import <StoreKit/StoreKit.h>
 
-@interface PurchaseViewController : BaseViewController < SKProductsRequestDelegate,SKPaymentTransactionObserver,UIAlertViewDelegate> {
+@interface PurchaseViewController : BaseViewController < SKProductsRequestDelegate,SKPaymentTransactionObserver,UIAlertViewDelegate,UIWebViewDelegate> {
     SKProduct *skProduct;
     
     BOOL *_isOnlyRequestPrice;
+    
+    UIActivityIndicatorView *_activity;
     
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *purchaseButton;

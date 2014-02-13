@@ -39,6 +39,12 @@
     productsRequest.delegate = self;
     [productsRequest start];
     
+    self.webview.delegate = self;
+    
+    _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activity.frame = CGRectMake(self.view.frame.size.width/2 - 5, 30, 21, 21);
+    [self.view addSubview:_activity];
+    
 }
 
 - (void) viewDidUnload {
@@ -66,14 +72,15 @@
         self.webview.frame = rect;
     }
     
-//    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
     
     
+    _activity.center = self.webview.center;
     
-    NSString *resourcePath = [ [NSBundle mainBundle] resourcePath];
-    NSString *filePath  = [resourcePath stringByAppendingPathComponent:@"upgradeInstruction.html"];
-    NSString *htmlstring =[[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    [self.webview loadHTMLString:htmlstring  baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
+//    NSString *resourcePath = [ [NSBundle mainBundle] resourcePath];
+//    NSString *filePath  = [resourcePath stringByAppendingPathComponent:@"upgradeInstruction.html"];
+//    NSString *htmlstring =[[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+//    [self.webview loadHTMLString:htmlstring  baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle]  bundlePath]]];
 
 
 }
@@ -256,7 +263,7 @@
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 [self.navigationController popViewControllerAnimated:YES];
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restore it" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
                 
                 break;
@@ -276,6 +283,22 @@
 {
     [self viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark – UIWebViewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [_activity startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [_activity stopAnimating];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [_activity stopAnimating];
 }
 
 
