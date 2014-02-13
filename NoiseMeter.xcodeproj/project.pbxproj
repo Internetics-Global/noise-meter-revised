@@ -147,21 +147,21 @@
 		110F130E14EDD52E00BE4481 /* NoiseMeter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NoiseMeter.xcdatamodel; sourceTree = "<group>"; };
 		111A18CC1505E38D005655F1 /* background_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_count.png; sourceTree = "<group>"; };
 		111A18CD1505E38D005655F1 /* background_count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_count@2x.png"; sourceTree = "<group>"; };
-		111A18D01505E3A9005655F1 /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreView.h; sourceTree = "<group>"; };
-		111A18D11505E3A9005655F1 /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreView.m; sourceTree = "<group>"; };
-		111A18D31505E3B8005655F1 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
-		111A18D41505E3B8005655F1 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
-		1140FDCB1517FA3400DE0A64 /* MoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreView.h; sourceTree = "<group>"; };
-		1140FDCC1517FA3400DE0A64 /* MoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreView.m; sourceTree = "<group>"; };
+		111A18D01505E3A9005655F1 /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreView.h; path = UI/Root/ScoreView.h; sourceTree = "<group>"; };
+		111A18D11505E3A9005655F1 /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreView.m; path = UI/Root/ScoreView.m; sourceTree = "<group>"; };
+		111A18D31505E3B8005655F1 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertView.h; path = UI/Root/AlertView.h; sourceTree = "<group>"; };
+		111A18D41505E3B8005655F1 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = UI/Root/AlertView.m; sourceTree = "<group>"; };
+		1140FDCB1517FA3400DE0A64 /* MoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreView.h; path = UI/Root/MoreView.h; sourceTree = "<group>"; };
+		1140FDCC1517FA3400DE0A64 /* MoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreView.m; path = UI/Root/MoreView.m; sourceTree = "<group>"; };
 		1140FDCF1517FBE700DE0A64 /* icon_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_more.png; sourceTree = "<group>"; };
 		1140FDD01517FBE700DE0A64 /* icon_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_more@2x.png"; sourceTree = "<group>"; };
 		1140FDD31517FC6400DE0A64 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		1140FDDB1517FE5100DE0A64 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
-		1140FDDC1517FE5100DE0A64 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
+		1140FDDB1517FE5100DE0A64 /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutView.h; path = UI/Root/AboutView.h; sourceTree = "<group>"; };
+		1140FDDC1517FE5100DE0A64 /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutView.m; path = UI/Root/AboutView.m; sourceTree = "<group>"; };
 		1140FDE21518016400DE0A64 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		1168C315151966AB00897AA4 /* InstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionView.h; sourceTree = "<group>"; };
-		1168C316151966AB00897AA4 /* InstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionView.m; sourceTree = "<group>"; };
+		1168C315151966AB00897AA4 /* InstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstructionView.h; path = UI/Root/InstructionView.h; sourceTree = "<group>"; };
+		1168C316151966AB00897AA4 /* InstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstructionView.m; path = UI/Root/InstructionView.m; sourceTree = "<group>"; };
 		117D94131516B5B1002C5479 /* top_logo_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo_scores.png; sourceTree = "<group>"; };
 		117D94151516B5F7002C5479 /* top_logo_scores@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo_scores@2x.png"; sourceTree = "<group>"; };
 		117D94171516B66A002C5479 /* button_reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_reset.png; sourceTree = "<group>"; };
@@ -172,18 +172,18 @@
 		117D94241516B8DE002C5479 /* button_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_info@2x.png"; sourceTree = "<group>"; };
 		11A3EE71150F3D2D00A6496B /* SoundLevelCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundLevelCapture.h; sourceTree = "<group>"; };
 		11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundLevelCapture.m; sourceTree = "<group>"; };
-		11A3EE7C150F441F00A6496B /* SoundLevelCaptureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundLevelCaptureCell.h; sourceTree = "<group>"; };
-		11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundLevelCaptureCell.m; sourceTree = "<group>"; };
-		11A3EE7F150F456B00A6496B /* CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureView.h; sourceTree = "<group>"; };
-		11A3EE80150F456B00A6496B /* CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureView.m; sourceTree = "<group>"; };
-		11AC52E31505CCFF0093C7AB /* NMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMDataManager.h; sourceTree = "<group>"; };
-		11AC52E41505CCFF0093C7AB /* NMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMDataManager.m; sourceTree = "<group>"; };
-		11AC52EA1505CDA80093C7AB /* NMDecibelLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMDecibelLogger.h; sourceTree = "<group>"; };
-		11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMDecibelLogger.m; sourceTree = "<group>"; };
-		11AC52EE1505D3010093C7AB /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
-		11AC52EF1505D3010093C7AB /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootView.m; sourceTree = "<group>"; };
-		11AC52F31505D34C0093C7AB /* UIViewController+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Styling.h"; sourceTree = "<group>"; };
-		11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Styling.m"; sourceTree = "<group>"; };
+		11A3EE7C150F441F00A6496B /* SoundLevelCaptureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundLevelCaptureCell.h; path = UI/SoundLevelCaptureCell.h; sourceTree = "<group>"; };
+		11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundLevelCaptureCell.m; path = UI/SoundLevelCaptureCell.m; sourceTree = "<group>"; };
+		11A3EE7F150F456B00A6496B /* CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureView.h; path = UI/Root/CaptureView.h; sourceTree = "<group>"; };
+		11A3EE80150F456B00A6496B /* CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureView.m; path = UI/Root/CaptureView.m; sourceTree = "<group>"; };
+		11AC52E31505CCFF0093C7AB /* NMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NMDataManager.h; path = ../NMDataManager.h; sourceTree = "<group>"; };
+		11AC52E41505CCFF0093C7AB /* NMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NMDataManager.m; path = ../NMDataManager.m; sourceTree = "<group>"; };
+		11AC52EA1505CDA80093C7AB /* NMDecibelLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NMDecibelLogger.h; path = ../NMDecibelLogger.h; sourceTree = "<group>"; };
+		11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NMDecibelLogger.m; path = ../NMDecibelLogger.m; sourceTree = "<group>"; };
+		11AC52EE1505D3010093C7AB /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootView.h; path = UI/Root/RootView.h; sourceTree = "<group>"; };
+		11AC52EF1505D3010093C7AB /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootView.m; path = UI/Root/RootView.m; sourceTree = "<group>"; };
+		11AC52F31505D34C0093C7AB /* UIViewController+Styling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Styling.h"; path = "Support/Categories/UIViewController+Styling.h"; sourceTree = "<group>"; };
+		11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Styling.m"; path = "Support/Categories/UIViewController+Styling.m"; sourceTree = "<group>"; };
 		11AC52F71505D3850093C7AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		11AC52F91505D3950093C7AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		11AC53031505D3F20093C7AB /* icon_alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_alert.png; sourceTree = "<group>"; };
@@ -198,16 +198,16 @@
 		11AC53141505D4190093C7AB /* button_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_save@2x.png"; sourceTree = "<group>"; };
 		11AC53151505D4190093C7AB /* button_setalarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_setalarm.png; sourceTree = "<group>"; };
 		11AC53161505D4190093C7AB /* button_setalarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_setalarm@2x.png"; sourceTree = "<group>"; };
-		11AC531B1505D4420093C7AB /* MeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterView.h; sourceTree = "<group>"; };
-		11AC531C1505D4420093C7AB /* MeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeterView.m; sourceTree = "<group>"; };
+		11AC531B1505D4420093C7AB /* MeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeterView.h; path = UI/Root/MeterView.h; sourceTree = "<group>"; };
+		11AC531C1505D4420093C7AB /* MeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeterView.m; path = UI/Root/MeterView.m; sourceTree = "<group>"; };
 		11F3E5C615194CAE00549099 /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_back.png; sourceTree = "<group>"; };
 		11F3E5C715194CAE00549099 /* button_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_back@2x.png"; sourceTree = "<group>"; };
 		11F3E5C815194CAE00549099 /* button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_close.png; sourceTree = "<group>"; };
 		11F3E5C915194CAE00549099 /* button_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_close@2x.png"; sourceTree = "<group>"; };
-		11F3E5CF1519501800549099 /* SelectAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAlertView.h; sourceTree = "<group>"; };
-		11F3E5D01519501800549099 /* SelectAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAlertView.m; sourceTree = "<group>"; };
-		11F3E5D21519561400549099 /* InternalWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternalWebView.h; sourceTree = "<group>"; };
-		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternalWebView.m; sourceTree = "<group>"; };
+		11F3E5CF1519501800549099 /* SelectAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAlertView.h; path = UI/Root/SelectAlertView.h; sourceTree = "<group>"; };
+		11F3E5D01519501800549099 /* SelectAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAlertView.m; path = UI/Root/SelectAlertView.m; sourceTree = "<group>"; };
+		11F3E5D21519561400549099 /* InternalWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalWebView.h; path = UI/Root/InternalWebView.h; sourceTree = "<group>"; };
+		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalWebView.m; path = UI/Root/InternalWebView.m; sourceTree = "<group>"; };
 		11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		11FBD44D151181CA00FF47C2 /* home_alarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.aifc; sourceTree = "<group>"; };
 		11FBD44E151181CA00FF47C2 /* scifialarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.aifc; sourceTree = "<group>"; };
@@ -218,8 +218,8 @@
 		880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "createCustomAlarmButton@2x.png"; sourceTree = "<group>"; };
 		880A003418ACB91B00FB84F5 /* upgradeInstruction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upgradeInstruction.html; sourceTree = "<group>"; };
 		880A003818ACD22C00FB84F5 /* upgrade.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = upgrade.css; sourceTree = "<group>"; };
-		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Root/BaseViewController.h; sourceTree = "<group>"; };
-		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Root/BaseViewController.m; sourceTree = "<group>"; };
+		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = UI/Root/BaseViewController.h; sourceTree = "<group>"; };
+		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
 		88131CD918AB223F00D2541A /* overlay568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay568.png; sourceTree = "<group>"; };
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
@@ -234,9 +234,9 @@
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
-		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
-		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
-		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseViewController.xib; sourceTree = "<group>"; };
+		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
+		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = UI/Root/PurchaseViewController.h; sourceTree = "<group>"; };
+		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = UI/Root/PurchaseViewController.xib; sourceTree = "<group>"; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD224177BC3270046D281 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD225177BC3400046D281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -275,8 +275,8 @@
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
-		88BEFE1818A1EDEE00399680 /* PlayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayHelper.h; sourceTree = "<group>"; };
-		88BEFE1918A1EDEE00399680 /* PlayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayHelper.m; sourceTree = "<group>"; };
+		88BEFE1818A1EDEE00399680 /* PlayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHelper.h; path = Data/PlayHelper.h; sourceTree = "<group>"; };
+		88BEFE1918A1EDEE00399680 /* PlayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayHelper.m; path = Data/PlayHelper.m; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
 		88BEFE3F18A1FCB000399680 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Meters/2.png; sourceTree = "<group>"; };
 		88BEFE4018A1FCB000399680 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = Meters/3.png; sourceTree = "<group>"; };
@@ -294,8 +294,8 @@
 		88BEFE4C18A1FCB100399680 /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 15.png; path = Meters/15.png; sourceTree = "<group>"; };
 		88BEFE4D18A1FCB100399680 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 16.png; path = Meters/16.png; sourceTree = "<group>"; };
 		88BEFE4E18A1FCB100399680 /* 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 17.png; path = Meters/17.png; sourceTree = "<group>"; };
-		88BEFE6018A1FCE800399680 /* SoundLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundLevelView.h; sourceTree = "<group>"; };
-		88BEFE6118A1FCE800399680 /* SoundLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundLevelView.m; sourceTree = "<group>"; };
+		88BEFE6018A1FCE800399680 /* SoundLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundLevelView.h; path = UI/SoundLevelView.h; sourceTree = "<group>"; };
+		88BEFE6118A1FCE800399680 /* SoundLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundLevelView.m; path = UI/SoundLevelView.m; sourceTree = "<group>"; };
 		88BEFE6918A20E9300399680 /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 18.png; path = Meters/18.png; sourceTree = "<group>"; };
 		88BEFE6A18A20E9300399680 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 19.png; path = Meters/19.png; sourceTree = "<group>"; };
 		88BEFE6B18A20E9300399680 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 20.png; path = Meters/20.png; sourceTree = "<group>"; };
@@ -306,9 +306,9 @@
 		88DDF493189B1B3E00138ADF /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = GoogleAnalytics/GAITransactionItem.h; sourceTree = "<group>"; };
 		88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmSoundViewController.h; sourceTree = "<group>"; };
-		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
-		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
+		88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateAlarmSoundViewController.h; path = UI/Root/CreateAlarmSoundViewController.h; sourceTree = "<group>"; };
+		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
+		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
 		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
@@ -388,12 +388,13 @@
 		110F130114EDD52E00BE4481 /* NoiseMeter */ = {
 			isa = PBXGroup;
 			children = (
-				88DDF47D189B19A300138ADF /* Vendor */,
 				88DDF47C189B198800138ADF /* App */,
+				8829A77518AD6B8B00DA41F9 /* Controller */,
+				11A3EE6F150F3D2300A6496B /* Models */,
+				8829A77718AD6BF700DA41F9 /* Libraries */,
 				88B47357189A1819005668AC /* Helper */,
+				88DDF47D189B19A300138ADF /* Vendor */,
 				11AC52F61505D37B0093C7AB /* Resources */,
-				11AC52E01505CCA30093C7AB /* Data */,
-				11AC52E11505CCA30093C7AB /* UI */,
 			);
 			path = NoiseMeter;
 			sourceTree = "<group>";
@@ -410,79 +411,15 @@
 		11A3EE6F150F3D2300A6496B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				11A3EE71150F3D2D00A6496B /* SoundLevelCapture.h */,
-				11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		11AC52E01505CCA30093C7AB /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				88DDF467189B187F00138ADF /* IAP */,
-				11A3EE6F150F3D2300A6496B /* Models */,
 				11AC52E31505CCFF0093C7AB /* NMDataManager.h */,
 				11AC52E41505CCFF0093C7AB /* NMDataManager.m */,
 				11AC52EA1505CDA80093C7AB /* NMDecibelLogger.h */,
 				11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */,
-				88BEFE1818A1EDEE00399680 /* PlayHelper.h */,
-				88BEFE1918A1EDEE00399680 /* PlayHelper.m */,
+				11A3EE71150F3D2D00A6496B /* SoundLevelCapture.h */,
+				11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */,
 			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		11AC52E11505CCA30093C7AB /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				881032AC18A361FE000CA722 /* BaseViewController.h */,
-				881032AD18A361FE000CA722 /* BaseViewController.m */,
-				11AC52ED1505D2EC0093C7AB /* Root */,
-				11A3EE7C150F441F00A6496B /* SoundLevelCaptureCell.h */,
-				11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */,
-				88BEFE6018A1FCE800399680 /* SoundLevelView.h */,
-				88BEFE6118A1FCE800399680 /* SoundLevelView.m */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		11AC52ED1505D2EC0093C7AB /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				11AC52EE1505D3010093C7AB /* RootView.h */,
-				11AC52EF1505D3010093C7AB /* RootView.m */,
-				11AC531B1505D4420093C7AB /* MeterView.h */,
-				11AC531C1505D4420093C7AB /* MeterView.m */,
-				111A18D01505E3A9005655F1 /* ScoreView.h */,
-				111A18D11505E3A9005655F1 /* ScoreView.m */,
-				111A18D31505E3B8005655F1 /* AlertView.h */,
-				111A18D41505E3B8005655F1 /* AlertView.m */,
-				11A3EE7F150F456B00A6496B /* CaptureView.h */,
-				11A3EE80150F456B00A6496B /* CaptureView.m */,
-				1140FDCB1517FA3400DE0A64 /* MoreView.h */,
-				1140FDCC1517FA3400DE0A64 /* MoreView.m */,
-				1140FDDB1517FE5100DE0A64 /* AboutView.h */,
-				1140FDDC1517FE5100DE0A64 /* AboutView.m */,
-				11F3E5CF1519501800549099 /* SelectAlertView.h */,
-				11F3E5D01519501800549099 /* SelectAlertView.m */,
-				11F3E5D21519561400549099 /* InternalWebView.h */,
-				11F3E5D31519561400549099 /* InternalWebView.m */,
-				1168C315151966AB00897AA4 /* InstructionView.h */,
-				1168C316151966AB00897AA4 /* InstructionView.m */,
-				88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */,
-				88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */,
-				88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		11AC52F21505D3400093C7AB /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				11AC52F31505D34C0093C7AB /* UIViewController+Styling.h */,
-				11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */,
-			);
-			name = Categories;
-			path = Support/Categories;
+			name = Models;
+			path = Data/Models;
 			sourceTree = "<group>";
 		};
 		11AC52F61505D37B0093C7AB /* Resources */ = {
@@ -582,6 +519,54 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		8829A77518AD6B8B00DA41F9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11AC52EE1505D3010093C7AB /* RootView.h */,
+				11AC52EF1505D3010093C7AB /* RootView.m */,
+				11AC531B1505D4420093C7AB /* MeterView.h */,
+				11AC531C1505D4420093C7AB /* MeterView.m */,
+				111A18D01505E3A9005655F1 /* ScoreView.h */,
+				111A18D11505E3A9005655F1 /* ScoreView.m */,
+				111A18D31505E3B8005655F1 /* AlertView.h */,
+				111A18D41505E3B8005655F1 /* AlertView.m */,
+				11A3EE7F150F456B00A6496B /* CaptureView.h */,
+				11A3EE80150F456B00A6496B /* CaptureView.m */,
+				1140FDCB1517FA3400DE0A64 /* MoreView.h */,
+				1140FDCC1517FA3400DE0A64 /* MoreView.m */,
+				1140FDDB1517FE5100DE0A64 /* AboutView.h */,
+				1140FDDC1517FE5100DE0A64 /* AboutView.m */,
+				11F3E5CF1519501800549099 /* SelectAlertView.h */,
+				11F3E5D01519501800549099 /* SelectAlertView.m */,
+				11F3E5D21519561400549099 /* InternalWebView.h */,
+				11F3E5D31519561400549099 /* InternalWebView.m */,
+				1168C315151966AB00897AA4 /* InstructionView.h */,
+				1168C316151966AB00897AA4 /* InstructionView.m */,
+				88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */,
+				88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */,
+				88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */,
+				88818C601799F58F007B386F /* PurchaseViewController.m */,
+				88818C611799F58F007B386F /* PurchaseViewController.h */,
+				88818C621799F58F007B386F /* PurchaseViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8829A77718AD6BF700DA41F9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				881032AC18A361FE000CA722 /* BaseViewController.h */,
+				881032AD18A361FE000CA722 /* BaseViewController.m */,
+				11AC52F31505D34C0093C7AB /* UIViewController+Styling.h */,
+				11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */,
+				11A3EE7C150F441F00A6496B /* SoundLevelCaptureCell.h */,
+				11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */,
+				88BEFE6018A1FCE800399680 /* SoundLevelView.h */,
+				88BEFE6118A1FCE800399680 /* SoundLevelView.m */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		88376CE2177BB41900F9F477 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,6 +615,8 @@
 		88B47357189A1819005668AC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				88BEFE1818A1EDEE00399680 /* PlayHelper.h */,
+				88BEFE1918A1EDEE00399680 /* PlayHelper.m */,
 				88B47354189A148E005668AC /* CAFAudioHelper.h */,
 				88B47355189A148E005668AC /* CAFAudioHelper.m */,
 				88B47358189A182C005668AC /* FileHelper.h */,
@@ -667,17 +654,6 @@
 			name = Meters;
 			sourceTree = "<group>";
 		};
-		88DDF467189B187F00138ADF /* IAP */ = {
-			isa = PBXGroup;
-			children = (
-				88818C601799F58F007B386F /* PurchaseViewController.m */,
-				88818C611799F58F007B386F /* PurchaseViewController.h */,
-				88818C621799F58F007B386F /* PurchaseViewController.xib */,
-			);
-			name = IAP;
-			path = ../UI/Root;
-			sourceTree = "<group>";
-		};
 		88DDF47C189B198800138ADF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -699,7 +675,6 @@
 				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
 				88376CE2177BB41900F9F477 /* Flurry */,
-				11AC52F21505D3400093C7AB /* Categories */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
