@@ -7,6 +7,7 @@
 //
 
 #import "NMDecibelLogger.h"
+#import "FileHelper.h"
 
 @implementation NMDecibelLogger
 
@@ -144,16 +145,25 @@
     if (!_playingAlarm) 
     {
         NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"aifc"];
-        NSLog(@"%@ - %@", path, self.alarmName);
+        NSLog(@"path = %@; alarmName = %@", path, self.alarmName);
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
+            NSLog(@"%s:No of aifc formated alarm file",__FUNCTION__);
+            path = [FileHelper getCreatedAlarmFile:self.alarmName];
+            if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
+                NSLog(@"%s:No of caf formated alarm file",__FUNCTION__);
+            }
+        }
+        
         if ([[NSFileManager defaultManager] fileExistsAtPath : path])
         {
             NSURL *pathURL = [NSURL fileURLWithPath : path];
             OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            if (error != kAudioServicesNoError) 
+            if (error != kAudioServicesNoError)
             {
                 NSLog(@"Invalid Alarm");
             }
-            else 
+            else
             {
                 [self stopLogging];
                 AudioServicesPlaySystemSound(audioEffect);
@@ -161,10 +171,7 @@
                 
                 [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
             }
-        }
-        else 
-        {
-            NSLog(@"NO file");
+            
         }
     }
     
@@ -260,13 +267,16 @@
         return;
     }
     
+
     _sampleTimer = nil;
-    if (!_playingAlarm)
+    
+    if ((!_playingAlarm) && (APP_DELEGATE.isCreatingCustomAlarmFile == FALSE))
     {
         [self willChangeValueForKey:@"currentReading"];
         _currentReading = [NSNumber numberWithFloat:([self rawReading] + 100)];
         [self didChangeValueForKey:@"currentReading"];
     }
+    
     _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
     
     NSLog(@"%s:timeFire",__FUNCTION__);
@@ -307,6 +317,7 @@ void audioRouteChangeListenerCallback (
         
         if ([NSUserDefaultsHelper isOutputToEarpiece]) {
           success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
+            
         } else {
             success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
         }
@@ -354,5 +365,6 @@ void audioRouteChangeListenerCallback (
         AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
     }
 }
+
 
 @end

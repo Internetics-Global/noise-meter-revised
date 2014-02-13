@@ -14,8 +14,14 @@
 
 + (NSString *) convertDate: (NSDate *) date;
 
++ (NSURL *) getDefaultRecordedaAudioFile;  //temp.caf
+
 
 //删除tmp目录下的所有文件，除了tmp.caf文件外
 + (void) removeAllExceptTMPCAF;
+
++ (void) saveNewCreatedAlarm:(NSURL *) originalPath;
++ (int) getMaxNumberCreatedAlarmFiles;
++ (NSString *) getCreatedAlarmFile:(NSString *) fileName;
 
 @end

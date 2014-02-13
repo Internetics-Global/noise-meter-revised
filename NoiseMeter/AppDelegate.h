@@ -17,4 +17,6 @@
 
 @property (nonatomic) UIBackgroundTaskIdentifier backgroundTask;
 
+@property (assign, nonatomic) BOOL isCreatingCustomAlarmFile;
+
 @end

@@ -17,6 +17,7 @@
 
 #import "NSUserDefaultsHelper.h"
 #import "BaseViewController.h"
+#import "AppDelegate.h"
 
 //两种后台运行方式：YES，后台驻留运行；NO，只能运行10分钟
 #define isUseLongRunningtTask      (YES)
@@ -31,3 +32,5 @@
 #define K_TOP_IMAGEVIEW_TAG 99
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define APP_DELEGATE ((AppDelegate *)[[UIApplication sharedApplication] delegate])

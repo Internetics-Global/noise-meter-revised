@@ -69,6 +69,7 @@
 		11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44E151181CA00FF47C2 /* scifialarm.aifc */; };
 		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
+		880A002818AC83D800FB84F5 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
@@ -116,6 +117,9 @@
 		88BEFE6E18A20E9300399680 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
 		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
+		88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */; };
+		88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */; };
+		88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307418AC6D1800B6E5BD /* closeButton@2x.png */; };
 		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
@@ -205,6 +209,7 @@
 		11FBD44E151181CA00FF47C2 /* scifialarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.aifc; sourceTree = "<group>"; };
 		11FBD44F151181CA00FF47C2 /* siren_wail.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.aifc; sourceTree = "<group>"; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
+		880A002718AC83D800FB84F5 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = "<group>"; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
@@ -293,6 +298,10 @@
 		88DDF493189B1B3E00138ADF /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = GoogleAnalytics/GAITransactionItem.h; sourceTree = "<group>"; };
 		88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmSoundViewController.h; sourceTree = "<group>"; };
+		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
+		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
+		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -451,6 +460,9 @@
 				11F3E5D31519561400549099 /* InternalWebView.m */,
 				1168C315151966AB00897AA4 /* InstructionView.h */,
 				1168C316151966AB00897AA4 /* InstructionView.m */,
+				88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */,
+				88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */,
+				88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -505,6 +517,7 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				88FF307418AC6D1800B6E5BD /* closeButton@2x.png */,
 				88818C5817993CB3007B386F /* purchase@2x.png */,
 				11F3E5C615194CAE00549099 /* button_back.png */,
 				11F3E5C715194CAE00549099 /* button_back@2x.png */,
@@ -515,6 +528,7 @@
 				117D941F1516B8A4002C5479 /* close_button.png */,
 				117D94201516B8A4002C5479 /* overlay02.png */,
 				117D94171516B66A002C5479 /* button_reset.png */,
+				880A002718AC83D800FB84F5 /* recordButton.png */,
 				117D94181516B66A002C5479 /* button_reset@2x.png */,
 				11AC53131505D4190093C7AB /* button_save.png */,
 				11AC53141505D4190093C7AB /* button_save@2x.png */,
@@ -818,8 +832,10 @@
 				88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */,
 				88BEFE5418A1FCB100399680 /* 6.png in Resources */,
 				117D94251516B8DE002C5479 /* button_info.png in Resources */,
+				880A002818AC83D800FB84F5 /* recordButton.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
+				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,
 				1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */,
 				88BEFE5D18A1FCB100399680 /* 15.png in Resources */,
@@ -832,6 +848,7 @@
 				9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */,
 				9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */,
 				9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */,
+				88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */,
 				88BEFE5118A1FCB100399680 /* 3.png in Resources */,
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
@@ -851,6 +868,7 @@
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,
+				88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
@@ -992,7 +1010,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
