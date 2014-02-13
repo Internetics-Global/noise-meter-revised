@@ -23,15 +23,6 @@
     [super loadView];
     
     [self style];
-    
-    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, self.view.frame.size.height - 105) style:UITableViewStyleGrouped];
-    _alertTable.delegate = self;
-    _alertTable.dataSource = self;
-    _alertTable.opaque = NO;
-    _alertTable.backgroundView = nil;
-    _alertTable.backgroundColor = [UIColor clearColor];
-    _alertTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:_alertTable];
 
     
 }
@@ -39,18 +30,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *setButton = [UIButton buttonWithType:UIButtonTypeCustom];
     int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
+    
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        setButton.frame = CGRectMake(20,  screenHeight - 120, 280, 37);
+      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, screenHeight - 255) style:UITableViewStyleGrouped];
     } else {
-        setButton.frame = CGRectMake(20, screenHeight - 71, 280, 37);
+      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, screenHeight - 236) style:UITableViewStyleGrouped];
     }
     
-    setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [setButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];
-    [setButton addTarget:self action:@selector(createCustomAlarmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:setButton];
+    _alertTable.delegate = self;
+    _alertTable.dataSource = self;
+    _alertTable.opaque = NO;
+    _alertTable.backgroundView = nil;
+    _alertTable.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_alertTable];
+    
+    UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        createCustomAlarmButton.frame = CGRectMake(20,  screenHeight - 120, 280, 37);
+    } else {
+        createCustomAlarmButton.frame = CGRectMake(20, screenHeight - 71, 280, 37);
+    }
+    
+    createCustomAlarmButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [createCustomAlarmButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];
+    [createCustomAlarmButton addTarget:self action:@selector(createCustomAlarmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:createCustomAlarmButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,6 +69,7 @@
 {
     return (3 + [FileHelper getMaxNumberCreatedAlarmFiles]);
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -110,6 +117,11 @@
         }
     }
     return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
