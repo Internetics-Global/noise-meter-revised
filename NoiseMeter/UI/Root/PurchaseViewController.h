@@ -19,6 +19,7 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *purchaseButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *restoreButton;
 
+@property (unsafe_unretained, nonatomic) IBOutlet UIWebView *webview;
 
 
 @end

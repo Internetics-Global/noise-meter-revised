@@ -50,12 +50,12 @@
 #pragma mark –  Setup AD view, which is used to prompt user to buy a pro version
 
 //this is the old implementation
-- (void) buyAction2 {
+- (void) buyAction {
     PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
     [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
-- (void) buyAction {
+- (void) buyAction2 {
     InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/upgrade-to-noise-down-pro/"];
     [self.navigationController pushViewController:web animated:YES];
 }
