@@ -29,6 +29,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self style];
+    self.view.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    
+    //relocate TOP banner view
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        NSArray *viewArray = [self.view subviews];
+        for (UIView *myView in viewArray) {
+            if ((myView.tag == K_TOP_IMAGEVIEW_TAG) &&
+                ([myView isKindOfClass:[UIImageView class]])) {
+                UIImageView *topBannerImageView = (UIImageView *)myView;
+                topBannerImageView.frame = CGRectOffset(topBannerImageView.frame, 0, 19);
+                break;
+            }
+        }
+        
+        _dismissButton.frame = CGRectOffset(_dismissButton.frame, 0, 19);
+    }
+    
     _playButton.hidden = YES;
     _saveButton.hidden = YES;
     
