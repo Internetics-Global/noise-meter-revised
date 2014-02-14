@@ -84,6 +84,7 @@
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
+		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
@@ -233,6 +234,7 @@
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
+		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
 		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = UI/Root/PurchaseViewController.h; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */,
 				880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */,
 				880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */,
 				88FF307418AC6D1800B6E5BD /* closeButton@2x.png */,
@@ -545,8 +548,8 @@
 				88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */,
 				88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */,
 				88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */,
-				88818C601799F58F007B386F /* PurchaseViewController.m */,
 				88818C611799F58F007B386F /* PurchaseViewController.h */,
+				88818C601799F58F007B386F /* PurchaseViewController.m */,
 				88818C621799F58F007B386F /* PurchaseViewController.xib */,
 			);
 			name = Controller;
@@ -782,6 +785,7 @@
 				11AC530D1505D3F20093C7AB /* icon_scores.png in Resources */,
 				88BEFE5918A1FCB100399680 /* 11.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
+				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
 				88131CDB18AB224000D2541A /* overlay568.png in Resources */,
 				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
