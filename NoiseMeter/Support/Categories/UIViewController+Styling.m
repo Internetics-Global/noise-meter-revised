@@ -24,7 +24,7 @@
     if ((self.navigationController) && ([[self.navigationController viewControllers] count] > 1) && (![self isMemberOfClass:NSClassFromString(@"CaptureView")])) 
     {
         _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backButton.frame = CGRectMake(10, 10, 57, 29);
+        _backButton.frame = CGRectMake(10, 10, 54, 21);
         _backButton.tag = 314;
         [_backButton setImage:[UIImage imageNamed:@"button_back.png"] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];

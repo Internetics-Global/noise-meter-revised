@@ -86,7 +86,7 @@
 {
     if (pickerView == _pickerView) 
     {
-        return 60;
+        return 90;
     }
     else 
     {
