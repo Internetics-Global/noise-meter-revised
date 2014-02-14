@@ -263,6 +263,9 @@
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                
+                [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
+                
                 [self.navigationController popViewControllerAnimated:YES];
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -279,6 +282,9 @@
                 NSLog(@"Fail to purchase: have bought this before");
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+                
+                [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
+                
                 [self.navigationController popViewControllerAnimated:YES];
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
