@@ -17,6 +17,8 @@
     
     UIActivityIndicatorView *_activity;
     
+    UIButton *_backButton;
+    
 }
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *purchaseButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *restoreButton;

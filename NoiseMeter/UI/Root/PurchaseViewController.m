@@ -45,6 +45,8 @@
     _activity.frame = CGRectMake(self.view.frame.size.width/2 - 5, 30, 21, 21);
     [self.view addSubview:_activity];
     
+    _backButton = [self findBackButton];
+    
 }
 
 - (void) viewDidUnload {
@@ -157,6 +159,11 @@
         request.delegate = self;
         [request start];
         
+        if (_backButton) {
+            _backButton.enabled = NO;
+        }
+        
+        
     } else {
         NSLog(@"Failure，forbid to allow for purchase");
     }
@@ -169,13 +176,23 @@
   if (_isOnlyRequestPrice) {
     _isOnlyRequestPrice = NO;
   }
+    
+  if (_backButton) {
+        _backButton.enabled = YES;
+  }
 }
 
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
+    
+    if (_backButton) {
+        _backButton.enabled = YES;
+    }
+    
     NSArray *myProduct = response.products;
     
     if (myProduct.count == 0) {
+        
         NSLog(@"Fail to get purchase info (myProduct.count = 0)");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
                                                             message:@"Fail to purchase, try again later"
@@ -239,6 +256,7 @@
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
     for (SKPaymentTransaction *transaction in transactions)
     {
+        
         switch (transaction.transactionState)
         {
             case SKPaymentTransactionStatePurchased: {
@@ -285,6 +303,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (UIButton *) findBackButton {
+    NSArray *subViews = [self.view subviews];
+    for (UIView *myView in subViews) {
+        if ((myView.tag == 314) && ([myView isMemberOfClass:[UIButton class]])) {
+            return ((UIButton *) myView);
+        }
+    }
+    
+    return nil;
+}
+
 #pragma mark – UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
@@ -300,6 +329,7 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [_activity stopAnimating];
 }
+
 
 
 @end

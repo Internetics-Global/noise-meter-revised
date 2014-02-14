@@ -266,13 +266,12 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
         [alert show];
         [myswitch setOn:NO];
-        return;
-    }
-    
-    if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
     } else {
-        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        if ([myswitch isOn]) {
+            [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
+        } else {
+            [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        }
     }
     
 }
