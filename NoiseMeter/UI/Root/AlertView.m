@@ -36,7 +36,7 @@
     [self.view addSubview:_explanation];
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width, 150)];
-    _pickerView.backgroundColor = [UIColor whiteColor];
+    _pickerView.backgroundColor = [UIColor blackColor];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
@@ -94,28 +94,44 @@
     }
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    if (pickerView == _pickerView) {
-        return [NSString stringWithFormat:@"%d", row + 40];
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, pickerView.frame.size.width, 44)];
+    label.backgroundColor = [UIColor clearColor];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+      label.textColor = [UIColor whiteColor];
+    } else {
+      label.textColor = [UIColor blackColor];
     }
-    else 
+    
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
+    label.text = [NSString stringWithFormat:@"%d", row + 40];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    
+    if (pickerView == _pickerView) {
+        
+        label.text = [NSString stringWithFormat:@"%d", row + 40];
+    }
+    else
     {
-        if (row == 0) 
+        if (row == 0)
         {
-            return @"Alarm";
+            label.text = @"Alarm";
         }
         else if(row == 1)
         {
-            return @"Siren";
+            label.text = @"Siren";
         }
         else if (row == 2)
         {
-            return @"Alien";
+            label.text = @"Alien";
         }
     }
-    return @"";
+    
+    
+    return label;
 }
+
 
 - (void)viewDidLoad
 {
