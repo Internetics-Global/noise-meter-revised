@@ -42,7 +42,10 @@
     _alertTable.dataSource = self;
     _alertTable.opaque = NO;
     _alertTable.backgroundView = nil;
-    _alertTable.backgroundColor = [UIColor clearColor];
+    _alertTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _alertTable.separatorColor = [UIColor colorWithRed:97.0/255 green:97.0/255 blue:97.0/255 alpha:1];
+    _alertTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    
     [self.view addSubview:_alertTable];
     
     UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -81,7 +84,6 @@
     if (indexPath.row == 0)
     {
         cell.textLabel.text = @"Alarm";
-        cell.backgroundColor = [UIColor whiteColor];
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:@"home_alarm"]) 
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -90,7 +92,6 @@
     else if (indexPath.row == 1)
     {
         cell.textLabel.text = @"Siren";
-        cell.backgroundColor = [UIColor whiteColor];
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:@"siren_wail"]) 
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -99,7 +100,6 @@
     else if (indexPath.row == 2)
     {
         cell.textLabel.text = @"Alien";
-        cell.backgroundColor = [UIColor whiteColor];
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:@"scifialarm"]) 
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -108,7 +108,6 @@
     
     else {
         cell.textLabel.text = [NSString stringWithFormat:@"CustomAlarm%d",indexPath.row - 3];
-        cell.backgroundColor = [UIColor whiteColor];
         
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:
              [NSString stringWithFormat:@"%d",indexPath.row - 3]])
@@ -116,6 +115,9 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     }
+    
+    cell.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    cell.textLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

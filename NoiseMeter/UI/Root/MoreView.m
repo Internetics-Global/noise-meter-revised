@@ -46,8 +46,10 @@
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
     _optionTable.opaque = NO;
+    _optionTable.separatorColor = [UIColor colorWithRed:97.0/255 green:97.0/255 blue:97.0/255 alpha:1];
+    _optionTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _optionTable.backgroundView = nil;
-    _optionTable.backgroundColor = [UIColor clearColor];
+    _optionTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     _optionTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_optionTable];
 
@@ -144,6 +146,9 @@
             cell.textLabel.text = @"Support";
         }
     }
+    
+    cell.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
 }

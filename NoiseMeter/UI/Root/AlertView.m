@@ -36,7 +36,7 @@
     [self.view addSubview:_explanation];
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width, 150)];
-    _pickerView.backgroundColor = [UIColor blackColor];
+    _pickerView.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
