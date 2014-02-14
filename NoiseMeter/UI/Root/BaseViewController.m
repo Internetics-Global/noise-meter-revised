@@ -110,13 +110,9 @@
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
     
     //step1: update top logo
-    NSArray *viewArray = [self.view subviews];
-    for (UIView *myView in viewArray) {
-        if ((myView.tag == K_TOP_IMAGEVIEW_TAG) &&
-            ([myView isKindOfClass:[UIImageView class]])) {
-            [((UIImageView *)myView) setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
-            break;
-        }
+    UIImageView *imageView = [self findTopBarImageView];
+    if (imageView) {
+        [imageView setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
     }
     
     //step2: remove the AD view

@@ -34,22 +34,6 @@
     
     int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 115, self.view.frame.size.width, screenHeight - 255) style:UITableViewStyleGrouped];
-    } else {
-      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 115, self.view.frame.size.width, screenHeight - 236) style:UITableViewStyleGrouped];
-    }
-    
-    _alertTable.delegate = self;
-    _alertTable.dataSource = self;
-    _alertTable.opaque = NO;
-    _alertTable.backgroundView = nil;
-    _alertTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    _alertTable.separatorColor = [UIColor colorWithRed:97.0/255 green:97.0/255 blue:97.0/255 alpha:1];
-    _alertTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
-    
-    [self.view addSubview:_alertTable];
-    
     UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
@@ -65,15 +49,26 @@
     
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
-    [resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
-    resetButton.frame = CGRectMake(self.view.frame.size.width- 80, 79, 73, 29);
-    UIButton *backButton = [self findBackButton];
-    if (backButton) {
-        CGPoint point = resetButton.center;
-        point.y = backButton.center.y;
-        resetButton.center = point;
-    }
+    [resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *topBarImageView = [self findTopBarImageView];
+    resetButton.frame = CGRectMake(self.view.frame.size.width- 80, CGRectGetMaxY(topBarImageView.frame), 73, 29);
     [self.view addSubview:resetButton];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 145, self.view.frame.size.width, screenHeight - 295) style:UITableViewStyleGrouped];
+    } else {
+        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 145, self.view.frame.size.width, screenHeight - 275) style:UITableViewStyleGrouped];
+    }
+    
+    _alertTable.delegate = self;
+    _alertTable.dataSource = self;
+    _alertTable.opaque = NO;
+    _alertTable.backgroundView = nil;
+    _alertTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _alertTable.separatorColor = [UIColor colorWithRed:97.0/255 green:97.0/255 blue:97.0/255 alpha:1];
+    _alertTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    
+    [self.view addSubview:_alertTable];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,7 +126,7 @@
     }
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      cell.tintColor = [UIColor whiteColor];    
+      cell.tintColor = [UIColor whiteColor];
     }
     
     cell.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
@@ -171,6 +166,7 @@
 - (void) createCustomAlarmButtonClicked {
     if ([NSUserDefaultsHelper isAdRemoved] == NO) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
+        alert.tag = 0;
         [alert show];
     } else {
         CreateAlarmSoundViewController *createAlarmSoundViewController = [[CreateAlarmSoundViewController alloc] init];
@@ -191,10 +187,48 @@
 
 #pragma mark – UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-        [self.navigationController pushViewController:purchaseViewController animated:YES];
+    
+    switch (alertView.tag) {
+        case 0: {
+            if (buttonIndex == 1) {
+                PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+                [self.navigationController pushViewController:purchaseViewController animated:YES];
+            }
+            break;
+        }
+            
+            
+        case 1: {
+            if (buttonIndex == 1) {
+                int i = 0;
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                while (1) {
+                    NSString *filePath = [FileHelper getCreatedAlarmFile:[NSString stringWithFormat:@"%d.caf",i]];
+                    BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+                    if (fileExists) {
+                        NSError *error = nil;
+                        [fileManager removeItemAtPath:filePath error:&error];
+                        if (error) {
+                            NSLog(@"%s:%@",__FUNCTION__,[error description]);
+                        }
+                    } else {
+                        break;
+                    }
+                    
+                    i++;
+                }
+                
+                [_alertTable reloadData];
+                
+                [[NMDecibelLogger defaultLogger] setAlarmName:@"home_alarm"];
+            }
+            break;
+        }
+            
+        default:
+            break;
     }
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -205,28 +239,11 @@
 /**
  *  Remove all x.caf file under document folder
  */
-- (void) reset {
-    int i = 0;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    while (1) {
-        NSString *filePath = [FileHelper getCreatedAlarmFile:[NSString stringWithFormat:@"%d.caf",i]];
-        BOOL fileExists = [fileManager fileExistsAtPath:filePath];
-        if (fileExists) {
-            NSError *error = nil;
-            [fileManager removeItemAtPath:filePath error:&error];
-            if (error) {
-              NSLog(@"%s:%@",__FUNCTION__,[error description]);
-            }
-        } else {
-            break;
-        }
-        
-        i++;
-    }
+- (void) resetButtonClicked {
     
-    [_alertTable reloadData];
-    
-    [[NMDecibelLogger defaultLogger] setAlarmName:@"home_alarm"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure to reset" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+    alert.tag = 1;
+    [alert show];
 }
 
 @end

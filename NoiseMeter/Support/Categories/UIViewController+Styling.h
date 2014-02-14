@@ -15,5 +15,6 @@
 - (void)dismissHelpOverlay;
 
 - (UIButton *) findBackButton;
+- (UIImageView *) findTopBarImageView;
 
 @end

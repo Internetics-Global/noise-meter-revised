@@ -51,7 +51,7 @@
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
-    [_resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
+    [_resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 79, 73, 29);
     [self.view addSubview:_resetButton];
     [self reloadData];
@@ -94,16 +94,28 @@
     return 44;
 }
 
-- (void)reset
+- (void)resetButtonClicked
 {
-    for (int i = 0; i < [_scores count]; i++) {
-        [[[_scores objectAtIndex:i] managedObjectContext] deleteObject:[_scores objectAtIndex:i]];
-    }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
-    [[NMDataManager defaultManager] saveContext];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure to reset" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+    alert.tag = 0;
+    [alert show];
     
-    [FileHelper removeAllExceptTMPCAF];
 }
+
+#pragma mark – UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        for (int i = 0; i < [_scores count]; i++) {
+            [[[_scores objectAtIndex:i] managedObjectContext] deleteObject:[_scores objectAtIndex:i]];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
+        [[NMDataManager defaultManager] saveContext];
+        
+        [FileHelper removeAllExceptTMPCAF];
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

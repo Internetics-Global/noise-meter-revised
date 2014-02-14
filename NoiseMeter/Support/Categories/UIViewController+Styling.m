@@ -125,4 +125,18 @@
     return nil;
 }
 
+- (UIImageView *) findTopBarImageView {
+    UIImageView *imageView = nil;
+    NSArray *viewArray = [self.view subviews];
+    for (UIView *myView in viewArray) {
+        if ((myView.tag == K_TOP_IMAGEVIEW_TAG) &&
+            ([myView isKindOfClass:[UIImageView class]])) {
+            imageView =  ((UIImageView *) myView);
+            break;
+        }
+    }
+    
+    return imageView;
+}
+
 @end
