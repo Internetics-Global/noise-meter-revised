@@ -114,4 +114,15 @@
 	[UIView commitAnimations];	
 }
 
+- (UIButton *) findBackButton {
+    NSArray *subViews = [self.view subviews];
+    for (UIView *myView in subViews) {
+        if ((myView.tag == 314) && ([myView isMemberOfClass:[UIButton class]])) {
+            return ((UIButton *) myView);
+        }
+    }
+    
+    return nil;
+}
+
 @end

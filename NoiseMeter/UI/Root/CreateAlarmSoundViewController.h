@@ -11,10 +11,12 @@
 
 @interface CreateAlarmSoundViewController : UIViewController {
     SystemSoundID _audioEffect;
+    
 }
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *startButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *playButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *saveButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UILabel *alertLabel;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *dismissButton;
 @end

@@ -14,4 +14,6 @@
 - (void)displayHelpOverlayWithText:(NSString *)text;
 - (void)dismissHelpOverlay;
 
+- (UIButton *) findBackButton;
+
 @end

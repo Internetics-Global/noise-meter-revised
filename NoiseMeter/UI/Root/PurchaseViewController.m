@@ -303,17 +303,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (UIButton *) findBackButton {
-    NSArray *subViews = [self.view subviews];
-    for (UIView *myView in subViews) {
-        if ((myView.tag == 314) && ([myView isMemberOfClass:[UIButton class]])) {
-            return ((UIButton *) myView);
-        }
-    }
-    
-    return nil;
-}
-
 #pragma mark – UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

@@ -62,6 +62,18 @@
     [createCustomAlarmButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];
     [createCustomAlarmButton addTarget:self action:@selector(createCustomAlarmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createCustomAlarmButton];
+    
+    UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
+    [resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
+    resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 79, 73, 29);
+    UIButton *backButton = [self findBackButton];
+    if (backButton) {
+        CGPoint point = resetButton.center;
+        point.y = backButton.center.y;
+        resetButton.center = point;
+    }
+    [self.view addSubview:resetButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -184,6 +196,33 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+/**
+ *  Remove all x.caf file under document folder
+ */
+- (void) reset {
+    int i = 0;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    while (1) {
+        NSString *filePath = [FileHelper getCreatedAlarmFile:[NSString stringWithFormat:@"%d.caf",i]];
+        BOOL fileExists = [fileManager fileExistsAtPath:filePath];
+        if (fileExists) {
+            NSError *error = nil;
+            [fileManager removeItemAtPath:filePath error:&error];
+            if (error) {
+              NSLog(@"%s:%@",__FUNCTION__,[error description]);
+            }
+        } else {
+            break;
+        }
+        
+        i++;
+    }
+    
+    [_alertTable reloadData];
+    
+    [[NMDecibelLogger defaultLogger] setAlarmName:@"home_alarm"];
 }
 
 @end
