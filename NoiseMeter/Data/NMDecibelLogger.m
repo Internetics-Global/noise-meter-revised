@@ -285,7 +285,7 @@
     
     _sampleTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFire) userInfo:nil repeats:NO];
     
-    NSLog(@"%s:timeFire",__FUNCTION__);
+    NSLog(@"%s:timerFire",__FUNCTION__);
 }
 
 - (void)stopLogging

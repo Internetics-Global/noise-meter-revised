@@ -36,8 +36,15 @@
 }
 
 + (BOOL) isNotAllowBackgroundRunning {
+    BOOL flag = YES;
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL flag = [userDefaults boolForKey:@"NOT_BACKGROUND_RUNNING"];
+    if ([userDefaults objectForKey:@"NOT_BACKGROUND_RUNNING"]) {
+      flag = [userDefaults boolForKey:@"NOT_BACKGROUND_RUNNING"];
+    }
+    else {
+        flag = YES;
+    }
     return flag;
 }
 
