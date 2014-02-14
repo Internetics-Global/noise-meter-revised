@@ -23,6 +23,8 @@
     [super loadView];
     
     [self style];
+    
+    
 
     
 }
@@ -107,7 +109,7 @@
     }
     
     else {
-        cell.textLabel.text = [NSString stringWithFormat:@"CustomAlarm%d",indexPath.row - 3];
+        cell.textLabel.text = [NSString stringWithFormat:@"Custom Alarm %d",indexPath.row - 3 + 1]; //index from 1
         
         if ([[[NMDecibelLogger defaultLogger] alarmName] isEqualToString:
              [NSString stringWithFormat:@"%d",indexPath.row - 3]])

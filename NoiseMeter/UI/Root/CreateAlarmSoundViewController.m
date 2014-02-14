@@ -32,7 +32,7 @@
     _playButton.hidden = YES;
     _saveButton.hidden = YES;
     
-    _startButton.layer.cornerRadius =60;
+    _startButton.layer.cornerRadius =45;
     _startButton.layer.shadowColor = [[UIColor redColor] CGColor];
     _startButton.layer.shadowOpacity = 1.0f;
     _startButton.layer.shadowRadius = 10.0f;
@@ -71,13 +71,15 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [_alertLabel setText:[NSString stringWithFormat:@"Time left: %.2f",5.0 - executionTime]];
+                [_startButton setTitle:@"Recording" forState:UIControlStateNormal];
             });
         }
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
             usleep(200000);
-            [_alertLabel setText:@"Tap the start button to record"];
+            [_alertLabel setText:@"When you click Start you will have five seconds in which to record your alarm. You can then Play it back for review or Save it for use in the app."];
+            [_startButton setTitle:@"Record" forState:UIControlStateNormal];
             
             _playButton.hidden = NO;
             _saveButton.hidden = NO;
