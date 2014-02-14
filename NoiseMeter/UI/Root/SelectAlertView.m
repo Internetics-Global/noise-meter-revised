@@ -33,9 +33,9 @@
     int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, screenHeight - 255) style:UITableViewStyleGrouped];
+      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 115, self.view.frame.size.width, screenHeight - 255) style:UITableViewStyleGrouped];
     } else {
-      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, screenHeight - 236) style:UITableViewStyleGrouped];
+      _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 115, self.view.frame.size.width, screenHeight - 236) style:UITableViewStyleGrouped];
     }
     
     _alertTable.delegate = self;
@@ -51,9 +51,9 @@
     UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        createCustomAlarmButton.frame = CGRectMake(20,  screenHeight - 120, 280, 37);
+        createCustomAlarmButton.frame = CGRectMake(20,  screenHeight - 110, 280, 37);
     } else {
-        createCustomAlarmButton.frame = CGRectMake(20, screenHeight - 71, 280, 37);
+        createCustomAlarmButton.frame = CGRectMake(20, screenHeight - 65, 280, 37);
     }
     
     createCustomAlarmButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
