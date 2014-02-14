@@ -66,7 +66,7 @@
     UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [resetButton addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
-    resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 79, 73, 29);
+    resetButton.frame = CGRectMake(self.view.frame.size.width- 80, 79, 73, 29);
     UIButton *backButton = [self findBackButton];
     if (backButton) {
         CGPoint point = resetButton.center;
