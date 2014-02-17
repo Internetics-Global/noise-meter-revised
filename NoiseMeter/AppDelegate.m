@@ -11,6 +11,9 @@
 #import "Flurry.h"
 #import "Appirater.h"
 #import "GAI.h"
+#import "TestFlight.h"
+
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -22,6 +25,7 @@
     //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //[userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
     
+    [TestFlight takeOff:@"fc71ce67-b62a-4e6e-9cf9-5071518588c3"];
     
     [self setAppirater];
     [self setGoogleAnalytics];

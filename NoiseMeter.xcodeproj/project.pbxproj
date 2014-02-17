@@ -122,6 +122,9 @@
 		88BEFE6E18A20E9300399680 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
 		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
+		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
+		88E8423018B1B69800B0FB50 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422A18B1B69700B0FB50 /* README.md */; };
+		88E8423118B1B69800B0FB50 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422B18B1B69700B0FB50 /* release_notes.md */; };
 		88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */; };
 		88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */; };
 		88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307418AC6D1800B6E5BD /* closeButton@2x.png */; };
@@ -308,6 +311,12 @@
 		88DDF493189B1B3E00138ADF /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = GoogleAnalytics/GAITransactionItem.h; sourceTree = "<group>"; };
 		88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		88E8422918B1B69700B0FB50 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		88E8422A18B1B69700B0FB50 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		88E8422B18B1B69700B0FB50 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		88E8422C18B1B69700B0FB50 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		88E8422D18B1B69700B0FB50 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		88E8422E18B1B69700B0FB50 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		88FF306F18AC606400B6E5BD /* CreateAlarmSoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateAlarmSoundViewController.h; path = UI/Root/CreateAlarmSoundViewController.h; sourceTree = "<group>"; };
 		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
 		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
@@ -327,6 +336,7 @@
 				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
+				88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */,
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
@@ -675,11 +685,26 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */,
 				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
 				88376CE2177BB41900F9F477 /* Flurry */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */ = {
+			isa = PBXGroup;
+			children = (
+				88E8422918B1B69700B0FB50 /* libTestFlight.a */,
+				88E8422A18B1B69700B0FB50 /* README.md */,
+				88E8422B18B1B69700B0FB50 /* release_notes.md */,
+				88E8422C18B1B69700B0FB50 /* TestFlight+AsyncLogging.h */,
+				88E8422D18B1B69700B0FB50 /* TestFlight+ManualSessions.h */,
+				88E8422E18B1B69700B0FB50 /* TestFlight.h */,
+			);
+			name = TestFlightSDK2.2.1;
+			path = Support/TestFlightSDK2.2.1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,6 +803,7 @@
 				88A95E4418A4803000E56939 /* mic.png in Resources */,
 				88A95E4518A4803000E56939 /* noads.png in Resources */,
 				11AC53091505D3F20093C7AB /* icon_alert.png in Resources */,
+				88E8423118B1B69800B0FB50 /* release_notes.md in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
 				11AC530B1505D3F20093C7AB /* icon_meter.png in Resources */,
 				11AC530C1505D3F20093C7AB /* icon_meter@2x.png in Resources */,
@@ -848,6 +874,7 @@
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
 				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
+				88E8423018B1B69800B0FB50 /* README.md in Resources */,
 				8806B39B179658510085CBF0 /* remove_ad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1001,6 +1028,7 @@
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
 					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/GoogleAnalytics",
+					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/TestFlightSDK2.2.1",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1024,6 +1052,7 @@
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
 					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/GoogleAnalytics",
+					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/TestFlightSDK2.2.1",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
