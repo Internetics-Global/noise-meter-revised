@@ -477,9 +477,19 @@
             [alert show];
         }
         
+        APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = [NSUserDefaultsHelper isNotAllowBackgroundRunning];
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        
     } else {
         [[NMDecibelLogger defaultLogger] startLogging];
         [NSUserDefaultsHelper setLoggingPauseFlag:NO];
+        
+        if (APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff == FALSE) {
+          [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
+        } else {
+          [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        }
+        
     }
     
     

@@ -93,6 +93,7 @@
             [cell.textLabel setText:@"Work In Background"];
             if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == YES) {
                 [switchView setOn:NO];
+                
             } else {
                 [switchView setOn:YES];
             }
@@ -266,11 +267,15 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
         [alert show];
         [myswitch setOn:NO];
+        
     } else {
         if ([myswitch isOn]) {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
+            APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = NO;
         } else {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+            APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = YES;
+            
         }
     }
     
@@ -283,11 +288,25 @@
     
     if ([myswitch isOn]) {
         [NSUserDefaultsHelper setLoggingPauseFlag:NO];
+        
+        if (APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff == FALSE) {
+            [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
+        } else {
+            [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        }
+        
+        
     } else {
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
+        
+        APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = [NSUserDefaultsHelper isNotAllowBackgroundRunning];
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
+        
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"PAUSE_LOGGING_SWITCH_NOTIFICATION" object:nil];
+    
+    [_optionTable reloadData];
     
 }
 

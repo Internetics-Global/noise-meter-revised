@@ -23,4 +23,12 @@
  */
 @property (assign, nonatomic) BOOL isCreatingCustomAlarmFile;
 
+/**
+ *  used to record the flag when we switched meter off
+ *  A. If we switched Meter off， then Background running should be off.
+ *  B. If we switched Meter on， and if background running setting before we switched Meter off is on, now we put background running on
+ *. C. If we switched Meter on， and if background running setting before we switched Meter off is off, now we put background running off
+ */
+@property (assign, nonatomic) BOOL isNotAllowBackgroundRunningWhenLastMeterOff;
+
 @end
