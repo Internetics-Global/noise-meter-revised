@@ -1027,8 +1027,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
-					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/GoogleAnalytics",
-					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/TestFlightSDK2.2.1",
+					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1051,8 +1050,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
-					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/GoogleAnalytics",
-					"/Users/bournewang/Documents/Project/noise-meter-revised/NoiseMeter/Support/TestFlightSDK2.2.1",
+					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
