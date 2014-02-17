@@ -20,7 +20,6 @@
     [super loadView];
     
     [self style];
-    
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, 105, self.view.frame.size.width - 20, self.view.frame.size.height - 105)];
     _textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _textView.text = @"\"Keep The Noise Down\" is great way to measure and control the noise levels in your home, workplace, classroom, or anywhere you need to \"keep the noise down\". \n\nPlease note that the decibel limits shown are for an approximate guidance only, are not scientifically tested or calculated and should not be relied upon for accuracy. Readings will vary from device to device and environment to environment.\n\nKeep the Noise Down is an app developed by Internetics. We welcome your feedback.";
@@ -34,6 +33,12 @@
 {
     [super viewDidUnload];
     _textView = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _textView.font = [UIFont fontWithName:@"Helvetica" size:14];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
