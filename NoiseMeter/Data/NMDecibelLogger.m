@@ -85,42 +85,14 @@
                                      (__bridge void *)(self));
     
     
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    
-    if ((isUseLongRunningtTask) && (flag == true)) {
-        NSArray *queue = @[
-                           [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"demo" withExtension:@"mp3"]]];
-        
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+      [self setupKeepAlive];
+    } else {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(playerItemDidReachEnd:)
-                                                     name:AVPlayerItemDidPlayToEndTimeNotification
-                                                   object:[queue lastObject]];
-        
-        self.player = [[AVQueuePlayer alloc] initWithItems:queue];
-        self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-        
-        void (^observerBlock)(CMTime time) = ^(CMTime time) {
-            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                
-            } else {
-                
-                if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
-                    [self updateReading];
-                    NSLog(@"Background running: %f",_currentReading.floatValue);
-                }
-            }
-        };
-        
-        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
-                                                  queue:dispatch_get_main_queue()
-                                             usingBlock:observerBlock];
-
-        
-        
-        [self.player play];
+                                                 selector:@selector(purchasedFinishedNotification:)
+                                                     name:@"PURCHASE_FINISHED_NOTIFICATION"
+                                                   object:nil];
     }
-    
     
     
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -137,6 +109,10 @@
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
     }
+    
+    
+    
+    
     return self;
 }
 
@@ -172,6 +148,7 @@
             else
             {
                 [self stopLogging];
+                
                 AudioServicesPlaySystemSound(audioEffect);
                 _playingAlarm = YES;
                 
@@ -195,6 +172,10 @@
 
 - (void)alarmComplete
 {
+    if (_playingAlarm == FALSE) {
+        return;
+    }
+    
     AudioServicesDisposeSystemSoundID(audioEffect);
     _playingAlarm = NO;
     
@@ -296,11 +277,34 @@
     [_recorder stop];
 }
 
-- (void)dealloc
-{
-    _recorder = nil;
-    _recorderSettings = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+/**
+ *  Reset audio output route speaker or headset
+ */
+- (void) resetAudioRoute {
+    BOOL success = FALSE;
+    NSError *error;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
+        } else {
+            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
+        }
+        
+        if (!success)  {
+            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
+        }
+    } else {
+        UInt32 audioRouteOverride;
+        
+        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
+        } else {
+            audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        }
+        
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+    }
 }
 
 #pragma mark – kAudioSessionProperty_AudioRouteChange
@@ -346,32 +350,60 @@ void audioRouteChangeListenerCallback (
         
 }
 
-- (void) resetAudioRoute {
-    BOOL success = FALSE;
-    NSError *error;
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+
+#pragma mark – PURCHASE_FINISHED_NOTIFICATION
+
+- (void)purchasedFinishedNotification:(NSNotification *)notification {
+    [self setupKeepAlive];
+}
+
+
+/**
+ *  In order to keep running in background, we setup an endless sound play
+ */
+- (void) setupKeepAlive {
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    
+    if ((isUseLongRunningtTask) && (flag == true)) {
+        NSArray *queue = @[
+                           [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"demo" withExtension:@"mp3"]]];
         
-        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
-            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
-        } else {
-            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
-        }
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(playerItemDidReachEnd:)
+                                                     name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:[queue lastObject]];
         
-        if (!success)  {
-            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
-        }
-    } else {
-        UInt32 audioRouteOverride;
+        self.player = [[AVQueuePlayer alloc] initWithItems:queue];
+        self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
         
-        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
-            audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
-        } else {
-            audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
-        }
+        void (^observerBlock)(CMTime time) = ^(CMTime time) {
+            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+                
+            } else {
+                
+                if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
+                    [self updateReading];
+                    NSLog(@"Background running: %f",_currentReading.floatValue);
+                }
+            }
+        };
         
-        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
+        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
+                                                  queue:dispatch_get_main_queue()
+                                             usingBlock:observerBlock];
+        
+        
+        
+        [self.player play];
     }
 }
 
+#pragma mark – Memory mangement
+- (void)dealloc
+{
+    _recorder = nil;
+    _recorderSettings = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

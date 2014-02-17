@@ -261,6 +261,7 @@
         {
             case SKPaymentTransactionStatePurchased: {
                 NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
+                [NSUserDefaultsHelper setAdRemoveFlag:YES];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 
@@ -279,7 +280,8 @@
                 break;
             }
             case SKPaymentTransactionStateRestored: {
-                NSLog(@"Fail to purchase: have bought this before");
+                NSLog(@"have bought this before");
+                [NSUserDefaultsHelper setAdRemoveFlag:YES];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
                 [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
                 

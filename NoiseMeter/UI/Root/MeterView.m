@@ -331,6 +331,7 @@
         if ([_currentReading integerValue] < 0) {
             //mean not right reading, we need to retry. This is important when an incoming call
             NSLog(@"%s:_currentReading is < 0",__FUNCTION__);
+            sleep(0.1);
             [[NMDecibelLogger defaultLogger] startLogging];
             return;
         }
@@ -447,8 +448,6 @@
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
     
     [super purchasedFinishedNotification:notification];
-    
-    [NSUserDefaultsHelper setAdRemoveFlag:YES];
     
     [_topScoreTable reloadData];
 }
