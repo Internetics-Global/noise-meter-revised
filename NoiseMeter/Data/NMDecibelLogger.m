@@ -149,10 +149,31 @@
             {
                 [self stopLogging];
                 
+                if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
+                    
+                } else {
+                  [self.keepAlivePlayer pause];
+                }
+                
                 AudioServicesPlaySystemSound(audioEffect);
                 _playingAlarm = YES;
                 
-                [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+                if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
+                    [NSTimer scheduledTimerWithTimeInterval:(30.0 - 0) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+                } else {
+                    AudioFileID audioFileID;
+                    AudioFileOpenURL((__bridge CFURLRef)pathURL, kAudioFileReadPermission, 0, &audioFileID);
+                    NSTimeInterval seconds;
+                    UInt32 propertySize = sizeof(seconds);
+                    OSStatus st = AudioFileGetProperty(audioFileID, kAudioFilePropertyEstimatedDuration, &propertySize, &seconds);
+                    
+                    // fire the timer
+                    if (st == 0)
+                    {
+                        [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(alarmDidFinishPlaying) userInfo:nil repeats:NO];
+                    }
+                }
+                
             }
             
         }
@@ -168,6 +189,11 @@
     }
     
     
+}
+
+- (void) alarmDidFinishPlaying {
+    [self.keepAlivePlayer play];
+    [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
 }
 
 - (void)alarmComplete
@@ -229,8 +255,9 @@
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
-    [self.player seekToTime:kCMTimeZero];
-    [self.player play];
+    NSLog(@"%s:playerItemDidReachEnd",__FUNCTION__);
+    [self.keepAlivePlayer seekToTime:kCMTimeZero];
+    [self.keepAlivePlayer play];
     
 }
 
@@ -362,6 +389,7 @@ void audioRouteChangeListenerCallback (
  *  In order to keep running in background, we setup an endless sound play
  */
 - (void) setupKeepAlive {
+    
     BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     
     if ((isUseLongRunningtTask) && (flag == true)) {
@@ -373,8 +401,8 @@ void audioRouteChangeListenerCallback (
                                                      name:AVPlayerItemDidPlayToEndTimeNotification
                                                    object:[queue lastObject]];
         
-        self.player = [[AVQueuePlayer alloc] initWithItems:queue];
-        self.player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        self.keepAlivePlayer = [[AVQueuePlayer alloc] initWithItems:queue];
+        self.keepAlivePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
         
         void (^observerBlock)(CMTime time) = ^(CMTime time) {
             if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
@@ -388,13 +416,13 @@ void audioRouteChangeListenerCallback (
             }
         };
         
-        [self.player addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
+        [self.keepAlivePlayer addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
                                                   queue:dispatch_get_main_queue()
                                              usingBlock:observerBlock];
         
         
         
-        [self.player play];
+        [self.keepAlivePlayer play];
     }
 }
 
