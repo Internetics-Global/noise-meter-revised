@@ -22,7 +22,7 @@
 @property (strong, nonatomic)           NSNumber *alertThreshold;
 @property (strong, nonatomic)           NSString *alarmName;
 
-@property (nonatomic, strong)           AVQueuePlayer *player;
+@property (nonatomic, strong)           AVQueuePlayer *keepAlivePlayer;
 
 @property (assign, nonatomic)           BOOL playingAlarm;
 
