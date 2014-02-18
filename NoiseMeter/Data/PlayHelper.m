@@ -40,6 +40,9 @@ static BOOL _isPlaying = NO;
         [[NMDecibelLogger defaultLogger] stopLogging];
     }
     
+    [[NMDecibelLogger defaultLogger].keepAlivePlayer pause]; //这非常重要，否则无法发出声音
+    [self changeToPlayBackMode];
+    
     if (gAudioEffect != 0) {
         AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
         AudioServicesDisposeSystemSoundID(gAudioEffect);
@@ -73,6 +76,9 @@ static BOOL _isPlaying = NO;
     AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
     AudioServicesDisposeSystemSoundID(gAudioEffect);
     
+    [[NMDecibelLogger defaultLogger].keepAlivePlayer play];
+    [self changeToPlayAndRecordMode];
+    
     [[NMDecibelLogger defaultLogger] startLogging];
     
     _isPlaying = FALSE;
@@ -80,6 +86,26 @@ static BOOL _isPlaying = NO;
 
 + (BOOL) isPlaying {
     return _isPlaying;
+}
+
++ (void) changeToPlayBackMode {
+    NSError *error;
+    BOOL success;
+    
+    success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    if (!success) {
+        NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+    }
+}
+
++ (void) changeToPlayAndRecordMode {
+    NSError *error;
+    BOOL success;
+    
+    success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    if (!success) {
+        NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+    }
 }
 
 

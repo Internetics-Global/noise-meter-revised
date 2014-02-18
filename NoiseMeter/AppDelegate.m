@@ -57,7 +57,9 @@
 {
     NSLog(@"applicationDidEnterBackground");
     
-    [[NMDecibelLogger defaultLogger] alarmComplete];
+    if ([[NMDecibelLogger defaultLogger] playingAlarm]) {
+      [[NMDecibelLogger defaultLogger] alarmComplete];
+    }
     
     if ([NSUserDefaultsHelper isNotAllowBackgroundRunning]) {
       [[NMDecibelLogger defaultLogger] stopLogging];
@@ -100,7 +102,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [[NMDecibelLogger defaultLogger] startLogging];
+    if ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE) {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
     _comingFromBackground = YES;
     [Appirater appEnteredForeground:YES];
 }

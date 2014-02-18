@@ -14,4 +14,7 @@
 
 + (BOOL) isPlaying;
 
++ (void) changeToPlayBackMode;
++ (void) changeToPlayAndRecordMode;
+
 @end

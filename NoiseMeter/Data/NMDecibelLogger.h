@@ -16,6 +16,8 @@
     NSNumber           *_currentReading;
     NSTimer            *_sampleTimer;
     SystemSoundID       audioEffect;
+    
+    NSTimer            *_timer30Second;
 }
 
 @property (strong, nonatomic, readonly) NSNumber *currentReading;

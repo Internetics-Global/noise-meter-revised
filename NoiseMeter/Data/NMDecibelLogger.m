@@ -8,6 +8,7 @@
 
 #import "NMDecibelLogger.h"
 #import "FileHelper.h"
+#import "PlayHelper.h"
 
 @implementation NMDecibelLogger
 
@@ -193,14 +194,18 @@
 
 - (void) alarmDidFinishPlaying {
     [self.keepAlivePlayer play];
-    [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+    _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
 }
 
+
+/**
+ *  这个方法被Meter.m中的cancel方法调用，这时需要invalidate定时器，否则即便调用了cancel方法，定时器也会在某一时刻被唤醒
+ */
 - (void)alarmComplete
 {
-    if (_playingAlarm == FALSE) {
-        return;
-    }
+    
+    [_timer30Second invalidate];
+    _timer30Second= nil;
     
     AudioServicesDisposeSystemSoundID(audioEffect);
     _playingAlarm = NO;
