@@ -46,6 +46,8 @@
         [[UITabBar appearance] setTintColor:[UIColor colorWithRed:56.0/255 green:172.0/255 blue:238.0/255 alpha:1]];
     }
     
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
     
     return YES;
 }
