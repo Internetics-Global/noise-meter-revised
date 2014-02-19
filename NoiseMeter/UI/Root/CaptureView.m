@@ -107,7 +107,9 @@
 	NSString *dateString = [FileHelper convertDate:date];
     
     NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
-    [[NMDecibelLogger defaultLogger] stopLogging];
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+      [[NMDecibelLogger defaultLogger] stopLogging];
+    }
     [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
     [[NMDecibelLogger defaultLogger] startLogging];
     

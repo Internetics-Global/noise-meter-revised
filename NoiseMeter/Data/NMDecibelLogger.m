@@ -311,9 +311,9 @@
     _sampleTimer = nil;
     _logging = NO;
     
-    sleep(0.3);
+    sleep(0.5);
     
-    [_recorder stop];
+    [_recorder stop]; //必须执行这个，否则无法进行播放声音
 }
 
 /**
