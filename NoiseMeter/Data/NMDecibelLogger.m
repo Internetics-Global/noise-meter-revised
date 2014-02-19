@@ -207,7 +207,11 @@
     [_timer30Second invalidate];
     _timer30Second= nil;
     
-    AudioServicesDisposeSystemSoundID(audioEffect);
+    if (audioEffect != 0) {
+        AudioServicesRemoveSystemSoundCompletion(audioEffect);
+        AudioServicesDisposeSystemSoundID(audioEffect);
+        audioEffect = 0;
+    }
     _playingAlarm = NO;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];

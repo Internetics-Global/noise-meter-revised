@@ -46,14 +46,10 @@ static BOOL _isPlaying = NO;
     if (gAudioEffect != 0) {
         AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
         AudioServicesDisposeSystemSoundID(gAudioEffect);
+        gAudioEffect = 0;
     }
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &gAudioEffect);
     AudioServicesPlaySystemSound(gAudioEffect);
-//    AudioServicesAddSystemSoundCompletion(audioEffect,
-//                                          NULL,
-//                                          NULL,
-//                                          systemAudioCallback,
-//                                          (__bridge_retained void *) self);
     
     AudioFileID audioFileID;
     AudioFileOpenURL((__bridge CFURLRef)url, kAudioFileReadPermission, 0, &audioFileID);
@@ -73,8 +69,11 @@ static BOOL _isPlaying = NO;
 #pragma mark – systemAudioCallback
 + (void) soundDidFinishPlaying {
     NSLog(@"System sound finished playing!");
-    AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
-    AudioServicesDisposeSystemSoundID(gAudioEffect);
+    if (gAudioEffect != 0) {
+        AudioServicesRemoveSystemSoundCompletion(gAudioEffect);
+        AudioServicesDisposeSystemSoundID(gAudioEffect);
+        gAudioEffect = 0;
+    }
     
     [[NMDecibelLogger defaultLogger].keepAlivePlayer play];
     [self changeToPlayAndRecordMode];
