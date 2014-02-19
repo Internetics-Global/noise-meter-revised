@@ -65,9 +65,6 @@
 		11F3E5D11519501800549099 /* SelectAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D01519501800549099 /* SelectAlertView.m */; };
 		11F3E5D41519561400549099 /* InternalWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D31519561400549099 /* InternalWebView.m */; };
 		11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
-		11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44D151181CA00FF47C2 /* home_alarm.aifc */; };
-		11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44E151181CA00FF47C2 /* scifialarm.aifc */; };
-		11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 11FBD44F151181CA00FF47C2 /* siren_wail.aifc */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		880A002818AC83D800FB84F5 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
 		880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
@@ -77,6 +74,9 @@
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
+		883069B218B4CC460067750A /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
+		883069B318B4CC460067750A /* scifialarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B018B4CC460067750A /* scifialarm.caf */; };
+		883069B418B4CC460067750A /* siren_wail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B118B4CC460067750A /* siren_wail.caf */; };
 		8833910A1793CEA70051DE50 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883391091793CEA70051DE50 /* demo.mp3 */; };
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
@@ -213,9 +213,6 @@
 		11F3E5D21519561400549099 /* InternalWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalWebView.h; path = UI/Root/InternalWebView.h; sourceTree = "<group>"; };
 		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalWebView.m; path = UI/Root/InternalWebView.m; sourceTree = "<group>"; };
 		11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		11FBD44D151181CA00FF47C2 /* home_alarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.aifc; sourceTree = "<group>"; };
-		11FBD44E151181CA00FF47C2 /* scifialarm.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.aifc; sourceTree = "<group>"; };
-		11FBD44F151181CA00FF47C2 /* siren_wail.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.aifc; sourceTree = "<group>"; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		880A002718AC83D800FB84F5 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = "<group>"; };
 		880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createCustomAlarmButton.png; sourceTree = "<group>"; };
@@ -226,6 +223,9 @@
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
 		88131CD918AB223F00D2541A /* overlay568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay568.png; sourceTree = "<group>"; };
+		883069AF18B4CC460067750A /* home_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.caf; sourceTree = "<group>"; };
+		883069B018B4CC460067750A /* scifialarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.caf; sourceTree = "<group>"; };
+		883069B118B4CC460067750A /* siren_wail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.caf; sourceTree = "<group>"; };
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
 		8833910B1793D0680051DE50 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
@@ -525,9 +525,9 @@
 		11FBD43615117B7D00FF47C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				11FBD44D151181CA00FF47C2 /* home_alarm.aifc */,
-				11FBD44E151181CA00FF47C2 /* scifialarm.aifc */,
-				11FBD44F151181CA00FF47C2 /* siren_wail.aifc */,
+				883069AF18B4CC460067750A /* home_alarm.caf */,
+				883069B018B4CC460067750A /* scifialarm.caf */,
+				883069B118B4CC460067750A /* siren_wail.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -827,13 +827,11 @@
 				111A18CE1505E38D005655F1 /* background_count.png in Resources */,
 				111A18CF1505E38D005655F1 /* background_count@2x.png in Resources */,
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
-				11FBD450151181CA00FF47C2 /* home_alarm.aifc in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
-				11FBD451151181CA00FF47C2 /* scifialarm.aifc in Resources */,
+				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
-				11FBD452151181CA00FF47C2 /* siren_wail.aifc in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
@@ -856,6 +854,7 @@
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
+				883069B218B4CC460067750A /* home_alarm.caf in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,
 				1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */,
 				880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */,
@@ -871,6 +870,7 @@
 				9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */,
 				88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */,
 				88BEFE5118A1FCB100399680 /* 3.png in Resources */,
+				883069B318B4CC460067750A /* scifialarm.caf in Resources */,
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
 				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
@@ -1032,7 +1032,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1055,7 +1055,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

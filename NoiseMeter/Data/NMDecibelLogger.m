@@ -120,14 +120,14 @@
 
 /**
  *  we have two kind of playAlarm file because of history reason
- *   1. aifc which is located in mainBundle
+ *   1. aifc which is located in mainBundle (recently we changed to also caf format for better performance)
  *   2. caf, which is created by user with name of 0.caf, 1.caf  (index from 0)
  */
 - (void)playAlarm
 {
     if (!_playingAlarm) 
     {
-        NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"aifc"];
+        NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"caf"];
         NSLog(@"path = %@; alarmName = %@", path, self.alarmName);
         
         if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
@@ -306,6 +306,9 @@
     [_sampleTimer invalidate];
     _sampleTimer = nil;
     _logging = NO;
+    
+    sleep(0.3);
+    
     [_recorder stop];
 }
 
