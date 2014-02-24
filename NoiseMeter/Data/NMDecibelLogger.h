@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-@interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate>{
+#import "IDPSoundBoard.h"
+
+@interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate,IDPSoundBoardDelegate>{
     AVAudioRecorder    *_recorder;
     NSDictionary       *_recorderSettings;
     BOOL                _logging;
@@ -38,7 +40,5 @@
 - (void) updateReading;
 - (void) alarmComplete;
 - (BOOL) logging;
-
-- (void) resetAudioRoute;
 
 @end

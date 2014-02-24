@@ -10,7 +10,6 @@
 #import "RootView.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
     RootView *_rootView;
-    BOOL _comingFromBackground;
 }
 
 @property (strong, nonatomic) UIWindow *window;

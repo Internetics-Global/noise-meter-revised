@@ -8,7 +8,6 @@
 
 #import "NMDecibelLogger.h"
 #import "FileHelper.h"
-#import "PlayHelper.h"
 
 @implementation NMDecibelLogger
 
@@ -65,7 +64,7 @@
       NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
     }
     
-    [self resetAudioRoute];
+    [IDPSoundBoard resetAudioRoute:[NSUserDefaultsHelper isOutputToEarpiece]];
     
     _recorderSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                          [NSNumber numberWithInt:kAudioFormatAppleIMA4],AVFormatIDKey,
@@ -85,15 +84,6 @@
                                      audioRouteChangeListenerCallback,
                                      (__bridge void *)(self));
     
-    
-    if ([NSUserDefaultsHelper isAdRemoved]) {
-      [self setupKeepAlive];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(purchasedFinishedNotification:)
-                                                     name:@"PURCHASE_FINISHED_NOTIFICATION"
-                                                   object:nil];
-    }
     
     
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
@@ -120,7 +110,7 @@
 
 /**
  *  we have two kind of playAlarm file because of history reason
- *   1. aifc which is located in mainBundle (recently we changed to also caf format for better performance)
+ *   1. caf which is located in mainBundle 
  *   2. caf, which is created by user with name of 0.caf, 1.caf  (index from 0)
  */
 - (void)playAlarm
@@ -150,31 +140,13 @@
             {
                 [self stopLogging];
                 
-                if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
-                    
-                } else {
-                  [self.keepAlivePlayer pause];
-                }
-                
-                AudioServicesPlaySystemSound(audioEffect);
                 _playingAlarm = YES;
                 
-                if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
-                    [NSTimer scheduledTimerWithTimeInterval:(30.0 - 0) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
-                } else {
-                    AudioFileID audioFileID;
-                    AudioFileOpenURL((__bridge CFURLRef)pathURL, kAudioFileReadPermission, 0, &audioFileID);
-                    NSTimeInterval seconds;
-                    UInt32 propertySize = sizeof(seconds);
-                    OSStatus st = AudioFileGetProperty(audioFileID, kAudioFilePropertyEstimatedDuration, &propertySize, &seconds);
-                    
-                    // fire the timer
-                    if (st == 0)
-                    {
-                        [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(alarmDidFinishPlaying) userInfo:nil repeats:NO];
-                    }
-                }
-                
+                [IDPSoundBoard addAudioAtPath:[pathURL path] forKey:Key_PlayerAlarm forType:EnumSoundType_Alarm];
+                AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerAlarm];
+                player.numberOfLoops = 0;
+                [IDPSoundBoard sharedInstance].IDPDelegate = self;
+                [IDPSoundBoard playAudioForKey:Key_PlayerAlarm fadeInInterval:2.0];
             }
             
         }
@@ -192,9 +164,15 @@
     
 }
 
-- (void) alarmDidFinishPlaying {
-    [self.keepAlivePlayer play];
-    _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+
+#pragma mark – IDPSoundBoardDelegate
+
+- (void)didFinishSoundPlay:(EnumSoundType)soundType {
+    if (soundType == EnumSoundType_Alarm) {
+      NSLog(@"%s:didFinishSoundPlay of Alarm",__FUNCTION__);
+      _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+        
+    }
 }
 
 
@@ -203,15 +181,13 @@
  */
 - (void)alarmComplete
 {
+    NSLog(@"%s",__FUNCTION__);
+    //可能已经被关掉，但是也有可能这时没有关闭掉，所以安全起见，需要执行这个方法
+    [IDPSoundBoard stopAudioForKey:Key_PlayerAlarm];
     
     [_timer30Second invalidate];
     _timer30Second= nil;
     
-    if (audioEffect != 0) {
-        AudioServicesRemoveSystemSoundCompletion(audioEffect);
-        AudioServicesDisposeSystemSoundID(audioEffect);
-        audioEffect = 0;
-    }
     _playingAlarm = NO;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];
@@ -225,6 +201,7 @@
     }
     
 }
+
 
 - (BOOL)logging
 {
@@ -241,7 +218,7 @@
 
 - (void)startLogging
 {
-    
+    NSLog(@"%s",__FUNCTION__);
     _logging = YES;
     if(![_recorder record])
     {
@@ -263,13 +240,6 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(ensureLogging) userInfo:nil repeats:NO];
 }
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification {
-    NSLog(@"%s:playerItemDidReachEnd",__FUNCTION__);
-    [self.keepAlivePlayer seekToTime:kCMTimeZero];
-    [self.keepAlivePlayer play];
-    
-}
-
 
 - (float)rawReading
 {
@@ -284,6 +254,10 @@
     
 }
 
+/**
+ *  当在前台时，通过timerFire，对_currentReading进行更新，从而实现KVO
+ *  在后台时，通过runBackgroundSound实现Mute音乐的背景loop播放，从而保持代码一直处于活跃状态，_currentReading的更新也是通过timerFire
+ */
 - (void)timerFire
 {
     if (([NSUserDefaultsHelper isNotAllowBackgroundRunning]) && ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
@@ -314,36 +288,7 @@
     sleep(0.5);
     
     [_recorder stop]; //必须执行这个，否则无法进行播放声音
-}
-
-/**
- *  Reset audio output route speaker or headset
- */
-- (void) resetAudioRoute {
-    BOOL success = FALSE;
-    NSError *error;
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-        
-        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
-            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:&error];
-        } else {
-            success = [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:&error];
-        }
-        
-        if (!success)  {
-            NSLog(@"%s:AVAudioSession error overrideOutputAudioPort %@",__FUNCTION__,error);
-        }
-    } else {
-        UInt32 audioRouteOverride;
-        
-        if ([NSUserDefaultsHelper isOutputToEarpiece]) {
-            audioRouteOverride = kAudioSessionOverrideAudioRoute_None;
-        } else {
-            audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
-        }
-        
-        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
-    }
+    NSLog(@"%s",__FUNCTION__);
 }
 
 #pragma mark – kAudioSessionProperty_AudioRouteChange
@@ -358,6 +303,8 @@ void audioRouteChangeListenerCallback (
     if (inPropertyID != kAudioSessionProperty_AudioRouteChange) {
       return;
     }
+    
+    NSLog(@"%s",__FUNCTION__);
     
     
     //following codes are same with [self resetAudioRoute]
@@ -390,53 +337,6 @@ void audioRouteChangeListenerCallback (
 }
 
 
-#pragma mark – PURCHASE_FINISHED_NOTIFICATION
-
-- (void)purchasedFinishedNotification:(NSNotification *)notification {
-    [self setupKeepAlive];
-}
-
-
-/**
- *  In order to keep running in background, we setup an endless sound play
- */
-- (void) setupKeepAlive {
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    
-    if ((isUseLongRunningtTask) && (flag == true)) {
-        NSArray *queue = @[
-                           [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"demo" withExtension:@"mp3"]]];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(playerItemDidReachEnd:)
-                                                     name:AVPlayerItemDidPlayToEndTimeNotification
-                                                   object:[queue lastObject]];
-        
-        self.keepAlivePlayer = [[AVQueuePlayer alloc] initWithItems:queue];
-        self.keepAlivePlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-        
-        void (^observerBlock)(CMTime time) = ^(CMTime time) {
-            if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-                
-            } else {
-                
-                if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
-                    [self updateReading];
-                    NSLog(@"Background running: %f",_currentReading.floatValue);
-                }
-            }
-        };
-        
-        [self.keepAlivePlayer addPeriodicTimeObserverForInterval:CMTimeMake(100, 1000)
-                                                  queue:dispatch_get_main_queue()
-                                             usingBlock:observerBlock];
-        
-        
-        
-        [self.keepAlivePlayer play];
-    }
-}
 
 #pragma mark – Memory mangement
 - (void)dealloc

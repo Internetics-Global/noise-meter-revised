@@ -13,13 +13,15 @@
 #import "SoundLevelCaptureCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FileHelper.h"
-#import "PlayHelper.h"
+#import "IDPSoundBoard.h"
 
 @interface ScoreView ()
 
 @end
 
 @implementation ScoreView
+
+#pragma mark – Life Cycle
 
 - (id)init
 {
@@ -74,91 +76,6 @@
     
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (_tableHeader == nil) 
-    {
-        _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
-        
-    }
-    return _tableHeader;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 40;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44;
-}
-
-- (void)resetButtonClicked
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure you want to reset?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
-    alert.tag = 0;
-    [alert show];
-    
-}
-
-#pragma mark – UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        for (int i = 0; i < [_scores count]; i++) {
-            [[[_scores objectAtIndex:i] managedObjectContext] deleteObject:[_scores objectAtIndex:i]];
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
-        [[NMDataManager defaultManager] saveContext];
-        
-        [FileHelper removeAllExceptTMPCAF];
-    }
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_scores count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
-    if (cell == nil) {
-        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    cell.capture = [_scores objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
-
-    
-    cell.playButton.tag = indexPath.row;
-    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    if (flag) {
-        cell.playButton.hidden = NO;
-    } else {
-        cell.playButton.hidden = YES;
-    }
-    
-    return cell;
-}
-
-- (void) playRecordedSound: (id) sender {
-    
-    int index = ((UIButton *) sender).tag;
-    
-    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
-    
-    NSDate *date = caputure.date;
-	NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    [PlayHelper playAudioFile:url];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -182,11 +99,111 @@
 }
 
 
+#pragma mark – Tableview datasource and delegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (_tableHeader == nil) 
+    {
+        _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
+        
+    }
+    return _tableHeader;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_scores count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
+    if (cell == nil) {
+        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    cell.capture = [_scores objectAtIndex:indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
+    
+    
+    cell.playButton.tag = indexPath.row;
+    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
+    
+    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    if (flag) {
+        cell.playButton.hidden = NO;
+    } else {
+        cell.playButton.hidden = YES;
+    }
+    
+    return cell;
+}
+
+
+#pragma mark – UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        for (int i = 0; i < [_scores count]; i++) {
+            [[[_scores objectAtIndex:i] managedObjectContext] deleteObject:[_scores objectAtIndex:i]];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
+        [[NMDataManager defaultManager] saveContext];
+        
+        [FileHelper removeAllExceptTMPCAF];
+    }
+}
+
+#pragma mark – IBAction related
+
+- (void) playRecordedSound: (id) sender {
+    
+    int index = ((UIButton *) sender).tag;
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
+    
+    NSDate *date = caputure.date;
+	NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
+    
+    [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
+    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
+    player.numberOfLoops = 0;  // Endless
+    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
+}
+
+
+
+#pragma mark – IBAction
+
+- (void)resetButtonClicked
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure you want to reset?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+    alert.tag = 0;
+    [alert show];
+    
+}
+
+#pragma mark – Rotation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark – Notification
 
 - (void)purchasedFinishedNotification:(NSNotification *)notification {
     

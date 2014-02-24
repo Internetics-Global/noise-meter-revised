@@ -47,6 +47,12 @@
     
     _backButton = [self findBackButton];
     
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
+        [self viewWillAppear:YES];
+    }
+    
 }
 
 - (void) viewDidUnload {
@@ -68,13 +74,12 @@
         self.webview.frame = rect;
     }
     
+    
     if (iPhone5) {
         CGRect rect = self.webview.frame;
         rect.size.height = rect.size.height + 19;
         self.webview.frame = rect;
     }
-    
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
     
     
     _activity.center = self.webview.center;

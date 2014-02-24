@@ -69,13 +69,17 @@
     _alertTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     
     [self.view addSubview:_alertTable];
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
+        [self viewWillAppear:YES];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_alertTable reloadData];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -170,7 +174,12 @@
         [alert show];
     } else {
         CreateAlarmSoundViewController *createAlarmSoundViewController = [[CreateAlarmSoundViewController alloc] init];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:createAlarmSoundViewController animated:YES completion:nil];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
+          [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:createAlarmSoundViewController animated:YES completion:nil];
+        } else {
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:createAlarmSoundViewController animated:nil];
+        }
+        
     }
 }
 

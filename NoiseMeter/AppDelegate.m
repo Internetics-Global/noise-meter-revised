@@ -12,6 +12,8 @@
 #import "Appirater.h"
 #import "GAI.h"
 #import "TestFlight.h"
+#import "NSUserDefaultsHelper.h"
+#import "IDPSoundboard.h"
 
 
 @implementation AppDelegate
@@ -32,12 +34,10 @@
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     _rootView = [[RootView alloc] init];
     self.window.rootViewController = _rootView;
-    _comingFromBackground = YES;
     
     [Appirater appLaunched:YES];
     
@@ -46,8 +46,14 @@
         [[UITabBar appearance] setTintColor:[UIColor colorWithRed:56.0/255 green:172.0/255 blue:238.0/255 alpha:1]];
     }
     
+    
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert You are using simulator" message:@"Background running and IAP are not supported on simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
     
     return YES;
 }
@@ -57,74 +63,38 @@
 {
     NSLog(@"applicationDidEnterBackground");
     
+    //stop the alarm if it's still playing
     if ([[NMDecibelLogger defaultLogger] playingAlarm]) {
       [[NMDecibelLogger defaultLogger] alarmComplete];
     }
     
     if ([NSUserDefaultsHelper isNotAllowBackgroundRunning]) {
       [[NMDecibelLogger defaultLogger] stopLogging];
+        [IDPSoundBoard stopBackgroundSoundRunning];
     } else {
         if ([NSUserDefaultsHelper isAdRemoved]) {
-            if (isUseLongRunningtTask) {
-                //do nothing and will keep runnning in background
-            } else {
-                self.backgroundTask = UIBackgroundTaskInvalid;
-                self.backgroundTask = [application beginBackgroundTaskWithExpirationHandler:^{
-                    NSLog(@"Background handler called. Not running background tasks anymore.");
-                    [application endBackgroundTask:self.backgroundTask];
-                    self.backgroundTask = UIBackgroundTaskInvalid;
-                    [[NMDecibelLogger defaultLogger] stopLogging];
-                }];
-                
-                [NSTimer scheduledTimerWithTimeInterval: 0.1 target: self selector: @selector(recordCallback:) userInfo: nil repeats: YES];
-            }
+            [IDPSoundBoard runBackgroundSound];
         }
     }
 	
 }
 
-- (void) recordCallback:(id) sender {
-    NSTimeInterval remainTime = [UIApplication sharedApplication].backgroundTimeRemaining;
-    if (remainTime >0) {
-        NSLog(@"Background time remaining = %.1f seconds", remainTime);
-        
-        [[NMDecibelLogger defaultLogger] updateReading];
-         NSLog(@"%f",[NMDecibelLogger defaultLogger].currentReading.floatValue);
-    } else {
-        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTask];
-        self.backgroundTask = UIBackgroundTaskInvalid;
-        [[NMDecibelLogger defaultLogger] stopLogging];
-    }
-    
-}
-
-
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    //如果没有alarm，则自动恢复logging
     if ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE) {
         [[NMDecibelLogger defaultLogger] startLogging];
     }
-    _comingFromBackground = YES;
+    
+    if ([NSUserDefaultsHelper isAdRemoved] && ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE)) {
+        [IDPSoundBoard stopBackgroundSoundRunning];
+    }
+    
     [Appirater appEnteredForeground:YES];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    if (_comingFromBackground) 
-    {
-        _comingFromBackground = NO;
-    }
-    else 
-    {
-        [[NMDecibelLogger defaultLogger] ensureLogging];
-    }
-}
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Saves changes in the application's managed object context before the application terminates.
-}
 
 - (void) setAppirater {
     [Appirater setAppId:@"512411644"];
@@ -143,8 +113,10 @@
     // Optional: set debug to YES for extra debugging information.
     [GAI sharedInstance].debug = YES;
     // Create tracker instance.
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
 }
+
+
 
 
 @end

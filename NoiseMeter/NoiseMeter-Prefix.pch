@@ -19,11 +19,6 @@
 #import "BaseViewController.h"
 #import "AppDelegate.h"
 
-//两种后台运行方式：YES，后台驻留运行；NO，只能运行10分钟
-#define isUseLongRunningtTask      (YES)
-
-#define isUseGoogleAdmob           (YES)
-
 #define IAPProductID   @"com.internetics.noisedown.upgrade"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)

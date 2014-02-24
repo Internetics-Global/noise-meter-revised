@@ -8,6 +8,7 @@
 
 #import "CreateAlarmSoundViewController.h"
 #import "FileHelper.h"
+#import "IDPSoundBoard.h"
 
 @interface CreateAlarmSoundViewController ()
 
@@ -110,19 +111,15 @@
 
 - (IBAction)playButtonClicked:(id)sender {
     
-    NSURL *path = [FileHelper getDefaultRecordedaAudioFile];
+    NSURL *url = [FileHelper getDefaultRecordedaAudioFile];
     
-    if (path)
+    if (url)
     {
-        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef) path, &_audioEffect);
-        if (error != kAudioServicesNoError)
-        {
-          NSLog(@"Invalid");
-        }
-        else
-        {
-          AudioServicesPlaySystemSound(_audioEffect);
-        }
+        [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerNewCreated forType:EnumSoundType_NewCreated];
+        AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerNewCreated];
+        player.numberOfLoops = 0;
+        [IDPSoundBoard playAudioForKey:Key_PlayerNewCreated];
+        
     }
     else
     {
@@ -137,12 +134,6 @@
 }
 
 - (IBAction)saveButtonClicked:(id)sender {
-    if (_audioEffect != 0) {
-        AudioServicesRemoveSystemSoundCompletion(_audioEffect);
-        AudioServicesDisposeSystemSoundID(_audioEffect);
-        _audioEffect = 0;
-    }
-    
     NSURL *path = [FileHelper getDefaultRecordedaAudioFile];
     [FileHelper saveNewCreatedAlarm:path];
     [self dismiss];
@@ -153,15 +144,16 @@
 
   APP_DELEGATE.isCreatingCustomAlarmFile = NO;
     
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    
+  [IDPSoundBoard removeAudioForKey:Key_PlayerNewCreated];
+    
   [[NMDecibelLogger defaultLogger] startLogging];
     
-  [self dismissViewControllerAnimated:YES completion:nil];
-  
-  if (_audioEffect != 0) {
-    AudioServicesRemoveSystemSoundCompletion(_audioEffect);
-    AudioServicesDisposeSystemSoundID(_audioEffect);
-    _audioEffect = 0;
-  }
 }
 
 @end

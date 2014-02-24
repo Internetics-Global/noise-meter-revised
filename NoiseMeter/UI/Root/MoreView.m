@@ -17,6 +17,7 @@
 #import "MeterView.h"
 #import "PurchaseViewController.h"
 #import "NMDecibelLogger.h"
+#import "IDPSoundBoard.h"
 @interface MoreView ()
 
 @end
@@ -37,10 +38,15 @@
     
     [self style];
     
+    int purchaseButtonHeight = 0; //当isAdRemoved，则_optionTable相应拉高
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        purchaseButtonHeight = 50;
+    }
+    
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 105) style:UITableViewStyleGrouped];
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 105 + purchaseButtonHeight) style:UITableViewStyleGrouped];
     } else {
-        _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 65) style:UITableViewStyleGrouped];
+        _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 65 + purchaseButtonHeight) style:UITableViewStyleGrouped];
     }
     
     _optionTable.delegate = self;
@@ -170,9 +176,6 @@
 		CTCarrier *carrier = [info subscriberCellularProvider];
 		[string appendFormat:@"<b>Carrier:</b> %@ <br>", [carrier carrierName]];
 		[string appendFormat:@"<b>Country Code:</b> %@ <br>", [[carrier isoCountryCode] capitalizedString]];
-		if ([carrier mobileNetworkCode] == nil) {
-			[string appendFormat:@"<b>Airplane Mode/No SIM/Out of Range</b><br>", [carrier isoCountryCode]];
-		}
 	}
 	return string;
 }
@@ -256,7 +259,7 @@
         [NSUserDefaultsHelper setOutputToEarpieceFlag:YES];
     }
     
-    [[NMDecibelLogger defaultLogger] resetAudioRoute];
+    [IDPSoundBoard resetAudioRoute:[NSUserDefaultsHelper isOutputToEarpiece]];
     
 }
 
@@ -272,9 +275,11 @@
         if ([myswitch isOn]) {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
             APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = NO;
+            
         } else {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
             APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = YES;
+            [IDPSoundBoard stopBackgroundSoundRunning];
             
         }
     }

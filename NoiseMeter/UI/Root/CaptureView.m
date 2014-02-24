@@ -10,8 +10,7 @@
 #import "SoundLevelCapture.h"
 #import "NMDataManager.h"
 #import "NMDecibelLogger.h"
-
-#import "CAFAudioHelper.h"
+#import "IDPSoundBoard.h"
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
 
@@ -110,7 +109,7 @@
     if ([[NMDecibelLogger defaultLogger] logging]) {
       [[NMDecibelLogger defaultLogger] stopLogging];
     }
-    [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
+    [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
     [[NMDecibelLogger defaultLogger] startLogging];
     
     SoundLevelCapture *cap = [SoundLevelCapture instance];

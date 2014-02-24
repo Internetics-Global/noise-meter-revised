@@ -88,17 +88,17 @@
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
+		889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 889E53B218BAC2CC00721ADF /* loop.mp3 */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
+		88A2FEA118B6CD9D0046E07D /* IDPSoundBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */; };
 		88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3E18A47FD200E56939 /* generalBanner@2x.png */; };
 		88A95E4418A4803000E56939 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
 		88A95E4518A4803000E56939 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
 		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
-		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
-		88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEFE1918A1EDEE00399680 /* PlayHelper.m */; };
 		88BEFE4F18A1FCB100399680 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
 		88BEFE5018A1FCB100399680 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3F18A1FCB000399680 /* 2.png */; };
 		88BEFE5118A1FCB100399680 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4018A1FCB000399680 /* 3.png */; };
@@ -242,6 +242,7 @@
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
 		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = UI/Root/PurchaseViewController.h; sourceTree = "<group>"; };
 		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = UI/Root/PurchaseViewController.xib; sourceTree = "<group>"; };
+		889E53B218BAC2CC00721ADF /* loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loop.mp3; sourceTree = SOURCE_ROOT; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD224177BC3270046D281 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD225177BC3400046D281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -269,19 +270,17 @@
 		889FD23C177BC3F90046D281 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Appirater.m; path = Appirater/Appirater.m; sourceTree = "<group>"; };
 		889FD23D177BC3F90046D281 /* AppiraterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppiraterDelegate.h; path = Appirater/AppiraterDelegate.h; sourceTree = "<group>"; };
 		889FD23F177BC4960046D281 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		88A2FE9F18B6CD9D0046E07D /* IDPSoundBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPSoundBoard.h; sourceTree = "<group>"; };
+		88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPSoundBoard.m; sourceTree = "<group>"; };
 		88A95E3C18A47FC100E56939 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88A95E3E18A47FD200E56939 /* generalBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generalBanner@2x.png"; sourceTree = "<group>"; };
 		88A95E4118A4803000E56939 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
 		88A95E4218A4803000E56939 /* noads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noads.png; sourceTree = "<group>"; };
 		88A95E4318A4803000E56939 /* recordScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordScreenshot.png; sourceTree = "<group>"; };
-		88B47354189A148E005668AC /* CAFAudioHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFAudioHelper.h; path = Data/CAFAudioHelper.h; sourceTree = "<group>"; };
-		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
-		88BEFE1818A1EDEE00399680 /* PlayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHelper.h; path = Data/PlayHelper.h; sourceTree = "<group>"; };
-		88BEFE1918A1EDEE00399680 /* PlayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayHelper.m; path = Data/PlayHelper.m; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
 		88BEFE3F18A1FCB000399680 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Meters/2.png; sourceTree = "<group>"; };
 		88BEFE4018A1FCB000399680 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = Meters/3.png; sourceTree = "<group>"; };
@@ -429,6 +428,8 @@
 				11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */,
 				11A3EE71150F3D2D00A6496B /* SoundLevelCapture.h */,
 				11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */,
+				88A2FE9F18B6CD9D0046E07D /* IDPSoundBoard.h */,
+				88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */,
 			);
 			name = Models;
 			path = Data/Models;
@@ -439,7 +440,6 @@
 			children = (
 				880A003818ACD22C00FB84F5 /* upgrade.css */,
 				880A003418ACB91B00FB84F5 /* upgradeInstruction.html */,
-				883391091793CEA70051DE50 /* demo.mp3 */,
 				11FBD43615117B7D00FF47C2 /* Sounds */,
 				11AC52FB1505D3CF0093C7AB /* Images */,
 			);
@@ -525,6 +525,8 @@
 		11FBD43615117B7D00FF47C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				889E53B218BAC2CC00721ADF /* loop.mp3 */,
+				883391091793CEA70051DE50 /* demo.mp3 */,
 				883069AF18B4CC460067750A /* home_alarm.caf */,
 				883069B018B4CC460067750A /* scifialarm.caf */,
 				883069B118B4CC460067750A /* siren_wail.caf */,
@@ -628,10 +630,6 @@
 		88B47357189A1819005668AC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				88BEFE1818A1EDEE00399680 /* PlayHelper.h */,
-				88BEFE1918A1EDEE00399680 /* PlayHelper.m */,
-				88B47354189A148E005668AC /* CAFAudioHelper.h */,
-				88B47355189A148E005668AC /* CAFAudioHelper.m */,
 				88B47358189A182C005668AC /* FileHelper.h */,
 				88B47359189A182C005668AC /* FileHelper.m */,
 				88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */,
@@ -814,6 +812,7 @@
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
 				88131CDB18AB224000D2541A /* overlay568.png in Resources */,
+				889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */,
 				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
@@ -894,6 +893,7 @@
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
+				88A2FEA118B6CD9D0046E07D /* IDPSoundBoard.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
 				11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */,
 				881032AE18A361FE000CA722 /* BaseViewController.m in Sources */,
@@ -903,11 +903,9 @@
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				11A3EE81150F456B00A6496B /* CaptureView.m in Sources */,
-				88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */,
 				88BEFE6218A1FCE800399680 /* SoundLevelView.m in Sources */,
 				1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */,
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
-				88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
 				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,
@@ -1017,8 +1015,8 @@
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1031,7 +1029,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "987E8D7F-D8AA-4D07-948C-23014ABDBF15";
+				PROVISIONING_PROFILE = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1040,8 +1038,8 @@
 		110F131414EDD52E00BE4481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1054,7 +1052,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FA3238F4-9FAF-4D41-9F33-CDF5AE589E20";
+				PROVISIONING_PROFILE = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};

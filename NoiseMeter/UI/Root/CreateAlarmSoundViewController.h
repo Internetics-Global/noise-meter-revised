@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NMDecibelLogger.h"
 
-@interface CreateAlarmSoundViewController : UIViewController {
-    SystemSoundID _audioEffect;
-    
-}
+@interface CreateAlarmSoundViewController : UIViewController
 
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *startButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *playButton;
