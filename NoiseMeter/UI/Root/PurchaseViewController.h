@@ -7,13 +7,8 @@
 //
 
 #import "GAITrackedViewController.h"
-#import <iAd/iAd.h>
-#import <StoreKit/StoreKit.h>
 
-@interface PurchaseViewController : BaseViewController < SKProductsRequestDelegate,SKPaymentTransactionObserver,UIAlertViewDelegate,UIWebViewDelegate> {
-    SKProduct *skProduct;
-    
-    BOOL *_isOnlyRequestPrice;
+@interface PurchaseViewController : BaseViewController <UIWebViewDelegate>{
     
     UIActivityIndicatorView *_activity;
     

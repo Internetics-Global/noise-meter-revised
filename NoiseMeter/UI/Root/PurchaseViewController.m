@@ -7,6 +7,7 @@
 //
 
 #import "PurchaseViewController.h"
+#import "RMStore.h"
 
 @interface PurchaseViewController ()
 
@@ -28,16 +29,18 @@
     [self style];
     [super viewDidLoad];
     
-    [_purchaseButton addTarget:self action:@selector(purchaseAction) forControlEvents:UIControlEventTouchDown];
+    [_purchaseButton addTarget:self action:@selector(purchaseNow) forControlEvents:UIControlEventTouchDown];
     
-    // Listen to purchase
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    //request product info
+    NSSet *products = [NSSet setWithArray:@[IAPProductID]];
+    [[RMStore defaultStore] requestProducts:products success:^(NSArray *products, NSArray *invalidProductIdentifiers) {
+        NSLog(@"Products loaded");
+        [self updateProduct:products withInvalidProductIdentifiers: invalidProductIdentifiers];
+    } failure:^(NSError *error) {
+        NSLog(@"Something went wrong");
+    }];
     
-    _isOnlyRequestPrice = YES;
-    NSSet *productList = [NSSet setWithObjects:IAPProductID, nil];
-    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:productList];
-    productsRequest.delegate = self;
-    [productsRequest start];
+    
     
     self.webview.delegate = self;
     
@@ -47,22 +50,16 @@
     
     _backButton = [self findBackButton];
     
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
-    
-    if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
-        [self viewWillAppear:YES];
-    }
-    
 }
+
+
 
 - (void) viewDidUnload {
     [self setPurchaseButton:nil];
-    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") == FALSE) {
@@ -81,6 +78,8 @@
         self.webview.frame = rect;
     }
     
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+    
     
     _activity.center = self.webview.center;
     
@@ -97,106 +96,16 @@
     self.trackedViewName = @"PurchaseView Screen";
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark – Restore purchase
-
-- (IBAction)restoreAction:(id)sender {
-    
-    if (TARGET_IPHONE_SIMULATOR) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    [self checkPurchasedItems];
-}
 
 
-- (void) checkPurchasedItems
-{
-    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
-}// Call This Function
+#pragma mark – Restore and buy
 
-//Then this delegate Function Will be fired
-- (void) paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
-{
-    NSMutableArray *purchasedItemIDs = [[NSMutableArray alloc] init];
-    
-    NSLog(@"received restored transactions: %i", queue.transactions.count);
-    for (SKPaymentTransaction *transaction in queue.transactions)
-    {
-        NSString *productID = transaction.payment.productIdentifier;
-        [purchasedItemIDs addObject:productID];
-    }
-    
-    if ([purchasedItemIDs count] == 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You can not restore since you haven't purchased before." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-    
-}
-
-
-#pragma mark – Purchase
-
-- (void) purchaseAction {
-    
-    if (TARGET_IPHONE_SIMULATOR) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    if ([SKPaymentQueue canMakePayments]) {
-        
-        NSSet * set = [NSSet setWithArray:@[IAPProductID]];
-        SKProductsRequest * request = [[SKProductsRequest alloc] initWithProductIdentifiers:set];
-        request.delegate = self;
-        [request start];
-        
-        if (_backButton) {
-            _backButton.enabled = NO;
-        }
-        
-        
-    } else {
-        NSLog(@"Failure，forbid to allow for purchase");
-    }
-    
-}
-
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-  NSLog(@"%@", [error description]);
-    
-  if (_isOnlyRequestPrice) {
-    _isOnlyRequestPrice = NO;
-  }
-    
-  if (_backButton) {
-        _backButton.enabled = YES;
-  }
-}
-
-
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    
+- (void) updateProduct:(NSArray *)products withInvalidProductIdentifiers:(NSArray *) invalidProductIdentifiers  {
     if (_backButton) {
         _backButton.enabled = YES;
     }
     
-    NSArray *myProduct = response.products;
-    
-    if (myProduct.count == 0) {
+    if (products.count == 0) {
         
         NSLog(@"Fail to get purchase info (myProduct.count = 0)");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
@@ -208,44 +117,78 @@
         return;
     }
     
-    NSArray *invalidProductID = response.invalidProductIdentifiers;
-    if ([invalidProductID count] >0) {
+    if ([invalidProductIdentifiers count] >0) {
         NSLog(@"Invalid product ID");
         return;
     }
     
-    skProduct = [myProduct lastObject];
+    SKProduct *skProduct = [products lastObject];
     NSLog(@"Product title: %@" , skProduct.localizedTitle);
     NSLog(@"Product description: %@" , skProduct.localizedDescription);
     NSLog(@"Product price: %@" , skProduct.price);
     NSLog(@"Product id: %@" , skProduct.productIdentifier);
     
     
-    if (_isOnlyRequestPrice) {
-        _isOnlyRequestPrice = NO;
-        
-        NSString *purchasePrice = [self localizedPrice:skProduct];
-        
-        [_purchaseButton setTitle:[NSString stringWithFormat:@"Purchase - %@ ",purchasePrice] forState:UIControlStateNormal];
-        
-    } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Upgrade to Pro"
-                                                            message:[NSString stringWithFormat:@"Please confirm your upgrade to Noise Down Pro (%@)?",[self localizedPrice:skProduct]]
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Cancel"
-                                                  otherButtonTitles:@"OK", nil];
-        alertView.delegate = self;
-        [alertView show];
+    NSString *purchasePrice = [self localizedPrice:skProduct];
+    [_purchaseButton setTitle:[NSString stringWithFormat:@"Purchase - %@ ",purchasePrice] forState:UIControlStateNormal];
+    
+}
+
+- (IBAction)restoreAction:(id)sender {
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
     }
+    
+    [[RMStore defaultStore] restoreTransactionsOnSuccess:^{
+        NSLog(@"Transactions restored");
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
+        
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Something went wrong");
+    }];
+    
 }
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        SKPayment * payment = [SKPayment paymentWithProduct:skProduct];
-        [[SKPaymentQueue defaultQueue] addPayment:payment];
+
+#pragma mark – Purchase
+
+- (void) purchaseNow {
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test IAP in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
     }
+    
+    [[RMStore defaultStore] addPayment:IAPProductID success:^(SKPaymentTransaction *transaction) {
+        NSLog(@"Product purchased");
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
+        
+        [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    } failure:^(SKPaymentTransaction *transaction, NSError *error) {
+        NSLog(@"Something went wrong");
+    }];
 }
+
+
 
 - (NSString *)localizedPrice: (SKProduct *) sk
 {
@@ -258,63 +201,6 @@
 }
 
 
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
-    for (SKPaymentTransaction *transaction in transactions)
-    {
-        
-        switch (transaction.transactionState)
-        {
-            case SKPaymentTransactionStatePurchased: {
-                NSLog(@"Done of purchase transactionIdentifier = %@", transaction.transactionIdentifier);
-                [NSUserDefaultsHelper setAdRemoveFlag:YES];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
-                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-                
-                [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                
-                break;
-            }
-            case SKPaymentTransactionStateFailed: {
-                NSLog(@"Fail to purchase,%@",transaction.error.localizedDescription);
-                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-                break;
-            }
-            case SKPaymentTransactionStateRestored: {
-                NSLog(@"have bought this before");
-                [NSUserDefaultsHelper setAdRemoveFlag:YES];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
-                [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-                
-                [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
-                
-                [self.navigationController popViewControllerAnimated:YES];
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                
-                break;
-            }
-            case SKPaymentTransactionStatePurchasing: {
-                NSLog(@"Add item into list to purchase");
-                break;
-            }
-            default:
-                break;
-        }
-    }
-    
-}
-
-- (void)dealloc
-{
-    [self viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 #pragma mark – UIWebViewDelegate
 
@@ -330,6 +216,25 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [_activity stopAnimating];
+}
+
+#pragma mark – Memory management
+
+- (void)dealloc
+{
+    [self viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 
