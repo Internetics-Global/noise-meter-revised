@@ -150,6 +150,8 @@
         
         [self.navigationController popViewControllerAnimated:YES];
         
+        [NSUserDefaultsHelper setAdRemoveFlag:YES];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
@@ -179,6 +181,8 @@
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         
         [self.navigationController popViewControllerAnimated:YES];
+        
+        [NSUserDefaultsHelper setAdRemoveFlag:YES];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
