@@ -11,7 +11,6 @@
 
 @interface AlertView : BaseViewController<UIPickerViewDelegate, UIPickerViewDataSource>{
     UIPickerView *_pickerView;
-    UIPickerView *_alertPickerView;
     UIButton *_setButton;
     UILabel *_explanation;
 }
