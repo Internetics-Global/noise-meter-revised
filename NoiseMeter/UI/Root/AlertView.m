@@ -62,18 +62,6 @@
 - (void)set
 {
     [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:([_pickerView selectedRowInComponent:0] + 40)]];
-    if ([_alertPickerView selectedRowInComponent:0] == 0) 
-    {
-        [[NMDecibelLogger defaultLogger] setAlarmName:@"home_alarm"];
-    }
-    else if([_alertPickerView selectedRowInComponent:0] == 1)
-    {
-        [[NMDecibelLogger defaultLogger] setAlarmName:@"siren_wail"];
-    }
-    else 
-    {
-        [[NMDecibelLogger defaultLogger] setAlarmName:@"scifialarm"];
-    }
     self.tabBarController.selectedIndex = 0;
 }
 
@@ -146,7 +134,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    _alertPickerView = nil;
     _pickerView = nil;
     _setButton = nil;
     
