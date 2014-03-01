@@ -76,6 +76,11 @@
     
 }
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    _playingIndex = -1;
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -137,14 +142,23 @@
     cell.backgroundColor = [UIColor clearColor];
     
     
-    cell.playButton.tag = indexPath.row;
-    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
+    cell.playImageView.tag = indexPath.row;
+    UITapGestureRecognizer *singTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playRecordedSound:)];
+    singTapGesture.numberOfTapsRequired = 1;
+    singTapGesture.numberOfTouchesRequired = 1;
+    [cell.playImageView addGestureRecognizer:singTapGesture];
     
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    if (flag) {
-        cell.playButton.hidden = NO;
+    if (_playingIndex == indexPath.row) {
+        NSMutableArray* imagesArray = [NSMutableArray arrayWithCapacity:3];
+        for (int i = 0; 4 > i; ++i) {
+            [imagesArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"soundOnButton%d", i]]];
+        }
+        cell.playImageView.animationImages = imagesArray;
+        cell.playImageView.animationDuration = 0.9;
+        cell.playImageView.animationRepeatCount = 0;
+        [cell.playImageView startAnimating];
     } else {
-        cell.playButton.hidden = YES;
+        [cell.playImageView setImage:[UIImage imageNamed:@"soundOnButton2"]];
     }
     
     return cell;
@@ -167,11 +181,13 @@
 
 #pragma mark – IBAction related
 
-- (void) playRecordedSound: (id) sender {
+- (void) playRecordedSound: (UITapGestureRecognizer *) gesture {
     
-    int index = ((UIButton *) sender).tag;
+    _playingIndex = ((UIButton *) [gesture view]).tag;
     
-    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
+    [_scoreTable reloadData];
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:_playingIndex];
     
     NSDate *date = caputure.date;
 	NSString *dateString = [FileHelper convertDate:date];
@@ -181,7 +197,18 @@
     [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
     AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
     player.numberOfLoops = 0;  // Endless
+    [IDPSoundBoard sharedInstance].IDPDelegate = self;
     [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
+}
+
+#pragma mark – IDPSoundBoardDelegate
+
+- (void)didFinishSoundPlay:(EnumSoundType)soundType {
+    if (soundType == EnumSoundType_Recorded) {
+        _playingIndex = -1;
+        [_scoreTable reloadData];
+        
+    }
 }
 
 

@@ -10,8 +10,9 @@
 #import "GAITrackedViewController.h"
 #import <iAd/iAd.h>
 #import "SoundLevelView.h"
+#import "IDPSoundBoard.h"
 
-@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate>{
+@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;
@@ -29,6 +30,8 @@
     SoundLevelView *_soundLevelView;
     
     UIImageView *_overlayImageView;
+    
+    int   _playingIndex;
 }
 
 @end

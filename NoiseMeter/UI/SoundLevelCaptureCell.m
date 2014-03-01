@@ -48,12 +48,11 @@
         [self.contentView addSubview:_levelLabel];
         
         
-        _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playButton setImage:[UIImage imageNamed:@"soundOnButton@2x"] forState:UIControlStateNormal];
-        _playButton.frame = CGRectMake(_levelLabel.frame.origin.x - 35, 13, 30, 15);
-        _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        [self.contentView addSubview:_playButton];
-        _playButton.showsTouchWhenHighlighted = YES;
+        _playImageView = [[UIImageView alloc] init];
+        _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 35, 13, 30, 15);
+        _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_playImageView];
+        _playImageView.userInteractionEnabled = YES;
         
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, 0, 100, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
