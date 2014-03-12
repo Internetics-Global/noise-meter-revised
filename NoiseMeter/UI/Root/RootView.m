@@ -11,6 +11,7 @@
 #import "ScoreView.h"
 #import "AlertView.h"
 #import "MoreView.h"
+#import "NMDecibelLogger.h"
 
 @interface RootView ()
 
@@ -123,6 +124,13 @@
             baseViewController.generalADButton.alpha = 0;
         }
         
+        if ([baseViewController isKindOfClass:[MeterView class]]) {
+            //stop the alarm if it's still playing
+            if ([[NMDecibelLogger defaultLogger] playingAlarm]) {
+                [[NMDecibelLogger defaultLogger] alarmComplete];
+            }
+        }
+        
 
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -132,6 +140,8 @@
             }completion:nil];
         });
     }
+    
+    
     
     
     
