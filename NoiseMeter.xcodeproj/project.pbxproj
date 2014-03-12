@@ -66,8 +66,8 @@
 		11F3E5D41519561400549099 /* InternalWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D31519561400549099 /* InternalWebView.m */; };
 		11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
-		8807E74D18CFEF5B0042AC59 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E74C18CFEF5B0042AC59 /* button_cancel.png */; };
-		8807E74F18CFEFBA0042AC59 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E74E18CFEFBA0042AC59 /* button_cancel@2x.png */; };
+		8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75018CFF38B0042AC59 /* button_cancel.png */; };
+		8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75118CFF38B0042AC59 /* button_cancel@2x.png */; };
 		880A002818AC83D800FB84F5 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
 		880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
 		880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */; };
@@ -221,8 +221,8 @@
 		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalWebView.m; path = UI/Root/InternalWebView.m; sourceTree = "<group>"; };
 		11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
-		8807E74C18CFEF5B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
-		8807E74E18CFEFBA0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
+		8807E75018CFF38B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
+		8807E75118CFF38B0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
 		880A002718AC83D800FB84F5 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = "<group>"; };
 		880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createCustomAlarmButton.png; sourceTree = "<group>"; };
 		880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "createCustomAlarmButton@2x.png"; sourceTree = "<group>"; };
@@ -491,8 +491,8 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				8807E74E18CFEFBA0042AC59 /* button_cancel@2x.png */,
-				8807E74C18CFEF5B0042AC59 /* button_cancel.png */,
+				8807E75018CFF38B0042AC59 /* button_cancel.png */,
+				8807E75118CFF38B0042AC59 /* button_cancel@2x.png */,
 				88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */,
 				88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */,
 				88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */,
@@ -863,8 +863,8 @@
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
-				8807E74F18CFEFBA0042AC59 /* button_cancel@2x.png in Resources */,
-				8807E74D18CFEF5B0042AC59 /* button_cancel.png in Resources */,
+				8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */,
+				8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
@@ -1055,8 +1055,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7s,
 					armv7,
+					armv7s,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
@@ -1082,8 +1082,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = (
-					armv7s,
 					armv7,
+					armv7s,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
