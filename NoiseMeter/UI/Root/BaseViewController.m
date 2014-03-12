@@ -50,7 +50,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+    [UIView animateWithDuration:2 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
       self.generalADButton.alpha = 1;
     }completion:nil];
 }
