@@ -12,7 +12,6 @@
 
 + (UIImage *)fullScreenshot;
 
-+ (void) postToTwitter :(UIImage *)image withMsg:(NSString *) msg;
-+ (void) postToFacebook :(UIImage *)image withMsg:(NSString *) msg;
-
++ (void) postToTwitter:(UIViewController *) currentViewController withImage:(UIImage *)image withMsg:(NSString *) msg;
++ (void)postToFacebook:(UIViewController *) currentViewController withImage :(UIImage *)image withMsg:(NSString *) msg;
 @end

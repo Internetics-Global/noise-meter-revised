@@ -594,6 +594,7 @@
 #pragma mark – Share action
 
 - (void) share {
+    _fullScrenshotImage = [ShareHelper fullScreenshot];
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
                            @"Share on Facebook",
                            @"Share on Twitter",
@@ -605,12 +606,12 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    UIImage *fullScrenshotImage = [ShareHelper fullScreenshot];
+    __weak __typeof(&*self)weakSelf = self;
     
     if (buttonIndex == 0) {
-      [ShareHelper postToFacebook:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+        [ShareHelper postToFacebook:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
     } else if (buttonIndex == 1) {
-      [ShareHelper postToTwitter:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+        [ShareHelper postToTwitter:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
     }
 }
 

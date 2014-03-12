@@ -19,6 +19,8 @@
     UIImageView *_tableHeader;
     
     int  _playingIndex;
+    
+    UIImage *_fullScrenshotImage;
 }
 
 @end

@@ -34,6 +34,8 @@
     UIImageView *_overlayImageView;
     
     int   _playingIndex;
+    
+    UIImage *_fullScrenshotImage;
 }
 
 @end
