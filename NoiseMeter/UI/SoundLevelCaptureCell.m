@@ -7,6 +7,8 @@
 //
 
 #import "SoundLevelCaptureCell.h"
+#import "NSUserDefaultsHelper.h"
+
 
 @implementation SoundLevelCaptureCell
 
@@ -53,12 +55,13 @@
         [self.contentView addSubview:_levelLabel];
         
         
-        _playImageView = [[UIImageView alloc] init];
-        _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 30 - 5, 13, 30, 15);
-        _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        [self.contentView addSubview:_playImageView];
-        _playImageView.userInteractionEnabled = YES;
-        
+        if ([NSUserDefaultsHelper isAdRemoved]) {
+            _playImageView = [[UIImageView alloc] init];
+            _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 30 - 5, 13, 30, 15);
+            _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+            [self.contentView addSubview:_playImageView];
+            _playImageView.userInteractionEnabled = YES;
+        } 
         
     }
     return self;
