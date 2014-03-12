@@ -34,6 +34,7 @@
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y - 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y - 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y - 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
+        _cancelButton.frame = CGRectMake(_cancelButton.frame.origin.x, _cancelButton.frame.origin.y - 160, _cancelButton.frame.size.width, _cancelButton.frame.size.height);
     }];
 }
 
@@ -44,6 +45,7 @@
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y + 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y + 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y + 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
+        _cancelButton.frame = CGRectMake(_cancelButton.frame.origin.x, _cancelButton.frame.origin.y + 160, _cancelButton.frame.size.width, _cancelButton.frame.size.height);
     }];
 }
 
@@ -83,13 +85,26 @@
     [self.view addSubview:_nameField];
     
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 22, 280, 37);
+    _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 15, 280, 37);
     [_saveButton setImage:[UIImage imageNamed:@"button_save.png"] forState:UIControlStateNormal];
     [_saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
     
+    _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 15, 280, 37);
+    [_cancelButton setImage:[UIImage imageNamed:@"button_cancel.png"] forState:UIControlStateNormal];
+    [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelButton];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardUp) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDown) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) cancel {
+    [[NMDecibelLogger defaultLogger] stopLogging];
+    [[NMDecibelLogger defaultLogger] startLogging];
+    [self.navigationController popViewControllerAnimated:YES];
+    [NMDecibelLogger defaultLogger].playingAlarm = FALSE;
 }
 
 - (void)save

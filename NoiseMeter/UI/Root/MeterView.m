@@ -111,7 +111,7 @@
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height)) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height - 5, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height)) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
@@ -246,7 +246,7 @@
 {
     if (_headerView == nil) 
     {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 66)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, _headerView.frame.size.width - 10, _headerView.frame.size.height)];
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.numberOfLines = 3;
@@ -274,7 +274,7 @@
     }
     else 
     {
-        return 50;
+        return 45;
     }
 }
 
