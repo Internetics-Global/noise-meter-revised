@@ -35,6 +35,9 @@
         [controller addImage:image];
         [controller setInitialText:msg];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:YES completion:nil];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Twitter Account" message:@"There are no Twitter accounts configured. You can add or create a Facebook account in Settings." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
     }
 }
 
@@ -44,6 +47,9 @@
         [controller addImage:image];
         [controller setInitialText:msg];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:YES completion:Nil];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Facebook Account" message:@"There are no Facebook accounts configured. You can add or create a Facebook account in Settings." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
     }
 }
 
