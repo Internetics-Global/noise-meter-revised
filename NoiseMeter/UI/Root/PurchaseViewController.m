@@ -78,7 +78,7 @@
         self.webview.frame = rect;
     }
     
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade-to-noise-down-pro"]]];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"]]];
     
     
     _activity.center = self.webview.center;
