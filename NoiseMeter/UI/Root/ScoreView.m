@@ -138,6 +138,7 @@
         cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    [cell refreshPlayImageViewVisibility];
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     

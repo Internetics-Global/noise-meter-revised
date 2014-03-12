@@ -19,4 +19,6 @@
 @property (nonatomic, strong) SoundLevelCapture *capture;
 @property (strong, nonatomic) UIImageView *playImageView;
 
+- (void) refreshPlayImageViewVisibility;
+
 @end

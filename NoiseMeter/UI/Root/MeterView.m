@@ -296,6 +296,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.textColor = [UIColor whiteColor];
     }
+    [cell refreshPlayImageViewVisibility];
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     

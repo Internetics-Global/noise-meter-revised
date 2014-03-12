@@ -55,13 +55,11 @@
         [self.contentView addSubview:_levelLabel];
         
         
-        if ([NSUserDefaultsHelper isAdRemoved]) {
-            _playImageView = [[UIImageView alloc] init];
-            _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 30 - 5, 13, 30, 15);
-            _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-            [self.contentView addSubview:_playImageView];
-            _playImageView.userInteractionEnabled = YES;
-        } 
+        _playImageView = [[UIImageView alloc] init];
+        _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 30 - 5, 13, 30, 15);
+        _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_playImageView];
+        _playImageView.userInteractionEnabled = YES;
         
     }
     return self;
@@ -70,6 +68,14 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+}
+
+- (void) refreshPlayImageViewVisibility {
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _playImageView.hidden = NO;
+    } else {
+        _playImageView.hidden = YES;
+    }
 }
 
 - (void)dealloc

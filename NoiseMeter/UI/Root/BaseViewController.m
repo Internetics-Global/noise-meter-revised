@@ -119,6 +119,14 @@
     [self.generalADButton removeFromSuperview];
     self.generalADButton = nil;
     
+    NSArray *subViews = [self.view subviews];
+    for (UIView *myView in subViews) {
+        if ([myView isKindOfClass:[UITableView class]]) {
+            [(UITableView *)myView reloadData];
+            break;
+        }
+    }
+    
     
 }
 
