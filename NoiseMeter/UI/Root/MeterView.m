@@ -469,7 +469,7 @@
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
         if ([NSUserDefaultsHelper isNotShowMeterOffDialog] == NO) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:self cancelButtonTitle:@"Don't show again" otherButtonTitles:@"OK",nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Meter off" message:@"The meter has been switched off. Tap again to resume." delegate:self cancelButtonTitle:@"Don't show again" otherButtonTitles:@"OK",nil];
             [alert show];
         }
         
