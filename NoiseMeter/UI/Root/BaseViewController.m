@@ -58,7 +58,7 @@
  *  this is the old implementation
  */
 - (void) buyAction2 {
-    InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/upgrade-to-noise-down-pro/"];
+    InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/upgrade.html"];
     [self.navigationController pushViewController:web animated:YES];
 }
 
