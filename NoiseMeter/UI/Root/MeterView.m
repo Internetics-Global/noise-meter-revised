@@ -68,13 +68,13 @@
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y + 10, 30, 30);
+    _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y, 30, 30);
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     _cancelButton.hidden = YES;
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 50)];
+                            CGRectMake(10, _meterBackground.frame.origin.y -10, 200, 50)];
     _currentReadingLabel.textAlignment = UITextAlignmentLeft;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
