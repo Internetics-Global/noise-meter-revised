@@ -494,7 +494,7 @@
 - (void)infoShowV2
 {
     _overlayImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    _overlayImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _overlayImageView.contentMode = UIViewContentModeScaleToFill;
     if (iPhone5) {
         _overlayImageView.frame = CGRectMake(0, 0, 320, 568);
         [_overlayImageView setImage:[UIImage imageNamed:@"overlay568"]];

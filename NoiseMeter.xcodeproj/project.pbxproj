@@ -68,6 +68,7 @@
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75018CFF38B0042AC59 /* button_cancel.png */; };
 		8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75118CFF38B0042AC59 /* button_cancel@2x.png */; };
+		8807E75718D0052B0042AC59 /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75618D0052B0042AC59 /* overlay568.png */; };
 		880A002818AC83D800FB84F5 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
 		880A002A18AC993B00FB84F5 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
 		880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */; };
@@ -75,7 +76,6 @@
 		880A003918ACD22C00FB84F5 /* upgrade.css in Resources */ = {isa = PBXBuildFile; fileRef = 880A003818ACD22C00FB84F5 /* upgrade.css */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
-		88131CDB18AB224000D2541A /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD918AB223F00D2541A /* overlay568.png */; };
 		883069B218B4CC460067750A /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
 		883069B318B4CC460067750A /* scifialarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B018B4CC460067750A /* scifialarm.caf */; };
 		883069B418B4CC460067750A /* siren_wail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B118B4CC460067750A /* siren_wail.caf */; };
@@ -223,6 +223,7 @@
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		8807E75018CFF38B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
 		8807E75118CFF38B0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
+		8807E75618D0052B0042AC59 /* overlay568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay568.png; sourceTree = "<group>"; };
 		880A002718AC83D800FB84F5 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = "<group>"; };
 		880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createCustomAlarmButton.png; sourceTree = "<group>"; };
 		880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "createCustomAlarmButton@2x.png"; sourceTree = "<group>"; };
@@ -231,7 +232,6 @@
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = UI/Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
-		88131CD918AB223F00D2541A /* overlay568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay568.png; sourceTree = "<group>"; };
 		883069AF18B4CC460067750A /* home_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.caf; sourceTree = "<group>"; };
 		883069B018B4CC460067750A /* scifialarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.caf; sourceTree = "<group>"; };
 		883069B118B4CC460067750A /* siren_wail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.caf; sourceTree = "<group>"; };
@@ -464,8 +464,8 @@
 		11AC52FB1505D3CF0093C7AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8807E75618D0052B0042AC59 /* overlay568.png */,
 				88131CD818AB223F00D2541A /* overlay@2x.png */,
-				88131CD918AB223F00D2541A /* overlay568.png */,
 				88A95E4018A4803000E56939 /* Purchases */,
 				88BEFE3D18A1FC9400399680 /* Meters */,
 				111A18CA1505E384005655F1 /* Backings */,
@@ -843,7 +843,6 @@
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
-				88131CDB18AB224000D2541A /* overlay568.png in Resources */,
 				889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */,
 				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
@@ -865,6 +864,7 @@
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
 				8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */,
 				8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */,
+				8807E75718D0052B0042AC59 /* overlay568.png in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
