@@ -47,6 +47,14 @@
                                                    object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [UIView animateWithDuration:2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+      self.generalADButton.alpha = 1;
+    }completion:nil];
+}
+
 #pragma mark –  Setup AD view, which is used to prompt user to buy a pro version
 
 - (void) buyAction {
@@ -98,6 +106,7 @@
             [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
             [self.generalADButton setBackgroundImage:[UIImage imageNamed:@"generalBanner"] forState:UIControlStateNormal];
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
+            self.generalADButton.alpha = 0;
             [self.view addSubview:self.generalADButton];
             
         }
