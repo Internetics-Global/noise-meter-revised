@@ -14,6 +14,7 @@
 #import "PurchaseViewController.h"
 #import "FileHelper.h"
 #import "IDPSoundBoard.h"
+#import "ShareHelper.h"
 
 @interface MeterView ()
 
@@ -123,6 +124,15 @@
     [self.view addSubview:_topScoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+        _shareButton.frame = CGRectMake(CGRectGetMinX(_peakLabel.frame), CGRectGetMinY(_peakLabel.frame), 89, 29);
+        [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+        _shareButton.hidden = YES;
+        [self.view addSubview:_shareButton];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -145,6 +155,8 @@
     if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
         _captureButton.hidden = YES;
+        _shareButton.hidden = YES;
+        _peakLabel.hidden = NO;
         
         CGRect rect = _currentReadingLabel.frame;
         rect.origin.x = 10;
@@ -190,6 +202,9 @@
     CGRect rect = _currentReadingLabel.frame;
     rect.origin.x = 50;
     _currentReadingLabel.frame = rect;
+    
+    _shareButton.hidden = YES;
+    _peakLabel.hidden = NO;
 }
 
 /**
@@ -200,6 +215,8 @@
     if (_cancelButton.hidden == FALSE) {
         _cancelButton.hidden = YES;
         _captureButton.hidden = YES;
+        _shareButton.hidden = YES;
+        _peakLabel.hidden = NO;
         
         CGRect rect = _currentReadingLabel.frame;
         rect.origin.x = 10;
@@ -379,6 +396,8 @@
             _peakLabel.text = [NSString stringWithFormat:@"Last Peak: %.1f", [_peakReading floatValue]];
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
+            _shareButton.hidden = NO;
+            _peakLabel.hidden = YES;
             CGRect rect = _currentReadingLabel.frame;
             rect.origin.x = 50;
             _currentReadingLabel.frame = rect;
@@ -397,6 +416,8 @@
 - (void)alarmFinishedNotification:(NSNotification *)notification {
     _captureButton.hidden = YES;
     _cancelButton.hidden = YES;
+    _shareButton.hidden = YES;
+    _peakLabel.hidden = NO;
     
     CGRect rect = _currentReadingLabel.frame;
     rect.origin.x = 10;
@@ -568,6 +589,29 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark – Share action
+
+- (void) share {
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                           @"Share on Facebook",
+                           @"Share on Twitter",
+        
+                           nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    UIImage *fullScrenshotImage = [ShareHelper fullScreenshot];
+    
+    if (buttonIndex == 0) {
+      [ShareHelper postToFacebook:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+    } else if (buttonIndex == 1) {
+      [ShareHelper postToTwitter:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+    }
 }
 
 @end

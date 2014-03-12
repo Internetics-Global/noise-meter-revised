@@ -95,6 +95,9 @@
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
 		88A2FEA118B6CD9D0046E07D /* IDPSoundBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */; };
+		88A5613018D037EA00080210 /* ShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A5612F18D037EA00080210 /* ShareHelper.m */; };
+		88A5613218D038F700080210 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A5613118D038F700080210 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		88A5613A18D0400D00080210 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5613918D0400D00080210 /* share@2x.png */; };
 		88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3E18A47FD200E56939 /* generalBanner@2x.png */; };
 		88A95E4418A4803000E56939 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
 		88A95E4518A4803000E56939 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
@@ -283,6 +286,10 @@
 		889FD23F177BC4960046D281 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		88A2FE9F18B6CD9D0046E07D /* IDPSoundBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPSoundBoard.h; sourceTree = "<group>"; };
 		88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPSoundBoard.m; sourceTree = "<group>"; };
+		88A5612E18D037EA00080210 /* ShareHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareHelper.h; sourceTree = "<group>"; };
+		88A5612F18D037EA00080210 /* ShareHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareHelper.m; sourceTree = "<group>"; };
+		88A5613118D038F700080210 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		88A5613918D0400D00080210 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		88A95E3C18A47FC100E56939 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88A95E3E18A47FD200E56939 /* generalBanner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generalBanner@2x.png"; sourceTree = "<group>"; };
 		88A95E4118A4803000E56939 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
@@ -347,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A5613218D038F700080210 /* Social.framework in Frameworks */,
 				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
@@ -394,6 +402,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88A5613118D038F700080210 /* Social.framework */,
 				88DDF498189B1B6E00138ADF /* StoreKit.framework */,
 				8833910B1793D0680051DE50 /* CoreMedia.framework */,
 				889FD23F177BC4960046D281 /* CFNetwork.framework */,
@@ -492,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				8807E75018CFF38B0042AC59 /* button_cancel.png */,
+				88A5613918D0400D00080210 /* share@2x.png */,
 				8807E75118CFF38B0042AC59 /* button_cancel@2x.png */,
 				88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */,
 				88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */,
@@ -665,6 +675,8 @@
 				88B47359189A182C005668AC /* FileHelper.m */,
 				88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */,
 				88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */,
+				88A5612E18D037EA00080210 /* ShareHelper.h */,
+				88A5612F18D037EA00080210 /* ShareHelper.m */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -823,6 +835,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A5613A18D0400D00080210 /* share@2x.png in Resources */,
 				88BEFE6C18A20E9300399680 /* 18.png in Resources */,
 				88BEFE5618A1FCB100399680 /* 8.png in Resources */,
 				8833910A1793CEA70051DE50 /* demo.mp3 in Resources */,
@@ -926,6 +939,7 @@
 				88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */,
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,
+				88A5613018D037EA00080210 /* ShareHelper.m in Sources */,
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,
 				88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,

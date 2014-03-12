@@ -12,7 +12,7 @@
 #import "SoundLevelView.h"
 #import "IDPSoundBoard.h"
 
-@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate>{
+@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
     UIImageView *_meterBackground;
     UILabel *_currentReadingLabel;
     UITableView *_topScoreTable;
@@ -26,6 +26,8 @@
     UILabel *_titleLabel;
     UIButton *_infoButton;
     UIButton *_cancelButton;
+    
+    UIButton *_shareButton;
     
     SoundLevelView *_soundLevelView;
     
