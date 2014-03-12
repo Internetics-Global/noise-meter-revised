@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "FileHelper.h"
 #import "IDPSoundBoard.h"
+#import "ShareHelper.h"
 
 @interface ScoreView ()
 
@@ -64,6 +65,14 @@
         _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _meterBackground.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y)) style:UITableViewStylePlain];
     }
     
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+        _shareButton.frame = CGRectMake(0, CGRectGetMinY(_resetButton.frame), 73, 29);
+        [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_shareButton];
+    }
+    
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scoreTable.backgroundView = nil;
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
@@ -101,6 +110,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if ([_scores count] == 0) {
+        _shareButton.hidden = YES;
+    }
 }
 
 
@@ -239,5 +252,29 @@
     [_scoreTable reloadData];
 }
 
+
+
+#pragma mark – Share action
+
+- (void) share {
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                            @"Share on Facebook",
+                            @"Share on Twitter",
+                            
+                            nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    UIImage *fullScrenshotImage = [ShareHelper fullScreenshot];
+    
+    if (buttonIndex == 0) {
+        [ShareHelper postToFacebook:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+    } else if (buttonIndex == 1) {
+        [ShareHelper postToTwitter:fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+    }
+}
 
 @end
