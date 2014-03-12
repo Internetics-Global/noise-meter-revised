@@ -217,7 +217,7 @@
 
 - (void)resetButtonClicked
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Are you sure you want to reset?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset all recordings" message:@"Are you sure you want to reset? You will lose all recordings." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
     alert.tag = 0;
     [alert show];
     
