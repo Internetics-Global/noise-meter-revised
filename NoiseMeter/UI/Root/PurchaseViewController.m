@@ -78,6 +78,8 @@
         self.webview.frame = rect;
     }
     
+    self.webview.alpha = 0;
+    
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"]]];
     
     
@@ -216,6 +218,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_activity stopAnimating];
+    
+    [UIView animateWithDuration:0.4f
+                     animations:^{
+                         self.webview.alpha = 1.0f;
+                     }];
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
