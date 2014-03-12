@@ -457,6 +457,10 @@
 
 - (void) switchLoggingStatus {
     
+    if (_cancelButton.hidden == NO) {
+        return;
+    }
+    
     if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
