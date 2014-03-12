@@ -267,7 +267,7 @@
     
     UISwitch *myswitch = (UISwitch *)sender;
     if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Upgarde to Pro to enable this function" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
         [alert show];
         [myswitch setOn:NO];
         
