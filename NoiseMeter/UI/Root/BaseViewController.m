@@ -50,9 +50,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [UIView animateWithDuration:2 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
-      self.generalADButton.alpha = 1;
-    }completion:nil];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        [UIView animateWithDuration:2 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+            self.generalADButton.alpha = 1;
+            NSLog(@"%s:ADBanner transient",__FUNCTION__);
+        }completion:nil];
+        
+    });
+
 }
 
 #pragma mark –  Setup AD view, which is used to prompt user to buy a pro version

@@ -63,6 +63,7 @@
         [_viewControllers addObject:moreNav];
         
         _tabBarController.viewControllers = _viewControllers;
+        _tabBarController.delegate = self;
     }
     
     [self.view addSubview:_tabBarController.view];
@@ -101,6 +102,38 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark – UITabBarControllerDelegate
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    UIViewController *firstviewController;
+    
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        firstviewController = [(UINavigationController *) viewController topViewController];
+    } else {
+        firstviewController = viewController;
+    }
+    
+    //确保必须是BaseViewController子类
+    if ([firstviewController isKindOfClass:[BaseViewController class]]) {
+        BaseViewController *baseViewController = (BaseViewController *) firstviewController;
+        
+        if (baseViewController.generalADButton.alpha == 1) {
+            baseViewController.generalADButton.alpha = 0;
+        }
+
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:2 delay:2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+                baseViewController.generalADButton.alpha = 1;
+                NSLog(@"%s:ADBanner transient",__FUNCTION__);
+            }completion:nil];
+        });
+    }
+    
+    
+    
 }
 
 
