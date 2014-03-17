@@ -67,6 +67,14 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
+    _volumeView = [ [MPVolumeView alloc] init] ;
+    _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
+    [_volumeView setShowsRouteButton:YES];
+    [_volumeView sizeToFit];
+    [_volumeView setShowsVolumeSlider:NO];
+    
+    [self.view addSubview:_volumeView];
+    
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
     _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y + 10, 30, 30);
@@ -147,6 +155,9 @@
     [super viewDidAppear:animated];
     self.trackedViewName = @"MeterView Screen";
     
+    [ [UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -166,6 +177,9 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
+    [ [UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
 }
 
 
@@ -612,6 +626,29 @@
         [ShareHelper postToFacebook:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
     } else if (buttonIndex == 1) {
         [ShareHelper postToTwitter:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
+    }
+}
+
+#pragma mark – Airplay related
+
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
+
+//currently, no use, but we still put here
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        switch (receivedEvent.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                //[self playPauseToggle: nil]
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                //[self nextTrack: nil]
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
