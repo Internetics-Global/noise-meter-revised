@@ -146,6 +146,7 @@
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
 		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
+		9AC4176318D1977E00A9EA54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC4176218D1977E00A9EA54 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -349,11 +350,13 @@
 		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
 		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
 		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		9A818C8518D1912A00CD3EC4 /* appicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon120x120.png; sourceTree = "<group>"; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9AC4176218D1977E00A9EA54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +391,7 @@
 		110F12EA14EDD52E00BE4481 = {
 			isa = PBXGroup;
 			children = (
+				9A818C8518D1912A00CD3EC4 /* appicon120x120.png */,
 				9AB05EB2177BDEF10029CB48 /* Icon.png */,
 				9AB05EB0177BDEE50029CB48 /* Icon@2x.png */,
 				9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */,
@@ -439,6 +443,7 @@
 				88B47357189A1819005668AC /* Helper */,
 				88DDF47D189B19A300138ADF /* Vendor */,
 				11AC52F61505D37B0093C7AB /* Resources */,
+				9AC4176218D1977E00A9EA54 /* Images.xcassets */,
 			);
 			path = NoiseMeter;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88A5613A18D0400D00080210 /* share@2x.png in Resources */,
+				9AC4176318D1977E00A9EA54 /* Images.xcassets in Resources */,
 				88BEFE6C18A20E9300399680 /* 18.png in Resources */,
 				88BEFE5618A1FCB100399680 /* 8.png in Resources */,
 				8833910A1793CEA70051DE50 /* demo.mp3 in Resources */,
@@ -1086,6 +1092,8 @@
 					armv7,
 					armv7s,
 				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1100,8 +1108,13 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
+=======
+				PROVISIONING_PROFILE = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1113,6 +1126,8 @@
 					armv7,
 					armv7s,
 				);
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1127,8 +1142,13 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
+=======
+				PROVISIONING_PROFILE = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
