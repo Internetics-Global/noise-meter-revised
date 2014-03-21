@@ -98,15 +98,12 @@
     [ [UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
-    MPMediaItemArtwork *albumArt = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"icon"]];
     
     NSArray *keys = [NSArray arrayWithObjects:
                      MPMediaItemPropertyTitle,
-                     MPMediaItemPropertyArtwork,
                      nil];
     NSArray *values = [NSArray arrayWithObjects:
                        @"Baby monitor by NoiseDown",
-                       albumArt,
                        nil];
     NSDictionary *mediaInfo = [NSDictionary dictionaryWithObjects:values forKeys:keys];
     [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
