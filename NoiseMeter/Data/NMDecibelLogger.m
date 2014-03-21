@@ -117,7 +117,7 @@
 {
     if (!_playingAlarm) 
     {
-        if (1) { //airplay function
+        if (APP_DELEGATE.isOnAirPlayMode ) { //airplay function
             
             sleep(5);//allow more time
             
@@ -366,8 +366,16 @@ void audioRouteChangeListenerCallback (
     if (inPropertyID != kAudioSessionProperty_AudioRouteChange) {
       return;
     }
+
     
     NSLog(@"%s",__FUNCTION__);
+    
+    if ([[(__bridge NSDictionary *)inPropertyValue objectForKey:@"OutputDeviceDidChange_NewRoute"]
+         isEqualToString:@"AirTunes"]) {
+        APP_DELEGATE.isOnAirPlayMode = YES;
+    } else {
+        APP_DELEGATE.isOnAirPlayMode = NO;
+    }
     
     
     //following codes are same with [self resetAudioRoute]
