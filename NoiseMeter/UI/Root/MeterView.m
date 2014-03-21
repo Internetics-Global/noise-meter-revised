@@ -15,6 +15,7 @@
 #import "FileHelper.h"
 #import "IDPSoundBoard.h"
 #import "ShareHelper.h"
+#import "AirPlayViewController.h"
 
 @interface MeterView ()
 
@@ -67,13 +68,11 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
-    _volumeView = [ [MPVolumeView alloc] init] ;
-    _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
-    [_volumeView setShowsRouteButton:YES];
-    [_volumeView sizeToFit];
-    [_volumeView setShowsVolumeSlider:NO];
-    
-    [self.view addSubview:_volumeView];
+    UIButton *airplayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [airplayButton setImage:[UIImage imageNamed:@"baby_monitor_button.png"] forState:UIControlStateNormal];
+    [airplayButton addTarget:self action:@selector(airPlayButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    airplayButton.frame = CGRectOffset(_infoButton.frame, -50, 0);
+    [self.view addSubview:airplayButton];
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
@@ -155,9 +154,6 @@
     [super viewDidAppear:animated];
     self.trackedViewName = @"MeterView Screen";
     
-    [ [UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    [self becomeFirstResponder];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -177,9 +173,6 @@
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
-    [ [UIApplication sharedApplication] endReceivingRemoteControlEvents];
-    [self resignFirstResponder];
 }
 
 
@@ -561,6 +554,11 @@
     [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
+- (void) airPlayButtonClicked {
+    AirPlayViewController *airPlayViewController = [[AirPlayViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:airPlayViewController animated:YES];
+}
+
 #pragma mark – UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -626,29 +624,6 @@
         [ShareHelper postToFacebook:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
     } else if (buttonIndex == 1) {
         [ShareHelper postToTwitter:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
-    }
-}
-
-#pragma mark – Airplay related
-
-- (BOOL) canBecomeFirstResponder {
-    return YES;
-}
-
-//currently, no use, but we still put here
-- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
-    if (receivedEvent.type == UIEventTypeRemoteControl) {
-        switch (receivedEvent.subtype) {
-            case UIEventSubtypeRemoteControlTogglePlayPause:
-                //[self playPauseToggle: nil]
-                break;
-            case UIEventSubtypeRemoteControlNextTrack:
-                //[self nextTrack: nil]
-                break;
-                
-            default:
-                break;
-        }
     }
 }
 

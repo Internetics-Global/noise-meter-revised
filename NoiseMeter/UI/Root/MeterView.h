@@ -11,7 +11,7 @@
 #import <iAd/iAd.h>
 #import "SoundLevelView.h"
 #import "IDPSoundBoard.h"
-#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
     UIImageView *_meterBackground;
@@ -38,7 +38,6 @@
     
     UIImage *_fullScrenshotImage;
     
-    MPVolumeView *_volumeView;
 }
 
 @end

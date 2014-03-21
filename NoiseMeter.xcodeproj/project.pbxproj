@@ -83,6 +83,8 @@
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
+		8837965518DBF3530045DD42 /* AirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8837965418DBF3530045DD42 /* AirPlayViewController.m */; };
+		8837965718DC03950045DD42 /* baby_monitor_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8837965618DC03950045DD42 /* baby_monitor_button.png */; };
 		883F1F5E18BBF0880030A716 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
@@ -244,6 +246,9 @@
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8837965318DBF3530045DD42 /* AirPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPlayViewController.h; sourceTree = "<group>"; };
+		8837965418DBF3530045DD42 /* AirPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPlayViewController.m; sourceTree = "<group>"; };
+		8837965618DC03950045DD42 /* baby_monitor_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_monitor_button.png; sourceTree = "<group>"; };
 		883F1F5C18BBEDAC0030A716 /* RMStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStore.h; sourceTree = "<group>"; };
 		883F1F5D18BBF0880030A716 /* RMStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStore.m; sourceTree = "<group>"; };
 		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
@@ -504,6 +509,7 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				8837965618DC03950045DD42 /* baby_monitor_button.png */,
 				8807E75018CFF38B0042AC59 /* button_cancel.png */,
 				88A5613918D0400D00080210 /* share@2x.png */,
 				8807E75118CFF38B0042AC59 /* button_cancel@2x.png */,
@@ -598,6 +604,8 @@
 				88818C611799F58F007B386F /* PurchaseViewController.h */,
 				88818C601799F58F007B386F /* PurchaseViewController.m */,
 				88818C621799F58F007B386F /* PurchaseViewController.xib */,
+				8837965318DBF3530045DD42 /* AirPlayViewController.h */,
+				8837965418DBF3530045DD42 /* AirPlayViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -865,6 +873,7 @@
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
 				88BEFE6E18A20E9300399680 /* 20.png in Resources */,
+				8837965718DC03950045DD42 /* baby_monitor_button.png in Resources */,
 				88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */,
 				88FA090418C2A8960061FA0F /* soundOnButton1@2x.png in Resources */,
 				11AC53171505D4190093C7AB /* button_save.png in Resources */,
@@ -956,6 +965,7 @@
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
 				111A18D21505E3A9005655F1 /* ScoreView.m in Sources */,
 				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,
+				8837965518DBF3530045DD42 /* AirPlayViewController.m in Sources */,
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				883F1F5E18BBF0880030A716 /* RMStore.m in Sources */,
@@ -1077,7 +1087,7 @@
 					armv7s,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1091,7 +1101,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3378099E-3B64-4864-A735-4C41956E75CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1104,7 +1114,7 @@
 					armv7s,
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1118,7 +1128,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3378099E-3B64-4864-A735-4C41956E75CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2207D699-5F4D-4ED9-9B6F-0BA6471A9DE5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

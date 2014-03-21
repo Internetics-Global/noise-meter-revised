@@ -117,39 +117,81 @@
 {
     if (!_playingAlarm) 
     {
-        NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"caf"];
-        NSLog(@"path = %@; alarmName = %@", path, self.alarmName);
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
-            NSLog(@"%s:No of aifc formated alarm file",__FUNCTION__);
-            path = [FileHelper getCreatedAlarmFile:self.alarmName];
+        if (1) { //airplay function
+            
+            sleep(5);//allow more time
+            
+            _playingAlarm = YES;
+            
+            //Record last 10 second audio just before alarm
+            NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+            NSDate *date = [NSDate date];
+            NSString *dateString = [FileHelper convertDate:date];
+            
+            NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
+            if ([[NMDecibelLogger defaultLogger] logging]) {
+                [[NMDecibelLogger defaultLogger] stopLogging];
+            }
+            [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
+            
+            
+            //Set playback only
+            BOOL success;
+            NSError *error;
+            
+            [[AVAudioSession sharedInstance] setDelegate:self];
+            
+            success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+            if (!success) {
+                NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+            }
+    
+            
+            //play alram
+            [IDPSoundBoard addAudioAtPath:[toURL path] forKey:Key_PlayerBabyAirplay forType:EnumSoundType_BabyAirplay];
+            AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBabyAirplay];
+            player.numberOfLoops = 2;
+            [IDPSoundBoard sharedInstance].IDPDelegate = self;
+            [IDPSoundBoard playAudioForKey:Key_PlayerBabyAirplay fadeInInterval:2.0];
+            
+          
+        } else {
+            NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"caf"];
+            NSLog(@"path = %@; alarmName = %@", path, self.alarmName);
+            
             if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
-                NSLog(@"%s:No of caf formated alarm file",__FUNCTION__);
-            }
-        }
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath : path])
-        {
-            NSURL *pathURL = [NSURL fileURLWithPath : path];
-            OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
-            if (error != kAudioServicesNoError)
-            {
-                NSLog(@"Invalid Alarm");
-            }
-            else
-            {
-                [self stopLogging];
-                
-                _playingAlarm = YES;
-                
-                [IDPSoundBoard addAudioAtPath:[pathURL path] forKey:Key_PlayerAlarm forType:EnumSoundType_Alarm];
-                AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerAlarm];
-                player.numberOfLoops = 0;
-                [IDPSoundBoard sharedInstance].IDPDelegate = self;
-                [IDPSoundBoard playAudioForKey:Key_PlayerAlarm fadeInInterval:2.0];
+                NSLog(@"%s:No of aifc formated alarm file",__FUNCTION__);
+                path = [FileHelper getCreatedAlarmFile:self.alarmName];
+                if ([[NSFileManager defaultManager] fileExistsAtPath : path] == FALSE) {
+                    NSLog(@"%s:No of caf formated alarm file",__FUNCTION__);
+                }
             }
             
+            if ([[NSFileManager defaultManager] fileExistsAtPath : path])
+            {
+                NSURL *pathURL = [NSURL fileURLWithPath : path];
+                OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+                if (error != kAudioServicesNoError)
+                {
+                    NSLog(@"Invalid Alarm");
+                }
+                else
+                {
+                    [self stopLogging];
+                    
+                    _playingAlarm = YES;
+                    
+                    [IDPSoundBoard addAudioAtPath:[pathURL path] forKey:Key_PlayerAlarm forType:EnumSoundType_Alarm];
+                    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerAlarm];
+                    player.numberOfLoops = 0;
+                    [IDPSoundBoard sharedInstance].IDPDelegate = self;
+                    [IDPSoundBoard playAudioForKey:Key_PlayerAlarm fadeInInterval:2.0];
+                }
+                
+            }
         }
+        
+        
     }
     
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
@@ -169,10 +211,31 @@
 
 - (void)didFinishSoundPlay:(EnumSoundType)soundType {
     if (soundType == EnumSoundType_Alarm) {
+        
+        
       NSLog(@"%s:didFinishSoundPlay of Alarm",__FUNCTION__);
       _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
         
+    } else if (soundType == EnumSoundType_BabyAirplay) {
+        
+        //restore to AVAudioSessionCategoryPlayAndRecord
+        BOOL success;
+        NSError *error;
+        
+        [[AVAudioSession sharedInstance] setDelegate:self];
+        
+        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+        if (!success) {
+            NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+        }
+        
+        
+        NSLog(@"%s:didFinishSoundPlay of Alarm",__FUNCTION__);
+        _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
     }
+    
+    
+    
 }
 
 

@@ -18,13 +18,15 @@ const static NSString *Key_PlayerBackground    = @"Key_PlayerBackground";
 const static NSString *Key_PlayerAlarm         = @"Key_PlayerAlarm";
 const static NSString *Key_PlayerNewCreated    = @"Key_PlayerNewCreated";
 const static NSString *Key_PlayerRecorded      = @"Key_PlayerRecorded";
+const static NSString *Key_PlayerBabyAirplay   = @"Key_PlayerBabyAirplay";
 
 typedef NS_ENUM(NSInteger, EnumSoundType)
 {
     EnumSoundType_Background = 0, //background sound which is always running
     EnumSoundType_Alarm = 1, // used to play alarm
     EnumSoundType_NewCreated = 2, //the sound that is created as a custom alarm
-    EnumSoundType_Recorded = 3 //recorded sound
+    EnumSoundType_Recorded = 3, //recorded sound
+    EnumSoundType_BabyAirplay = 4 //baby monitor function only
 };
 
 @protocol IDPSoundBoardDelegate <NSObject>

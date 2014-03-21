@@ -30,4 +30,6 @@
  */
 @property (assign, nonatomic) BOOL isNotAllowBackgroundRunningWhenLastMeterOff;
 
+@property (assign, nonatomic) BOOL isOnAirPlayMode;
+
 @end

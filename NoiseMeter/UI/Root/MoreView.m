@@ -18,6 +18,8 @@
 #import "PurchaseViewController.h"
 #import "NMDecibelLogger.h"
 #import "IDPSoundBoard.h"
+
+
 @interface MoreView ()
 
 @end
@@ -152,6 +154,8 @@
         {
             cell.textLabel.text = @"Support";
         }
+        
+        
     }
     
     cell.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
