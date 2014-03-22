@@ -250,6 +250,20 @@
 
 - (void) cancel {
     
+    if (APP_DELEGATE.isOnAirPlayMode) {
+        //restore to AVAudioSessionCategoryPlayAndRecord
+        BOOL success;
+        NSError *error;
+        
+        [[AVAudioSession sharedInstance] setDelegate:self];
+        
+        //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
+        success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+        if (!success) {
+            NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+        }
+    }
+    
     NSLog(@"%s",__FUNCTION__);
     [[NMDecibelLogger defaultLogger] alarmComplete];
     

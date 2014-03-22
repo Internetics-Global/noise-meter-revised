@@ -126,43 +126,43 @@
                 usleep(500000);
                 return;
             } else {
-                _threholdForBabyMonitor ++;
+                _threholdForBabyMonitor = 0;
+                
+                _playingAlarm = YES;
+                
+                //Record last 10 second audio just before alarm
+                NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+                NSDate *date = [NSDate date];
+                NSString *dateString = [FileHelper convertDate:date];
+                
+                NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
+                if ([[NMDecibelLogger defaultLogger] logging]) {
+                    [[NMDecibelLogger defaultLogger] stopLogging];
+                }
+                [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
+                
+                
+                //Set playback only
+                BOOL success;
+                NSError *error;
+                
+                [[AVAudioSession sharedInstance] setDelegate:self];
+                
+                //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
+                success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+                if (!success) {
+                    NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
+                }
+                
+                
+                //play alram
+                [IDPSoundBoard addAudioAtPath:[toURL path] forKey:Key_PlayerBabyAirplay forType:EnumSoundType_BabyAirplay];
+                AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBabyAirplay];
+                player.numberOfLoops = 1;
+                [IDPSoundBoard sharedInstance].IDPDelegate = self;
+                [IDPSoundBoard playAudioForKey:Key_PlayerBabyAirplay fadeInInterval:2.0];
             }
             
-            
-            _playingAlarm = YES;
-            
-            //Record last 10 second audio just before alarm
-            NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
-            NSDate *date = [NSDate date];
-            NSString *dateString = [FileHelper convertDate:date];
-            
-            NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
-            if ([[NMDecibelLogger defaultLogger] logging]) {
-                [[NMDecibelLogger defaultLogger] stopLogging];
-            }
-            [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
-            
-            
-            //Set playback only
-            BOOL success;
-            NSError *error;
-            
-            [[AVAudioSession sharedInstance] setDelegate:self];
-            
-            //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
-            success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
-            if (!success) {
-                NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
-            }
-    
-            
-            //play alram
-            [IDPSoundBoard addAudioAtPath:[toURL path] forKey:Key_PlayerBabyAirplay forType:EnumSoundType_BabyAirplay];
-            AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBabyAirplay];
-            player.numberOfLoops = 2;
-            [IDPSoundBoard sharedInstance].IDPDelegate = self;
-            [IDPSoundBoard playAudioForKey:Key_PlayerBabyAirplay fadeInInterval:2.0];
             
           
         } else {
