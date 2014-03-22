@@ -15,7 +15,7 @@
 #import "FileHelper.h"
 #import "IDPSoundBoard.h"
 #import "ShareHelper.h"
-#import "AirPlayViewController.h"
+
 
 @interface MeterView ()
 
@@ -555,8 +555,35 @@
 }
 
 - (void) airPlayButtonClicked {
-    AirPlayViewController *airPlayViewController = [[AirPlayViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:airPlayViewController animated:YES];
+    
+    UIColor *color = nil;
+    ASDepthModalOptions style = ASDepthModalOptionAnimationGrow;
+    ASDepthModalOptions options;
+    
+    UIImage *image;
+    
+    // This image comes from http://www.numero111.com/wp-content/uploads/2010/11/ist2_7360872-elegant-abstract-wallpaper-pattern-background-tiles-seamlessly.jpg
+    image = [UIImage imageNamed:@"pattern1.jpg"];
+    color = [UIColor colorWithPatternImage:image];
+    
+    
+    options = style | ASDepthModalOptionBlur | ASDepthModalOptionTapOutsideInactive;
+    
+    if (_airPlayViewController == nil) {
+      _airPlayViewController = [[AirPlayViewController alloc] initWithNibName:@"AirPlayViewController" bundle:nil];
+        _airPlayViewController.view.layer.cornerRadius = 12;
+        _airPlayViewController.view.layer.shadowOpacity = 0.7;
+        _airPlayViewController.view.layer.shadowOffset = CGSizeMake(6, 6);
+        _airPlayViewController.view.layer.shouldRasterize = YES;
+        _airPlayViewController.view.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    }
+    
+    [ASDepthModalViewController presentView:_airPlayViewController.view
+                            backgroundColor:color
+                                    options:options
+                          completionHandler:^{
+                              NSLog(@"Modal view closed.");
+                          }];
 }
 
 #pragma mark – UIAlertViewDelegate

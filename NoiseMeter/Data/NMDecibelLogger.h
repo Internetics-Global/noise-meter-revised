@@ -20,6 +20,8 @@
     SystemSoundID       audioEffect;
     
     NSTimer            *_timer30Second;
+    
+    int                 _threholdForBabyMonitor;
 }
 
 @property (strong, nonatomic, readonly) NSNumber *currentReading;

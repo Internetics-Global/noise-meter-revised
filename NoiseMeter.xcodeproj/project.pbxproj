@@ -10,7 +10,6 @@
 		110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110AC87C14FE1B6000F86262 /* AVFoundation.framework */; };
 		110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12F914EDD52E00BE4481 /* UIKit.framework */; };
 		110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FB14EDD52E00BE4481 /* Foundation.framework */; };
-		110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FD14EDD52E00BE4481 /* CoreGraphics.framework */; };
 		110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FF14EDD52E00BE4481 /* CoreData.framework */; };
 		110F130614EDD52E00BE4481 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110F130414EDD52E00BE4481 /* InfoPlist.strings */; };
 		110F130814EDD52E00BE4481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F130714EDD52E00BE4481 /* main.m */; };
@@ -83,8 +82,6 @@
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
-		8837965518DBF3530045DD42 /* AirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8837965418DBF3530045DD42 /* AirPlayViewController.m */; };
-		8837965718DC03950045DD42 /* baby_monitor_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8837965618DC03950045DD42 /* baby_monitor_button.png */; };
 		883F1F5E18BBF0880030A716 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
@@ -104,6 +101,11 @@
 		88A95E4418A4803000E56939 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
 		88A95E4518A4803000E56939 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
 		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
+		88B0738F18DCE632009078F9 /* ASDepthModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0738C18DCE632009078F9 /* ASDepthModalViewController.m */; };
+		88B0739018DCE632009078F9 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0738E18DCE632009078F9 /* UIImage+Blur.m */; };
+		88B0739718DCE860009078F9 /* AirPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B0739518DCE860009078F9 /* AirPlayViewController.m */; };
+		88B0739818DCE860009078F9 /* AirPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B0739618DCE860009078F9 /* AirPlayViewController.xib */; };
+		88B0739C18DCECF4009078F9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B0739B18DCECF4009078F9 /* QuartzCore.framework */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
@@ -129,6 +131,8 @@
 		88BEFE6D18A20E9300399680 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6A18A20E9300399680 /* 19.png */; };
 		88BEFE6E18A20E9300399680 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
 		88C2567B18D6A16D002DEEF9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C2567A18D6A16D002DEEF9 /* MediaPlayer.framework */; };
+		88C9215218DCEFCC004748A3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C9215118DCEFCC004748A3 /* Accelerate.framework */; };
+		88C9215418DCF649004748A3 /* baby_monitor_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88C9215318DCF649004748A3 /* baby_monitor_button@2x.png */; };
 		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
 		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
@@ -246,9 +250,6 @@
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		8837965318DBF3530045DD42 /* AirPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPlayViewController.h; sourceTree = "<group>"; };
-		8837965418DBF3530045DD42 /* AirPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPlayViewController.m; sourceTree = "<group>"; };
-		8837965618DC03950045DD42 /* baby_monitor_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = baby_monitor_button.png; sourceTree = "<group>"; };
 		883F1F5C18BBEDAC0030A716 /* RMStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStore.h; sourceTree = "<group>"; };
 		883F1F5D18BBF0880030A716 /* RMStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStore.m; sourceTree = "<group>"; };
 		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
@@ -301,6 +302,15 @@
 		88A95E4118A4803000E56939 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
 		88A95E4218A4803000E56939 /* noads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noads.png; sourceTree = "<group>"; };
 		88A95E4318A4803000E56939 /* recordScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordScreenshot.png; sourceTree = "<group>"; };
+		88B0738B18DCE632009078F9 /* ASDepthModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDepthModalViewController.h; sourceTree = "<group>"; };
+		88B0738C18DCE632009078F9 /* ASDepthModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDepthModalViewController.m; sourceTree = "<group>"; };
+		88B0738D18DCE632009078F9 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		88B0738E18DCE632009078F9 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		88B0739418DCE860009078F9 /* AirPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirPlayViewController.h; sourceTree = "<group>"; };
+		88B0739518DCE860009078F9 /* AirPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirPlayViewController.m; sourceTree = "<group>"; };
+		88B0739618DCE860009078F9 /* AirPlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirPlayViewController.xib; sourceTree = "<group>"; };
+		88B0739918DCEAD2009078F9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		88B0739B18DCECF4009078F9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
@@ -328,6 +338,8 @@
 		88BEFE6A18A20E9300399680 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 19.png; path = Meters/19.png; sourceTree = "<group>"; };
 		88BEFE6B18A20E9300399680 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 20.png; path = Meters/20.png; sourceTree = "<group>"; };
 		88C2567A18D6A16D002DEEF9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		88C9215118DCEFCC004748A3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		88C9215318DCF649004748A3 /* baby_monitor_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "baby_monitor_button@2x.png"; sourceTree = "<group>"; };
 		88DDF48F189B1B3E00138ADF /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
 		88DDF490189B1B3E00138ADF /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/GAITrackedViewController.h; sourceTree = "<group>"; };
 		88DDF491189B1B3E00138ADF /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/GAITracker.h; sourceTree = "<group>"; };
@@ -361,6 +373,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88C9215218DCEFCC004748A3 /* Accelerate.framework in Frameworks */,
+				88B0739C18DCECF4009078F9 /* QuartzCore.framework in Frameworks */,
 				88C2567B18D6A16D002DEEF9 /* MediaPlayer.framework in Frameworks */,
 				88A5613218D038F700080210 /* Social.framework in Frameworks */,
 				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
@@ -375,7 +389,6 @@
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
 				110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */,
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
-				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
 				88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */,
 				88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */,
@@ -410,6 +423,9 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88C9215118DCEFCC004748A3 /* Accelerate.framework */,
+				88B0739B18DCECF4009078F9 /* QuartzCore.framework */,
+				88B0739918DCEAD2009078F9 /* CoreImage.framework */,
 				88C2567A18D6A16D002DEEF9 /* MediaPlayer.framework */,
 				88A5613118D038F700080210 /* Social.framework */,
 				88DDF498189B1B6E00138ADF /* StoreKit.framework */,
@@ -509,10 +525,10 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				8837965618DC03950045DD42 /* baby_monitor_button.png */,
 				8807E75018CFF38B0042AC59 /* button_cancel.png */,
 				88A5613918D0400D00080210 /* share@2x.png */,
 				8807E75118CFF38B0042AC59 /* button_cancel@2x.png */,
+				88C9215318DCF649004748A3 /* baby_monitor_button@2x.png */,
 				88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */,
 				88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */,
 				88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */,
@@ -604,8 +620,9 @@
 				88818C611799F58F007B386F /* PurchaseViewController.h */,
 				88818C601799F58F007B386F /* PurchaseViewController.m */,
 				88818C621799F58F007B386F /* PurchaseViewController.xib */,
-				8837965318DBF3530045DD42 /* AirPlayViewController.h */,
-				8837965418DBF3530045DD42 /* AirPlayViewController.m */,
+				88B0739418DCE860009078F9 /* AirPlayViewController.h */,
+				88B0739518DCE860009078F9 /* AirPlayViewController.m */,
+				88B0739618DCE860009078F9 /* AirPlayViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -680,6 +697,18 @@
 			path = Purchases;
 			sourceTree = "<group>";
 		};
+		88B0738A18DCE632009078F9 /* ASDepthModal */ = {
+			isa = PBXGroup;
+			children = (
+				88B0738B18DCE632009078F9 /* ASDepthModalViewController.h */,
+				88B0738C18DCE632009078F9 /* ASDepthModalViewController.m */,
+				88B0738D18DCE632009078F9 /* UIImage+Blur.h */,
+				88B0738E18DCE632009078F9 /* UIImage+Blur.m */,
+			);
+			name = ASDepthModal;
+			path = Support/ASDepthModal;
+			sourceTree = "<group>";
+		};
 		88B47357189A1819005668AC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +767,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				88B0738A18DCE632009078F9 /* ASDepthModal */,
 				883F1F5B18BBEDAC0030A716 /* RMStore */,
 				88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */,
 				883788D917839670000BBF3D /* Google Analytics */,
@@ -873,7 +903,6 @@
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
 				11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */,
 				88BEFE6E18A20E9300399680 /* 20.png in Resources */,
-				8837965718DC03950045DD42 /* baby_monitor_button.png in Resources */,
 				88A95E3F18A47FD200E56939 /* generalBanner@2x.png in Resources */,
 				88FA090418C2A8960061FA0F /* soundOnButton1@2x.png in Resources */,
 				11AC53171505D4190093C7AB /* button_save.png in Resources */,
@@ -882,6 +911,7 @@
 				11AC53191505D4190093C7AB /* button_setalarm.png in Resources */,
 				11AC531A1505D4190093C7AB /* button_setalarm@2x.png in Resources */,
 				111A18CE1505E38D005655F1 /* background_count.png in Resources */,
+				88B0739818DCE860009078F9 /* AirPlayViewController.xib in Resources */,
 				111A18CF1505E38D005655F1 /* background_count@2x.png in Resources */,
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
@@ -915,6 +945,7 @@
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				883069B218B4CC460067750A /* home_alarm.caf in Resources */,
+				88C9215418DCF649004748A3 /* baby_monitor_button@2x.png in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,
 				1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */,
 				88FA090318C2A8960061FA0F /* soundOnButton0@2x.png in Resources */,
@@ -949,14 +980,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B0738F18DCE632009078F9 /* ASDepthModalViewController.m in Sources */,
 				88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */,
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
+				88B0739718DCE860009078F9 /* AirPlayViewController.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,
 				88A5613018D037EA00080210 /* ShareHelper.m in Sources */,
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,
 				88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
+				88B0739018DCE632009078F9 /* UIImage+Blur.m in Sources */,
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
 				88A2FEA118B6CD9D0046E07D /* IDPSoundBoard.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
@@ -965,7 +999,6 @@
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
 				111A18D21505E3A9005655F1 /* ScoreView.m in Sources */,
 				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,
-				8837965518DBF3530045DD42 /* AirPlayViewController.m in Sources */,
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				883F1F5E18BBF0880030A716 /* RMStore.m in Sources */,

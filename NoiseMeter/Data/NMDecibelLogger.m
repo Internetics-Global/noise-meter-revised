@@ -59,6 +59,7 @@
     
     [[AVAudioSession sharedInstance] setDelegate:self];
     
+    //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
     success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
     if (!success) {
       NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
@@ -119,7 +120,15 @@
     {
         if (APP_DELEGATE.isOnAirPlayMode ) { //airplay function
             
-            sleep(5);//allow more time
+            //确保更多时间
+            if (_threholdForBabyMonitor < 10) {
+                _threholdForBabyMonitor ++;
+                usleep(500000);
+                return;
+            } else {
+                _threholdForBabyMonitor ++;
+            }
+            
             
             _playingAlarm = YES;
             
@@ -141,6 +150,7 @@
             
             [[AVAudioSession sharedInstance] setDelegate:self];
             
+            //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
             success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
             if (!success) {
                 NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
@@ -224,6 +234,7 @@
         
         [[AVAudioSession sharedInstance] setDelegate:self];
         
+        //every time when you change the category, it will automatically trigger audioRouteChangeListenerCallback
         success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
         if (!success) {
             NSLog(@"%s:AVAudioSession error setting category %@",__FUNCTION__,error);
@@ -370,13 +381,15 @@ void audioRouteChangeListenerCallback (
     
     NSLog(@"%s",__FUNCTION__);
     
-    if ([[(__bridge NSDictionary *)inPropertyValue objectForKey:@"OutputDeviceDidChange_NewRoute"]
-         isEqualToString:@"AirTunes"]) {
-        APP_DELEGATE.isOnAirPlayMode = YES;
-    } else {
-        APP_DELEGATE.isOnAirPlayMode = NO;
+    if (APP_DELEGATE.isOnAirPlaySettingView) {
+        if ([[(__bridge NSDictionary *)inPropertyValue objectForKey:@"OutputDeviceDidChange_NewRoute"]
+             isEqualToString:@"AirTunes"]) {
+            APP_DELEGATE.isOnAirPlayMode = YES;
+        } else {
+            APP_DELEGATE.isOnAirPlayMode = NO;
+        }
+
     }
-    
     
     //following codes are same with [self resetAudioRoute]
     BOOL success = FALSE;

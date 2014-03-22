@@ -12,6 +12,9 @@
 #import "SoundLevelView.h"
 #import "IDPSoundBoard.h"
 
+#import <QuartzCore/QuartzCore.h>
+#import "ASDepthModalViewController.h"
+#import "AirPlayViewController.h"
 
 @interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
     UIImageView *_meterBackground;
@@ -37,6 +40,8 @@
     int   _playingIndex;
     
     UIImage *_fullScrenshotImage;
+    
+    AirPlayViewController *_airPlayViewController;
     
 }
 
