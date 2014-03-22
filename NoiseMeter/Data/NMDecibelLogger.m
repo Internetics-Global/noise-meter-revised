@@ -158,7 +158,7 @@
                 //play alram
                 [IDPSoundBoard addAudioAtPath:[toURL path] forKey:Key_PlayerBabyAirplay forType:EnumSoundType_BabyAirplay];
                 AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBabyAirplay];
-                player.numberOfLoops = 1;
+                player.numberOfLoops = 0;
                 [IDPSoundBoard sharedInstance].IDPDelegate = self;
                 [IDPSoundBoard playAudioForKey:Key_PlayerBabyAirplay fadeInInterval:2.0];
             }
