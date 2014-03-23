@@ -14,5 +14,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @end

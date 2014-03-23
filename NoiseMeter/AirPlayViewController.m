@@ -34,13 +34,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _volumeView = [ [MPVolumeView alloc] init] ;
+    
+    //setup AirPlay button
+     _volumeView = [ [MPVolumeView alloc] init];
 //    _volumeView.backgroundColor = [UIColor blueColor];
     [_volumeView setShowsRouteButton:YES];
     _volumeView.frame = CGRectMake(208, 37, CGRectGetWidth(_volumeView.frame), CGRectGetHeight(_volumeView.frame));
     [_volumeView sizeToFit];
     [_volumeView setShowsVolumeSlider:NO];
     [self.view addSubview:_volumeView];
+    
+    //render done button
+    _doneButton.layer.cornerRadius = 5;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -60,6 +65,16 @@
         
         APP_DELEGATE.isOnAirPlaySettingView = YES;
     });
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (TARGET_IPHONE_SIMULATOR) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Can not test AirPlay in simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
     
 }
 
