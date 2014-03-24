@@ -334,6 +334,7 @@
  */
 - (void)timerFire
 {
+    
     if (([NSUserDefaultsHelper isNotAllowBackgroundRunning]) && ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
         return;
     }

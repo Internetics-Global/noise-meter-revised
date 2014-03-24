@@ -68,11 +68,16 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
-    UIButton *airplayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [airplayButton setImage:[UIImage imageNamed:@"baby_monitor_button.png"] forState:UIControlStateNormal];
-    [airplayButton addTarget:self action:@selector(airPlayButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    airplayButton.frame = CGRectOffset(_infoButton.frame, -50, 0);
-    [self.view addSubview:airplayButton];
+    _airplayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_airplayButton setImage:[UIImage imageNamed:@"baby_monitor_button.png"] forState:UIControlStateNormal];
+    [_airplayButton addTarget:self action:@selector(airPlayButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    _airplayButton.frame = CGRectOffset(_infoButton.frame, -50, 0);
+    [self.view addSubview:_airplayButton];
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _airplayButton.hidden = NO;
+    } else {
+        _airplayButton.hidden = NO;
+    }
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
@@ -466,6 +471,12 @@
     [super purchasedFinishedNotification:notification];
     
     [_topScoreTable reloadData];
+    
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _airplayButton.hidden = NO;
+    } else {
+        _airplayButton.hidden = NO;
+    }
 }
 
 

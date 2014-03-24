@@ -35,17 +35,48 @@
 {
     [super viewDidLoad];
     
-    //setup AirPlay button
-     _volumeView = [ [MPVolumeView alloc] init];
-//    _volumeView.backgroundColor = [UIColor blueColor];
-    [_volumeView setShowsRouteButton:YES];
-    _volumeView.frame = CGRectMake(208, 37, CGRectGetWidth(_volumeView.frame), CGRectGetHeight(_volumeView.frame));
-    [_volumeView sizeToFit];
-    [_volumeView setShowsVolumeSlider:NO];
-    [self.view addSubview:_volumeView];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    indicatorView.autoresizingMask = UIViewAutoresizingNone;
+    indicatorView.frame = CGRectMake(200, 20, 50, 50);
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
     
     //render done button
     _doneButton.layer.cornerRadius = 5;
+    _doneButton.enabled = NO;
+    
+    
+    //setup AirPlay button
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _volumeView = [ [MPVolumeView alloc] init];
+        //    _volumeView.backgroundColor = [UIColor blueColor];
+        [_volumeView setShowsRouteButton:YES];
+        _volumeView.autoresizingMask = UIViewAutoresizingNone;
+        _volumeView.frame = CGRectMake(208, 37, CGRectGetWidth(_volumeView.frame), CGRectGetHeight(_volumeView.frame));
+        [_volumeView sizeToFit];
+        [_volumeView setShowsVolumeSlider:NO];
+        [self.view addSubview:_volumeView];
+        
+    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while ((_volumeView.hidden == YES) || (_volumeView == nil)) {
+            usleep(50000);
+            
+        }
+        
+        if (_volumeView.hidden == FALSE) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [indicatorView stopAnimating];
+                [indicatorView removeFromSuperview];
+                _doneButton.enabled = YES;
+            });
+        }
+        
+    });
+
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,7 +111,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         APP_DELEGATE.isOnAirPlaySettingView = NO;
@@ -110,7 +141,6 @@
         [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:mediaInfo];
     });
     
-    
 }
 
 #pragma mark – Airplay related
@@ -137,6 +167,7 @@
 }
 - (IBAction)dismiss:(id)sender {
     [ASDepthModalViewController dismiss];
+    
 }
 
 - (void)didReceiveMemoryWarning

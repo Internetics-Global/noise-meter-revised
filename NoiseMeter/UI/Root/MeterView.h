@@ -30,6 +30,7 @@
     UILabel *_titleLabel;
     UIButton *_infoButton;
     UIButton *_cancelButton;
+    UIButton *_airplayButton;
     
     UIButton *_shareButton;
     
