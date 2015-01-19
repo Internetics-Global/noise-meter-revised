@@ -169,7 +169,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"ScoreView Screen";
+    self.screenName = @"ScoreView Screen";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -385,7 +385,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"MeterView Screen";
+    self.screenName = @"MeterView Screen";
 
 }
 

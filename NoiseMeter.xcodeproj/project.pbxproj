@@ -79,7 +79,6 @@
 		883069B418B4CC460067750A /* siren_wail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B118B4CC460067750A /* siren_wail.caf */; };
 		8833910A1793CEA70051DE50 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883391091793CEA70051DE50 /* demo.mp3 */; };
 		8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */; };
 		88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
@@ -96,6 +95,9 @@
 		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
 		88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47355189A148E005668AC /* CAFAudioHelper.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
+		88BADB4B1A6DCDC300D6CA9F /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BADB4A1A6DCDC300D6CA9F /* libGoogleAnalyticsServices.a */; };
+		88BADB4D1A6DCF7200D6CA9F /* libFlurry_6.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BADB4C1A6DCF7200D6CA9F /* libFlurry_6.0.0.a */; };
+		88BADB4F1A6DCFFA00D6CA9F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BADB4E1A6DCFFA00D6CA9F /* libsqlite3.dylib */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
 		88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEFE1918A1EDEE00399680 /* PlayHelper.m */; };
@@ -120,7 +122,6 @@
 		88BEFE6C18A20E9300399680 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6918A20E9300399680 /* 18.png */; };
 		88BEFE6D18A20E9300399680 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6A18A20E9300399680 /* 19.png */; };
 		88BEFE6E18A20E9300399680 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
-		88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
 		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
 		88E8423018B1B69800B0FB50 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422A18B1B69700B0FB50 /* README.md */; };
@@ -229,7 +230,6 @@
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
 		8833910B1793D0680051DE50 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
-		88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_4.2.2.a; path = Flurry/libFlurry_4.2.2.a; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
 		88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
@@ -278,6 +278,19 @@
 		88B47355189A148E005668AC /* CAFAudioHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFAudioHelper.m; path = Data/CAFAudioHelper.m; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		88BADB401A6DCDC300D6CA9F /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
+		88BADB411A6DCDC300D6CA9F /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = GoogleAnalytics/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		88BADB421A6DCDC300D6CA9F /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = GoogleAnalytics/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		88BADB431A6DCDC300D6CA9F /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = GoogleAnalytics/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		88BADB441A6DCDC300D6CA9F /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = GoogleAnalytics/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		88BADB451A6DCDC300D6CA9F /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = GoogleAnalytics/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		88BADB461A6DCDC300D6CA9F /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = GoogleAnalytics/GAIFields.h; sourceTree = "<group>"; };
+		88BADB471A6DCDC300D6CA9F /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = GoogleAnalytics/GAILogger.h; sourceTree = "<group>"; };
+		88BADB481A6DCDC300D6CA9F /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/GAITrackedViewController.h; sourceTree = "<group>"; };
+		88BADB491A6DCDC300D6CA9F /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/GAITracker.h; sourceTree = "<group>"; };
+		88BADB4A1A6DCDC300D6CA9F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		88BADB4C1A6DCF7200D6CA9F /* libFlurry_6.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.0.0.a; path = Flurry/libFlurry_6.0.0.a; sourceTree = "<group>"; };
+		88BADB4E1A6DCFFA00D6CA9F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
 		88BEFE1818A1EDEE00399680 /* PlayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayHelper.h; path = Data/PlayHelper.h; sourceTree = "<group>"; };
@@ -304,12 +317,6 @@
 		88BEFE6918A20E9300399680 /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 18.png; path = Meters/18.png; sourceTree = "<group>"; };
 		88BEFE6A18A20E9300399680 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 19.png; path = Meters/19.png; sourceTree = "<group>"; };
 		88BEFE6B18A20E9300399680 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 20.png; path = Meters/20.png; sourceTree = "<group>"; };
-		88DDF48F189B1B3E00138ADF /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
-		88DDF490189B1B3E00138ADF /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/GAITrackedViewController.h; sourceTree = "<group>"; };
-		88DDF491189B1B3E00138ADF /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/GAITracker.h; sourceTree = "<group>"; };
-		88DDF492189B1B3E00138ADF /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransaction.h; path = GoogleAnalytics/GAITransaction.h; sourceTree = "<group>"; };
-		88DDF493189B1B3E00138ADF /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITransactionItem.h; path = GoogleAnalytics/GAITransactionItem.h; sourceTree = "<group>"; };
-		88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88E8422918B1B69700B0FB50 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		88E8422A18B1B69700B0FB50 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -333,6 +340,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88BADB4F1A6DCFFA00D6CA9F /* libsqlite3.dylib in Frameworks */,
+				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
 				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
@@ -344,11 +353,10 @@
 				11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */,
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
 				110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */,
+				88BADB4D1A6DCF7200D6CA9F /* libFlurry_6.0.0.a in Frameworks */,
+				88BADB4B1A6DCDC300D6CA9F /* libGoogleAnalyticsServices.a in Frameworks */,
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
-				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
-				88376CE5177BB42700F9F477 /* libFlurry_4.2.2.a in Frameworks */,
-				88DDF495189B1B3E00138ADF /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +388,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88BADB4E1A6DCFFA00D6CA9F /* libsqlite3.dylib */,
 				88DDF498189B1B6E00138ADF /* StoreKit.framework */,
 				8833910B1793D0680051DE50 /* CoreMedia.framework */,
 				889FD23F177BC4960046D281 /* CFNetwork.framework */,
@@ -583,8 +592,8 @@
 		88376CE2177BB41900F9F477 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
+				88BADB4C1A6DCF7200D6CA9F /* libFlurry_6.0.0.a */,
 				88376CE3177BB42700F9F477 /* Flurry.h */,
-				88376CE4177BB42700F9F477 /* libFlurry_4.2.2.a */,
 			);
 			name = Flurry;
 			path = Support;
@@ -593,12 +602,17 @@
 		883788D917839670000BBF3D /* Google Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				88DDF48F189B1B3E00138ADF /* GAI.h */,
-				88DDF490189B1B3E00138ADF /* GAITrackedViewController.h */,
-				88DDF491189B1B3E00138ADF /* GAITracker.h */,
-				88DDF492189B1B3E00138ADF /* GAITransaction.h */,
-				88DDF493189B1B3E00138ADF /* GAITransactionItem.h */,
-				88DDF494189B1B3E00138ADF /* libGoogleAnalytics.a */,
+				88BADB401A6DCDC300D6CA9F /* GAI.h */,
+				88BADB411A6DCDC300D6CA9F /* GAIDictionaryBuilder.h */,
+				88BADB421A6DCDC300D6CA9F /* GAIEcommerceFields.h */,
+				88BADB431A6DCDC300D6CA9F /* GAIEcommerceProduct.h */,
+				88BADB441A6DCDC300D6CA9F /* GAIEcommerceProductAction.h */,
+				88BADB451A6DCDC300D6CA9F /* GAIEcommercePromotion.h */,
+				88BADB461A6DCDC300D6CA9F /* GAIFields.h */,
+				88BADB471A6DCDC300D6CA9F /* GAILogger.h */,
+				88BADB481A6DCDC300D6CA9F /* GAITrackedViewController.h */,
+				88BADB491A6DCDC300D6CA9F /* GAITracker.h */,
+				88BADB4A1A6DCDC300D6CA9F /* libGoogleAnalyticsServices.a */,
 			);
 			name = "Google Analytics";
 			path = Support;
@@ -1017,17 +1031,20 @@
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
 					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
+					"$(PROJECT_DIR)/NoiseMeter/Support/GoogleAnalytics",
+					"$(PROJECT_DIR)/NoiseMeter/Support/Flurry",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1040,17 +1057,20 @@
 		110F131414EDD52E00BE4481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
 					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
+					"$(PROJECT_DIR)/NoiseMeter/Support/GoogleAnalytics",
+					"$(PROJECT_DIR)/NoiseMeter/Support/Flurry",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

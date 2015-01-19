@@ -182,7 +182,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"SelectedAlertView Screen";
+    self.screenName = @"SelectedAlertView Screen";
 }
 
 #pragma mark – UIAlertViewDelegate

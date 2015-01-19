@@ -243,7 +243,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"MoreView Screen";
+    self.screenName = @"MoreView Screen";
     
     [_optionTable reloadData];
 }

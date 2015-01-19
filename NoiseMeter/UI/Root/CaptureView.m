@@ -140,7 +140,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"CaptureView Screen";
+    self.screenName = @"CaptureView Screen";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

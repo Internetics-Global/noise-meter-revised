@@ -11,6 +11,8 @@
 #import "Flurry.h"
 #import "Appirater.h"
 #import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 #import "TestFlight.h"
 
 
@@ -141,9 +143,15 @@
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
     [GAI sharedInstance].dispatchInterval = 20;
     // Optional: set debug to YES for extra debugging information.
-    [GAI sharedInstance].debug = YES;
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
     // Create tracker instance.
     id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
+    [tracker set:kGAIUseSecure value:[@NO stringValue]];
+    
+    [tracker send:[[[GAIDictionaryBuilder createEventWithCategory:@"UX"
+                                                           action:@"appstart"
+                                                            label:nil
+                                                            value:nil] set:@"start" forKey:kGAISessionControl] build]];
 }
 
 
