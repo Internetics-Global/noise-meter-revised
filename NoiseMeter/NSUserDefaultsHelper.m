@@ -66,6 +66,18 @@
     [userDefaults synchronize];
 }
 
++ (BOOL) isIgnoreSuddenNoise {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"IGNORE_SUDDEN_NOISE"];
+    return flag;
+}
+
++ (void) setIgnoreSuddenNoise:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"IGNORE_SUDDEN_NOISE"];
+    [userDefaults synchronize];
+}
+
 + (BOOL) isNotShowMeterOffDialog {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"NOT_SHOW_METEROFF_DIALOG"];

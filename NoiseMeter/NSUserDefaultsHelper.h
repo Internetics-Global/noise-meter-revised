@@ -25,4 +25,7 @@
 + (BOOL) isNotShowMeterOffDialog;
 + (void) setNotShowMeterOffDialogFlag:(BOOL) flag;
 
++ (BOOL) isIgnoreSuddenNoise;
++ (void) setIgnoreSuddenNoise:(BOOL) flag;
+
 @end

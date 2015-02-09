@@ -15,7 +15,10 @@
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
 
-@interface CaptureView ()
+@interface CaptureView () {
+    BOOL   _up;
+    BOOL   _down;
+}
 
 @end
 
@@ -30,6 +33,13 @@
 
 - (void)keyboardUp
 {
+    if (_up == true) {
+        return;
+    }
+    
+    _up = true;
+    _down = false;
+    
     [UIView animateWithDuration:0.25 animations:^(void){
         _formBackground.frame = CGRectMake(_formBackground.frame.origin.x, _formBackground.frame.origin.y - 160, _formBackground.frame.size.width, _formBackground.frame.size.height);
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y - 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
@@ -40,6 +50,13 @@
 
 - (void)keyboardDown
 {
+    if (_down == true) {
+        return;
+    }
+    
+    _down = true;
+    _up = false;
+    
     [UIView animateWithDuration:0.25 animations:^(void){
         _formBackground.frame = CGRectMake(_formBackground.frame.origin.x, _formBackground.frame.origin.y + 160, _formBackground.frame.size.width, _formBackground.frame.size.height);
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y + 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
@@ -48,9 +65,9 @@
     }];
 }
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];
+    [super viewDidLoad];
     [self style];
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
     _meterBackground.frame = CGRectMake(0, 79, 320, 150);
@@ -89,9 +106,37 @@
     [_saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardUp) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDown) name:UIKeyboardWillHideNotification object:nil];
 }
+
+-(void) viewWillAppear: (BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(keyboardUp)
+               name:UIKeyboardWillShowNotification
+             object:nil];
+    [nc addObserver:self
+           selector:@selector(keyboardDown)
+               name:UIKeyboardWillHideNotification
+             object:nil];
+    
+}
+
+- (void) viewWillDisappear: (BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self
+                  name:UIKeyboardWillShowNotification
+                object:nil];
+    [nc removeObserver:self
+                  name:UIKeyboardWillHideNotification
+                object:nil];
+}
+
 
 - (void)save
 {
