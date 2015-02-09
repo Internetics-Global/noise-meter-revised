@@ -11,6 +11,9 @@
 @implementation NSUserDefaultsHelper
 
 + (BOOL) isAdRemoved {
+    
+    return true; //TODO: XXX
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     return flag;
@@ -75,6 +78,18 @@
 + (void) setIgnoreSuddenNoise:(BOOL) flag {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:flag forKey:@"IGNORE_SUDDEN_NOISE"];
+    [userDefaults synchronize];
+}
+
++ (BOOL) isDelayAlarmSound {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"DELAY_ALARM_SOUND"];
+    return flag;
+}
+
++ (void) setDelayAlarmSound:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"DELAY_ALARM_SOUND"];
     [userDefaults synchronize];
 }
 
