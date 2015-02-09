@@ -91,6 +91,7 @@
 		886712771A88852A007101FD /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867126F1A88852A007101FD /* SWTableViewCell.m */; };
 		886712781A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */; };
 		886712791A88852A007101FD /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712731A88852A007101FD /* SWUtilityButtonView.m */; };
+		8867127D1A88C37E007101FD /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867127C1A88C37E007101FD /* ScoreArrayDataSource.m */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -259,6 +260,8 @@
 		886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		886712721A88852A007101FD /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
 		886712731A88852A007101FD /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		8867127B1A88C37E007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreArrayDataSource.h; sourceTree = "<group>"; };
+		8867127C1A88C37E007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreArrayDataSource.m; sourceTree = "<group>"; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -575,6 +578,8 @@
 				11AC531C1505D4420093C7AB /* MeterView.m */,
 				111A18D01505E3A9005655F1 /* ScoreView.h */,
 				111A18D11505E3A9005655F1 /* ScoreView.m */,
+				8867127B1A88C37E007101FD /* ScoreArrayDataSource.h */,
+				8867127C1A88C37E007101FD /* ScoreArrayDataSource.m */,
 				111A18D31505E3B8005655F1 /* AlertView.h */,
 				111A18D41505E3B8005655F1 /* AlertView.m */,
 				11A3EE7F150F456B00A6496B /* CaptureView.h */,
@@ -960,6 +965,7 @@
 				886712741A88852A007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				881032AE18A361FE000CA722 /* BaseViewController.m in Sources */,
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
+				8867127D1A88C37E007101FD /* ScoreArrayDataSource.m in Sources */,
 				111A18D21505E3A9005655F1 /* ScoreView.m in Sources */,
 				886712751A88852A007101FD /* SWCellScrollView.m in Sources */,
 				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,

@@ -12,23 +12,23 @@
 #import "SoundLevelView.h"
 
 @interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate>{
-    UIImageView *_meterBackground;
-    UILabel *_currentReadingLabel;
-    UITableView *_topScoreTable;
-    NSArray *_scores;
-    UIButton *_captureButton;
-    UIView *_headerView;
-    NSNumber *_currentReading;
-    UIImageView *_formBackground;
-    NSNumber *_peakReading;
-    UILabel *_peakLabel;
-    UILabel *_titleLabel;
-    UIButton *_infoButton;
-    UIButton *_cancelButton;
-    
-    SoundLevelView *_soundLevelView;
-    
-    UIImageView *_overlayImageView;
+    UIImageView    * _meterBackground;
+    UILabel        * _currentReadingLabel;
+    UITableView    * _topScoreTable;
+    NSArray        * _scores;
+    UIButton       * _captureButton;
+    UIView         * _headerView;
+    NSNumber       * _currentReading;
+    UIImageView    * _formBackground;
+    NSNumber       * _peakReading;
+    UILabel        * _peakLabel;
+    UILabel        * _titleLabel;
+    UIButton       * _infoButton;
+    UIButton       * _cancelButton;
+
+    SoundLevelView * _soundLevelView;
+
+    UIImageView    * _overlayImageView;
 }
 
 @end

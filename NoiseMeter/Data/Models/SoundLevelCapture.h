@@ -18,6 +18,7 @@
 
 + (id)instance;
 + (NSArray *)all;
++ (NSArray *) sortedScoreArray;
 
 + (void) remove:(SoundLevelCapture *) capture;
 

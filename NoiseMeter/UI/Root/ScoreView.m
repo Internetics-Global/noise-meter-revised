@@ -16,8 +16,11 @@
 #import "PlayHelper.h"
 #import <MessageUI/MessageUI.h>
 #import "SWTableViewCell.h"
+#import "ScoreArrayDataSource.h"
 
-@interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate>
+@interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate> {
+    ScoreArrayDataSource *_scoreArrayDataSource;
+}
 
 @end
 
@@ -34,9 +37,7 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture all];
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
-    _scores = [_scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    _scores = [SoundLevelCapture sortedScoreArray];
     [_scoreTable reloadData];
 }
 
@@ -69,7 +70,13 @@
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
     _scoreTable.backgroundColor = [UIColor clearColor];
     _scoreTable.opaque = YES;
-    _scoreTable.dataSource = self;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
+        [weakSelf reloadData];
+    }];
+    _scoreTable.dataSource = _scoreArrayDataSource;
+    
     _scoreTable.delegate= self;
     [self.view addSubview:_scoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
@@ -119,104 +126,6 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_scores count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
-    if (cell == nil) {
-        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    cell.capture = [_scores objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
-
-    
-    cell.playButton.tag = indexPath.row;
-    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
-    
-    cell.shareButton.tag = indexPath.row;
-    [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    if (flag) {
-        cell.playButton.hidden = NO;
-        cell.shareButton.hidden = NO;
-    } else {
-        cell.playButton.hidden = YES;
-        cell.shareButton.hidden = YES;
-    }
-    
-    if ([NSUserDefaultsHelper isAdRemoved]) {
-        cell.rightUtilityButtons = [self rightCellButtons];
-        cell.delegate = self;
-        cell.tag = indexPath.row;
-    }
-    
-    return cell;
-}
-
-- (NSArray *)rightCellButtons
-{
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                title:@"Rename"];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
-                                                title:@"Delete"];
-    
-    return rightUtilityButtons;
-}
-
-- (void) playRecordedSound: (id) sender {
-    
-    long index = ((UIButton *) sender).tag;
-    
-    NSURL *url = [self selecedRecordedFile:index];
-    
-    [PlayHelper playAudioFile:url];
-}
-
-- (void) share: (id) sender {
-    
-    long index = ((UIButton *) sender).tag;
-    NSURL *url = [self selecedRecordedFile:index];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] init];
-        composeViewController.mailComposeDelegate = self;
-        composeViewController.navigationBar.tintColor = [UIColor whiteColor];
-        [composeViewController setSubject:@"Hi"];
-        [composeViewController setMessageBody:@"" isHTML:YES];
-        //mime type: http://www.feedforall.com/mime-types.htm
-        [composeViewController addAttachmentData:data mimeType:@"audio/x-aiff" fileName:[NSString stringWithFormat:@"%@.aiff",[url lastPathComponent]]];
-        [composeViewController setToRecipients:nil];
-        [composeViewController.navigationBar setTintColor:[UIColor blackColor]];
-        
-        [self presentViewController:composeViewController animated:YES completion:nil];
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your mail in setting" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
-    
-}
-
-- (NSURL *) selecedRecordedFile:(long) tableCellIndex {
-    
-    SoundLevelCapture *caputure = [_scores objectAtIndex:tableCellIndex];
-    
-    NSDate *date = caputure.date;
-    NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    return url;
-    
-}
 
 - (void)viewDidUnload
 {
@@ -229,6 +138,8 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.screenName = @"ScoreView Screen";
+    
+    [self reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -251,41 +162,6 @@
     
     [super purchasedFinishedNotification:notification];
     [_scoreTable reloadData];
-}
-
-#pragma mark – MFMailComposeViewController
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [controller dismissModalViewControllerAnimated:YES];
-}
-
-
-#pragma mark – SWTableViewCellDelegate
-
-- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
-{
-    switch (index) {
-        case 0:
-        {
-            NSLog(@"Rename button was pressed");
-            
-            
-            break;
-        }
-        case 1:
-        {
-            NSInteger index = cell.tag;
-            if ([_scores count] > index) {
-                SoundLevelCapture *capture = [_scores objectAtIndex:index];
-                [SoundLevelCapture remove:capture];
-                 [self reloadData];
-            } else {
-                NSLog(@"error [_scores count] should > index");
-            }
-            break;
-        }
-        default:
-            break;
-    }
 }
 
 @end

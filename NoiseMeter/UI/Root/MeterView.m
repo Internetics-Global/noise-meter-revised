@@ -16,12 +16,15 @@
 #import "PlayHelper.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <MessageUI/MessageUI.h>
+#import "ScoreArrayDataSource.h"
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     NSDate       *_start;
     MPVolumeView *_volumeView;
     
     BOOL         *_isAlarmPrepareToBeTriggered;
+    
+    ScoreArrayDataSource *_scoreArrayDataSource;
 }
 
 @end
@@ -81,9 +84,7 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture all];
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
-    _scores = [_scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    _scores = [SoundLevelCapture sortedScoreArray];
     _titleLabel.numberOfLines = 3;
     if ([_scores count] == 0) 
     {
@@ -210,8 +211,14 @@
     _topScoreTable.backgroundColor = [UIColor clearColor];
     _topScoreTable.opaque = YES;
     _topScoreTable.delegate = self;
-    _topScoreTable.scrollEnabled = NO;
-    _topScoreTable.dataSource = self;
+   // _topScoreTable.scrollEnabled = NO;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
+        [weakSelf reloadData];
+    }];
+    _topScoreTable.dataSource = _scoreArrayDataSource;
+    
     [self.view addSubview:_topScoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
@@ -276,95 +283,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_scores count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
-    if (cell == nil) {
-        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textColor = [UIColor whiteColor];
-    }
-    cell.capture = [_scores objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
-    
-    cell.playButton.tag = indexPath.row;
-    [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
-    
-    cell.shareButton.tag = indexPath.row;
-    [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
-    
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
-    if (flag) {
-        cell.playButton.hidden = NO;
-        cell.shareButton.hidden = NO;
-    } else {
-        cell.playButton.hidden = YES;
-        cell.shareButton.hidden = YES;
-    }
-    
-    return cell;
-}
-
-
-
-
-- (void) playRecordedSound: (id) sender {
-    
-    long index = ((UIButton *) sender).tag;
-    
-    NSURL *url = [self selecedRecordedFile:index];
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        usleep(10000);
-        _currentReadingLabel.text = @"Playing";
-    });
-    
-    [PlayHelper playAudioFile:url];
-}
-
-- (void) share: (id) sender {
-    
-    long index = ((UIButton *) sender).tag;
-    NSURL *url = [self selecedRecordedFile:index];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    
-    
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] init];
-        composeViewController.mailComposeDelegate = self;
-        composeViewController.navigationBar.tintColor = [UIColor whiteColor];
-        [composeViewController setSubject:@"Hi"];
-        [composeViewController setMessageBody:@"" isHTML:YES];
-        //mime type: http://www.feedforall.com/mime-types.htm
-        [composeViewController addAttachmentData:data mimeType:@"audio/x-aiff" fileName:[NSString stringWithFormat:@"%@.aiff",[url lastPathComponent]]];
-        [composeViewController setToRecipients:nil];
-        [composeViewController.navigationBar setTintColor:[UIColor blackColor]];
-        
-        [self presentViewController:composeViewController animated:YES completion:nil];
-    } else {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your mail in setting" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }
-    
-}
-
-- (NSURL *) selecedRecordedFile:(long) tableCellIndex {
-    
-    SoundLevelCapture *caputure = [_scores objectAtIndex:tableCellIndex];
-    
-    NSDate *date = caputure.date;
-    NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    return url;
-    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -480,6 +398,8 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.screenName = @"MeterView Screen";
+    
+    [self reloadData];
 
 }
 
@@ -599,12 +519,6 @@
     [_overlayImageView removeFromSuperview];
     _overlayImageView = nil;
 }
-
-#pragma mark – MFMailComposeViewController
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    [controller dismissModalViewControllerAnimated:YES];
-}
-
 
 
 

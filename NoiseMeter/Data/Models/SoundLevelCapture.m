@@ -38,6 +38,13 @@
 	return array;
 }
 
++ (NSArray *) sortedScoreArray {
+    NSArray *scores = [self all];
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
+    scores = [scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    return  scores;
+}
+
 
 + (void) remove:(SoundLevelCapture *) capture {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
