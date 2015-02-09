@@ -15,9 +15,10 @@
 #import "FileHelper.h"
 #import "PlayHelper.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <MessageUI/MessageUI.h>
 
-@interface MeterView () {
-    NSDate  *_start;
+@interface MeterView () <MFMailComposeViewControllerDelegate> {
+    NSDate       *_start;
     MPVolumeView *_volumeView;
 }
 
@@ -145,12 +146,14 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
-    _volumeView = [ [MPVolumeView alloc] init] ;
-    _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
-    [_volumeView setShowsRouteButton:YES];
-    [_volumeView sizeToFit];
-    [_volumeView setShowsVolumeSlider:NO];
-    [self.view addSubview:_volumeView];
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _volumeView = [ [MPVolumeView alloc] init] ;
+        _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
+        [_volumeView setShowsRouteButton:YES];
+        [_volumeView sizeToFit];
+        [_volumeView setShowsVolumeSlider:NO];
+        [self.view addSubview:_volumeView];
+    }
     
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -292,11 +295,16 @@
     cell.playButton.tag = indexPath.row;
     [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
     
+    cell.shareButton.tag = indexPath.row;
+    [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
+    
     BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag) {
         cell.playButton.hidden = NO;
+        cell.shareButton.hidden = NO;
     } else {
         cell.playButton.hidden = YES;
+        cell.shareButton.hidden = YES;
     }
     
     return cell;
@@ -305,14 +313,10 @@
 
 - (void) playRecordedSound: (id) sender {
     
-    int index = ((UIButton *) sender).tag;
+    long index = ((UIButton *) sender).tag;
     
-    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
+    NSURL *url = [self selecedRecordedFile:index];
     
-    NSDate *date = caputure.date;
-	NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         usleep(10000);
@@ -320,6 +324,43 @@
     });
     
     [PlayHelper playAudioFile:url];
+}
+
+- (void) share: (id) sender {
+    
+    long index = ((UIButton *) sender).tag;
+    NSURL *url = [self selecedRecordedFile:index];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] init];
+        composeViewController.mailComposeDelegate = self;
+        composeViewController.navigationBar.tintColor = [UIColor whiteColor];
+        [composeViewController setSubject:@"Hi"];
+        [composeViewController setMessageBody:@"" isHTML:YES];
+        //mime type: http://www.feedforall.com/mime-types.htm
+        [composeViewController addAttachmentData:data mimeType:@"audio/x-aiff" fileName:[NSString stringWithFormat:@"%@.aiff",[url lastPathComponent]]];
+        [composeViewController setToRecipients:nil];
+        [composeViewController.navigationBar setTintColor:[UIColor blackColor]];
+        
+        [self presentViewController:composeViewController animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your mail in setting" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+    
+}
+
+- (NSURL *) selecedRecordedFile:(long) tableCellIndex {
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:tableCellIndex];
+    
+    NSDate *date = caputure.date;
+    NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
+    return url;
+    
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -529,6 +570,10 @@
     _overlayImageView = nil;
 }
 
+#pragma mark – MFMailComposeViewController
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissModalViewControllerAnimated:YES];
+}
 
 
 @end

@@ -14,8 +14,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "FileHelper.h"
 #import "PlayHelper.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ScoreView ()
+@interface ScoreView () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -136,11 +137,16 @@
     cell.playButton.tag = indexPath.row;
     [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];
     
+    cell.shareButton.tag = indexPath.row;
+    [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
+    
     BOOL flag = [NSUserDefaultsHelper isAdRemoved];
     if (flag) {
         cell.playButton.hidden = NO;
+        cell.shareButton.hidden = NO;
     } else {
         cell.playButton.hidden = YES;
+        cell.shareButton.hidden = YES;
     }
     
     return cell;
@@ -148,15 +154,48 @@
 
 - (void) playRecordedSound: (id) sender {
     
-    int index = ((UIButton *) sender).tag;
+    long index = ((UIButton *) sender).tag;
     
-    SoundLevelCapture *caputure = [_scores objectAtIndex:index];
+    NSURL *url = [self selecedRecordedFile:index];
+    
+    [PlayHelper playAudioFile:url];
+}
+
+- (void) share: (id) sender {
+    
+    long index = ((UIButton *) sender).tag;
+    NSURL *url = [self selecedRecordedFile:index];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *composeViewController = [[MFMailComposeViewController alloc] init];
+        composeViewController.mailComposeDelegate = self;
+        composeViewController.navigationBar.tintColor = [UIColor whiteColor];
+        [composeViewController setSubject:@"Hi"];
+        [composeViewController setMessageBody:@"" isHTML:YES];
+        //mime type: http://www.feedforall.com/mime-types.htm
+        [composeViewController addAttachmentData:data mimeType:@"audio/x-aiff" fileName:[NSString stringWithFormat:@"%@.aiff",[url lastPathComponent]]];
+        [composeViewController setToRecipients:nil];
+        [composeViewController.navigationBar setTintColor:[UIColor blackColor]];
+        
+        [self presentViewController:composeViewController animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your mail in setting" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+    
+}
+
+- (NSURL *) selecedRecordedFile:(long) tableCellIndex {
+    
+    SoundLevelCapture *caputure = [_scores objectAtIndex:tableCellIndex];
     
     NSDate *date = caputure.date;
-	NSString *dateString = [FileHelper convertDate:date];
+    NSString *dateString = [FileHelper convertDate:date];
     
     NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    [PlayHelper playAudioFile:url];
+    return url;
+    
 }
 
 - (void)viewDidUnload
@@ -192,6 +231,11 @@
     
     [super purchasedFinishedNotification:notification];
     [_scoreTable reloadData];
+}
+
+#pragma mark – MFMailComposeViewController
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 

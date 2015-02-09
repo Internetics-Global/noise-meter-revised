@@ -84,6 +84,7 @@
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		886712641A88433A007101FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712631A88433A007101FD /* MediaPlayer.framework */; };
+		886712661A886AD3007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712651A886AD3007101FD /* shareButton@2x.png */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -239,6 +240,7 @@
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		886712631A88433A007101FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		886712651A886AD3007101FD /* shareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareButton@2x.png"; sourceTree = "<group>"; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 		11AC53021505D3E70093C7AB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				886712651A886AD3007101FD /* shareButton@2x.png */,
 				88A95E3E18A47FD200E56939 /* generalBanner@2x.png */,
 				88A95E3C18A47FC100E56939 /* cancel@2x.png */,
 				88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */,
@@ -879,6 +882,7 @@
 				88BEFE5D18A1FCB100399680 /* 15.png in Resources */,
 				11F3E5CA15194CAE00549099 /* button_back.png in Resources */,
 				88BEFE6D18A20E9300399680 /* 19.png in Resources */,
+				886712661A886AD3007101FD /* shareButton@2x.png in Resources */,
 				11F3E5CB15194CAE00549099 /* button_back@2x.png in Resources */,
 				11F3E5CC15194CAE00549099 /* button_close.png in Resources */,
 				88BEFE5E18A1FCB100399680 /* 16.png in Resources */,

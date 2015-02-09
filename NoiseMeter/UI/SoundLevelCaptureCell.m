@@ -55,6 +55,13 @@
         [self.contentView addSubview:_playButton];
         _playButton.showsTouchWhenHighlighted = YES;
         
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setImage:[UIImage imageNamed:@"shareButton"] forState:UIControlStateNormal];
+        _shareButton.frame = CGRectMake(_playButton.frame.origin.x - 35, 13, 30, 15);
+        _shareButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_shareButton];
+        _shareButton.showsTouchWhenHighlighted = YES;
+        
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, 0, 100, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _dateLabel.backgroundColor = [UIColor clearColor];

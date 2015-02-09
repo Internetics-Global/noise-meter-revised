@@ -18,5 +18,6 @@
 
 @property (nonatomic, strong) SoundLevelCapture *capture;
 @property (strong, nonatomic) UIButton *playButton;
+@property (strong, nonatomic) UIButton *shareButton;
 
 @end
