@@ -22,4 +22,6 @@
 
 + (void) remove:(SoundLevelCapture *) capture;
 
++ (void) updateCapture:(SoundLevelCapture *) capture withNewName:(NSString *) nameStr;
+
 @end

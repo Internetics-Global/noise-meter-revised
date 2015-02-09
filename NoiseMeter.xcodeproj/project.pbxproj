@@ -92,6 +92,7 @@
 		886712781A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */; };
 		886712791A88852A007101FD /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712731A88852A007101FD /* SWUtilityButtonView.m */; };
 		8867127D1A88C37E007101FD /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867127C1A88C37E007101FD /* ScoreArrayDataSource.m */; };
+		886712851A895799007101FD /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712841A895799007101FD /* UIAlertView+Blocks.m */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -262,6 +263,8 @@
 		886712731A88852A007101FD /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		8867127B1A88C37E007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreArrayDataSource.h; sourceTree = "<group>"; };
 		8867127C1A88C37E007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreArrayDataSource.m; sourceTree = "<group>"; };
+		886712831A895799007101FD /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		886712841A895799007101FD /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -668,6 +671,16 @@
 			path = Support/SWTableViewCell;
 			sourceTree = "<group>";
 		};
+		886712821A895799007101FD /* UIAlertView-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				886712831A895799007101FD /* UIAlertView+Blocks.h */,
+				886712841A895799007101FD /* UIAlertView+Blocks.m */,
+			);
+			name = "UIAlertView-Blocks";
+			path = "Support/UIAlertView-Blocks";
+			sourceTree = "<group>";
+		};
 		889FD23A177BC3C40046D281 /* appirater */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +762,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				886712821A895799007101FD /* UIAlertView-Blocks */,
 				886712671A88852A007101FD /* SWTableViewCell */,
 				88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */,
 				883788D917839670000BBF3D /* Google Analytics */,
@@ -984,6 +998,7 @@
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
 				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,
 				1168C317151966AC00897AA4 /* InstructionView.m in Sources */,
+				886712851A895799007101FD /* UIAlertView+Blocks.m in Sources */,
 				886712791A88852A007101FD /* SWUtilityButtonView.m in Sources */,
 				889FD23E177BC3F90046D281 /* Appirater.m in Sources */,
 			);
