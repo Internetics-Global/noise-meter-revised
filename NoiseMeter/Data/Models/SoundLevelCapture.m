@@ -38,4 +38,24 @@
 	return array;
 }
 
+
++ (void) remove:(SoundLevelCapture *) capture {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:NSStringFromClass(self) inManagedObjectContext:[NMDataManager defaultManager].managedObjectContext]];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"date==%@", capture.date]];
+    
+    NSError* error = nil;
+    NSArray* results = [[NMDataManager defaultManager].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([results count] > 0) {
+        [[NMDataManager defaultManager].managedObjectContext deleteObject:[results objectAtIndex:0]];
+        
+        if ([[NMDataManager defaultManager].managedObjectContext hasChanges] && ![[NMDataManager defaultManager].managedObjectContext save:&error]) {
+            NSLog(@"save execute error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
 @end

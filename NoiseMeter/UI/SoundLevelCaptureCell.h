@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SoundLevelCapture.h"
+#import "SWTableViewCell.h"
 
-@interface SoundLevelCaptureCell : UITableViewCell{
+@interface SoundLevelCaptureCell : SWTableViewCell{
     SoundLevelCapture *_capture;
     UILabel *_nameLabel;
     UILabel *_levelLabel;

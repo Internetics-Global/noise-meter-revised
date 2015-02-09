@@ -19,4 +19,6 @@
 + (id)instance;
 + (NSArray *)all;
 
++ (void) remove:(SoundLevelCapture *) capture;
+
 @end

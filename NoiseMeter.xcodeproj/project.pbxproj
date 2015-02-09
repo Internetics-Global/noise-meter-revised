@@ -85,6 +85,12 @@
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		886712641A88433A007101FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712631A88433A007101FD /* MediaPlayer.framework */; };
 		886712661A886AD3007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712651A886AD3007101FD /* shareButton@2x.png */; };
+		886712741A88852A007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712691A88852A007101FD /* NSMutableArray+SWUtilityButtons.m */; };
+		886712751A88852A007101FD /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867126B1A88852A007101FD /* SWCellScrollView.m */; };
+		886712761A88852A007101FD /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867126D1A88852A007101FD /* SWLongPressGestureRecognizer.m */; };
+		886712771A88852A007101FD /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867126F1A88852A007101FD /* SWTableViewCell.m */; };
+		886712781A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */; };
+		886712791A88852A007101FD /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712731A88852A007101FD /* SWUtilityButtonView.m */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -241,6 +247,18 @@
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		886712631A88433A007101FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		886712651A886AD3007101FD /* shareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareButton@2x.png"; sourceTree = "<group>"; };
+		886712681A88852A007101FD /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		886712691A88852A007101FD /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		8867126A1A88852A007101FD /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		8867126B1A88852A007101FD /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		8867126C1A88852A007101FD /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		8867126D1A88852A007101FD /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		8867126E1A88852A007101FD /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		8867126F1A88852A007101FD /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		886712701A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		886712721A88852A007101FD /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		886712731A88852A007101FD /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -625,6 +643,26 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		886712671A88852A007101FD /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				886712681A88852A007101FD /* NSMutableArray+SWUtilityButtons.h */,
+				886712691A88852A007101FD /* NSMutableArray+SWUtilityButtons.m */,
+				8867126A1A88852A007101FD /* SWCellScrollView.h */,
+				8867126B1A88852A007101FD /* SWCellScrollView.m */,
+				8867126C1A88852A007101FD /* SWLongPressGestureRecognizer.h */,
+				8867126D1A88852A007101FD /* SWLongPressGestureRecognizer.m */,
+				8867126E1A88852A007101FD /* SWTableViewCell.h */,
+				8867126F1A88852A007101FD /* SWTableViewCell.m */,
+				886712701A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.h */,
+				886712711A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m */,
+				886712721A88852A007101FD /* SWUtilityButtonView.h */,
+				886712731A88852A007101FD /* SWUtilityButtonView.m */,
+			);
+			name = SWTableViewCell;
+			path = Support/SWTableViewCell;
+			sourceTree = "<group>";
+		};
 		889FD23A177BC3C40046D281 /* appirater */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +744,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				886712671A88852A007101FD /* SWTableViewCell */,
 				88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */,
 				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
@@ -918,22 +957,28 @@
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
 				11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */,
+				886712741A88852A007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				881032AE18A361FE000CA722 /* BaseViewController.m in Sources */,
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
 				111A18D21505E3A9005655F1 /* ScoreView.m in Sources */,
+				886712751A88852A007101FD /* SWCellScrollView.m in Sources */,
 				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
+				886712771A88852A007101FD /* SWTableViewCell.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				11A3EE81150F456B00A6496B /* CaptureView.m in Sources */,
 				88B47356189A148F005668AC /* CAFAudioHelper.m in Sources */,
 				88BEFE6218A1FCE800399680 /* SoundLevelView.m in Sources */,
+				886712781A88852A007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */,
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
+				886712761A88852A007101FD /* SWLongPressGestureRecognizer.m in Sources */,
 				88BEFE1A18A1EDEF00399680 /* PlayHelper.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
 				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,
 				1168C317151966AC00897AA4 /* InstructionView.m in Sources */,
+				886712791A88852A007101FD /* SWUtilityButtonView.m in Sources */,
 				889FD23E177BC3F90046D281 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

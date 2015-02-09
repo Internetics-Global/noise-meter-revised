@@ -15,8 +15,9 @@
 #import "FileHelper.h"
 #import "PlayHelper.h"
 #import <MessageUI/MessageUI.h>
+#import "SWTableViewCell.h"
 
-@interface ScoreView () <MFMailComposeViewControllerDelegate>
+@interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate>
 
 @end
 
@@ -149,7 +150,26 @@
         cell.shareButton.hidden = YES;
     }
     
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        cell.rightUtilityButtons = [self rightCellButtons];
+        cell.delegate = self;
+        cell.tag = indexPath.row;
+    }
+    
     return cell;
+}
+
+- (NSArray *)rightCellButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Rename"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    
+    return rightUtilityButtons;
 }
 
 - (void) playRecordedSound: (id) sender {
@@ -238,5 +258,34 @@
     [controller dismissModalViewControllerAnimated:YES];
 }
 
+
+#pragma mark – SWTableViewCellDelegate
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
+{
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"Rename button was pressed");
+            
+            
+            break;
+        }
+        case 1:
+        {
+            NSInteger index = cell.tag;
+            if ([_scores count] > index) {
+                SoundLevelCapture *capture = [_scores objectAtIndex:index];
+                [SoundLevelCapture remove:capture];
+                 [self reloadData];
+            } else {
+                NSLog(@"error [_scores count] should > index");
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 @end
