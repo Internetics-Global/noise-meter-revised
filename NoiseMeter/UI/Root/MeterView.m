@@ -17,14 +17,30 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <MessageUI/MessageUI.h>
 #import "ScoreArrayDataSource.h"
+#import "CAFAudioHelper.h"
+#import "NMDataManager.h"
+
+//忽略那种短暂的噪声
+#define K_Second_IgnoreSuddenNoise     0.5
+
+//当alarm出现后，继续保持录音的时间
+#define K_Second_DelayAlarmSound       1.0
+
+//在cintinuous mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
+#define K_Second_CintinuousMode        1.0
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
-    NSDate       *_start;
     MPVolumeView *_volumeView;
     
     BOOL         *_isAlarmPrepareToBeTriggered;
     
     ScoreArrayDataSource *_scoreArrayDataSource;
+    
+    //用于判断是否delay的时间是否大于K_Second_DelayAlarmSound
+    NSDate       *_startForDelayAlarmSound;
+    
+    //用于判断下一个capture事件
+    NSDate       *_startForContinuousMode;
 }
 
 @end
@@ -47,7 +63,8 @@
                                                  name:@"PAUSE_LOGGING_SWITCH_NOTIFICATION"
                                                object:nil];
     
-    _start = [NSDate date];
+    _startForDelayAlarmSound = [NSDate date];
+    _startForContinuousMode =  [NSDate date];
     
     
     
@@ -85,14 +102,14 @@
 - (void)reloadData
 {
     _scores = [SoundLevelCapture sortedScoreArray];
-    _titleLabel.numberOfLines = 3;
+    _titleLabel.numberOfLines = 2;
     if ([_scores count] == 0) 
     {
-        _titleLabel.text = @"  Top Noise Makers:\n\n  None recorded";
+        _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
     }
     else 
     {
-        _titleLabel.text = @"  Top Noise Makers:\n\n";
+        _titleLabel.text = @"  Top Noise Makers:\n";
     }
     [_topScoreTable reloadData];
 }
@@ -204,14 +221,13 @@
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height)) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height) - 44) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
     _topScoreTable.backgroundColor = [UIColor clearColor];
     _topScoreTable.opaque = YES;
     _topScoreTable.delegate = self;
-   // _topScoreTable.scrollEnabled = NO;
     
     __weak __typeof(&*self)weakSelf = self;
     _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
@@ -244,6 +260,35 @@
     [self.navigationController pushViewController:cap animated:YES];
 }
 
+- (void) captureForContinuousMode {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSString *timeString = [formatter stringFromDate:[NSDate date]];
+    
+    //Record last 10 second audio just before alarm
+    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    
+    NSDate *date = [NSDate date];
+    NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
+    [CAFAudioHelper saveLast10SecondAudio:fromURL toURL:toURL];
+    [[NMDecibelLogger defaultLogger] startLogging];
+    
+    SoundLevelCapture *cap = [SoundLevelCapture instance];
+    cap.name = timeString;
+    cap.soundLevel = [NSDecimalNumber decimalNumberWithString:[_peakReading stringValue]];
+    cap.date = date;
+    [[NMDataManager defaultManager] saveContext];
+    [self reloadData];
+    
+    
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (_headerView == nil) 
@@ -254,14 +299,14 @@
         _titleLabel.numberOfLines = 3;
         if ([_scores count] == 0) 
         {
-            _titleLabel.text = @"  Top Noise Makers:\n\n  None recorded";
+            _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
         }
         else 
         {
-            _titleLabel.text = @"  Top Noise Makers:\n\n";
+            _titleLabel.text = @"  Top Noise Makers:\n";
         }
         _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:_titleLabel.font.pointSize];
+        _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         _titleLabel.textColor = [UIColor whiteColor];
         [_headerView addSubview:_titleLabel];
     }
@@ -272,11 +317,11 @@
 {
     if ([_scores count] == 0) 
     {
-        return 66;
+        return 40;
     }
     else 
     {
-        return 50;
+        return 40;
     }
 }
 
@@ -325,45 +370,45 @@
         
         
         //do some here
-        NSTimeInterval executionTime =[[NSDate date] timeIntervalSinceDate:_start];
+        NSTimeInterval executionTime =[[NSDate date] timeIntervalSinceDate:_startForDelayAlarmSound];
         
         
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue]))
         {
             _currentReadingLabel.textColor = [UIColor redColor];
             if ([NSUserDefaultsHelper isIgnoreSuddenNoise]) {
-                if (executionTime > 1.0) {
+                if (executionTime > K_Second_IgnoreSuddenNoise) {
                     if ([NSUserDefaultsHelper isDelayAlarmSound]) {
                         _isAlarmPrepareToBeTriggered = YES;
-                        double delayInSeconds = 1;
+                        double delayInSeconds = K_Second_DelayAlarmSound;
                         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                            [[NMDecibelLogger defaultLogger] playAlarm];
+                            [self playAlarmForContinuousMode];
                             _isAlarmPrepareToBeTriggered = NO;
                         });
                     } else {
-                        [[NMDecibelLogger defaultLogger] playAlarm];
+                        [self playAlarmForContinuousMode];
                     }
                     
                 }
             } else {
                 if ([NSUserDefaultsHelper isDelayAlarmSound]) {
                     _isAlarmPrepareToBeTriggered = YES;
-                    double delayInSeconds = 1;
+                    double delayInSeconds = K_Second_DelayAlarmSound;
                     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [[NMDecibelLogger defaultLogger] playAlarm];
+                        [self playAlarmForContinuousMode];
                         _isAlarmPrepareToBeTriggered = NO;
                     });
                 } else {
-                    [[NMDecibelLogger defaultLogger] playAlarm];
+                    [self playAlarmForContinuousMode];
                 }
             }
         }
         else
         {
             //NSLog(@"Not reach threahold");
-            _start = [NSDate date];
+            _startForDelayAlarmSound = [NSDate date];
             _currentReadingLabel.textColor = [UIColor greenColor];
             [self success];
         }
@@ -384,6 +429,20 @@
     else 
     {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void) playAlarmForContinuousMode {
+    if ([NSUserDefaultsHelper isContinuousMode]) {
+        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForContinuousMode];
+        if (executionTime2 > K_Second_CintinuousMode) {
+            _startForContinuousMode = [NSDate date];
+            [self captureForContinuousMode];
+            
+        }
+        
+    } else {
+        [[NMDecibelLogger defaultLogger] playAlarm];
     }
 }
 

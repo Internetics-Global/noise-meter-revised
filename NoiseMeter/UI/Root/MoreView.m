@@ -62,14 +62,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 11;
+    return 12;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5)) {
+    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5)|| (indexPath.row == 6)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
@@ -131,6 +131,15 @@
                 [switchView setOn:NO];
                 
             }
+        } else if (indexPath.row == 6) {
+            [switchView addTarget:self action:@selector(continuousModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
+            [cell.textLabel setText:@"Continous Mode"];
+            if ([NSUserDefaultsHelper isContinuousMode] == YES) {
+                [switchView setOn:YES];
+            } else {
+                [switchView setOn:NO];
+                
+            }
         }
         
         
@@ -145,23 +154,23 @@
         {
             cell.textLabel.text = @"Select Alert Sound";
         }
-        else if (indexPath.row == 6)
+        else if (indexPath.row == 7)
         {
             cell.textLabel.text = @"Instructions / Tips";
         }
-        else if (indexPath.row == 7)
+        else if (indexPath.row == 8)
         {
             cell.textLabel.text = @"About";
         }
-        else if (indexPath.row == 8)
+        else if (indexPath.row == 9)
         {
             cell.textLabel.text = @"Visit developer's website";
         }
-        else if (indexPath.row == 9)
+        else if (indexPath.row == 10)
         {
             cell.textLabel.text = @"Tell a Friend";
         }
-        else if (indexPath.row == 10)
+        else if (indexPath.row == 11)
         {
             cell.textLabel.text = @"Support";
         }
@@ -205,23 +214,23 @@
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 6)
+    else if(indexPath.row == 7)
     {
         InstructionView *about = [[InstructionView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if (indexPath.row == 7)
+    else if (indexPath.row == 8)
     {
         AboutView *about = [[AboutView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 8)
+    else if(indexPath.row == 9)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else if ((indexPath.row == 9) || (indexPath.row ==10))
+    else if ((indexPath.row == 10) || (indexPath.row ==11))
     {
         if ([MFMailComposeViewController canSendMail]) 
         {
@@ -231,7 +240,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 9)
+            if (indexPath.row == 10)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];
@@ -298,6 +307,25 @@
         }
     }
     
+}
+
+
+- (void) continuousModeSwitchClicked:(id)sender {
+    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please purchase to get this function" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    
+    if ([myswitch isOn]) {
+        [NSUserDefaultsHelper setContinuousMode:YES];
+        
+    } else {
+        [NSUserDefaultsHelper setContinuousMode:NO];
+    }
 }
 
 

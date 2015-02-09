@@ -11,7 +11,7 @@
 #import <iAd/iAd.h>
 #import "SoundLevelView.h"
 
-@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate>{
+@interface MeterView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate>{
     UIImageView    * _meterBackground;
     UILabel        * _currentReadingLabel;
     UITableView    * _topScoreTable;

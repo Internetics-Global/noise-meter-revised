@@ -31,4 +31,7 @@
 + (BOOL) isDelayAlarmSound;
 + (void) setDelayAlarmSound:(BOOL) flag;
 
++ (BOOL) isContinuousMode;
++ (void) setContinuousMode:(BOOL) flag;
+
 @end

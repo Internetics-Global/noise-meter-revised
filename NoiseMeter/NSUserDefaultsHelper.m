@@ -93,6 +93,18 @@
     [userDefaults synchronize];
 }
 
++ (BOOL) isContinuousMode {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"CONTINUOUS_MODE"];
+    return flag;
+}
+
++ (void) setContinuousMode:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"CONTINUOUS_MODE"];
+    [userDefaults synchronize];
+}
+
 + (BOOL) isNotShowMeterOffDialog {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"NOT_SHOW_METEROFF_DIALOG"];
