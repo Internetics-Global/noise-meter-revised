@@ -20,6 +20,8 @@
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     NSDate       *_start;
     MPVolumeView *_volumeView;
+    
+    BOOL         *_isAlarmPrepareToBeTriggered;
 }
 
 @end
@@ -365,6 +367,11 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    if (_isAlarmPrepareToBeTriggered) {
+        //wait for finish on delay alarm sound
+        return;
+    }
+    
     if ([PlayHelper isPlaying]) {
         _currentReadingLabel.text = @"Playing";
         return;
@@ -406,13 +413,34 @@
             _currentReadingLabel.textColor = [UIColor redColor];
             if ([NSUserDefaultsHelper isIgnoreSuddenNoise]) {
                 if (executionTime > 1.0) {
-                    [[NMDecibelLogger defaultLogger] playAlarm];
+                    if ([NSUserDefaultsHelper isDelayAlarmSound]) {
+                        _isAlarmPrepareToBeTriggered = YES;
+                        double delayInSeconds = 1;
+                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                            [[NMDecibelLogger defaultLogger] playAlarm];
+                            _isAlarmPrepareToBeTriggered = NO;
+                        });
+                    } else {
+                        [[NMDecibelLogger defaultLogger] playAlarm];
+                    }
+                    
                 }
             } else {
-                [[NMDecibelLogger defaultLogger] playAlarm];
+                if ([NSUserDefaultsHelper isDelayAlarmSound]) {
+                    _isAlarmPrepareToBeTriggered = YES;
+                    double delayInSeconds = 1;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [[NMDecibelLogger defaultLogger] playAlarm];
+                        _isAlarmPrepareToBeTriggered = NO;
+                    });
+                } else {
+                    [[NMDecibelLogger defaultLogger] playAlarm];
+                }
             }
         }
-        else 
+        else
         {
             //NSLog(@"Not reach threahold");
             _start = [NSDate date];

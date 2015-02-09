@@ -14,6 +14,8 @@
 #import "CAFAudioHelper.h"
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
+#import "PlayHelper.h"
+#import "NSUserDefaultsHelper.h"
 
 @interface CaptureView () {
     BOOL   _up;
@@ -45,6 +47,7 @@
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y - 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y - 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y - 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
+        _playbackButton.frame = CGRectMake(_playbackButton.frame.origin.x, _playbackButton.frame.origin.y - 160, _playbackButton.frame.size.width, _playbackButton.frame.size.height);
     }];
 }
 
@@ -62,6 +65,7 @@
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y + 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y + 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y + 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
+        _playbackButton.frame = CGRectMake(_playbackButton.frame.origin.x, _playbackButton.frame.origin.y + 160, _playbackButton.frame.size.width, _playbackButton.frame.size.height);
     }];
 }
 
@@ -96,15 +100,33 @@
     [self.view addSubview:_enterLabel];
     
     _nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, _enterLabel.frame.origin.y + _enterLabel.frame.size.height + 20, self.view.frame.size.width - 40, 33)];
-    [_nameField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_nameField setBackgroundColor:[UIColor whiteColor]];
+    [_nameField setTextAlignment:NSTextAlignmentCenter];
     _nameField.delegate = self;
     [self.view addSubview:_nameField];
     
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 22, 280, 37);
-    [_saveButton setImage:[UIImage imageNamed:@"button_save.png"] forState:UIControlStateNormal];
+    _saveButton.backgroundColor = [UIColor orangeColor];
+    [_saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [_saveButton setTintColor:[UIColor whiteColor]];
+    _saveButton.showsTouchWhenHighlighted = YES;
     [_saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
+    
+    _playbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 22, 280, 37);
+    _playbackButton.backgroundColor = [UIColor darkGrayColor];
+    [_playbackButton setTitle:@"Playback" forState:UIControlStateNormal];
+    [_playbackButton setTintColor:[UIColor whiteColor]];
+    _playbackButton.showsTouchWhenHighlighted = YES;
+    [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_playbackButton];
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _playbackButton.hidden = FALSE;
+    } else {
+        _playbackButton.hidden = TRUE;
+    }
     
 }
 
@@ -135,6 +157,13 @@
     [nc removeObserver:self
                   name:UIKeyboardWillHideNotification
                 object:nil];
+}
+
+- (void) playback {
+    
+    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    [PlayHelper playAudioFile:fromURL];
+    
 }
 
 

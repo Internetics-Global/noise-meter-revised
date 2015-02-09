@@ -28,4 +28,7 @@
 + (BOOL) isIgnoreSuddenNoise;
 + (void) setIgnoreSuddenNoise:(BOOL) flag;
 
++ (BOOL) isDelayAlarmSound;
++ (void) setDelayAlarmSound:(BOOL) flag;
+
 @end
