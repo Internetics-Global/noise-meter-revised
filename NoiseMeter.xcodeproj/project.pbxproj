@@ -101,6 +101,8 @@
 		886712B31A89A6AD007101FD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B21A89A6AD007101FD /* libsqlite3.dylib */; };
 		8871690E1A8A0FF600FD5B75 /* playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690C1A8A0FF600FD5B75 /* playback.png */; };
 		8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690D1A8A0FF600FD5B75 /* playback@2x.png */; };
+		887169121A8A179500FD5B75 /* button_cancel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 887169101A8A179500FD5B75 /* button_cancel2.png */; };
+		887169131A8A179500FD5B75 /* button_cancel2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887169111A8A179500FD5B75 /* button_cancel2@2x.png */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -296,6 +298,8 @@
 		886712B21A89A6AD007101FD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8871690C1A8A0FF600FD5B75 /* playback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playback.png; sourceTree = "<group>"; };
 		8871690D1A8A0FF600FD5B75 /* playback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playback@2x.png"; sourceTree = "<group>"; };
+		887169101A8A179500FD5B75 /* button_cancel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_cancel2.png; path = NoiseMeter/Resources/Images/Buttons/button_cancel2.png; sourceTree = SOURCE_ROOT; };
+		887169111A8A179500FD5B75 /* button_cancel2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_cancel2@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/button_cancel2@2x.png"; sourceTree = SOURCE_ROOT; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -584,6 +588,8 @@
 		11AC53021505D3E70093C7AB /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				887169101A8A179500FD5B75 /* button_cancel2.png */,
+				887169111A8A179500FD5B75 /* button_cancel2@2x.png */,
 				886712861A899E80007101FD /* shareButton@2x.png */,
 				88A95E3E18A47FD200E56939 /* generalBanner@2x.png */,
 				88A95E3C18A47FC100E56939 /* cancel@2x.png */,
@@ -957,6 +963,7 @@
 				11AC531A1505D4190093C7AB /* button_setalarm@2x.png in Resources */,
 				111A18CE1505E38D005655F1 /* background_count.png in Resources */,
 				111A18CF1505E38D005655F1 /* background_count@2x.png in Resources */,
+				887169131A8A179500FD5B75 /* button_cancel2@2x.png in Resources */,
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
@@ -967,6 +974,7 @@
 				8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */,
 				8807E75718D0052B0042AC59 /* overlay568.png in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
+				887169121A8A179500FD5B75 /* button_cancel2.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
 				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,

@@ -143,10 +143,12 @@
     if ([NSUserDefaultsHelper isAdRemoved]) {
         _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         _cancelButton.frame =CGRectMake(20 + 150, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
+        [_cancelButton setImage:[UIImage imageNamed:@"button_cancel"] forState:UIControlStateNormal];
     } else {
-        _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 5, 280, 37);
+        _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 280, 37);
+        [_cancelButton setImage:[UIImage imageNamed:@"button_cancel2"] forState:UIControlStateNormal];
     }
-    [_cancelButton setImage:[UIImage imageNamed:@"button_cancel"] forState:UIControlStateNormal];
+    ;
     _cancelButton.layer.cornerRadius = 5;
     _cancelButton.layer.masksToBounds = YES;
     [_cancelButton setTintColor:[UIColor whiteColor]];
