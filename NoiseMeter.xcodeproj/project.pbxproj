@@ -1106,7 +1106,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
@@ -1123,7 +1123,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
 				SDKROOT = iphoneos;
@@ -1134,7 +1134,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Internetics Ltd";
@@ -1144,7 +1144,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "8FA362D3-73D4-44BC-BDAA-0EE8A85A38F9";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9CC2D0F-E0E7-4D9F-98DD-41E713E38F4A";
@@ -1156,16 +1156,13 @@
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
@@ -1176,8 +1173,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3378099E-3B64-4864-A735-4C41956E75CD";
+				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1185,16 +1182,13 @@
 		110F131414EDD52E00BE4481 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clive France (FUUTJUMU86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
@@ -1205,8 +1199,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3378099E-3B64-4864-A735-4C41956E75CD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3378099E-3B64-4864-A735-4C41956E75CD";
+				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

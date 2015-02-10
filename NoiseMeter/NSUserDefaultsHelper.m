@@ -12,7 +12,7 @@
 
 + (BOOL) isAdRemoved {
     
-    return YES;
+    //return YES; only for debug
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];

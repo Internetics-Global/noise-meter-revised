@@ -76,6 +76,8 @@
         _shareButton.frame = CGRectMake(0, CGRectGetMinY(_resetButton.frame), 73, 29);
         [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_shareButton];
+        
+        _shareButton.hidden = YES; // TODO:XX, no need for this version
     }
     
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

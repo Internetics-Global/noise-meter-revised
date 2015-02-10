@@ -10,7 +10,7 @@
 #import "GAITrackedViewController.h"
 #import "IDPSoundBoard.h"
 
-@interface ScoreView : BaseViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
+@interface ScoreView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
     UITableView *_scoreTable;
     UIImageView *_meterBackground;
     NSArray *_scores;
