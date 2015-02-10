@@ -109,7 +109,7 @@
     }
     else 
     {
-        _titleLabel.text = @"  Top Noise Makers:\n";
+        _titleLabel.text = @"  Top Noise Makers:";
     }
     [_topScoreTable reloadData];
 }
@@ -291,33 +291,37 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (_headerView == nil) 
+    int headerHeight = [self tableView:tableView heightForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, headerView.frame.size.width - 10, headerView.frame.size.height - 10)];
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    _titleLabel.numberOfLines = 2;
+    if ([_scores count] == 0)
     {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 66)];
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, _headerView.frame.size.width - 10, _headerView.frame.size.height)];
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.numberOfLines = 3;
-        if ([_scores count] == 0) 
-        {
-            _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
-        }
-        else 
-        {
-            _titleLabel.text = @"  Top Noise Makers:\n";
-        }
-        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-        _titleLabel.textColor = [UIColor whiteColor];
-        [_headerView addSubview:_titleLabel];
+        _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
     }
-    return _headerView;
+    else
+    {
+        _titleLabel.text = @"  Top Noise Makers:";
+    }
+    _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    _titleLabel.textColor = [UIColor whiteColor];
+    [headerView addSubview:_titleLabel];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) -0.5, CGRectGetWidth(headerView.frame), 0.5)] ;
+    lineView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
+    [headerView addSubview:lineView];
+    
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([_scores count] == 0) 
     {
-        return 40;
+        return 60;
     }
     else 
     {

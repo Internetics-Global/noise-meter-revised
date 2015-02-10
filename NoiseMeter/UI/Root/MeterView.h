@@ -17,7 +17,6 @@
     UITableView    * _topScoreTable;
     NSArray        * _scores;
     UIButton       * _captureButton;
-    UIView         * _headerView;
     NSNumber       * _currentReading;
     UIImageView    * _formBackground;
     NSNumber       * _peakReading;
