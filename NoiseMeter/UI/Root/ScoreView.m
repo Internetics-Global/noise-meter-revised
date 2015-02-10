@@ -83,7 +83,7 @@
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scoreTable.backgroundView = nil;
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
-    _scoreTable.backgroundColor = [UIColor clearColor];
+    _scoreTable.backgroundColor = [UIColor colorWithRed:22.0/255 green:24.0/255 blue:25.0/255 alpha:1];
     _scoreTable.opaque = YES;
     
     __weak __typeof(&*self)weakSelf = self;
