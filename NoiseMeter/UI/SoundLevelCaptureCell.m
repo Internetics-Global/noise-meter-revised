@@ -40,7 +40,7 @@
         }
         [self.contentView addSubview:_nameLabel];
         
-        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 100, 0, 95, self.contentView.frame.size.height)];
+        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 95, 0, 90, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _dateLabel.textAlignment = NSTextAlignmentRight;
         _dateLabel.backgroundColor = [UIColor clearColor];
@@ -48,7 +48,7 @@
         [self.contentView addSubview:_dateLabel];
         
         
-        _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_dateLabel.frame.origin.x - 40, 0, 35, self.contentView.frame.size.height)];
+        _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_dateLabel.frame.origin.x - 45, 0, 45, self.contentView.frame.size.height)];
         _levelLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _levelLabel.backgroundColor = [UIColor clearColor];
         _levelLabel.textColor = [UIColor whiteColor];

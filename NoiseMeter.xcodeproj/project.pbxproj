@@ -99,6 +99,8 @@
 		886712AF1A899F8D007101FD /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */; };
 		886712B11A89A64F007101FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B01A89A64F007101FD /* MediaPlayer.framework */; };
 		886712B31A89A6AD007101FD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B21A89A6AD007101FD /* libsqlite3.dylib */; };
+		8871690E1A8A0FF600FD5B75 /* playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690C1A8A0FF600FD5B75 /* playback.png */; };
+		8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690D1A8A0FF600FD5B75 /* playback@2x.png */; };
 		887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
@@ -292,6 +294,8 @@
 		886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		886712B01A89A64F007101FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		886712B21A89A6AD007101FD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8871690C1A8A0FF600FD5B75 /* playback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playback.png; sourceTree = "<group>"; };
+		8871690D1A8A0FF600FD5B75 /* playback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playback@2x.png"; sourceTree = "<group>"; };
 		887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonButtonBackground@2x.png"; sourceTree = "<group>"; };
 		88818C5817993CB3007B386F /* purchase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purchase@2x.png"; sourceTree = "<group>"; };
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
@@ -541,6 +545,8 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				8871690C1A8A0FF600FD5B75 /* playback.png */,
+				8871690D1A8A0FF600FD5B75 /* playback@2x.png */,
 				8807E75018CFF38B0042AC59 /* button_cancel.png */,
 				88A5613918D0400D00080210 /* share@2x.png */,
 				8807E75118CFF38B0042AC59 /* button_cancel@2x.png */,
@@ -935,6 +941,7 @@
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
+				8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */,
 				889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */,
 				88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */,
 				11AC53111505D4140093C7AB /* button_capture.png in Resources */,
@@ -953,6 +960,7 @@
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
+				8871690E1A8A0FF600FD5B75 /* playback.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
 				8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */,
@@ -1157,8 +1165,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1173,7 +1181,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1183,8 +1191,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1199,7 +1207,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
 				WRAPPER_EXTENSION = app;
 			};

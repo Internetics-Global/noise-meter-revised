@@ -134,8 +134,8 @@
         
 
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:2 delay:1.3 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
                 baseViewController.generalADButton.alpha = 1;
                 NSLog(@"%s:ADBanner transient",__FUNCTION__);
             }completion:nil];
