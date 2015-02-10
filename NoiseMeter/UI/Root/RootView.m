@@ -82,7 +82,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"RootView Screen";
+    self.screenName = @"RootView Screen";
+
 }
 
 - (void)viewDidUnload

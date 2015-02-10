@@ -12,30 +12,24 @@
 #import "SoundLevelView.h"
 #import "IDPSoundBoard.h"
 
-@interface MeterView : BaseViewController<UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
-    UIImageView *_meterBackground;
-    UILabel *_currentReadingLabel;
-    UITableView *_topScoreTable;
-    NSArray *_scores;
-    UIButton *_captureButton;
-    UIView *_headerView;
-    NSNumber *_currentReading;
-    UIImageView *_formBackground;
-    NSNumber *_peakReading;
-    UILabel *_peakLabel;
-    UILabel *_titleLabel;
-    UIButton *_infoButton;
-    UIButton *_cancelButton;
+@interface MeterView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate>{
+    UIImageView    * _meterBackground;
+    UILabel        * _currentReadingLabel;
+    UITableView    * _topScoreTable;
+    NSArray        * _scores;
+    UIButton       * _captureButton;
+    NSNumber       * _currentReading;
+    UIImageView    * _formBackground;
+    NSNumber       * _peakReading;
+    UILabel        * _peakLabel;
+    UILabel        * _titleLabel;
+    UIButton       * _infoButton;
+    UIButton       * _cancelButton;
     
-    UIButton *_shareButton;
+    SoundLevelView * _soundLevelView;
     
-    SoundLevelView *_soundLevelView;
-    
-    UIImageView *_overlayImageView;
-    
-    int   _playingIndex;
-    
-    UIImage *_fullScrenshotImage;
+    UIImageView    * _overlayImageView;
 }
+
 
 @end

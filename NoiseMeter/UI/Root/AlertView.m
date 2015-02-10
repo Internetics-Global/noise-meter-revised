@@ -128,7 +128,8 @@
 }
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"AlertView Screen";
+    self.screenName = @"AlertView Screen";
+
 }
 
 - (void)viewDidUnload

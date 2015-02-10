@@ -10,7 +10,7 @@
 
 @interface BaseViewController : GAITrackedViewController
 
-@property (assign, nonatomic) UIButton *generalADButton;
+@property (strong, nonatomic) UIButton *generalADButton;
 
 - (void)purchasedFinishedNotification:(NSNotification *)notification;
 

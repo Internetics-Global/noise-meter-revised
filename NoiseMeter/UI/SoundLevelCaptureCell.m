@@ -7,8 +7,6 @@
 //
 
 #import "SoundLevelCaptureCell.h"
-#import "NSUserDefaultsHelper.h"
-
 
 @implementation SoundLevelCaptureCell
 
@@ -32,7 +30,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 110, self.contentView.frame.size.height)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 90, self.contentView.frame.size.height)];
         _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _nameLabel.backgroundColor = [UIColor clearColor];
         _nameLabel.textColor = [UIColor whiteColor];
@@ -42,41 +40,46 @@
         }
         [self.contentView addSubview:_nameLabel];
         
-        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(320-100-5, 0, 100, self.contentView.frame.size.height)];
+        _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 100, 0, 95, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        _dateLabel.textAlignment = NSTextAlignmentRight;
         _dateLabel.backgroundColor = [UIColor clearColor];
         _dateLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_dateLabel];
         
-        _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_dateLabel.frame.origin.x - 50 - 5, 0, 50, self.contentView.frame.size.height)];
+        
+        _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_dateLabel.frame.origin.x - 40, 0, 35, self.contentView.frame.size.height)];
         _levelLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _levelLabel.backgroundColor = [UIColor clearColor];
         _levelLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_levelLabel];
         
         
-        _playImageView = [[UIImageView alloc] init];
-        _playImageView.frame = CGRectMake(_levelLabel.frame.origin.x - 30 - 5, 13, 30, 15);
-        _playImageView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        [self.contentView addSubview:_playImageView];
-        _playImageView.userInteractionEnabled = YES;
         
+        _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_playButton setImage:[UIImage imageNamed:@"soundOnButton@2x"] forState:UIControlStateNormal];
+        _playButton.frame = CGRectMake(_levelLabel.frame.origin.x - 30, 13, 20, 15);
+        _playButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_playButton];
+        _playButton.showsTouchWhenHighlighted = YES;
+        
+        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_shareButton setImage:[UIImage imageNamed:@"shareButton"] forState:UIControlStateNormal];
+        _shareButton.frame = CGRectMake(_playButton.frame.origin.x - 30, 13, 20, 15);
+        _shareButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        [self.contentView addSubview:_shareButton];
+        _shareButton.showsTouchWhenHighlighted = YES;
     }
     return self;
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-}
-
-- (void) refreshPlayImageViewVisibility {
-    if ([NSUserDefaultsHelper isAdRemoved]) {
-        _playImageView.hidden = NO;
-    } else {
-        _playImageView.hidden = YES;
-    }
-}
+//- (void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//    _nameLabel.frame = CGRectMake(15, -4, 150, self.contentView.frame.size.height);
+//    _levelLabel.frame = CGRectMake(_nameLabel.frame.origin.x + _nameLabel.frame.size.width + 5, _nameLabel.frame.origin.y, 50, self.contentView.frame.size.height);
+//    _dateLabel.frame = CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, _nameLabel.frame.origin.y, 100, self.contentView.frame.size.height);
+//}
 
 - (void)dealloc
 {

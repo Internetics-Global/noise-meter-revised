@@ -95,7 +95,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"PurchaseView Screen";
+    self.screenName = @"PurchaseView Screen";
+
 }
 
 

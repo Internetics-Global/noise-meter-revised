@@ -13,8 +13,13 @@
 #import "IDPSoundBoard.h"
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
+#import "NSUserDefaultsHelper.h"
 
-@interface CaptureView ()
+
+@interface CaptureView () {
+    BOOL   _up;
+    BOOL   _down;
+}
 
 @end
 
@@ -29,24 +34,47 @@
 
 - (void)keyboardUp
 {
+    
+    if (_up == true) {
+        return;
+    }
+    
+    _up = true;
+    _down = false;
+
+    
     [UIView animateWithDuration:0.25 animations:^(void){
         _formBackground.frame = CGRectMake(_formBackground.frame.origin.x, _formBackground.frame.origin.y - 160, _formBackground.frame.size.width, _formBackground.frame.size.height);
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y - 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y - 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y - 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
         _cancelButton.frame = CGRectMake(_cancelButton.frame.origin.x, _cancelButton.frame.origin.y - 160, _cancelButton.frame.size.width, _cancelButton.frame.size.height);
+        _playbackButton.frame = CGRectMake(_playbackButton.frame.origin.x, _playbackButton.frame.origin.y - 160, _playbackButton.frame.size.width, _playbackButton.frame.size.height);
+
     }];
 }
 
 - (void)keyboardDown
 {
+    if (_down == true) {
+        return;
+    }
+    
+    _down = true;
+    _up = false;
+
+    
     [UIView animateWithDuration:0.25 animations:^(void){
         _formBackground.frame = CGRectMake(_formBackground.frame.origin.x, _formBackground.frame.origin.y + 160, _formBackground.frame.size.width, _formBackground.frame.size.height);
         _enterLabel.frame = CGRectMake(_enterLabel.frame.origin.x, _enterLabel.frame.origin.y + 160, _enterLabel.frame.size.width, _enterLabel.frame.size.height);
         _nameField.frame = CGRectMake(_nameField.frame.origin.x, _nameField.frame.origin.y + 160, _nameField.frame.size.width, _nameField.frame.size.height);
         _saveButton.frame = CGRectMake(_saveButton.frame.origin.x, _saveButton.frame.origin.y + 160, _saveButton.frame.size.width, _saveButton.frame.size.height);
         _cancelButton.frame = CGRectMake(_cancelButton.frame.origin.x, _cancelButton.frame.origin.y + 160, _cancelButton.frame.size.width, _cancelButton.frame.size.height);
+        _playbackButton.frame = CGRectMake(_playbackButton.frame.origin.x, _playbackButton.frame.origin.y + 160, _playbackButton.frame.size.width, _playbackButton.frame.size.height);
+
     }];
+    
+    
 }
 
 - (void)loadView
@@ -80,25 +108,92 @@
     [self.view addSubview:_enterLabel];
     
     _nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, _enterLabel.frame.origin.y + _enterLabel.frame.size.height + 20, self.view.frame.size.width - 40, 33)];
-    [_nameField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_nameField setBackgroundColor:[UIColor whiteColor]];
+    [_nameField setTextAlignment:NSTextAlignmentCenter];
     _nameField.delegate = self;
     [self.view addSubview:_nameField];
     
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 15, 280, 37);
-    [_saveButton setImage:[UIImage imageNamed:@"button_save.png"] forState:UIControlStateNormal];
+    _saveButton.backgroundColor = [UIColor orangeColor];
+    [_saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [_saveButton setTintColor:[UIColor whiteColor]];
+    _saveButton.showsTouchWhenHighlighted = YES;
     [_saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
     
+    
+    _playbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 22, 280, 37);
+    _playbackButton.backgroundColor = [UIColor colorWithRed:0.4 green:0.9 blue:0.8 alpha:1];
+    [_playbackButton setTitle:@"Playback" forState:UIControlStateNormal];
+    [_playbackButton setTintColor:[UIColor whiteColor]];
+    _playbackButton.showsTouchWhenHighlighted = YES;
+    [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_playbackButton];
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _playbackButton.hidden = FALSE;
+    } else {
+        _playbackButton.hidden = TRUE;
+    }
+    
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 15, 280, 37);
-    [_cancelButton setImage:[UIImage imageNamed:@"button_cancel.png"] forState:UIControlStateNormal];
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _cancelButton.frame =CGRectMake(20, _playbackButton.frame.origin.y + _playbackButton.frame.size.height + 15, 280, 37);
+    } else {
+        _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 15, 280, 37);
+    }
+    
+    _cancelButton.backgroundColor = [UIColor grayColor];
+    [_cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancelButton setTintColor:[UIColor whiteColor]];
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_cancelButton];
+
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardUp) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDown) name:UIKeyboardWillHideNotification object:nil];
+
 }
+
+-(void) viewWillAppear: (BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(keyboardUp)
+               name:UIKeyboardWillShowNotification
+             object:nil];
+    [nc addObserver:self
+           selector:@selector(keyboardDown)
+               name:UIKeyboardWillHideNotification
+             object:nil];
+    
+}
+
+- (void) viewWillDisappear: (BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self
+                  name:UIKeyboardWillShowNotification
+                object:nil];
+    [nc removeObserver:self
+                  name:UIKeyboardWillHideNotification
+                object:nil];
+}
+
+- (void) playback {
+    
+    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    
+    [IDPSoundBoard addAudioAtPath:[fromURL path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
+    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
+    player.numberOfLoops = 0;  // Endless
+    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
+    
+}
+
 
 - (void) cancel {
     [[NMDecibelLogger defaultLogger] stopLogging];
@@ -154,7 +249,7 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"CaptureView Screen";
+    self.screenName = @"CaptureView Screen";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

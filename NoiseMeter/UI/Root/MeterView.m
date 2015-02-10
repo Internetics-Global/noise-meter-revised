@@ -13,16 +13,38 @@
 #import "SoundLevelCaptureCell.h"
 #import "PurchaseViewController.h"
 #import "FileHelper.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <MessageUI/MessageUI.h>
+#import "ScoreArrayDataSource.h"
+#import "NMDataManager.h"
 #import "IDPSoundBoard.h"
-#import "ShareHelper.h"
 
-@interface MeterView ()
+//忽略那种短暂的噪声
+#define K_Second_IgnoreSuddenNoise     0.5
+
+//当alarm出现后，继续保持录音的时间
+#define K_Second_DelayAlarmSound       1.0
+
+//在cintinuous mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
+#define K_Second_CintinuousMode        1.0
+
+@interface MeterView () <MFMailComposeViewControllerDelegate> {
+    MPVolumeView *_volumeView;
+    
+    BOOL         *_isAlarmPrepareToBeTriggered;
+    
+    ScoreArrayDataSource *_scoreArrayDataSource;
+    
+    //用于判断是否delay的时间是否大于K_Second_DelayAlarmSound
+    NSDate       *_startForDelayAlarmSound;
+    
+    //用于判断下一个capture事件
+    NSDate       *_startForContinuousMode;
+}
 
 @end
 
 @implementation MeterView
-
-#pragma mark – Life Cycle
 
 - (id)init
 {
@@ -40,9 +62,85 @@
                                                  name:@"PAUSE_LOGGING_SWITCH_NOTIFICATION"
                                                object:nil];
     
+    _startForDelayAlarmSound = [NSDate date];
+    _startForContinuousMode =  [NSDate date];
+    
     
     
     return self;
+}
+
+- (void)failed
+{
+    _currentReadingLabel.text = @"N/A";
+    [_soundLevelView setSoundLevelValue:0];
+    _currentReadingLabel.textColor = [UIColor redColor];
+    
+    _cancelButton.hidden = NO;
+    CGRect rect = _currentReadingLabel.frame;
+    rect.origin.x = 50;
+    _currentReadingLabel.frame = rect;
+    
+}
+
+/**
+ *  call this method in observeValueForKeyPath when meter level is normal(not over threshold nor failed)
+ */
+- (void)success
+{
+    if (_cancelButton.hidden == FALSE) {
+        _cancelButton.hidden = YES;
+        _captureButton.hidden = YES;
+        
+        CGRect rect = _currentReadingLabel.frame;
+        rect.origin.x = 10;
+        _currentReadingLabel.frame = rect;
+    }
+}
+
+- (void)reloadData
+{
+    _scores = [SoundLevelCapture sortedScoreArray];
+    _titleLabel.numberOfLines = 2;
+    if ([_scores count] == 0) 
+    {
+        _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
+    }
+    else 
+    {
+        _titleLabel.text = @"  Top Noise Makers:";
+    }
+    [_topScoreTable reloadData];
+}
+
+- (void) cancel {
+    
+    [[NMDecibelLogger defaultLogger] alarmComplete];
+    
+}
+
+
+- (void)infoShowV2
+{
+    _overlayImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _overlayImageView.contentMode = UIViewContentModeScaleAspectFill;
+    if (iPhone5) {
+      _overlayImageView.frame = CGRectMake(0, 0, 320, 568);
+      [_overlayImageView setImage:[UIImage imageNamed:@"overlay568"]];
+    } else {
+      _overlayImageView.frame = CGRectMake(0, 0, 320, 480);
+      [_overlayImageView setImage:[UIImage imageNamed:@"overlay"]];
+    }
+    _overlayImageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *stg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeOverlay)];
+    stg.numberOfTapsRequired = 1;
+    stg.numberOfTouchesRequired = 1;
+    [_overlayImageView addGestureRecognizer:stg];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_overlayImageView];
+    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:_overlayImageView];
+    
 }
 
 - (void)loadView
@@ -67,6 +165,16 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _volumeView = [ [MPVolumeView alloc] init] ;
+        _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
+        [_volumeView setShowsRouteButton:YES];
+        [_volumeView sizeToFit];
+        [_volumeView setShowsVolumeSlider:NO];
+        [self.view addSubview:_volumeView];
+    }
+    
+    
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
     _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y + 10, 30, 30);
@@ -75,7 +183,7 @@
     [self.view addSubview:_cancelButton];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, _meterBackground.frame.origin.y, 200, 50)];
+                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 50)];
     _currentReadingLabel.textAlignment = UITextAlignmentLeft;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
     _currentReadingLabel.textColor = [UIColor greenColor];
@@ -112,186 +220,111 @@
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height - 5, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height)) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height) - 44) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
     _topScoreTable.backgroundColor = [UIColor clearColor];
     _topScoreTable.opaque = YES;
     _topScoreTable.delegate = self;
-    _topScoreTable.scrollEnabled = NO;
-    _topScoreTable.dataSource = self;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
+        [weakSelf reloadData];
+    }];
+    _topScoreTable.dataSource = _scoreArrayDataSource;
+    
     [self.view addSubview:_topScoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-        _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
-        _shareButton.frame = CGRectMake(CGRectGetMinX(_peakLabel.frame), CGRectGetMinY(_peakLabel.frame), 89, 29);
-        [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
-        _shareButton.hidden = YES;
-        [self.view addSubview:_shareButton];
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    _peakReading = nil;
-    //_captureButton.hidden = YES;
-    _peakLabel.hidden = YES;
-    [super viewDidDisappear:animated];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.trackedViewName = @"MeterView Screen";
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
-        _cancelButton.hidden = YES;
-        _captureButton.hidden = YES;
-        _shareButton.hidden = YES;
-        _peakLabel.hidden = NO;
-        
-        CGRect rect = _currentReadingLabel.frame;
-        rect.origin.x = 10;
-        _currentReadingLabel.frame = rect;
-    }
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    _currentReadingLabel = nil;
-    [_soundLevelView setSoundLevelValue:0];
-    _meterBackground = nil;
-    [[NMDecibelLogger defaultLogger] stopLogging];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RecordFail" object:nil];
+- (void) goToPurchasePage {
+    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+    [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [NSUserDefaultsHelper setLoggingPauseFlag:NO];
-    
-    _playingIndex = -1;
 }
-
-#pragma mark – Logging related
-
-- (void)failed
-{
-    NSLog(@"%s: record failure occur",__FUNCTION__);
-    _currentReadingLabel.text = @"N/A";
-    [_soundLevelView setSoundLevelValue:0];
-    _currentReadingLabel.textColor = [UIColor redColor];
-    
-    _cancelButton.hidden = NO;
-    CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 50;
-    _currentReadingLabel.frame = rect;
-    
-    _shareButton.hidden = YES;
-    _peakLabel.hidden = NO;
-}
-
-/**
- *  call this method in observeValueForKeyPath when meter level is normal(not over threshold nor failed)
- */
-- (void)success
-{
-    if (_cancelButton.hidden == FALSE) {
-        _cancelButton.hidden = YES;
-        _captureButton.hidden = YES;
-        _shareButton.hidden = YES;
-        _peakLabel.hidden = NO;
-        
-        CGRect rect = _currentReadingLabel.frame;
-        rect.origin.x = 10;
-        _currentReadingLabel.frame = rect;
-    }
-}
-
-- (void)reloadData
-{
-    _scores = [SoundLevelCapture all];
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
-    _scores = [_scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
-    _titleLabel.numberOfLines = 3;
-    if ([_scores count] == 0) 
-    {
-        _titleLabel.text = @"  Top Noise Makers:\n\n  None recorded";
-    }
-    else 
-    {
-        _titleLabel.text = @"  Top Noise Makers:\n\n";
-    }
-    [_topScoreTable reloadData];
-}
-
-- (void) cancel {
-    
-    NSLog(@"%s",__FUNCTION__);
-    [[NMDecibelLogger defaultLogger] alarmComplete];
-    
-}
-
 
 
 - (void)capture
 {
-    NSLog(@"%s",__FUNCTION__);
     CaptureView *cap = [[CaptureView alloc] initWithReading:_peakReading];
     [self.navigationController pushViewController:cap animated:YES];
 }
 
-#pragma mark – TableView delegate and datasource
+- (void) captureForContinuousMode {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSString *timeString = [formatter stringFromDate:[NSDate date]];
+    
+    //Record last 10 second audio just before alarm
+    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    
+    NSDate *date = [NSDate date];
+    NSString *dateString = [FileHelper convertDate:date];
+    
+    NSURL *toURL = [FileHelper getRecordedAudioFile:dateString];
+    if ([[NMDecibelLogger defaultLogger] logging]) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
+    [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
+    [[NMDecibelLogger defaultLogger] startLogging];
+    
+    SoundLevelCapture *cap = [SoundLevelCapture instance];
+    cap.name = timeString;
+    cap.soundLevel = [NSDecimalNumber decimalNumberWithString:[_peakReading stringValue]];
+    cap.date = date;
+    [[NMDataManager defaultManager] saveContext];
+    [self reloadData];
+    
+    
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (_headerView == nil) 
+    int headerHeight = [self tableView:tableView heightForHeaderInSection:section];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, headerView.frame.size.width - 10, headerView.frame.size.height - 10)];
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    _titleLabel.numberOfLines = 2;
+    if ([_scores count] == 0)
     {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 45)];
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, _headerView.frame.size.width - 10, _headerView.frame.size.height)];
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.numberOfLines = 3;
-        if ([_scores count] == 0) 
-        {
-            _titleLabel.text = @"  Top Noise Makers:\n\n  None recorded";
-        }
-        else 
-        {
-            _titleLabel.text = @"  Top Noise Makers:\n\n";
-        }
-        _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:_titleLabel.font.pointSize];
-        _titleLabel.textColor = [UIColor whiteColor];
-        [_headerView addSubview:_titleLabel];
+        _titleLabel.text = @"  Top Noise Makers:\n  None recorded";
     }
-    return _headerView;
+    else
+    {
+        _titleLabel.text = @"  Top Noise Makers:";
+    }
+    _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    _titleLabel.textColor = [UIColor whiteColor];
+    [headerView addSubview:_titleLabel];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) -0.5, CGRectGetWidth(headerView.frame), 0.5)] ;
+    lineView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.1];
+    [headerView addSubview:lineView];
+    
+    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([_scores count] == 0) 
     {
-        return 66;
+        return 60;
     }
     else 
     {
-        return 45;
+        return 40;
     }
 }
 
@@ -300,60 +333,20 @@
     return 44;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_scores count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
-    if (cell == nil) {
-        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textColor = [UIColor whiteColor];
-    }
-    [cell refreshPlayImageViewVisibility];
-    cell.capture = [_scores objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
-    
-    cell.playImageView.tag = indexPath.row;
-    UITapGestureRecognizer *singTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playRecordedSound:)];
-    singTapGesture.numberOfTapsRequired = 1;
-    singTapGesture.numberOfTouchesRequired = 1;
-    [cell.playImageView addGestureRecognizer:singTapGesture];
-    
-    if (_playingIndex == indexPath.row) {
-        NSMutableArray* imagesArray = [NSMutableArray arrayWithCapacity:3];
-        for (int i = 0; 4 > i; ++i) {
-            [imagesArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"soundOnButton%d", i]]];
-        }
-        cell.playImageView.animationImages = imagesArray;
-        cell.playImageView.animationDuration = 0.9;
-        cell.playImageView.animationRepeatCount = 0;
-        [cell.playImageView startAnimating];
-    } else {
-        [cell.playImageView setImage:[UIImage imageNamed:@"soundOnButton2"]];
-    }
-    
-    return cell;
-}
-
-#pragma mark – KVO
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([[IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded] isPlaying]) {
+    if (_isAlarmPrepareToBeTriggered) {
+        //wait for finish on delay alarm sound
+        return;
+    }
+    
+    if (([[IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded] isPlaying])) {
         _currentReadingLabel.text = @"Playing";
         return;
     }
     
     if ([NSUserDefaultsHelper isLoggingPause]) {
         _currentReadingLabel.text = @"Meter off";
-        return;
-    }
-    
-    if ([[NMDecibelLogger defaultLogger] logging] == FALSE) {
         return;
     }
     
@@ -378,13 +371,47 @@
             
         }
         
-        if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
+        
+        //do some here
+        NSTimeInterval executionTime =[[NSDate date] timeIntervalSinceDate:_startForDelayAlarmSound];
+        
+        
+        if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue]))
         {
             _currentReadingLabel.textColor = [UIColor redColor];
-            [[NMDecibelLogger defaultLogger] playAlarm];
+            if ([NSUserDefaultsHelper isIgnoreSuddenNoise]) {
+                if (executionTime > K_Second_IgnoreSuddenNoise) {
+                    if ([NSUserDefaultsHelper isDelayAlarmSound]) {
+                        _isAlarmPrepareToBeTriggered = YES;
+                        double delayInSeconds = K_Second_DelayAlarmSound;
+                        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                            [self playAlarmForContinuousMode];
+                            _isAlarmPrepareToBeTriggered = NO;
+                        });
+                    } else {
+                        [self playAlarmForContinuousMode];
+                    }
+                    
+                }
+            } else {
+                if ([NSUserDefaultsHelper isDelayAlarmSound]) {
+                    _isAlarmPrepareToBeTriggered = YES;
+                    double delayInSeconds = K_Second_DelayAlarmSound;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [self playAlarmForContinuousMode];
+                        _isAlarmPrepareToBeTriggered = NO;
+                    });
+                } else {
+                    [self playAlarmForContinuousMode];
+                }
+            }
         }
-        else 
+        else
         {
+            //NSLog(@"Not reach threahold");
+            _startForDelayAlarmSound = [NSDate date];
             _currentReadingLabel.textColor = [UIColor greenColor];
             [self success];
         }
@@ -396,8 +423,6 @@
             _peakLabel.text = [NSString stringWithFormat:@"Last Peak: %.1f", [_peakReading floatValue]];
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
-            _shareButton.hidden = NO;
-            _peakLabel.hidden = YES;
             CGRect rect = _currentReadingLabel.frame;
             rect.origin.x = 50;
             _currentReadingLabel.frame = rect;
@@ -410,14 +435,70 @@
     }
 }
 
+- (void) playAlarmForContinuousMode {
+    if ([NSUserDefaultsHelper isContinuousMode]) {
+        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForContinuousMode];
+        if (executionTime2 > K_Second_CintinuousMode) {
+            _startForContinuousMode = [NSDate date];
+            [self captureForContinuousMode];
+            
+        }
+        
+    } else {
+        [[NMDecibelLogger defaultLogger] playAlarm];
+    }
+}
 
-#pragma mark – Notification related
+- (void)viewDidDisappear:(BOOL)animated
+{
+    _peakReading = nil;
+    //_captureButton.hidden = YES;
+    _peakLabel.hidden = YES;
+    [super viewDidDisappear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.screenName = @"MeterView Screen";
+    
+    [self reloadData];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
+        _cancelButton.hidden = YES;
+        _captureButton.hidden = YES;
+        
+        CGRect rect = _currentReadingLabel.frame;
+        rect.origin.x = 10;
+        _currentReadingLabel.frame = rect;
+    }
+}
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    _currentReadingLabel = nil;
+    [_soundLevelView setSoundLevelValue:0];
+    _meterBackground = nil;
+    [[NMDecibelLogger defaultLogger] stopLogging];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RecordFail" object:nil];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
 
 - (void)alarmFinishedNotification:(NSNotification *)notification {
     _captureButton.hidden = YES;
     _cancelButton.hidden = YES;
-    _shareButton.hidden = YES;
-    _peakLabel.hidden = NO;
     
     CGRect rect = _currentReadingLabel.frame;
     rect.origin.x = 10;
@@ -447,41 +528,18 @@
     [_topScoreTable reloadData];
 }
 
-
-#pragma mark – IBAction and Others
-
-- (void) playRecordedSound: (id) sender {
-    
-    _playingIndex = ((UIButton *) [sender view]).tag;
-    
-    [_topScoreTable reloadData];
-    
-    SoundLevelCapture *caputure = [_scores objectAtIndex:_playingIndex];
-    
-    NSDate *date = caputure.date;
-	NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        usleep(10000);
-        _currentReadingLabel.text = @"Playing";
-    });
-    
-    [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
-    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
-    player.numberOfLoops = 0;  // Endless
-    [IDPSoundBoard sharedInstance].IDPDelegate = self;
-    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
-    
+- (void)dealloc
+{
+    [self viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"didFailToReceiveAdWithError, %@",[error description]);
+}
 
+#pragma mark – Others
 - (void) switchLoggingStatus {
-    
-    if (_cancelButton.hidden == NO) {
-        return;
-    }
     
     if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
@@ -490,7 +548,7 @@
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
         if ([NSUserDefaultsHelper isNotShowMeterOffDialog] == NO) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Meter off" message:@"The meter has been switched off. Tap again to resume." delegate:self cancelButtonTitle:@"Don't show again" otherButtonTitles:@"OK",nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Meter off. Tap again to resume." delegate:self cancelButtonTitle:@"Don't show again" otherButtonTitles:@"OK",nil];
             [alert show];
         }
         
@@ -512,43 +570,6 @@
     
 }
 
-
-- (void)infoShowV2
-{
-    _overlayImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    _overlayImageView.contentMode = UIViewContentModeScaleToFill;
-    if (iPhone5) {
-        _overlayImageView.frame = CGRectMake(0, 0, 320, 568);
-        [_overlayImageView setImage:[UIImage imageNamed:@"overlay568"]];
-    } else {
-        _overlayImageView.frame = CGRectMake(0, 0, 320, 480);
-        [_overlayImageView setImage:[UIImage imageNamed:@"overlay"]];
-    }
-    _overlayImageView.userInteractionEnabled = YES;
-    
-    UITapGestureRecognizer *stg = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeOverlay)];
-    stg.numberOfTapsRequired = 1;
-    stg.numberOfTouchesRequired = 1;
-    [_overlayImageView addGestureRecognizer:stg];
-    
-    _overlayImageView.alpha = 0;
-    [[UIApplication sharedApplication].keyWindow addSubview:_overlayImageView];
-    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:_overlayImageView];
-    [UIView animateWithDuration:0.4 animations:^() {
-      _overlayImageView.alpha = 1;
-    }];
-    
-}
-
-
-
-- (void) goToPurchasePage {
-    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    [self.navigationController pushViewController:purchaseViewController animated:YES];
-}
-
-#pragma mark – UIAlertViewDelegate
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         [NSUserDefaultsHelper setNotShowMeterOffDialogFlag:YES];
@@ -556,63 +577,12 @@
 }
 
 #pragma mark – UITapGestureRecognizer
-
 - (void) closeOverlay {
-    [UIView animateWithDuration:0.4 animations:^() {
-        _overlayImageView.alpha = 0;
-    }];
     [_overlayImageView removeFromSuperview];
     _overlayImageView = nil;
 }
 
-#pragma mark – IDPSoundBoardDelegate
-
-- (void)didFinishSoundPlay:(EnumSoundType)soundType {
-    if (soundType == EnumSoundType_Recorded) {
-        _playingIndex = -1;
-        [_topScoreTable reloadData];
-        
-    }
-}
 
 
-#pragma mark – Memory management
-
-- (void)dealloc
-{
-    [self viewDidUnload];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
-#pragma mark – Rotation Control
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark – Share action
-
-- (void) share {
-    _fullScrenshotImage = [ShareHelper fullScreenshot];
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                           @"Share on Facebook",
-                           @"Share on Twitter",
-        
-                           nil];
-    popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
-    __weak __typeof(&*self)weakSelf = self;
-    
-    if (buttonIndex == 0) {
-        [ShareHelper postToFacebook:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
-    } else if (buttonIndex == 1) {
-        [ShareHelper postToTwitter:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
-    }
-}
 
 @end

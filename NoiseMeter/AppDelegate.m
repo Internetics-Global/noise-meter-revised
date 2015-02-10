@@ -11,6 +11,8 @@
 #import "Flurry.h"
 #import "Appirater.h"
 #import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 #import "TestFlight.h"
 #import "NSUserDefaultsHelper.h"
 #import "IDPSoundboard.h"
@@ -106,14 +108,19 @@
 }
 
 - (void) setGoogleAnalytics {
-    // Optional: automatically send uncaught exceptions to Google Analytics.
+    
     [GAI sharedInstance].trackUncaughtExceptions = YES;
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    // Optional: set debug to YES for extra debugging information.
-    [GAI sharedInstance].debug = YES;
-    // Create tracker instance.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
+    [GAI sharedInstance].dispatchInterval = 120;
+    
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
+    [tracker set:kGAIUseSecure value:[@NO stringValue]];
+    [tracker send:[[[GAIDictionaryBuilder createEventWithCategory:@"UX"
+                                                           action:@"appstart"
+                                                            label:nil
+                                                            value:nil] set:@"start" forKey:kGAISessionControl] build]];
+
 }
 
 

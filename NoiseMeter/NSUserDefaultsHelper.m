@@ -11,6 +11,9 @@
 @implementation NSUserDefaultsHelper
 
 + (BOOL) isAdRemoved {
+    
+    return YES;
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     return flag;
@@ -77,6 +80,43 @@
     [userDefaults setBool:flag forKey:@"NOT_SHOW_METEROFF_DIALOG"];
     [userDefaults synchronize];
 }
+
++ (BOOL) isIgnoreSuddenNoise {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"IGNORE_SUDDEN_NOISE"];
+    return flag;
+}
+
++ (void) setIgnoreSuddenNoise:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"IGNORE_SUDDEN_NOISE"];
+    [userDefaults synchronize];
+}
+
++ (BOOL) isDelayAlarmSound {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"DELAY_ALARM_SOUND"];
+    return flag;
+}
+
++ (void) setDelayAlarmSound:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"DELAY_ALARM_SOUND"];
+    [userDefaults synchronize];
+}
+
++ (BOOL) isContinuousMode {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"CONTINUOUS_MODE"];
+    return flag;
+}
+
++ (void) setContinuousMode:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"CONTINUOUS_MODE"];
+    [userDefaults synchronize];
+}
+
 
 
 @end

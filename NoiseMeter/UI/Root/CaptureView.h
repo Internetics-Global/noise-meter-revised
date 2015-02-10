@@ -16,6 +16,7 @@
     UILabel *_enterLabel;
     UITextField *_nameField;
     UIButton *_saveButton;
+    UIButton *_playbackButton;
     UIButton *_cancelButton;
     NSNumber *_reading;
 }

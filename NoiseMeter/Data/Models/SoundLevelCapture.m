@@ -38,4 +38,56 @@
 	return array;
 }
 
++ (NSArray *) sortedScoreArray {
+    NSArray *scores = [self all];
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
+    scores = [scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    return  scores;
+}
+
+
++ (void) remove:(SoundLevelCapture *) capture {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:NSStringFromClass(self) inManagedObjectContext:[NMDataManager defaultManager].managedObjectContext]];
+    
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"date==%@", capture.date]];
+    
+    NSError* error = nil;
+    NSArray* results = [[NMDataManager defaultManager].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if ([results count] > 0) {
+        [[NMDataManager defaultManager].managedObjectContext deleteObject:[results objectAtIndex:0]];
+        
+        if ([[NMDataManager defaultManager].managedObjectContext hasChanges] && ![[NMDataManager defaultManager].managedObjectContext save:&error]) {
+            NSLog(@"save execute error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
++ (void) updateCapture:(SoundLevelCapture *) capture withNewName:(NSString *) nameStr {
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:NSStringFromClass(self) inManagedObjectContext:[NMDataManager defaultManager].managedObjectContext]];
+    
+    //更新谁的条件在这里配置；
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"date==%@", capture.date]];
+    
+    NSError* error = nil;
+    NSArray* results = [[NMDataManager defaultManager].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (results.count > 0) {
+        NSLog(@"%@",results);
+        SoundLevelCapture *capture = [results objectAtIndex:0];
+        capture.name = nameStr;
+        
+        if ([[NMDataManager defaultManager].managedObjectContext hasChanges] && ![[NMDataManager defaultManager].managedObjectContext save:&error]) {
+            NSLog(@"save execute error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    
+}
+
+
 @end

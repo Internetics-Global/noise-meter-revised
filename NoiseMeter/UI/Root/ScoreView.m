@@ -15,8 +15,15 @@
 #import "FileHelper.h"
 #import "IDPSoundBoard.h"
 #import "ShareHelper.h"
+#import <MessageUI/MessageUI.h>
+#import "SWTableViewCell.h"
+#import "ScoreArrayDataSource.h"
 
-@interface ScoreView ()
+
+@interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate> {
+    ScoreArrayDataSource *_scoreArrayDataSource;
+}
+
 
 @end
 
@@ -35,9 +42,7 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture all];
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
-    _scores = [_scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    _scores = [SoundLevelCapture sortedScoreArray];
     [_scoreTable reloadData];
 }
 
@@ -78,7 +83,14 @@
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
     _scoreTable.backgroundColor = [UIColor clearColor];
     _scoreTable.opaque = YES;
-    _scoreTable.dataSource = self;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
+        [weakSelf reloadData];
+    }];
+    _scoreTable.dataSource = _scoreArrayDataSource;
+
+    
     _scoreTable.delegate= self;
     [self.view addSubview:_scoreTable];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
@@ -100,7 +112,10 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.trackedViewName = @"ScoreView Screen";
+    self.screenName = @"ScoreView Screen";
+    
+    [self reloadData];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -141,45 +156,6 @@
     return 44;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_scores count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SoundLevelCaptureCell *cell = (SoundLevelCaptureCell *)[tableView dequeueReusableCellWithIdentifier:@"Sound"];
-    if (cell == nil) {
-        cell = [[SoundLevelCaptureCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Sound"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    [cell refreshPlayImageViewVisibility];
-    cell.capture = [_scores objectAtIndex:indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
-    
-    
-    cell.playImageView.tag = indexPath.row;
-    UITapGestureRecognizer *singTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playRecordedSound:)];
-    singTapGesture.numberOfTapsRequired = 1;
-    singTapGesture.numberOfTouchesRequired = 1;
-    [cell.playImageView addGestureRecognizer:singTapGesture];
-    
-    if (_playingIndex == indexPath.row) {
-        NSMutableArray* imagesArray = [NSMutableArray arrayWithCapacity:3];
-        for (int i = 0; 4 > i; ++i) {
-            [imagesArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"soundOnButton%d", i]]];
-        }
-        cell.playImageView.animationImages = imagesArray;
-        cell.playImageView.animationDuration = 0.9;
-        cell.playImageView.animationRepeatCount = 0;
-        [cell.playImageView startAnimating];
-    } else {
-        [cell.playImageView setImage:[UIImage imageNamed:@"soundOnButton2"]];
-    }
-    
-    return cell;
-}
-
 
 #pragma mark – UIAlertViewDelegate
 
@@ -195,27 +171,6 @@
     }
 }
 
-#pragma mark – IBAction related
-
-- (void) playRecordedSound: (UITapGestureRecognizer *) gesture {
-    
-    _playingIndex = ((UIButton *) [gesture view]).tag;
-    
-    [_scoreTable reloadData];
-    
-    SoundLevelCapture *caputure = [_scores objectAtIndex:_playingIndex];
-    
-    NSDate *date = caputure.date;
-	NSString *dateString = [FileHelper convertDate:date];
-    
-    NSURL *url = [FileHelper getRecordedAudioFile:dateString];
-    
-    [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
-    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
-    player.numberOfLoops = 0;  // Endless
-    [IDPSoundBoard sharedInstance].IDPDelegate = self;
-    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
-}
 
 #pragma mark – IDPSoundBoardDelegate
 
