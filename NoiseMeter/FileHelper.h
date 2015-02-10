@@ -24,4 +24,6 @@
 + (int) getMaxNumberCreatedAlarmFiles;
 + (NSString *) getCreatedAlarmFile:(NSString *) fileName;
 
++ (NSString *) preloadedUpgradeHTMLFile;
+
 @end

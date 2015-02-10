@@ -8,6 +8,7 @@
 
 #import "PurchaseViewController.h"
 #import "RMStore.h"
+#import "FileHelper.h"
 
 @interface PurchaseViewController ()
 
@@ -80,7 +81,18 @@
     
     self.webview.alpha = 0;
     
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"]];
+    
+    NSString *preloadedFileStr = [FileHelper preloadedUpgradeHTMLFile];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:preloadedFileStr];
+    if (fileExists) {
+        NSData *htmlData = [NSData  dataWithContentsOfFile:preloadedFileStr];
+        NSString *htmlStr = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
+        [self.webview loadHTMLString:htmlStr baseURL:nil];
+    } else {
+      [self.webview loadRequest:request];
+    }
+    
     
     
     _activity.center = self.webview.center;

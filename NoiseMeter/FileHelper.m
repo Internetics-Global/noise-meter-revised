@@ -96,4 +96,10 @@
     return (i);
 }
 
++ (NSString *) preloadedUpgradeHTMLFile {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0],@"upgrade.html"];
+    return filePath;
+}
+
 @end
