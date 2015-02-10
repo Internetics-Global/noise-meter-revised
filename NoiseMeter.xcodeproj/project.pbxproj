@@ -262,8 +262,8 @@
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		886712861A899E80007101FD /* shareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareButton@2x.png"; sourceTree = "<group>"; };
-		886712881A899EAC007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreArrayDataSource.h; path = UI/Root/ScoreArrayDataSource.h; sourceTree = "<group>"; };
-		886712891A899EAC007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreArrayDataSource.m; path = UI/Root/ScoreArrayDataSource.m; sourceTree = "<group>"; };
+		886712881A899EAC007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreArrayDataSource.h; path = ../../UI/Root/ScoreArrayDataSource.h; sourceTree = "<group>"; };
+		886712891A899EAC007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreArrayDataSource.m; path = ../../UI/Root/ScoreArrayDataSource.m; sourceTree = "<group>"; };
 		8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.0.0.a; path = Flurry/libFlurry_6.0.0.a; sourceTree = "<group>"; };
 		8867128D1A899F18007101FD /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
 		8867128E1A899F18007101FD /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = GoogleAnalytics/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -485,6 +485,8 @@
 		11A3EE6F150F3D2300A6496B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				886712881A899EAC007101FD /* ScoreArrayDataSource.h */,
+				886712891A899EAC007101FD /* ScoreArrayDataSource.m */,
 				11AC52E31505CCFF0093C7AB /* NMDataManager.h */,
 				11AC52E41505CCFF0093C7AB /* NMDataManager.m */,
 				11AC52EA1505CDA80093C7AB /* NMDecibelLogger.h */,
@@ -608,8 +610,6 @@
 		8829A77518AD6B8B00DA41F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				886712881A899EAC007101FD /* ScoreArrayDataSource.h */,
-				886712891A899EAC007101FD /* ScoreArrayDataSource.m */,
 				11AC52EE1505D3010093C7AB /* RootView.h */,
 				11AC52EF1505D3010093C7AB /* RootView.m */,
 				11AC531B1505D4420093C7AB /* MeterView.h */,

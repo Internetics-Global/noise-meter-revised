@@ -18,7 +18,7 @@
 
 
 //删除tmp目录下的所有文件，除了tmp.caf文件外
-+ (void) removeAllExceptTMPCAF;
++ (void) removeAllExceptTempCafFile;
 
 + (void) saveNewCreatedAlarm:(NSURL *) originalPath;
 + (int) getMaxNumberCreatedAlarmFiles;

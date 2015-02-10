@@ -128,11 +128,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if ([_scores count] == 0) {
-       _shareButton.hidden = YES;
-    } else {
-        _shareButton.hidden = NO;
-    }
 }
 
 
@@ -169,7 +164,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
         [[NMDataManager defaultManager] saveContext];
         
-        [FileHelper removeAllExceptTMPCAF];
+        [FileHelper removeAllExceptTempCafFile];
     }
 }
 

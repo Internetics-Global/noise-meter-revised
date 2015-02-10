@@ -10,15 +10,15 @@
 #import "GAITrackedViewController.h"
 
 @interface CaptureView : BaseViewController<UITextFieldDelegate>{
-    UIImageView *_meterBackground;
-    UILabel *_currentReadingLabel;
-    UIImageView *_formBackground;
-    UILabel *_enterLabel;
-    UITextField *_nameField;
-    UIButton *_saveButton;
-    UIButton *_playbackButton;
-    UIButton *_cancelButton;
-    NSNumber *_reading;
+    UIImageView * _meterBackground;
+    UILabel     * _currentReadingLabel;
+    UIImageView * _formBackground;
+    UILabel     * _enterLabel;
+    UITextField * _nameField;
+    UIButton    * _saveButton;
+    UIButton    * _playbackButton;
+    UIButton    * _cancelButton;
+    NSNumber    * _reading;
 }
 
 - (id)initWithReading:(NSNumber *)reading;

@@ -11,16 +11,16 @@
 #import "IDPSoundBoard.h"
 
 @interface ScoreView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{
-    UITableView *_scoreTable;
-    UIImageView *_meterBackground;
-    NSArray *_scores;
-    UIButton *_resetButton;
-    UIButton *_shareButton;
-    UIImageView *_tableHeader;
-    
-    int  _playingIndex;
-    
-    UIImage *_fullScrenshotImage;
+    UITableView * _scoreTable;
+    UIImageView * _meterBackground;
+    NSArray     * _scores;
+    UIButton    * _resetButton;
+    UIButton    * _shareButton;
+    UIImageView * _tableHeader;
+
+    int         _playingIndex;
+
+    UIImage     * _fullScrenshotImage;
 }
 
 @end
