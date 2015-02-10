@@ -12,11 +12,12 @@
 
 @interface SoundLevelCapture : NSManagedObject
 
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString        * name;
 @property (nonatomic, retain) NSDecimalNumber * soundLevel;
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSDate          * date;
 
 + (id)instance;
+
 + (NSArray *)all;
 
 + (NSArray *) sortedScoreArray;

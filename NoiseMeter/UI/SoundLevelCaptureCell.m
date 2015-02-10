@@ -73,14 +73,6 @@
     return self;
 }
 
-//- (void)layoutSubviews
-//{
-//    [super layoutSubviews];
-//    _nameLabel.frame = CGRectMake(15, -4, 150, self.contentView.frame.size.height);
-//    _levelLabel.frame = CGRectMake(_nameLabel.frame.origin.x + _nameLabel.frame.size.width + 5, _nameLabel.frame.origin.y, 50, self.contentView.frame.size.height);
-//    _dateLabel.frame = CGRectMake(_levelLabel.frame.origin.x + _levelLabel.frame.size.width + 5, _nameLabel.frame.origin.y, 100, self.contentView.frame.size.height);
-//}
-
 - (void)dealloc
 {
     _nameLabel = nil;

@@ -24,32 +24,6 @@
 	}
 }
 
-- (NSNumber *)alertThreshold
-{
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    return [def valueForKey:@"alertThreshold"];
-}
-
-- (void)setAlertThreshold:(NSNumber *)alertThreshold
-{
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    [def setValue:alertThreshold forKey:@"alertThreshold"];
-    [def synchronize];
-}
-
-- (NSString *)alarmName
-{
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    return [def valueForKey:@"alarmName"];
-}
-
-- (void)setAlarmName:(NSNumber *)alarmName
-{
-    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-    [def setValue:alarmName forKey:@"alarmName"];
-    [def synchronize];
-}
-
 - (id)init
 {
     self = [super init];
@@ -334,6 +308,32 @@ void audioRouteChangeListenerCallback (
         AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
     }
         
+}
+
+- (NSNumber *)alertThreshold
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def valueForKey:@"alertThreshold"];
+}
+
+- (void)setAlertThreshold:(NSNumber *)alertThreshold
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setValue:alertThreshold forKey:@"alertThreshold"];
+    [def synchronize];
+}
+
+- (NSString *)alarmName
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    return [def valueForKey:@"alarmName"];
+}
+
+- (void)setAlarmName:(NSNumber *)alarmName
+{
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    [def setValue:alarmName forKey:@"alarmName"];
+    [def synchronize];
 }
 
 

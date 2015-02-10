@@ -12,23 +12,34 @@
 #import "IDPSoundBoard.h"
 
 @interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate,IDPSoundBoardDelegate>{
-    AVAudioRecorder    *_recorder;
-    NSDictionary       *_recorderSettings;
-    BOOL                _logging;
-    NSNumber           *_currentReading;
-    NSTimer            *_sampleTimer;
-    SystemSoundID       audioEffect;
     
-    NSTimer            *_timer30Second;
+    AVAudioRecorder * _recorder;
+    NSDictionary    * _recorderSettings;
+    BOOL            _logging;
+    NSNumber        * _currentReading;
+    
+    /**
+     *  用于周期性的读取sound level值，从而触发alarm
+     */
+    NSTimer         * _sampleTimer;
+    
+    SystemSoundID   audioEffect;
+
+    NSTimer         * _timer30Second;
 }
 
-@property (strong, nonatomic, readonly) NSNumber *currentReading;
-@property (strong, nonatomic)           NSNumber *alertThreshold;
-@property (strong, nonatomic)           NSString *alarmName;
+/**
+ *  It's a keyPath in KVC
+ */
+@property (strong, nonatomic, readonly) NSNumber      *currentReading;
 
-@property (nonatomic, strong)           AVQueuePlayer *keepAlivePlayer;
 
-@property (assign, nonatomic)           BOOL playingAlarm;
+@property (strong, nonatomic          ) NSNumber      *alertThreshold;
+@property (strong, nonatomic          ) NSString      *alarmName;
+
+@property (nonatomic, strong          ) AVQueuePlayer *keepAlivePlayer;
+
+@property (assign, nonatomic          ) BOOL          playingAlarm;
 
 + (NMDecibelLogger *)defaultLogger;
 

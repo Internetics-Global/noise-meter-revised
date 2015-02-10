@@ -220,7 +220,7 @@
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _captureButton.frame.origin.y + _captureButton.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y + _meterBackground.frame.size.height) - 44) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
@@ -460,6 +460,12 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.screenName = @"MeterView Screen";
+    
+    if ([NSUserDefaultsHelper isAdRemoved]) {
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44);
+    } else {
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44 - CGRectGetHeight(self.generalADButton.frame));
+    }
     
     [self reloadData];
 

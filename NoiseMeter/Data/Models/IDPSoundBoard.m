@@ -44,7 +44,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
     return self;
 }
 
-#pragma mark – System sound play related
+#pragma mark – System Sound play related
 
 - (void)addSoundAtPath:(NSString *)filePath forKey:(id)key
 {
