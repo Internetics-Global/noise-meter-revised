@@ -17,6 +17,7 @@
 #import "NSUserDefaultsHelper.h"
 #import "IDPSoundboard.h"
 #import "FileHelper.h"
+#import "iVersion.h"
 
 
 
@@ -33,6 +34,7 @@
     
     [TestFlight takeOff:@"fc71ce67-b62a-4e6e-9cf9-5071518588c3"];
     
+    [self setupVersionReminder];
     [self setAppirater];
     [self setGoogleAnalytics];
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
@@ -138,6 +140,14 @@
         NSLog(@"Done on preload http://www.noisedown.com/upgrade.html");
     });
     
+}
+
+
+- (void) setupVersionReminder {
+    
+    [iVersion sharedInstance].applicationBundleID = @"com.internetics.noisedown";
+    
+    [iVersion sharedInstance].remoteVersionsPlistURL = @"https://s3-ap-southeast-2.amazonaws.com/noisedown/versions.plist";
 }
 
 
