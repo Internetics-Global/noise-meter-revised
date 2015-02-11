@@ -26,4 +26,8 @@
 
 + (NSString *) preloadedUpgradeHTMLFile;
 
+
++ (NSString *) appVersion;
++ (NSString *) build;
+
 @end
