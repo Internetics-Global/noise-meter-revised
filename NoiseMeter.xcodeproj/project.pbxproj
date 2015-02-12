@@ -67,6 +67,7 @@
 		11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
 		8804610C1A8C1F0B0032A3C8 /* iVersion.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880461091A8C1F0B0032A3C8 /* iVersion.bundle */; };
 		8804610D1A8C1F0B0032A3C8 /* iVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 8804610B1A8C1F0B0032A3C8 /* iVersion.m */; };
+		880461101A8C28150032A3C8 /* versions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8804610F1A8C28150032A3C8 /* versions.plist */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75018CFF38B0042AC59 /* button_cancel.png */; };
 		8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75118CFF38B0042AC59 /* button_cancel@2x.png */; };
@@ -243,6 +244,7 @@
 		880461091A8C1F0B0032A3C8 /* iVersion.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iVersion.bundle; sourceTree = "<group>"; };
 		8804610A1A8C1F0B0032A3C8 /* iVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iVersion.h; sourceTree = "<group>"; };
 		8804610B1A8C1F0B0032A3C8 /* iVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iVersion.m; sourceTree = "<group>"; };
+		8804610F1A8C28150032A3C8 /* versions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = versions.plist; sourceTree = "<group>"; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		8807E75018CFF38B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
 		8807E75118CFF38B0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 		88DDF47C189B198800138ADF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8804610F1A8C28150032A3C8 /* versions.plist */,
 				110F130A14EDD52E00BE4481 /* AppDelegate.h */,
 				110F130B14EDD52E00BE4481 /* AppDelegate.m */,
 				110F130D14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld */,
@@ -1015,6 +1018,7 @@
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
+				880461101A8C28150032A3C8 /* versions.plist in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				883069B218B4CC460067750A /* home_alarm.caf in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,

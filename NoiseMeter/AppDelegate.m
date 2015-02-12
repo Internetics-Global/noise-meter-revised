@@ -145,9 +145,15 @@
 
 - (void) setupVersionReminder {
     
+    [iVersion sharedInstance].checkPeriod = 0;
+    
     [iVersion sharedInstance].applicationBundleID = @"com.internetics.noisedown";
     
     [iVersion sharedInstance].remoteVersionsPlistURL = @"https://s3-ap-southeast-2.amazonaws.com/noisedown/versions.plist";
+    [iVersion sharedInstance].localVersionsPlistPath = @"versions.plist";
+    
+    
+    
 }
 
 
