@@ -14,6 +14,7 @@
 #import "MoreView.h"
 #import "PurchaseViewController.h"
 #import "InternalWebView.h"
+#import "UIButton+WebCache.h"
 
 @interface BaseViewController ()
 
@@ -111,7 +112,7 @@
             [self.generalADButton setBackgroundColor:[UIColor redColor]];
             [self.generalADButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
-            [self.generalADButton setBackgroundImage:[UIImage imageNamed:@"generalBanner"] forState:UIControlStateNormal];
+            [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
             self.generalADButton.alpha = 0;
             [self.view addSubview:self.generalADButton];
