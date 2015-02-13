@@ -34,5 +34,8 @@
 + (BOOL) isContinuousMode;
 + (void) setContinuousMode:(BOOL) flag;
 
++ (BOOL) isSilentMode;
++ (void) setSilentMode:(BOOL) flag;
+
 
 @end

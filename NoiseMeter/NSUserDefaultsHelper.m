@@ -12,7 +12,7 @@
 
 + (BOOL) isAdRemoved {
     
-//    return YES; //only for debug
+    //return YES; //only for debug
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
@@ -114,6 +114,19 @@
 + (void) setContinuousMode:(BOOL) flag {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:flag forKey:@"CONTINUOUS_MODE"];
+    [userDefaults synchronize];
+}
+
+
++ (BOOL) isSilentMode {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"SILENT_MODE"];
+    return flag;
+}
+
++ (void) setSilentMode:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"SILENT_MODE"];
     [userDefaults synchronize];
 }
 

@@ -25,8 +25,8 @@
 //当alarm出现后，继续保持录音的时间
 #define K_Second_DelayAlarmSound       1.0
 
-//在cintinuous mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
-#define K_Second_CintinuousMode        1.0
+//在silent mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
+#define K_Second_SilentMode        1.0
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
@@ -39,7 +39,7 @@
     NSDate       *_startForDelayAlarmSound;
     
     //用于判断下一个capture事件
-    NSDate       *_startForContinuousMode;
+    NSDate       *_startForSilentMode;
 }
 
 @end
@@ -63,7 +63,7 @@
                                                object:nil];
     
     _startForDelayAlarmSound = [NSDate date];
-    _startForContinuousMode =  [NSDate date];
+    _startForSilentMode =  [NSDate date];
     
     
     
@@ -259,7 +259,17 @@
     [self.navigationController pushViewController:cap animated:YES];
 }
 
-- (void) captureForContinuousMode {
+
+- (void) catchAndSaveSound_With_StartLoggingAgain {
+    
+    [self catchAndSaveSound_Without_StartLoggingAgain];
+    
+    [[NMDecibelLogger defaultLogger] startLogging];
+
+    
+}
+
+- (void) catchAndSaveSound_Without_StartLoggingAgain {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm:ss"];
@@ -276,7 +286,6 @@
         [[NMDecibelLogger defaultLogger] stopLogging];
     }
     [IDPSoundBoard saveLast10SecondAudio:fromURL toURL:toURL];
-    [[NMDecibelLogger defaultLogger] startLogging];
     
     SoundLevelCapture *cap = [SoundLevelCapture instance];
     cap.name = timeString;
@@ -287,6 +296,7 @@
     
     
 }
+
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -387,11 +397,11 @@
                         double delayInSeconds = K_Second_DelayAlarmSound;
                         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                            [self playAlarmForContinuousMode];
+                            [self triggerAlarmInDifferentMode];
                             _isAlarmPrepareToBeTriggered = NO;
                         });
                     } else {
-                        [self playAlarmForContinuousMode];
+                        [self triggerAlarmInDifferentMode];
                     }
                     
                 }
@@ -401,11 +411,11 @@
                     double delayInSeconds = K_Second_DelayAlarmSound;
                     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [self playAlarmForContinuousMode];
+                        [self triggerAlarmInDifferentMode];
                         _isAlarmPrepareToBeTriggered = NO;
                     });
                 } else {
-                    [self playAlarmForContinuousMode];
+                    [self triggerAlarmInDifferentMode];
                 }
             }
         }
@@ -436,14 +446,44 @@
     }
 }
 
-- (void) playAlarmForContinuousMode {
-    if ([NSUserDefaultsHelper isContinuousMode]) {
-        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForContinuousMode];
-        if (executionTime2 > K_Second_CintinuousMode) {
-            _startForContinuousMode = [NSDate date];
-            [self captureForContinuousMode];
+/**
+ *  做如下几个动作
+    1. play alarm，如果需要
+    2. 保存声音文件，如果需要
+    3. 2秒后自动关闭alarm并继续Logging，如果需要  (continuous mode)
+ */
+- (void) triggerAlarmInDifferentMode {
+    if ([NSUserDefaultsHelper isSilentMode]) {
+        //为了防止不停的catch，设置了K_Second_SilentMode内不允许重新catch
+        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForSilentMode];
+        if (executionTime2 > K_Second_SilentMode) {
+            _startForSilentMode = [NSDate date];
+            [self catchAndSaveSound_With_StartLoggingAgain];
             
         }
+        
+    } else if ([NSUserDefaultsHelper isContinuousMode]) {
+        
+        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForSilentMode];
+        if (executionTime2 > K_Second_SilentMode) {
+            _startForSilentMode = [NSDate date];
+            
+            [self catchAndSaveSound_Without_StartLoggingAgain];//1.抓取音频，并存盘。这时没有loging,所以不用担心triggerAlarmInDifferentMode会被不断执行
+            
+            [[NMDecibelLogger defaultLogger] playAlarm];//2.播放alarm
+            
+            //delayInSeconds后关闭alarm，然后重新开始recording
+            double delayInSeconds = 3;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self cancel];
+                [[NMDecibelLogger defaultLogger] startLogging];
+                
+            });
+            
+            
+        }
+        
         
     } else {
         [[NMDecibelLogger defaultLogger] playAlarm];

@@ -67,14 +67,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 12;
+    return 13;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5)|| (indexPath.row == 6)) {
+    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5)|| (indexPath.row == 6) || (indexPath.row == 7)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
@@ -145,6 +145,15 @@
                 [switchView setOn:NO];
                 
             }
+        } else if (indexPath.row == 7) {
+            [switchView addTarget:self action:@selector(silentModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
+            [cell.textLabel setText:@"Silent Mode"];
+            if ([NSUserDefaultsHelper isSilentMode] == YES) {
+                [switchView setOn:YES];
+            } else {
+                [switchView setOn:NO];
+                
+            }
         }
         
         
@@ -159,23 +168,23 @@
         {
             cell.textLabel.text = @"Select Alert Sound";
         }
-        else if (indexPath.row == 7)
+        else if (indexPath.row == 8)
         {
             cell.textLabel.text = @"Instructions / Tips";
         }
-        else if (indexPath.row == 8)
+        else if (indexPath.row == 9)
         {
             cell.textLabel.text = @"About";
         }
-        else if (indexPath.row == 9)
+        else if (indexPath.row == 10)
         {
             cell.textLabel.text = @"Visit developer's website";
         }
-        else if (indexPath.row == 10)
+        else if (indexPath.row == 11)
         {
             cell.textLabel.text = @"Tell a Friend";
         }
-        else if (indexPath.row == 11)
+        else if (indexPath.row == 12)
         {
             cell.textLabel.text = @"Support";
         }
@@ -219,23 +228,23 @@
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 7)
+    else if(indexPath.row == 8)
     {
         InstructionView *about = [[InstructionView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if (indexPath.row == 8)
+    else if (indexPath.row == 9)
     {
         AboutView *about = [[AboutView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 9)
+    else if(indexPath.row == 10)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else if ((indexPath.row == 10) || (indexPath.row ==11))
+    else if ((indexPath.row == 11) || (indexPath.row ==12))
     {
         if ([MFMailComposeViewController canSendMail])
         {
@@ -245,7 +254,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 7)
+            if (indexPath.row == 11)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];
@@ -328,10 +337,35 @@
     
     if ([myswitch isOn]) {
         [NSUserDefaultsHelper setContinuousMode:YES];
+        [NSUserDefaultsHelper setSilentMode:NO];
         
     } else {
         [NSUserDefaultsHelper setContinuousMode:NO];
+        [NSUserDefaultsHelper setSilentMode:YES];
     }
+    
+    [_optionTable reloadData];
+}
+
+- (void) silentModeSwitchClicked:(id)sender {
+    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
+        [alert show];
+    }
+    
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    
+    if ([myswitch isOn]) {
+        [NSUserDefaultsHelper setSilentMode:YES];
+        [NSUserDefaultsHelper setContinuousMode:NO];
+        
+    } else {
+        [NSUserDefaultsHelper setSilentMode:NO];
+        [NSUserDefaultsHelper setContinuousMode:YES];
+    }
+    
+    [_optionTable reloadData];
 }
 
 
