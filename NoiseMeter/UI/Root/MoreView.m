@@ -17,6 +17,9 @@
 #import "MeterView.h"
 #import "PurchaseViewController.h"
 #import "NMDecibelLogger.h"
+#import "UIAlertView+Blocks.h"
+
+
 @interface MoreView ()
 
 @end
@@ -37,8 +40,8 @@
     
     [self style];
     
-    int purchaseButtonHeight = 0; //当isAdRemoved，则_optionTable相应拉高
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    int purchaseButtonHeight = 0; //当isProVersion，则_optionTable相应拉高
+    if ([NSUserDefaultsHelper isProVersion]) {
         purchaseButtonHeight = 50;
     }
     
@@ -103,7 +106,7 @@
                 [switchView setOn:YES];
             }
             
-            if ([NSUserDefaultsHelper isAdRemoved]) {
+            if ([NSUserDefaultsHelper isProVersion]) {
             } else {
                 [switchView setOn:NO];
             }
@@ -269,8 +272,10 @@
         }
         else
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Accounts" message:@"An email account is required to use this function" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+            
+            [UIAlertView showWithTitle:@"No Accounts" message:@"An email account is required to use this function" style:UIAlertViewStyleDefault cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                
+            }];
         }
     }
 }
@@ -305,10 +310,16 @@
 - (void) backgroundRunningSwitchClicked: (id) sender {
     
     UISwitch *myswitch = (UISwitch *)sender;
-    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
-        [alert show];
+    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
+        
+        [UIAlertView showWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView];
+            }
+            
+        }];
         [myswitch setOn:NO];
+        
         
     } else {
         if ([myswitch isOn]) {
@@ -327,9 +338,14 @@
 
 
 - (void) continuousModeSwitchClicked:(id)sender {
-    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
-        [alert show];
+    if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+        
+        [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView];
+            }
+            
+        }];
     }
     
     
@@ -348,9 +364,13 @@
 }
 
 - (void) silentModeSwitchClicked:(id)sender {
-    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
-        [alert show];
+    if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+        [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView];
+            }
+            
+        }];
     }
     
     
@@ -371,9 +391,13 @@
 
 - (void) delayAlarmSoundSwitchClicked:(id)sender {
     
-    if ([NSUserDefaultsHelper isAdRemoved] == FALSE) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
-        [alert show];
+    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
+        [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView_ClassRoom];
+            }
+            
+        }];
     }
     
     
@@ -442,12 +466,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark – UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-        [self.navigationController pushViewController:purchaseViewController animated:YES];
-    }
+
+- (void) showPurchaseView {
+    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+    [self.navigationController pushViewController:purchaseViewController animated:YES];
+}
+
+- (void) showPurchaseView_ClassRoom {
+    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+    [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
 

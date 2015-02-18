@@ -19,7 +19,18 @@
 #import "BaseViewController.h"
 #import "AppDelegate.h"
 
-#define IAPProductID   @"com.internetics.noisedown.upgrade"
+
+#define IAPProductID_Pro   @"com.internetics.noisedown.upgrade"
+#define IAPProductID_Pro_Classroom   @"com.internetics.noisedown.upgrade_classroom"
+
+
+//Purchase welcome url
+#define k_Pro_Introduction_URL @"http://www.noisedown.com/upgrade.html"
+#define k_Pro_Classroom_Introduction_URL @"http://www.w3schools.com/html/default.asp"
+
+//Banner url
+#define k_Pro_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"
+#define k_Pro_Classroom_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/proclassroom.png"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)

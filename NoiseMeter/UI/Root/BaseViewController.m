@@ -70,14 +70,6 @@
     [self.navigationController pushViewController:purchaseViewController animated:YES];
 }
 
-/**
- *  this is the old implementation
- */
-- (void) buyAction2 {
-    InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/upgrade.html"];
-    [self.navigationController pushViewController:web animated:YES];
-}
-
 
 
 /**
@@ -87,7 +79,7 @@
  */
 - (void) setupGeneralADView {
     
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
         return;
     }
     
@@ -112,7 +104,13 @@
             [self.generalADButton setBackgroundColor:[UIColor redColor]];
             [self.generalADButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
-            [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:@"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
+            
+            if ([NSUserDefaultsHelper isProVersion]) {
+                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
+            } else {
+                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
+            }
+            
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
             self.generalADButton.alpha = 0;
             [self.view addSubview:self.generalADButton];
@@ -129,18 +127,25 @@
     //step1: update top logo
     UIImageView *imageView = [self findTopBarImageView];
     if (imageView) {
-        [imageView setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
+        if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+          [imageView setImage:[UIImage imageNamed:@"top_logo-pro-classroom.png"]];
+        } else {
+          [imageView setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
+        }
+        
     }
     
-    //step2: remove the AD view
-    [self.generalADButton removeFromSuperview];
-    self.generalADButton = nil;
-    
-    NSArray *subViews = [self.view subviews];
-    for (UIView *myView in subViews) {
-        if ([myView isKindOfClass:[UITableView class]]) {
-            [(UITableView *)myView reloadData];
-            break;
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+        //step2: remove the AD view
+        [self.generalADButton removeFromSuperview];
+        self.generalADButton = nil;
+        
+        NSArray *subViews = [self.view subviews];
+        for (UIView *myView in subViews) {
+            if ([myView isKindOfClass:[UITableView class]]) {
+                [(UITableView *)myView reloadData];
+                break;
+            }
         }
     }
     

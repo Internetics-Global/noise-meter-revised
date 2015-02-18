@@ -133,14 +133,14 @@
     _playbackButton.layer.masksToBounds = YES;
     [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_playbackButton];
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _playbackButton.hidden = FALSE;
     } else {
         _playbackButton.hidden = TRUE;
     }
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         _cancelButton.frame =CGRectMake(20 + 150, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         [_cancelButton setImage:[UIImage imageNamed:@"button_cancel"] forState:UIControlStateNormal];

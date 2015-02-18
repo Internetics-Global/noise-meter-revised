@@ -10,7 +10,8 @@
 
 @implementation NSUserDefaultsHelper
 
-+ (BOOL) isAdRemoved {
+
++ (BOOL) isProVersion {
     
     //return YES; //only for debug
     
@@ -19,11 +20,27 @@
     return flag;
 }
 
-+ (void) setAdRemoveFlag:(BOOL) flag {
++ (void) setProVersionFlag:(BOOL) flag {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:flag forKey:@"AD_REMOVED"];
     [userDefaults synchronize];
     NSLog(@"%s:the flag AD_REMOVED is set",__FUNCTION__);
+}
+
++ (BOOL) isProClassRoomVersion {
+    
+    //return YES; //only for debug
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL flag = [userDefaults boolForKey:@"AD_REMOVED_CLASSROOM"];
+    return flag;
+}
+
++ (void) setProClassRoomVersion:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"AD_REMOVED_CLASSROOM"];
+    [userDefaults synchronize];
+    NSLog(@"%s:the flag AD_REMOVED_CLASSROOM is set",__FUNCTION__);
 }
 
 + (BOOL) isOutputToEarpiece {

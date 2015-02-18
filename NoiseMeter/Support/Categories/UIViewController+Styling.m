@@ -32,7 +32,7 @@
     }
     
     UIImageView *_topImage;
-    if ([NSUserDefaultsHelper isAdRemoved] || ([self isMemberOfClass:[PurchaseViewController class]])) {
+    if ([NSUserDefaultsHelper isProVersion] || ([self isMemberOfClass:[PurchaseViewController class]])) {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
     } else {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];

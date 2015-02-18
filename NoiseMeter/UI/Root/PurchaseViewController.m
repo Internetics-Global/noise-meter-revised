@@ -33,7 +33,12 @@
     [_purchaseButton addTarget:self action:@selector(purchaseNow) forControlEvents:UIControlEventTouchDown];
     
     //request product info
-    NSSet *products = [NSSet setWithArray:@[IAPProductID]];
+    NSSet *products;
+    if ([NSUserDefaultsHelper isProVersion] == false) {
+        products =[NSSet setWithArray:@[IAPProductID_Pro]];
+    } else {
+        products =[NSSet setWithArray:@[IAPProductID_Pro_Classroom]];
+    }
     [[RMStore defaultStore] requestProducts:products success:^(NSArray *products, NSArray *invalidProductIdentifiers) {
         NSLog(@"Products loaded");
         [self updateProduct:products withInvalidProductIdentifiers: invalidProductIdentifiers];
@@ -81,12 +86,18 @@
     
     self.webview.alpha = 0;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"]];
-    
-    NSString *preloadedFileStr = [FileHelper preloadedUpgradeHTMLFile];
-    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:preloadedFileStr];
+    NSURLRequest *request;
+    NSString *cachedFileStr;
+    if ([NSUserDefaultsHelper isProVersion] == false) {
+        cachedFileStr = [FileHelper cachedProIntroductionHTMLFile];
+        request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Introduction_URL]];
+    } else {
+        cachedFileStr = [FileHelper cachedProClassroomIntroductionHTMLFile];
+        request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Classroom_Introduction_URL]];
+    }
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:cachedFileStr];
     if (fileExists) {
-        NSData *htmlData = [NSData  dataWithContentsOfFile:preloadedFileStr];
+        NSData *htmlData = [NSData  dataWithContentsOfFile:cachedFileStr];
         NSString *htmlStr = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
         [self.webview loadHTMLString:htmlStr baseURL:nil];
     } else {
@@ -159,13 +170,18 @@
     
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^{
         NSLog(@"Transactions restored");
+        
+        if ([NSUserDefaultsHelper isProVersion] == false) {
+            [NSUserDefaultsHelper setProVersionFlag:YES];
+        } else {
+            [NSUserDefaultsHelper setProClassRoomVersion:YES];
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
         
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         
         [self.navigationController popViewControllerAnimated:YES];
-        
-        [NSUserDefaultsHelper setAdRemoveFlag:YES];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -188,8 +204,24 @@
         return;
     }
     
-    [[RMStore defaultStore] addPayment:IAPProductID success:^(SKPaymentTransaction *transaction) {
+    NSString *productIdentifier;
+    NSString *successDest;
+    if ([NSUserDefaultsHelper isProVersion] == false) {
+        productIdentifier =IAPProductID_Pro;
+        successDest = @"Thank you for upgrading to Noise Down Pro";
+    } else {
+        productIdentifier =IAPProductID_Pro_Classroom;
+        successDest = @"Thank you for upgrading to Noise Down Pro Classroom";
+    }
+    
+    [[RMStore defaultStore] addPayment:productIdentifier success:^(SKPaymentTransaction *transaction) {
         NSLog(@"Product purchased");
+        
+        if ([NSUserDefaultsHelper isProVersion] == false) {
+            [NSUserDefaultsHelper setProVersionFlag:YES];
+        } else {
+            [NSUserDefaultsHelper setProClassRoomVersion:YES];
+        }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
         
@@ -197,9 +229,7 @@
         
         [self.navigationController popViewControllerAnimated:YES];
         
-        [NSUserDefaultsHelper setAdRemoveFlag:YES];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Thank you for upgrading to Noise Down Pro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:successDest delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {

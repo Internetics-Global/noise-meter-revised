@@ -166,7 +166,7 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];
     
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    BOOL flag = [NSUserDefaultsHelper isProVersion];
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && (flag == false)) {
         //we indirectly call this from applicationDidEnterBackground and we don't it keep running if not been purchased
         [self stopLogging];

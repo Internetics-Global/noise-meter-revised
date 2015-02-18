@@ -96,9 +96,15 @@
     return (i);
 }
 
-+ (NSString *) preloadedUpgradeHTMLFile {
++ (NSString *) cachedProIntroductionHTMLFile {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0],@"upgrade.html"];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0],@"pro.html"];
+    return filePath;
+}
+
++ (NSString *) cachedProClassroomIntroductionHTMLFile {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", [paths objectAtIndex:0],@"pro_classroom.html"];
     return filePath;
 }
 

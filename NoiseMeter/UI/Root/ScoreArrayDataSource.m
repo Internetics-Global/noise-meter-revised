@@ -55,7 +55,7 @@
     cell.shareButton.tag = indexPath.row;
     [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
     
-    BOOL flag = [NSUserDefaultsHelper isAdRemoved];
+    BOOL flag = [NSUserDefaultsHelper isProVersion];
     if (flag) {
         cell.playButton.hidden = NO;
         cell.shareButton.hidden = NO;
@@ -64,7 +64,7 @@
         cell.shareButton.hidden = YES;
     }
     
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         cell.rightUtilityButtons = [self rightCellButtons];
         cell.delegate = self;
         cell.tag = indexPath.row;
@@ -103,6 +103,13 @@
 }
 
 - (void) share: (id) sender {
+    
+    if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
     
     long index = ((UIButton *) sender).tag;
     NSURL *url = [self selecedRecordedFile:index];
@@ -167,20 +174,27 @@
         case 0:
         {
         
+            if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alertView show];
+            } else {
+                UIAlertView *alertView = [UIAlertView showWithTitle:@"Rename"
+                                                            message:@""
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@[@"OK"]
+                                                           tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                               if (buttonIndex == [alertView cancelButtonIndex]) {
+                                                                   NSLog(@"Cancelled");
+                                                               } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"OK"]) {
+                                                                   NSString *newName = [alertView textFieldAtIndex:0].text;
+                                                                   [self updateCaptureName:cellIndex withNewname:newName];
+                                                               }
+                                                           }];
+                alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+            }
             
-            UIAlertView *alertView = [UIAlertView showWithTitle:@"Rename"
-                               message:@""
-                     cancelButtonTitle:@"Cancel"
-                     otherButtonTitles:@[@"OK"]
-                              tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                  if (buttonIndex == [alertView cancelButtonIndex]) {
-                                      NSLog(@"Cancelled");
-                                  } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"OK"]) {
-                                      NSString *newName = [alertView textFieldAtIndex:0].text;
-                                      [self updateCaptureName:cellIndex withNewname:newName];
-                                  }
-                              }];
-            alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+            
             
             
             break;

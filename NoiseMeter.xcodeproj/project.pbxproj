@@ -126,6 +126,7 @@
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
+		888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */; };
 		889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 889E53B218BAC2CC00721ADF /* loop.mp3 */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
 		889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
@@ -360,6 +361,7 @@
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
 		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = UI/Root/PurchaseViewController.h; sourceTree = "<group>"; };
 		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = UI/Root/PurchaseViewController.xib; sourceTree = "<group>"; };
+		888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro-classroom@2x.png"; sourceTree = "<group>"; };
 		889E53B218BAC2CC00721ADF /* loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loop.mp3; sourceTree = SOURCE_ROOT; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		889FD224177BC3270046D281 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 		11AC52FC1505D3CF0093C7AB /* Top Banner */ = {
 			isa = PBXGroup;
 			children = (
+				888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */,
 				88570E6818A340B400BF526F /* top_logo-pro@2x.png */,
 				117D94151516B5F7002C5479 /* top_logo_scores@2x.png */,
 				9AB05EA6177AC92E0029CB48 /* top_logo.png */,
@@ -1055,6 +1058,7 @@
 				88BEFE5718A1FCB100399680 /* 9.png in Resources */,
 				11AC530D1505D3F20093C7AB /* icon_scores.png in Resources */,
 				88BEFE5918A1FCB100399680 /* 11.png in Resources */,
+				888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,

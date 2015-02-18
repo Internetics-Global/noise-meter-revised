@@ -39,7 +39,7 @@
     [self setGoogleAnalytics];
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
-    [self downloadUpgradeHTMLFile];
+    [self downloadProIntroductionHTMLFile];
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -81,7 +81,7 @@
       [[NMDecibelLogger defaultLogger] stopLogging];
         [IDPSoundBoard stopBackgroundSoundRunning];
     } else {
-        if ([NSUserDefaultsHelper isAdRemoved]) {
+        if ([NSUserDefaultsHelper isProVersion]) {
             [IDPSoundBoard runBackgroundSound];
         }
     }
@@ -96,7 +96,7 @@
         [[NMDecibelLogger defaultLogger] startLogging];
     }
     
-    if ([NSUserDefaultsHelper isAdRemoved] && ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE)) {
+    if ([NSUserDefaultsHelper isProVersion] && ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE)) {
         [IDPSoundBoard stopBackgroundSoundRunning];
     }
     
@@ -130,14 +130,26 @@
 
 }
 
-- (void) downloadUpgradeHTMLFile {
+- (void) downloadProIntroductionHTMLFile {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^(void) {
-        NSString *filePath = [FileHelper preloadedUpgradeHTMLFile];
-        NSURL *url = [NSURL URLWithString:@"http://www.noisedown.com/upgrade.html"];
+        NSString *filePath = [FileHelper cachedProIntroductionHTMLFile];
+        NSURL *url = [NSURL URLWithString:k_Pro_Introduction_URL];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         [urlData writeToFile:filePath atomically:YES];
-        NSLog(@"Done on preload http://www.noisedown.com/upgrade.html");
+        NSLog(@"Done on downloadProIntroductionHTMLFile");
+    });
+    
+}
+
+- (void) downloadProClassRoomIntroductionHTMLFile {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^(void) {
+        NSString *filePath = [FileHelper cachedProClassroomIntroductionHTMLFile];
+        NSURL *url = [NSURL URLWithString:k_Pro_Classroom_Introduction_URL];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        [urlData writeToFile:filePath atomically:YES];
+        NSLog(@"Done on downloadProClassRoomIntroductionHTMLFile");
     });
     
 }

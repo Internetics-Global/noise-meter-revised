@@ -165,13 +165,14 @@
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
-    if ([NSUserDefaultsHelper isAdRemoved]) {
-        _volumeView = [ [MPVolumeView alloc] init] ;
-        _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
-        [_volumeView setShowsRouteButton:YES];
-        [_volumeView sizeToFit];
-        [_volumeView setShowsVolumeSlider:NO];
-        [self.view addSubview:_volumeView];
+    if ([NSUserDefaultsHelper isProVersion]) {
+//We have to temporarily disable it since it's not feasible to airplay while both playback and recording
+//        _volumeView = [ [MPVolumeView alloc] init] ;
+//        _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
+//        [_volumeView setShowsRouteButton:YES];
+//        [_volumeView sizeToFit];
+//        [_volumeView setShowsVolumeSlider:NO];
+//        [self.view addSubview:_volumeView];
     }
     
     
@@ -502,7 +503,7 @@
     [super viewDidAppear:animated];
     self.screenName = @"MeterView Screen";
     
-    if ([NSUserDefaultsHelper isAdRemoved]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44);
     } else {
         _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44 - CGRectGetHeight(self.generalADButton.frame));

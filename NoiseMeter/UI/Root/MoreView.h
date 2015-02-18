@@ -10,7 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import "GAITrackedViewController.h"
 
-@interface MoreView : BaseViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>{
+@interface MoreView : BaseViewController<UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>{
     UITableView *_optionTable;
     MFMailComposeViewController *_mailer;
 }
