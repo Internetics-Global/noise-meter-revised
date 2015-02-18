@@ -91,9 +91,11 @@
     if ([NSUserDefaultsHelper isProVersion] == false) {
         cachedFileStr = [FileHelper cachedProIntroductionHTMLFile];
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Introduction_URL]];
+        [_purchaseButton setTitle:@"Purchase - $2.99 " forState:UIControlStateNormal];
     } else {
         cachedFileStr = [FileHelper cachedProClassroomIntroductionHTMLFile];
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Classroom_Introduction_URL]];
+        [_purchaseButton setTitle:@"Purchase - $6.99 " forState:UIControlStateNormal];
     }
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:cachedFileStr];
     if (fileExists) {
@@ -133,9 +135,9 @@
     
     if (products.count == 0) {
         
-        NSLog(@"Fail to get purchase info (myProduct.count = 0)");
+        NSLog(@"Fail to get product info (myProduct.count = 0)");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:@"Fail to purchase, try again later"
+                                                            message:@"Fail to get product info, try again later"
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil, nil];
@@ -168,7 +170,7 @@
         return;
     }
     
-    [[RMStore defaultStore] restoreTransactionsOnSuccess:^{
+    [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions){
         NSLog(@"Transactions restored");
         
         if ([NSUserDefaultsHelper isProVersion] == false) {
@@ -233,7 +235,7 @@
         [alert show];
         
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
-        NSLog(@"Something went wrong");
+        NSLog(@"Something went wrong, or you have cancelled the purchase");
     }];
 }
 

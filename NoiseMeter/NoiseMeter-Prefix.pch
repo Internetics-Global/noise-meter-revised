@@ -20,8 +20,8 @@
 #import "AppDelegate.h"
 
 
-#define IAPProductID_Pro   @"com.internetics.noisedown.upgrade"
-#define IAPProductID_Pro_Classroom   @"com.internetics.noisedown.upgrade_classroom"
+#define IAPProductID_Pro   @"3141591001"
+#define IAPProductID_Pro_Classroom   @"3141591002"
 
 
 //Purchase welcome url

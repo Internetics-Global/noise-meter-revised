@@ -147,6 +147,9 @@
                 break;
             }
         }
+    } else {
+        
+        [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
     }
     
     
