@@ -41,8 +41,10 @@
     
     [self style];
     
-    int purchaseButtonHeight = 0; //当isProVersion，则_optionTable相应拉高
-    if ([NSUserDefaultsHelper isProVersion]) {
+    int purchaseButtonHeight = 0;
+    if ([NSUserDefaultsHelper isProVersion] || [NSUserDefaultsHelper isProClassRoomVersion] ) {
+        purchaseButtonHeight = 0;
+    } else {
         purchaseButtonHeight = 50;
     }
     
@@ -77,10 +79,19 @@
     return 0.01f;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40.0f;
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 14;
+    BOOL isToShowProClassroom = [NSUserDefaultsHelper isProVersion] && ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE);
+    if (isToShowProClassroom) {
+        return 15;
+    } else {
+        return 14;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,6 +103,7 @@
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
         switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+        switchView.transform = CGAffineTransformMakeScale(0.75, 0.75);
         cell.accessoryView = switchView;
         
         if (indexPath.row == 4) {
@@ -177,6 +189,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
+        
         if (indexPath.row == 1)
         {
             cell.textLabel.text = @"Select Alert Sound";
@@ -203,11 +216,14 @@
         else if (indexPath.row == 13)
         {
             cell.textLabel.text = @"Support";
+        } else if (indexPath.row == 14) {
+            cell.textLabel.text = @"Purchase Pro Classroom";
         }
     }
     
     cell.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     
     return cell;
 }
@@ -307,6 +323,10 @@
                 
             }];
         }
+    } else if (indexPath.row == 14) {
+        
+        [self showPurchaseView];
+        
     }
 }
 

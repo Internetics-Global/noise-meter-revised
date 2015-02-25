@@ -79,7 +79,7 @@
  */
 - (void) setupGeneralADView {
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion] || [NSUserDefaultsHelper isProVersion]) {
         return;
     }
     
@@ -130,7 +130,7 @@
         
     }
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion] || [NSUserDefaultsHelper isProVersion]) {
         //step2: remove the AD view
         [self.generalADButton removeFromSuperview];
         self.generalADButton = nil;

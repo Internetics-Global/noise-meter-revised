@@ -38,6 +38,7 @@
     UIImageView *_topImage;
     if ([NSUserDefaultsHelper isProClassRoomVersion] ) {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro-classroom.png"]];
+    
     } else if ([NSUserDefaultsHelper isProVersion]) {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
     } else {
