@@ -27,7 +27,7 @@
     
     [self style];
     
-    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(10, 89, self.view.frame.size.width - 20, 40)];
+    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, self.view.frame.size.width - 20, 40)];
     _explanation.numberOfLines = 2;
     _explanation.backgroundColor = [UIColor clearColor];
     _explanation.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];

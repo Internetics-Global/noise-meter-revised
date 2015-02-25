@@ -28,13 +28,11 @@
 		1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDDC1517FE5100DE0A64 /* AboutView.m */; };
 		1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDE21518016400DE0A64 /* libz.dylib */; };
 		1168C317151966AC00897AA4 /* InstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1168C316151966AB00897AA4 /* InstructionView.m */; };
-		117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94131516B5B1002C5479 /* top_logo_scores.png */; };
 		117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94151516B5F7002C5479 /* top_logo_scores@2x.png */; };
 		117D94191516B66A002C5479 /* button_reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94171516B66A002C5479 /* button_reset.png */; };
 		117D941A1516B66A002C5479 /* button_reset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94181516B66A002C5479 /* button_reset@2x.png */; };
 		117D94211516B8A4002C5479 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D941F1516B8A4002C5479 /* close_button.png */; };
 		117D94221516B8A4002C5479 /* overlay02.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94201516B8A4002C5479 /* overlay02.png */; };
-		117D94251516B8DE002C5479 /* button_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94231516B8DE002C5479 /* button_info.png */; };
 		117D94261516B8DE002C5479 /* button_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94241516B8DE002C5479 /* button_info@2x.png */; };
 		11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */; };
 		11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */; };
@@ -77,6 +75,14 @@
 		880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */; };
 		880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */ = {isa = PBXBuildFile; fileRef = 880A003418ACB91B00FB84F5 /* upgradeInstruction.html */; };
 		880A003918ACD22C00FB84F5 /* upgrade.css in Resources */ = {isa = PBXBuildFile; fileRef = 880A003818ACD22C00FB84F5 /* upgrade.css */; };
+		880E85821A9D495300EB3926 /* bars_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E85811A9D495300EB3926 /* bars_triangle.png */; };
+		880E85851A9D4A5600EB3926 /* SelectMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85841A9D4A5600EB3926 /* SelectMeterView.m */; };
+		880E85931A9D51A700EB3926 /* BCTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85881A9D51A700EB3926 /* BCTab.m */; };
+		880E85941A9D51A700EB3926 /* BCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858A1A9D51A700EB3926 /* BCTabBar.m */; };
+		880E85951A9D51A700EB3926 /* BCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858C1A9D51A700EB3926 /* BCTabBarController.m */; };
+		880E85961A9D51A700EB3926 /* BCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858E1A9D51A700EB3926 /* BCTabBarView.m */; };
+		880E85971A9D51A700EB3926 /* UINavigationController+icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85901A9D51A700EB3926 /* UINavigationController+icons.m */; };
+		880E85981A9D51A700EB3926 /* UIViewController+iconImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		883069B218B4CC460067750A /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
@@ -102,6 +108,8 @@
 		886712AF1A899F8D007101FD /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */; };
 		886712B11A89A64F007101FD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B01A89A64F007101FD /* MediaPlayer.framework */; };
 		886712B31A89A6AD007101FD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B21A89A6AD007101FD /* libsqlite3.dylib */; };
+		8868EB7E1A9C9C11007D877D /* bars_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868EB7C1A9C9C11007D877D /* bars_circle.png */; };
+		8868EB7F1A9C9C11007D877D /* bars_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868EB7D1A9C9C11007D877D /* bars_square.png */; };
 		8871690E1A8A0FF600FD5B75 /* playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690C1A8A0FF600FD5B75 /* playback.png */; };
 		8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690D1A8A0FF600FD5B75 /* playback@2x.png */; };
 		887169121A8A179500FD5B75 /* button_cancel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 887169101A8A179500FD5B75 /* button_cancel2.png */; };
@@ -173,7 +181,6 @@
 		88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */; };
 		88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */; };
 		88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307418AC6D1800B6E5BD /* closeButton@2x.png */; };
-		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
@@ -211,13 +218,11 @@
 		1140FDE21518016400DE0A64 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1168C315151966AB00897AA4 /* InstructionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InstructionView.h; path = UI/Root/InstructionView.h; sourceTree = "<group>"; };
 		1168C316151966AB00897AA4 /* InstructionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InstructionView.m; path = UI/Root/InstructionView.m; sourceTree = "<group>"; };
-		117D94131516B5B1002C5479 /* top_logo_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo_scores.png; sourceTree = "<group>"; };
 		117D94151516B5F7002C5479 /* top_logo_scores@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo_scores@2x.png"; sourceTree = "<group>"; };
 		117D94171516B66A002C5479 /* button_reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_reset.png; sourceTree = "<group>"; };
 		117D94181516B66A002C5479 /* button_reset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_reset@2x.png"; sourceTree = "<group>"; };
 		117D941F1516B8A4002C5479 /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_button.png; sourceTree = "<group>"; };
 		117D94201516B8A4002C5479 /* overlay02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay02.png; sourceTree = "<group>"; };
-		117D94231516B8DE002C5479 /* button_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_info.png; sourceTree = "<group>"; };
 		117D94241516B8DE002C5479 /* button_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_info@2x.png"; sourceTree = "<group>"; };
 		11A3EE71150F3D2D00A6496B /* SoundLevelCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundLevelCapture.h; sourceTree = "<group>"; };
 		11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundLevelCapture.m; sourceTree = "<group>"; };
@@ -271,6 +276,21 @@
 		880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "createCustomAlarmButton@2x.png"; sourceTree = "<group>"; };
 		880A003418ACB91B00FB84F5 /* upgradeInstruction.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = upgradeInstruction.html; sourceTree = "<group>"; };
 		880A003818ACD22C00FB84F5 /* upgrade.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = upgrade.css; sourceTree = "<group>"; };
+		880E85811A9D495300EB3926 /* bars_triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bars_triangle.png; path = Meters/bars_triangle.png; sourceTree = "<group>"; };
+		880E85831A9D4A5600EB3926 /* SelectMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectMeterView.h; sourceTree = "<group>"; };
+		880E85841A9D4A5600EB3926 /* SelectMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMeterView.m; sourceTree = "<group>"; };
+		880E85871A9D51A700EB3926 /* BCTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTab.h; sourceTree = "<group>"; };
+		880E85881A9D51A700EB3926 /* BCTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTab.m; sourceTree = "<group>"; };
+		880E85891A9D51A700EB3926 /* BCTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTabBar.h; sourceTree = "<group>"; };
+		880E858A1A9D51A700EB3926 /* BCTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTabBar.m; sourceTree = "<group>"; };
+		880E858B1A9D51A700EB3926 /* BCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTabBarController.h; sourceTree = "<group>"; };
+		880E858C1A9D51A700EB3926 /* BCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTabBarController.m; sourceTree = "<group>"; };
+		880E858D1A9D51A700EB3926 /* BCTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTabBarView.h; sourceTree = "<group>"; };
+		880E858E1A9D51A700EB3926 /* BCTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTabBarView.m; sourceTree = "<group>"; };
+		880E858F1A9D51A700EB3926 /* UINavigationController+icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+icons.h"; sourceTree = "<group>"; };
+		880E85901A9D51A700EB3926 /* UINavigationController+icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+icons.m"; sourceTree = "<group>"; };
+		880E85911A9D51A700EB3926 /* UIViewController+iconImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+iconImage.h"; sourceTree = "<group>"; };
+		880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+iconImage.m"; sourceTree = "<group>"; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = UI/Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
@@ -320,6 +340,8 @@
 		886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		886712B01A89A64F007101FD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		886712B21A89A6AD007101FD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8868EB7C1A9C9C11007D877D /* bars_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bars_circle.png; path = Meters/bars_circle.png; sourceTree = "<group>"; };
+		8868EB7D1A9C9C11007D877D /* bars_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bars_square.png; path = Meters/bars_square.png; sourceTree = "<group>"; };
 		8871690C1A8A0FF600FD5B75 /* playback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playback.png; sourceTree = "<group>"; };
 		8871690D1A8A0FF600FD5B75 /* playback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playback@2x.png"; sourceTree = "<group>"; };
 		887169101A8A179500FD5B75 /* button_cancel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_cancel2.png; path = NoiseMeter/Resources/Images/Buttons/button_cancel2.png; sourceTree = SOURCE_ROOT; };
@@ -442,7 +464,6 @@
 		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
 		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
 		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
-		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -599,9 +620,7 @@
 				888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */,
 				88570E6818A340B400BF526F /* top_logo-pro@2x.png */,
 				117D94151516B5F7002C5479 /* top_logo_scores@2x.png */,
-				9AB05EA6177AC92E0029CB48 /* top_logo.png */,
 				9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */,
-				117D94131516B5B1002C5479 /* top_logo_scores.png */,
 			);
 			path = "Top Banner";
 			sourceTree = "<group>";
@@ -627,7 +646,6 @@
 				11F3E5C715194CAE00549099 /* button_back@2x.png */,
 				11F3E5C815194CAE00549099 /* button_close.png */,
 				11F3E5C915194CAE00549099 /* button_close@2x.png */,
-				117D94231516B8DE002C5479 /* button_info.png */,
 				117D94241516B8DE002C5479 /* button_info@2x.png */,
 				117D941F1516B8A4002C5479 /* close_button.png */,
 				117D94201516B8A4002C5479 /* overlay02.png */,
@@ -690,6 +708,26 @@
 			path = Support/iVersion;
 			sourceTree = "<group>";
 		};
+		880E85861A9D51A700EB3926 /* BCTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				880E85871A9D51A700EB3926 /* BCTab.h */,
+				880E85881A9D51A700EB3926 /* BCTab.m */,
+				880E85891A9D51A700EB3926 /* BCTabBar.h */,
+				880E858A1A9D51A700EB3926 /* BCTabBar.m */,
+				880E858B1A9D51A700EB3926 /* BCTabBarController.h */,
+				880E858C1A9D51A700EB3926 /* BCTabBarController.m */,
+				880E858D1A9D51A700EB3926 /* BCTabBarView.h */,
+				880E858E1A9D51A700EB3926 /* BCTabBarView.m */,
+				880E858F1A9D51A700EB3926 /* UINavigationController+icons.h */,
+				880E85901A9D51A700EB3926 /* UINavigationController+icons.m */,
+				880E85911A9D51A700EB3926 /* UIViewController+iconImage.h */,
+				880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */,
+			);
+			name = BCTabBarController;
+			path = Support/BCTabBarController;
+			sourceTree = "<group>";
+		};
 		8829A77518AD6B8B00DA41F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +747,8 @@
 				1140FDDC1517FE5100DE0A64 /* AboutView.m */,
 				11F3E5CF1519501800549099 /* SelectAlertView.h */,
 				11F3E5D01519501800549099 /* SelectAlertView.m */,
+				880E85831A9D4A5600EB3926 /* SelectMeterView.h */,
+				880E85841A9D4A5600EB3926 /* SelectMeterView.m */,
 				11F3E5D21519561400549099 /* InternalWebView.h */,
 				11F3E5D31519561400549099 /* InternalWebView.m */,
 				1168C315151966AB00897AA4 /* InstructionView.h */,
@@ -883,6 +923,9 @@
 		88BEFE3D18A1FC9400399680 /* Meters */ = {
 			isa = PBXGroup;
 			children = (
+				880E85811A9D495300EB3926 /* bars_triangle.png */,
+				8868EB7C1A9C9C11007D877D /* bars_circle.png */,
+				8868EB7D1A9C9C11007D877D /* bars_square.png */,
 				88BEFE3E18A1FCB000399680 /* 1.png */,
 				88BEFE3F18A1FCB000399680 /* 2.png */,
 				88BEFE4018A1FCB000399680 /* 3.png */,
@@ -926,6 +969,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				880E85861A9D51A700EB3926 /* BCTabBarController */,
 				887632511A8E2E71004D14FA /* SDWebImage */,
 				880461081A8C1F0B0032A3C8 /* iVersion */,
 				886712AC1A899F8D007101FD /* UIAlertView-Blocks */,
@@ -1087,11 +1131,12 @@
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
 				8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */,
 				8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */,
+				8868EB7E1A9C9C11007D877D /* bars_circle.png in Resources */,
+				880E85821A9D495300EB3926 /* bars_triangle.png in Resources */,
 				8807E75718D0052B0042AC59 /* overlay568.png in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				887169121A8A179500FD5B75 /* button_cancel2.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
-				117D94141516B5B1002C5479 /* top_logo_scores.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				880A003918ACD22C00FB84F5 /* upgrade.css in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
@@ -1107,7 +1152,6 @@
 				88818C5A17993CB3007B386F /* purchase@2x.png in Resources */,
 				88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */,
 				88BEFE5418A1FCB100399680 /* 6.png in Resources */,
-				117D94251516B8DE002C5479 /* button_info.png in Resources */,
 				880A002818AC83D800FB84F5 /* recordButton.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
@@ -1126,8 +1170,8 @@
 				11F3E5CC15194CAE00549099 /* button_close.png in Resources */,
 				88BEFE5E18A1FCB100399680 /* 16.png in Resources */,
 				11F3E5CD15194CAE00549099 /* button_close@2x.png in Resources */,
-				9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */,
 				9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */,
+				8868EB7F1A9C9C11007D877D /* bars_square.png in Resources */,
 				88FA090618C2A8960061FA0F /* soundOnButton3@2x.png in Resources */,
 				9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */,
 				88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */,
@@ -1166,6 +1210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887632801A8E2E71004D14FA /* UIImageView+HighlightedWebCache.m in Sources */,
+				880E85851A9D4A5600EB3926 /* SelectMeterView.m in Sources */,
 				88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */,
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
 				886712AB1A899F3B007101FD /* SWUtilityButtonView.m in Sources */,
@@ -1177,11 +1222,13 @@
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
 				886712A71A899F3B007101FD /* SWCellScrollView.m in Sources */,
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
+				880E85961A9D51A700EB3926 /* BCTabBarView.m in Sources */,
 				88A2FEA118B6CD9D0046E07D /* IDPSoundBoard.m in Sources */,
 				8876327A1A8E2E71004D14FA /* SDWebImageManager.m in Sources */,
 				887632811A8E2E71004D14FA /* UIImageView+WebCache.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
 				11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */,
+				880E85931A9D51A700EB3926 /* BCTab.m in Sources */,
 				881032AE18A361FE000CA722 /* BaseViewController.m in Sources */,
 				887632741A8E2E71004D14FA /* NSData+ImageContentType.m in Sources */,
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
@@ -1203,15 +1250,19 @@
 				886712A81A899F3B007101FD /* SWLongPressGestureRecognizer.m in Sources */,
 				1140FDDD1517FE5100DE0A64 /* AboutView.m in Sources */,
 				11F3E5D11519501800549099 /* SelectAlertView.m in Sources */,
+				880E85981A9D51A700EB3926 /* UIViewController+iconImage.m in Sources */,
+				880E85941A9D51A700EB3926 /* BCTabBar.m in Sources */,
 				8867128A1A899EAC007101FD /* ScoreArrayDataSource.m in Sources */,
 				8876327C1A8E2E71004D14FA /* UIButton+WebCache.m in Sources */,
 				8804610D1A8C1F0B0032A3C8 /* iVersion.m in Sources */,
+				880E85951A9D51A700EB3926 /* BCTabBarController.m in Sources */,
 				8876327B1A8E2E71004D14FA /* SDWebImagePrefetcher.m in Sources */,
 				887632821A8E2E71004D14FA /* UIView+WebCacheOperation.m in Sources */,
 				11F3E5D41519561400549099 /* InternalWebView.m in Sources */,
 				886712A61A899F3B007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				88818C631799F58F007B386F /* PurchaseViewController.m in Sources */,
 				8876327D1A8E2E71004D14FA /* UIImage+GIF.m in Sources */,
+				880E85971A9D51A700EB3926 /* UINavigationController+icons.m in Sources */,
 				1168C317151966AC00897AA4 /* InstructionView.m in Sources */,
 				886712AA1A899F3B007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				889FD23E177BC3F90046D281 /* Appirater.m in Sources */,
@@ -1322,8 +1373,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1338,8 +1393,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1348,8 +1403,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
@@ -1364,8 +1423,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

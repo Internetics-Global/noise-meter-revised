@@ -82,7 +82,7 @@
     [super loadView];
     [self style];
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, 79, 320, 150);
+    _meterBackground.frame = CGRectMake(0, 60, 320, 150);
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_meterBackground];
     

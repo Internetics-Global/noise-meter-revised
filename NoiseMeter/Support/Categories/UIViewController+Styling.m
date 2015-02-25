@@ -31,6 +31,10 @@
         [self.view addSubview:_backButton];
     }
     
+    UIView *topBlackView = [[UIView alloc] init];
+    topBlackView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:topBlackView];
+    
     UIImageView *_topImage;
     if ([NSUserDefaultsHelper isProVersion] || ([self isMemberOfClass:[PurchaseViewController class]])) {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
@@ -40,12 +44,15 @@
     _topImage.tag = K_TOP_IMAGEVIEW_TAG;
     if (_backButton != nil) 
     {
-        _topImage.frame = CGRectMake(0, 34, self.view.frame.size.width, 79);
+        _topImage.frame = CGRectMake(30, 34, self.view.frame.size.width - 30*2, 60);
+        topBlackView.frame = CGRectMake(0, 34, self.view.frame.size.width, 60);
     }
     else 
     {
-        _topImage.frame = CGRectMake(0, 0, self.view.frame.size.width, 79);
+        _topImage.frame = CGRectMake(30, 0, self.view.frame.size.width - 30*2, 60);
+        topBlackView.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
     }
+    [_topImage setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_topImage];
     [self.view bringSubviewToFront:_backButton];
     

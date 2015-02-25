@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, MeterDisplayType) {
+    MeterDisplayType_Unkown      = -1,
+    MeterDisplayType_Circle       = 0,
+    MeterDisplayType_Rectangle   = 1,
+    MeterDisplayType_Triangle    = 2,
+};
+
 @interface NSUserDefaultsHelper : NSObject
 
 /**
@@ -45,6 +52,9 @@
 
 + (BOOL) isSilentMode;
 + (void) setSilentMode:(BOOL) flag;
+
++ (MeterDisplayType)  meterDisplayType;
++ (void) setMeterDisplayType:(MeterDisplayType) type;
 
 
 @end

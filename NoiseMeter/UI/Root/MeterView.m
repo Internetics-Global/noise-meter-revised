@@ -77,9 +77,10 @@
     _currentReadingLabel.textColor = [UIColor redColor];
     
     _cancelButton.hidden = NO;
-    CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 50;
-    _currentReadingLabel.frame = rect;
+    
+//    CGRect rect = _currentReadingLabel.frame;
+//    rect.origin.x = 50;
+//    _currentReadingLabel.frame = rect;
     
 }
 
@@ -92,9 +93,9 @@
         _cancelButton.hidden = YES;
         _captureButton.hidden = YES;
         
-        CGRect rect = _currentReadingLabel.frame;
-        rect.origin.x = 10;
-        _currentReadingLabel.frame = rect;
+//        CGRect rect = _currentReadingLabel.frame;
+//        rect.origin.x = 10;
+//        _currentReadingLabel.frame = rect;
     }
 }
 
@@ -149,58 +150,99 @@
     
     [self style];
     
-    _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, 79, 320, 150);
+    //1. info
+    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
+    _infoButton.frame = CGRectMake(self.view.frame.size.width - 30, 15, 20, 20);
+    [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_infoButton];
+    
+    //2. meter base view
+    _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 248)];
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     _meterBackground.userInteractionEnabled = YES;
+    _meterBackground.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9];
     [self.view addSubview:_meterBackground];
     UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchLoggingStatus)];
     singleTapGesture.numberOfTapsRequired = 1;
     singleTapGesture.numberOfTouchesRequired = 1;
     [_meterBackground addGestureRecognizer:singleTapGesture];
     
-    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
-    _infoButton.frame = CGRectMake(self.view.frame.size.width - 30, _meterBackground.frame.origin.y, 30, 30);
-    [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_infoButton];
-    
-    if ([NSUserDefaultsHelper isProVersion]) {
-//We have to temporarily disable it since it's not feasible to airplay while both playback and recording
-//        _volumeView = [ [MPVolumeView alloc] init] ;
-//        _volumeView.frame = CGRectOffset(_infoButton.frame, -50, 0);
-//        [_volumeView setShowsRouteButton:YES];
-//        [_volumeView sizeToFit];
-//        [_volumeView setShowsVolumeSlider:NO];
-//        [self.view addSubview:_volumeView];
-    }
-    
-    
-    _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(10, _meterBackground.frame.origin.y + 10, 30, 30);
-    [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    _cancelButton.hidden = YES;
-    [self.view addSubview:_cancelButton];
-    
-    _currentReadingLabel = [[UILabel alloc] initWithFrame:
-                            CGRectMake(10, _meterBackground.frame.origin.y + 5, 200, 50)];
-    _currentReadingLabel.textAlignment = UITextAlignmentLeft;
-    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:40];
-    _currentReadingLabel.textColor = [UIColor greenColor];
-    _currentReadingLabel.backgroundColor = [UIColor clearColor];
-    _currentReadingLabel.userInteractionEnabled = YES;
-    [self.view addSubview:_currentReadingLabel];
-    
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(10, _meterBackground.frame.origin.y + 40, 310, _meterBackground.frame.size.height -65)];
+    //3. sound level view
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((CGRectGetWidth(_meterBackground.frame) - KSoundMeterViewWidth)/2, (CGRectGetHeight(_meterBackground.frame) - KSoundMeterViewWidth)/2, KSoundMeterViewWidth, KSoundMeterViewWidth)];
+    _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     [_soundLevelView setupSubviews];
     _soundLevelView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_soundLevelView];
+    [_meterBackground addSubview:_soundLevelView];
     [_soundLevelView addGestureRecognizer:singleTapGesture];
     
     [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
     [[NMDecibelLogger defaultLogger] startLogging];
     
+    //4. current reading base view
+    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, 70, 70)];
+    _currentReadingBaseView.backgroundColor = [UIColor darkGrayColor];
+    _currentReadingBaseView.layer.cornerRadius = 5;
+    _currentReadingBaseView.layer.masksToBounds = YES;
+    [_meterBackground addSubview:_currentReadingBaseView];
+    
+    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
+    _currentReadingDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+    _currentReadingDesLabel.textColor = [UIColor grayColor];
+    _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
+    _currentReadingDesLabel.layer.cornerRadius = 5;
+    _currentReadingDesLabel.text = @"NOW";
+    _currentReadingDesLabel.layer.masksToBounds = YES;
+    [_currentReadingBaseView addSubview:_currentReadingDesLabel];
+    
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _currentReadingLabel.textAlignment = UITextAlignmentCenter;
+    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _currentReadingLabel.textColor = [UIColor grayColor];
+    _currentReadingLabel.backgroundColor = [UIColor clearColor];
+    _currentReadingLabel.layer.cornerRadius = 5;
+    _currentReadingLabel.layer.masksToBounds = YES;
+    [_currentReadingBaseView addSubview:_currentReadingLabel];
+    
+    //5. cancel button
+    _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
+    _cancelButton.frame = CGRectMake(CGRectGetMaxX(_currentReadingBaseView.frame) + 5, CGRectGetMinY(_currentReadingBaseView.frame), 30, 30);
+    [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    _cancelButton.hidden = YES;
+    [_meterBackground addSubview:_cancelButton];
+    
+
+    //6. peak view
+    _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
+    _peakBaseView.backgroundColor = [UIColor darkGrayColor];
+    _peakBaseView.layer.cornerRadius = 5;
+    _peakBaseView.layer.masksToBounds = YES;
+    [_meterBackground addSubview:_peakBaseView];
+    
+    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _peakDesLabel.textAlignment = UITextAlignmentCenter;
+    _peakDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+    _peakDesLabel.textColor = [UIColor grayColor];
+    _peakDesLabel.backgroundColor = [UIColor clearColor];
+    _peakDesLabel.layer.cornerRadius = 5;
+    _peakDesLabel.text = @"HIGH";
+    _peakDesLabel.layer.masksToBounds = YES;
+    [_peakBaseView addSubview:_peakDesLabel];
+    
+    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _peakLabel.textAlignment = UITextAlignmentCenter;
+    _peakLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _peakLabel.textColor = [UIColor grayColor];
+    _peakLabel.backgroundColor = [UIColor clearColor];
+    _peakLabel.layer.cornerRadius = 5;
+    _peakLabel.layer.masksToBounds = YES;
+    [_peakBaseView addSubview:_peakLabel];
+    
+    _peakBaseView.hidden = YES;
+    
+    //7. capture view
     _captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_captureButton setImage:[UIImage imageNamed:@"button_capture.png"] forState:UIControlStateNormal];
     _captureButton.frame = CGRectMake(self.view.frame.size.width - 89, _meterBackground.frame.origin.y + _meterBackground.frame.size.height - 20, 89, 29);
@@ -208,20 +250,17 @@
     _captureButton.hidden = YES;
     [_captureButton addTarget:self action:@selector(capture) forControlEvents:UIControlEventTouchUpInside];
     
-    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, _captureButton.frame.origin.y, 200, 29)];
-    _peakLabel.textColor = [UIColor whiteColor];
-    _peakLabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_peakLabel];
-    _peakLabel.hidden = YES;
+    
     
     [self reloadData];
+    
     
     _formBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
     _formBackground.frame = CGRectMake(0, _meterBackground.frame.origin.y + _meterBackground.frame.size.height + 10, 320, 150);
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
@@ -249,6 +288,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9];
     
     [NSUserDefaultsHelper setLoggingPauseFlag:NO];
 }
@@ -374,7 +415,7 @@
             return;
         }
         
-        _currentReadingLabel.text = [NSString stringWithFormat:@"%.1f", [_currentReading floatValue]];
+        _currentReadingLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
         [_soundLevelView setSoundLevelValue:[_currentReading floatValue]];
         NSNumber *threshold = [NMDecibelLogger defaultLogger].alertThreshold;
         if ((_peakReading == nil) || ([_peakReading floatValue] < [_currentReading floatValue])) 
@@ -424,20 +465,21 @@
         {
             //NSLog(@"Not reach threahold");
             _startForDelayAlarmSound = [NSDate date];
-            _currentReadingLabel.textColor = [UIColor greenColor];
+            _currentReadingLabel.textColor = [UIColor grayColor];
             [self success];
         }
         
         
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
         {
-            _peakLabel.hidden = NO;
-            _peakLabel.text = [NSString stringWithFormat:@"Last Peak: %.1f", [_peakReading floatValue]];
+            _peakBaseView.hidden = NO;
+            _peakLabel.text = [NSString stringWithFormat:@"%d", [_peakReading intValue]];
             _captureButton.hidden = NO;
             _cancelButton.hidden = NO;
-            CGRect rect = _currentReadingLabel.frame;
-            rect.origin.x = 50;
-            _currentReadingLabel.frame = rect;
+            
+//            CGRect rect = _currentReadingLabel.frame;
+//            rect.origin.x = 50;
+//            _currentReadingLabel.frame = rect;
         }
         
     }
@@ -495,7 +537,7 @@
 {
     _peakReading = nil;
     //_captureButton.hidden = YES;
-    _peakLabel.hidden = YES;
+    _peakBaseView.hidden = YES;
     [super viewDidDisappear:animated];
 }
 
@@ -504,12 +546,14 @@
     self.screenName = @"MeterView Screen";
     
     if ([NSUserDefaultsHelper isProVersion]) {
-        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44);
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44);
     } else {
-        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_captureButton.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_captureButton.frame) - 44 - CGRectGetHeight(self.generalADButton.frame));
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44 - CGRectGetHeight(self.generalADButton.frame));
     }
     
     [self reloadData];
+    
+    [_soundLevelView refreshMeterImageView];
 
 }
 
@@ -520,9 +564,9 @@
         _cancelButton.hidden = YES;
         _captureButton.hidden = YES;
         
-        CGRect rect = _currentReadingLabel.frame;
-        rect.origin.x = 10;
-        _currentReadingLabel.frame = rect;
+//        CGRect rect = _currentReadingLabel.frame;
+//        rect.origin.x = 10;
+//        _currentReadingLabel.frame = rect;
     }
 }
 
@@ -548,9 +592,9 @@
     _captureButton.hidden = YES;
     _cancelButton.hidden = YES;
     
-    CGRect rect = _currentReadingLabel.frame;
-    rect.origin.x = 10;
-    _currentReadingLabel.frame = rect;
+//    CGRect rect = _currentReadingLabel.frame;
+//    rect.origin.x = 10;
+//    _currentReadingLabel.frame = rect;
 }
 
 - (void)pauseLoggingSwitchNotification:(NSNotification *)notification {

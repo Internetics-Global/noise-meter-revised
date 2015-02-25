@@ -13,15 +13,23 @@
 #import "IDPSoundBoard.h"
 
 @interface MeterView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate>{
-    UIImageView    * _meterBackground;
+    UIView         * _meterBackground;
+    
     UILabel        * _currentReadingLabel;
+    UIView         * _currentReadingBaseView;
+    UILabel        * _currentReadingDesLabel;
+    
+    NSNumber       * _peakReading;
+    UILabel        * _peakLabel;
+    UIView         * _peakBaseView;
+    UILabel        * _peakDesLabel;
+    
     UITableView    * _topScoreTable;
     NSArray        * _scores;
     UIButton       * _captureButton;
     NSNumber       * _currentReading;
     UIImageView    * _formBackground;
-    NSNumber       * _peakReading;
-    UILabel        * _peakLabel;
+    
     UILabel        * _titleLabel;
     UIButton       * _infoButton;
     UIButton       * _cancelButton;

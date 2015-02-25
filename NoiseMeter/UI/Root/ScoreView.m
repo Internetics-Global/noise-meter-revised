@@ -53,14 +53,14 @@
     [self style];
     
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, 79 + 29, 320, 150);
+    _meterBackground.frame = CGRectMake(0, 60 + 29, 320, 150);
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_meterBackground];
     
     _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 79, 73, 29);
+    _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 60, 73, 29);
     [self.view addSubview:_resetButton];
     [self reloadData];
     
@@ -138,6 +138,8 @@
     if (_tableHeader == nil) 
     {
         _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
+        _tableHeader.contentMode = UIViewContentModeScaleAspectFit;
+        _tableHeader.backgroundColor =[UIColor blackColor];
         
     }
     return _tableHeader;

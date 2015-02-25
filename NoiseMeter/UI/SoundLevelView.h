@@ -13,4 +13,6 @@
 - (void) setupSubviews;
 - (void) setSoundLevelValue:(float) val;
 
+- (void) refreshMeterImageView;
+
 @end

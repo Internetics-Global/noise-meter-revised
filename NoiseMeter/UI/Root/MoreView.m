@@ -18,6 +18,7 @@
 #import "PurchaseViewController.h"
 #import "NMDecibelLogger.h"
 #import "UIAlertView+Blocks.h"
+#import "SelectMeterView.h"
 
 
 @interface MoreView ()
@@ -46,9 +47,9 @@
     }
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 105 + purchaseButtonHeight) style:UITableViewStyleGrouped];
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60 - 105 + purchaseButtonHeight) style:UITableViewStyleGrouped];
     } else {
-        _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 79, self.view.frame.size.width, self.view.frame.size.height - 79 - 65 + purchaseButtonHeight) style:UITableViewStyleGrouped];
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60 - 65 + purchaseButtonHeight) style:UITableViewStyleGrouped];
     }
     
     _optionTable.delegate = self;
@@ -70,21 +71,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 13;
+    return 14;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 0) || (indexPath.row == 2) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5)|| (indexPath.row == 6) || (indexPath.row == 7)) {
+    if ((indexPath.row == 0) || (indexPath.row == 3) || (indexPath.row == 4) || (indexPath.row == 5) || (indexPath.row == 6)|| (indexPath.row == 7) || (indexPath.row == 8)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
         switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
         cell.accessoryView = switchView;
         
-        if (indexPath.row == 3) {
+        if (indexPath.row == 4) {
             
             [switchView addTarget:self action:@selector(speakerOutputSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
@@ -95,7 +96,7 @@
                 [switchView setOn:YES];
             }
             
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 3) {
             [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Work In Background"];
@@ -120,7 +121,7 @@
                 [switchView setOn:YES];
                 
             }
-        } else if (indexPath.row == 4) {
+        } else if (indexPath.row == 5) {
             [switchView addTarget:self action:@selector(ignoreSuddenNoiseSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Ignore Sudden Noise"];
@@ -130,7 +131,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 5) {
+        } else if (indexPath.row == 6) {
             [switchView addTarget:self action:@selector(delayAlarmSoundSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Delay Alarm Sound"];
             if ([NSUserDefaultsHelper isDelayAlarmSound] == YES) {
@@ -139,7 +140,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 6) {
+        } else if (indexPath.row == 7) {
             [switchView addTarget:self action:@selector(continuousModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Continous Mode"];
             if ([NSUserDefaultsHelper isContinuousMode] == YES) {
@@ -148,7 +149,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 7) {
+        } else if (indexPath.row == 8) {
             [switchView addTarget:self action:@selector(silentModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Silent Mode"];
             if ([NSUserDefaultsHelper isSilentMode] == YES) {
@@ -170,24 +171,27 @@
         if (indexPath.row == 1)
         {
             cell.textLabel.text = @"Select Alert Sound";
-        }
-        else if (indexPath.row == 8)
+        }else if (indexPath.row == 2)
         {
-            cell.textLabel.text = @"Instructions / Tips";
+            cell.textLabel.text = @"Meter Display";
         }
         else if (indexPath.row == 9)
         {
-            cell.textLabel.text = @"About";
+            cell.textLabel.text = @"Instructions / Tips";
         }
         else if (indexPath.row == 10)
         {
-            cell.textLabel.text = @"Visit developer's website";
+            cell.textLabel.text = @"About";
         }
         else if (indexPath.row == 11)
         {
-            cell.textLabel.text = @"Tell a Friend";
+            cell.textLabel.text = @"Visit developer's website";
         }
         else if (indexPath.row == 12)
+        {
+            cell.textLabel.text = @"Tell a Friend";
+        }
+        else if (indexPath.row == 13)
         {
             cell.textLabel.text = @"Support";
         }
@@ -230,24 +234,28 @@
     {
         SelectAlertView *about = [[SelectAlertView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
+    } else if(indexPath.row == 2)
+    {
+        SelectMeterView *about = [[SelectMeterView alloc] init];
+        [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 8)
+    else if(indexPath.row == 9)
     {
         InstructionView *about = [[InstructionView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if (indexPath.row == 9)
+    else if (indexPath.row == 10)
     {
         AboutView *about = [[AboutView alloc] init];
         [self.navigationController pushViewController:about animated:YES];
     }
-    else if(indexPath.row == 10)
+    else if(indexPath.row == 11)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
         [self.navigationController pushViewController:web animated:YES];
     }
     
-    else if ((indexPath.row == 11) || (indexPath.row ==12))
+    else if ((indexPath.row == 12) || (indexPath.row ==13))
     {
         if ([MFMailComposeViewController canSendMail])
         {
@@ -257,7 +265,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 11)
+            if (indexPath.row == 12)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];

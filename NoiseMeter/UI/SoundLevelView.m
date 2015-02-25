@@ -9,10 +9,13 @@
 #import "SoundLevelView.h"
 #import "NMDecibelLogger.h"
 
-#define kNumberSlices 17.0
-//#define kMaxSoundLevel 99
 #define kMinSoundLevel 30
-#define kSliceInterval 3.0
+
+@interface SoundLevelView () {
+    UIImageView *_meterImageView;
+}
+
+@end
 
 @implementation SoundLevelView
 
@@ -26,19 +29,25 @@
 
 
 - (void) setupSubviews {
-    int maxHeight = CGRectGetHeight(self.frame);
-    int width = CGRectGetWidth(self.frame)/kNumberSlices;
+    
+    _meterImageView = [[UIImageView alloc] init];
+    [_meterImageView setContentMode:UIViewContentModeScaleAspectFill];
+    _meterImageView.autoresizingMask = UIViewAutoresizingNone;
+    _meterImageView.frame = self.bounds;
+    _meterImageView.tag = -1;
+    [self addSubview:_meterImageView];
+    
+    [self refreshMeterImageView];
+    
+    float width = KSoundMeterViewWidth/kNumberSlices;
     
     for (int i = 1; i <= kNumberSlices; i++) {
-        int height = maxHeight * (i/(kNumberSlices + 5)) + 25;
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(width *(i-1), (maxHeight - height), width - kSliceInterval, height)];
-        NSString *fileName = [NSString stringWithFormat:@"%d.png",i];
-        [imageView setImage:[UIImage imageNamed:fileName]];
-        imageView.tag = i - 1;
-        [imageView setBackgroundColor:[UIColor clearColor]];
-        [imageView setContentMode:UIViewContentModeScaleToFill];
-        [self addSubview:imageView];
-        imageView.hidden = YES;
+        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(width *(i-1), 0, width, KSoundMeterViewWidth)];
+        overlapView.tag = i - 1;
+        [overlapView setBackgroundColor:[UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9]];
+        [overlapView setContentMode:UIViewContentModeScaleToFill];
+        [self addSubview:overlapView];
+        overlapView.hidden = YES;
     }
 }
 
@@ -56,18 +65,41 @@
     
     float inteval = (maxAllowedSoundLevel - kMinSoundLevel)/kNumberSlices;
     int no = (val - kMinSoundLevel)/inteval;
-    NSArray *myViews = self.subviews;
+   
+    NSMutableArray *overlapArray = [NSMutableArray array];
+    for (UIView *myView in self.subviews) {
+        if (myView.tag != -1) {
+            [overlapArray addObject:myView];
+        }
+    }
     
-    if (no > [myViews count]) {
-        no = [myViews count];
+    if (no > [overlapArray count]) {
+        no = [overlapArray count];
+    }
+    
+    for (int i = 0; i< kNumberSlices; i++) {
+        [overlapArray[i] setHidden:NO];
     }
     
     for (int i = 0; i< no; i++) {
-      [myViews[i] setHidden:NO];
+        [overlapArray[i] setHidden:YES];
     }
     
-    for (int i = no; i< kNumberSlices; i++) {
-      [myViews[i] setHidden:YES];
+}
+
+/**
+ *  Update image
+ */
+- (void) refreshMeterImageView {
+    
+    MeterDisplayType meterDisplayType = [NSUserDefaultsHelper meterDisplayType];
+    if (meterDisplayType == MeterDisplayType_Circle) {
+        [_meterImageView setImage:[UIImage imageNamed:@"bars_circle"]];
+    } else if (meterDisplayType == MeterDisplayType_Rectangle) {
+        [_meterImageView setImage:[UIImage imageNamed:@"bars_square"]];
+    } else if (meterDisplayType == MeterDisplayType_Triangle) {
+        [_meterImageView setImage:[UIImage imageNamed:@"bars_triangle"]];
+        
     }
     
 }

@@ -147,6 +147,18 @@
     [userDefaults synchronize];
 }
 
++ (MeterDisplayType) meterDisplayType {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger type = [userDefaults integerForKey:@"METER_DISPLAY_TYPE"];
+    return type;
+}
+
++ (void) setMeterDisplayType:(MeterDisplayType) type {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:type forKey:@"METER_DISPLAY_TYPE"];
+    [userDefaults synchronize];
+}
+
 
 
 @end
