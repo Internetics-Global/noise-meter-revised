@@ -30,16 +30,21 @@
 
 //Banner url
 #define k_Pro_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"
-#define k_Pro_Classroom_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/proclassroom.png"
+#define k_Pro_Classroom_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/top_logo-pro-classroom%402x.png"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)
 
 #define K_TOP_IMAGEVIEW_TAG 99
 
+//Meter display view related
 #define KSoundMeterViewWidth        220
 #define kNumberSlices               12.0
 #define kSliceInterval              0
+
+//Top logo related
+#define KTopLogoHeight              60.0
+#define KNavigationBarHeight        44.0  
 
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 

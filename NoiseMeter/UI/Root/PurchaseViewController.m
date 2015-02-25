@@ -66,16 +66,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0") == FALSE) {
-        _purchaseButton.frame = CGRectOffset(_purchaseButton.frame, 0, 49);
-        _restoreButton.frame = CGRectOffset(_restoreButton.frame, 0, 49);
-    } else {
-        CGRect rect = self.webview.frame;
-        rect.size.height = rect.size.height - 29;
-        self.webview.frame = rect;
-    }
+
     
     
     if (iPhone5) {

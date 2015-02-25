@@ -19,7 +19,7 @@
 
 - (void)style
 {
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
     UIButton *_backButton = nil;
     if ((self.navigationController) && ([[self.navigationController viewControllers] count] > 1) && (![self isMemberOfClass:NSClassFromString(@"CaptureView")])) 
     {
@@ -44,13 +44,13 @@
     _topImage.tag = K_TOP_IMAGEVIEW_TAG;
     if (_backButton != nil) 
     {
-        _topImage.frame = CGRectMake(30, 34, self.view.frame.size.width - 30*2, 60);
-        topBlackView.frame = CGRectMake(0, 34, self.view.frame.size.width, 60);
+        _topImage.frame = CGRectMake(30, KNavigationBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
+        topBlackView.frame = CGRectMake(0, KNavigationBarHeight, self.view.frame.size.width, KTopLogoHeight);
     }
     else 
     {
-        _topImage.frame = CGRectMake(30, 0, self.view.frame.size.width - 30*2, 60);
-        topBlackView.frame = CGRectMake(0, 0, self.view.frame.size.width, 60);
+        _topImage.frame = CGRectMake(30, 0, self.view.frame.size.width - 30*2, KTopLogoHeight);
+        topBlackView.frame = CGRectMake(0, 0, self.view.frame.size.width, KTopLogoHeight);
     }
     [_topImage setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_topImage];

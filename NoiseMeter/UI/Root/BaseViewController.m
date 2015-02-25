@@ -92,13 +92,8 @@
             
             self.generalADButton = [UIButton buttonWithType:UIButtonTypeCustom];
             self.generalADButton.frame = CGRectMake(0, 0, 320, 50);
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                self.generalADButton.center = CGPointMake(self.view.center.x,
-                                                          CGRectGetHeight(self.view.frame) - 49 - 25);
-            } else {
-                self.generalADButton.center = CGPointMake(self.view.center.x,
-                                                          CGRectGetHeight(self.view.frame) - 25);
-            }
+            self.generalADButton.center = CGPointMake(self.view.center.x,
+                                                      CGRectGetHeight(self.view.frame) - 25);
             
             self.generalADButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
             [self.generalADButton setBackgroundColor:[UIColor redColor]];
@@ -106,9 +101,9 @@
             [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
             
             if ([NSUserDefaultsHelper isProVersion]) {
-                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
+                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"top_logo-pro-classroom"]];
             } else {
-                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
+                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"top_logo-pro"]];
             }
             
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];

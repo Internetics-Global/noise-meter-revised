@@ -82,7 +82,7 @@
     [super loadView];
     [self style];
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, 60, 320, 150);
+    _meterBackground.frame = CGRectMake(0, KTopLogoHeight, 320, 130);
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_meterBackground];
     
@@ -96,7 +96,7 @@
     [self.view addSubview:_currentReadingLabel];
     
     _formBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _formBackground.frame = CGRectMake(0, _meterBackground.frame.origin.y + _meterBackground.frame.size.height + 10, 320, 150);
+    _formBackground.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame) + 10, 320, 180);
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     

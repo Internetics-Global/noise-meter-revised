@@ -45,11 +45,12 @@
     if ([NSUserDefaultsHelper isProVersion]) {
         purchaseButtonHeight = 50;
     }
+
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60 - 105 + purchaseButtonHeight) style:UITableViewStyleGrouped];
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight + KNavigationBarHeight, self.view.frame.size.width, self.view.frame.size.height - KTopLogoHeight - KNavigationBarHeight - purchaseButtonHeight) style:UITableViewStyleGrouped];
     } else {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height - 60 - 65 + purchaseButtonHeight) style:UITableViewStyleGrouped];
+      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, self.view.frame.size.height - KTopLogoHeight - KNavigationBarHeight - purchaseButtonHeight) style:UITableViewStyleGrouped];
     }
     
     _optionTable.delegate = self;
@@ -65,7 +66,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
+    return 0.01f;
 }
 
 
@@ -236,8 +237,21 @@
         [self.navigationController pushViewController:about animated:YES];
     } else if(indexPath.row == 2)
     {
-        SelectMeterView *about = [[SelectMeterView alloc] init];
-        [self.navigationController pushViewController:about animated:YES];
+        if ([NSUserDefaultsHelper isProVersion] == FALSE) {
+            
+            [UIAlertView showWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                if (buttonIndex == 1) {
+                    [self showPurchaseView];
+                }
+                
+            }];
+            
+            
+        } else {
+            SelectMeterView *about = [[SelectMeterView alloc] init];
+            [self.navigationController pushViewController:about animated:YES];
+        }
+        
     }
     else if(indexPath.row == 9)
     {

@@ -13,7 +13,7 @@
 
 + (BOOL) isProVersion {
     
-    //return YES; //only for debug
+    return YES; //only for debug
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];

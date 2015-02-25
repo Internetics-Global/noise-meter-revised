@@ -32,6 +32,7 @@
     
     UILabel        * _titleLabel;
     UIButton       * _infoButton;
+    UIButton       * _moreButton;
     UIButton       * _cancelButton;
     
     SoundLevelView * _soundLevelView;

@@ -27,9 +27,9 @@
     int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 145, self.view.frame.size.width, screenHeight - 295) style:UITableViewStyleGrouped];
+        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight + KNavigationBarHeight, self.view.frame.size.width, screenHeight - 295) style:UITableViewStyleGrouped];
     } else {
-        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 145, self.view.frame.size.width, screenHeight - 275) style:UITableViewStyleGrouped];
+        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, screenHeight - 275) style:UITableViewStyleGrouped];
     }
     
     _alertTable.delegate = self;

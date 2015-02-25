@@ -31,6 +31,10 @@
 
 #pragma mark – Life Cycle
 
+- (NSString *)iconImageName {
+    return @"icon_scores";
+}
+
 - (id)init
 {
     self = [super init];
@@ -52,23 +56,21 @@
     
     [self style];
     
-    _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, 60 + 29, 320, 150);
-    _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:_meterBackground];
-    
     _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 60, 73, 29);
     [self.view addSubview:_resetButton];
+    
+    _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
+    _meterBackground.frame = CGRectMake(0, CGRectGetMaxY(_resetButton.frame), 320, 150);
+    _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    [self.view addSubview:_meterBackground];
+    
+    
     [self reloadData];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _meterBackground.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y) - 49) style:UITableViewStylePlain];
-    } else {
-        _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _meterBackground.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y)) style:UITableViewStylePlain];
-    }
+    _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _meterBackground.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y) ) style:UITableViewStylePlain];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
         _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -13,7 +13,11 @@
 #import "MoreView.h"
 #import "NMDecibelLogger.h"
 
-@interface RootView ()
+#import "BCTabBarController.h"
+
+@interface RootView () {
+    BCTabBarController *_tabBarController;
+}
 
 @end
 
@@ -31,16 +35,7 @@
     [super loadView];
     
     if (_tabBarController == nil) {
-        _tabBarController = [[UITabBarController alloc] init];
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            int statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-            int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
-            _tabBarController.view.frame = CGRectMake(0, 20, 320, screenHeight - statusBarHeight);
-            
-        } else {
-            _tabBarController.view.frame = self.view.bounds;
-        }
-        _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _tabBarController = [[BCTabBarController alloc] init];
         NSMutableArray *_viewControllers = [[NSMutableArray alloc] init];
         
         MeterView *meter = [[MeterView alloc] init];
@@ -58,13 +53,19 @@
         [alertNav setNavigationBarHidden:YES];
         [_viewControllers addObject:alertNav];
         
-        MoreView *more = [[MoreView alloc] init];
-        UINavigationController *moreNav = [[UINavigationController alloc] initWithRootViewController:more];
-        [moreNav setNavigationBarHidden:YES];
-        [_viewControllers addObject:moreNav];
         
         _tabBarController.viewControllers = _viewControllers;
-        _tabBarController.delegate = self;
+//        _tabBarController.delegate = self; //TODO:XXXX
+        
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            int statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+            int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
+            _tabBarController.view.frame = CGRectMake(0, 20, 320, screenHeight - statusBarHeight);
+            
+        } else {
+            _tabBarController.view.frame = self.view.bounds;
+        }
+        _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     
     [self.view addSubview:_tabBarController.view];
@@ -77,7 +78,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

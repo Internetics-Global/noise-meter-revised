@@ -18,6 +18,7 @@
 #import "ScoreArrayDataSource.h"
 #import "NMDataManager.h"
 #import "IDPSoundBoard.h"
+#import "MoreView.h"
 
 //忽略那种短暂的噪声
 #define K_Second_IgnoreSuddenNoise     0.5
@@ -45,6 +46,10 @@
 @end
 
 @implementation MeterView
+
+- (NSString *)iconImageName {
+    return @"icon_meter";
+}
 
 - (id)init
 {
@@ -150,15 +155,21 @@
     
     [self style];
     
-    //1. info
+    //1. info and more
     _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
-    _infoButton.frame = CGRectMake(self.view.frame.size.width - 30, 15, 20, 20);
+    _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
     [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
+    _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
+    _moreButton.frame = CGRectMake(15, 18, 20, 20);
+    [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_moreButton];
+    
     //2. meter base view
-    _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 60, 320, 248)];
+    _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, 320, 248)];
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     _meterBackground.userInteractionEnabled = YES;
     _meterBackground.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9];
@@ -260,7 +271,7 @@
     _formBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:_formBackground];
     
-    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44) style:UITableViewStylePlain];
+    _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - KNavigationBarHeight) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
@@ -279,6 +290,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
     
     
+}
+
+- (void) moreButtonCLicked {
+    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:moreViewController animated:YES];
 }
 
 - (void) goToPurchasePage {
@@ -546,9 +562,9 @@
     self.screenName = @"MeterView Screen";
     
     if ([NSUserDefaultsHelper isProVersion]) {
-        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44);
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame));
     } else {
-        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - 44 - CGRectGetHeight(self.generalADButton.frame));
+        _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - CGRectGetHeight(self.generalADButton.frame));
     }
     
     [self reloadData];

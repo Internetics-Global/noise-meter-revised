@@ -21,7 +21,6 @@
 		111A18D21505E3A9005655F1 /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A18D11505E3A9005655F1 /* ScoreView.m */; };
 		111A18D51505E3B8005655F1 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A18D41505E3B8005655F1 /* AlertView.m */; };
 		1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDCC1517FA3400DE0A64 /* MoreView.m */; };
-		1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 1140FDCF1517FBE700DE0A64 /* icon_more.png */; };
 		1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1140FDD01517FBE700DE0A64 /* icon_more@2x.png */; };
 		1140FDD41517FC6400DE0A64 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD31517FC6400DE0A64 /* MessageUI.framework */; };
 		1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */; };
@@ -43,11 +42,8 @@
 		11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */; };
 		11AC52F81505D3850093C7AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC52F71505D3850093C7AB /* Default.png */; };
 		11AC52FA1505D3950093C7AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC52F91505D3950093C7AB /* Default@2x.png */; };
-		11AC53091505D3F20093C7AB /* icon_alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53031505D3F20093C7AB /* icon_alert.png */; };
 		11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53041505D3F20093C7AB /* icon_alert@2x.png */; };
-		11AC530B1505D3F20093C7AB /* icon_meter.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53051505D3F20093C7AB /* icon_meter.png */; };
 		11AC530C1505D3F20093C7AB /* icon_meter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53061505D3F20093C7AB /* icon_meter@2x.png */; };
-		11AC530D1505D3F20093C7AB /* icon_scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53071505D3F20093C7AB /* icon_scores.png */; };
 		11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53081505D3F20093C7AB /* icon_scores@2x.png */; };
 		11AC53111505D4140093C7AB /* button_capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC530F1505D4140093C7AB /* button_capture.png */; };
 		11AC53121505D4140093C7AB /* button_capture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53101505D4140093C7AB /* button_capture@2x.png */; };
@@ -83,6 +79,7 @@
 		880E85961A9D51A700EB3926 /* BCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858E1A9D51A700EB3926 /* BCTabBarView.m */; };
 		880E85971A9D51A700EB3926 /* UINavigationController+icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85901A9D51A700EB3926 /* UINavigationController+icons.m */; };
 		880E85981A9D51A700EB3926 /* UIViewController+iconImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */; };
+		880E859A1A9D53CC00EB3926 /* BCTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880E85991A9D53CC00EB3926 /* BCTabBarController.bundle */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
 		883069B218B4CC460067750A /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
@@ -209,7 +206,6 @@
 		111A18D41505E3B8005655F1 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = UI/Root/AlertView.m; sourceTree = "<group>"; };
 		1140FDCB1517FA3400DE0A64 /* MoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreView.h; path = UI/Root/MoreView.h; sourceTree = "<group>"; };
 		1140FDCC1517FA3400DE0A64 /* MoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreView.m; path = UI/Root/MoreView.m; sourceTree = "<group>"; };
-		1140FDCF1517FBE700DE0A64 /* icon_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_more.png; sourceTree = "<group>"; };
 		1140FDD01517FBE700DE0A64 /* icon_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_more@2x.png"; sourceTree = "<group>"; };
 		1140FDD31517FC6400DE0A64 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -240,11 +236,8 @@
 		11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Styling.m"; path = "Support/Categories/UIViewController+Styling.m"; sourceTree = "<group>"; };
 		11AC52F71505D3850093C7AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		11AC52F91505D3950093C7AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		11AC53031505D3F20093C7AB /* icon_alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_alert.png; sourceTree = "<group>"; };
 		11AC53041505D3F20093C7AB /* icon_alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_alert@2x.png"; sourceTree = "<group>"; };
-		11AC53051505D3F20093C7AB /* icon_meter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_meter.png; sourceTree = "<group>"; };
 		11AC53061505D3F20093C7AB /* icon_meter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_meter@2x.png"; sourceTree = "<group>"; };
-		11AC53071505D3F20093C7AB /* icon_scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scores.png; sourceTree = "<group>"; };
 		11AC53081505D3F20093C7AB /* icon_scores@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_scores@2x.png"; sourceTree = "<group>"; };
 		11AC530F1505D4140093C7AB /* button_capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_capture.png; sourceTree = "<group>"; };
 		11AC53101505D4140093C7AB /* button_capture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_capture@2x.png"; sourceTree = "<group>"; };
@@ -291,6 +284,7 @@
 		880E85901A9D51A700EB3926 /* UINavigationController+icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+icons.m"; sourceTree = "<group>"; };
 		880E85911A9D51A700EB3926 /* UIViewController+iconImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+iconImage.h"; sourceTree = "<group>"; };
 		880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+iconImage.m"; sourceTree = "<group>"; };
+		880E85991A9D53CC00EB3926 /* BCTabBarController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BCTabBarController.bundle; path = NoiseMeter/Support/BCTabBarController.bundle; sourceTree = SOURCE_ROOT; };
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = UI/Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
@@ -673,13 +667,9 @@
 				88A95E3C18A47FC100E56939 /* cancel@2x.png */,
 				88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */,
 				88BEFE1418A1DEB000399680 /* cancel@2x.png */,
-				1140FDCF1517FBE700DE0A64 /* icon_more.png */,
 				1140FDD01517FBE700DE0A64 /* icon_more@2x.png */,
-				11AC53031505D3F20093C7AB /* icon_alert.png */,
 				11AC53041505D3F20093C7AB /* icon_alert@2x.png */,
-				11AC53051505D3F20093C7AB /* icon_meter.png */,
 				11AC53061505D3F20093C7AB /* icon_meter@2x.png */,
-				11AC53071505D3F20093C7AB /* icon_scores.png */,
 				11AC53081505D3F20093C7AB /* icon_scores@2x.png */,
 			);
 			path = Icons;
@@ -711,6 +701,7 @@
 		880E85861A9D51A700EB3926 /* BCTabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				880E85991A9D53CC00EB3926 /* BCTabBarController.bundle */,
 				880E85871A9D51A700EB3926 /* BCTab.h */,
 				880E85881A9D51A700EB3926 /* BCTab.m */,
 				880E85891A9D51A700EB3926 /* BCTabBar.h */,
@@ -1094,13 +1085,10 @@
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
 				88A95E4418A4803000E56939 /* mic.png in Resources */,
 				88A95E4518A4803000E56939 /* noads.png in Resources */,
-				11AC53091505D3F20093C7AB /* icon_alert.png in Resources */,
 				88E8423118B1B69800B0FB50 /* release_notes.md in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
-				11AC530B1505D3F20093C7AB /* icon_meter.png in Resources */,
 				11AC530C1505D3F20093C7AB /* icon_meter@2x.png in Resources */,
 				88BEFE5718A1FCB100399680 /* 9.png in Resources */,
-				11AC530D1505D3F20093C7AB /* icon_scores.png in Resources */,
 				88BEFE5918A1FCB100399680 /* 11.png in Resources */,
 				888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
@@ -1134,6 +1122,7 @@
 				8868EB7E1A9C9C11007D877D /* bars_circle.png in Resources */,
 				880E85821A9D495300EB3926 /* bars_triangle.png in Resources */,
 				8807E75718D0052B0042AC59 /* overlay568.png in Resources */,
+				880E859A1A9D53CC00EB3926 /* BCTabBarController.bundle in Resources */,
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				887169121A8A179500FD5B75 /* button_cancel2.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
@@ -1155,7 +1144,6 @@
 				880A002818AC83D800FB84F5 /* recordButton.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
-				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
 				880461101A8C28150032A3C8 /* versions.plist in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				883069B218B4CC460067750A /* home_alarm.caf in Resources */,

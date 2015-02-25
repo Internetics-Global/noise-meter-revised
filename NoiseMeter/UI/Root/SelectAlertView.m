@@ -36,11 +36,7 @@
     
     UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        createCustomAlarmButton.frame = CGRectMake(20,  screenHeight - 110, 280, 37);
-    } else {
-        createCustomAlarmButton.frame = CGRectMake(20, screenHeight - 65, 280, 37);
-    }
+    createCustomAlarmButton.frame = CGRectMake(20, screenHeight - 65, 280, 37);
     
     createCustomAlarmButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [createCustomAlarmButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];

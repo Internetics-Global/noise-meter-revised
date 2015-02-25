@@ -14,6 +14,10 @@
 
 @implementation AlertView
 
+- (NSString *)iconImageName {
+    return @"icon_alert";
+}
+
 - (id)init
 {
     self = [super init];
@@ -36,7 +40,7 @@
     [self.view addSubview:_explanation];
     
     _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width, 150)];
-    _pickerView.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    _pickerView.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
@@ -47,11 +51,7 @@
     }
 
     _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 30, 280, 37);
-    } else {
-      _setButton.frame = CGRectMake(20, _pickerView.frame.origin.y + _pickerView.frame.size.height + 60, 280, 37);
-    }
+    _setButton.frame = CGRectMake(20, CGRectGetMaxX(_pickerView.frame) + KTopLogoHeight, 280, 37);
     
     _setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [_setButton setImage:[UIImage imageNamed:@"button_setalarm.png"] forState:UIControlStateNormal];

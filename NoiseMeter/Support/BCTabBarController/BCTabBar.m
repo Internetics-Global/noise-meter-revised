@@ -17,7 +17,7 @@
 		self.backgroundImage = [UIImage imageNamed:@"BCTabBarController.bundle/tab-bar-background.png"];
 		self.arrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BCTabBarController.bundle/tab-arrow.png"]];
 		CGRect r = self.arrow.frame;
-		r.origin.y = - (r.size.height - 2);
+		r.origin.y = - (r.size.height);
 		self.arrow.frame = r;
 		[self addSubview:self.arrow];
 		self.userInteractionEnabled = YES;
