@@ -36,11 +36,14 @@
     [self.view addSubview:topBlackView];
     
     UIImageView *_topImage;
-    if ([NSUserDefaultsHelper isProVersion] || ([self isMemberOfClass:[PurchaseViewController class]])) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion] ) {
+      _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro-classroom.png"]];
+    } else if ([NSUserDefaultsHelper isProVersion]) {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo-pro.png"]];
     } else {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];
     }
+    
     _topImage.tag = K_TOP_IMAGEVIEW_TAG;
     if (_backButton != nil) 
     {

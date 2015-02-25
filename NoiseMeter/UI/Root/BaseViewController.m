@@ -103,7 +103,7 @@
             if ([NSUserDefaultsHelper isProVersion]) {
                 [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"top_logo-pro-classroom"]];
             } else {
-                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"top_logo-pro"]];
+                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
             }
             
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
