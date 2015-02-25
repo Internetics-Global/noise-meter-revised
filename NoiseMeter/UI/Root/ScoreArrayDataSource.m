@@ -48,6 +48,7 @@
     cell.capture = [_scores objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
     cell.playButton.tag = indexPath.row;
     [cell.playButton addTarget:self action:@selector(playRecordedSound:) forControlEvents:UIControlEventTouchDown];

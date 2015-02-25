@@ -219,7 +219,7 @@
     //5. cancel button
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(CGRectGetMaxX(_currentReadingBaseView.frame) + 5, CGRectGetMinY(_currentReadingBaseView.frame), 30, 30);
+    _cancelButton.frame = CGRectMake(CGRectGetWidth(_meterBackground.frame)/2 - 15, CGRectGetHeight(_meterBackground.frame)/2 - 15, 30, 30);
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     _cancelButton.hidden = YES;
     [_meterBackground addSubview:_cancelButton];

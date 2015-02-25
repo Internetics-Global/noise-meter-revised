@@ -31,16 +31,22 @@
     
     [self style];
     
-    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(10, 70, self.view.frame.size.width - 20, 40)];
+    UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"set_noise_level_title"]];
+    topImageView.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
+    topImageView.contentMode = UIViewContentModeScaleAspectFit;
+    topImageView.backgroundColor =[UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    [self.view addSubview:topImageView];
+    
+    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 5, self.view.frame.size.width - 40, 40)];
     _explanation.numberOfLines = 2;
     _explanation.backgroundColor = [UIColor clearColor];
-    _explanation.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
+    _explanation.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
     _explanation.textColor = [UIColor whiteColor];
     _explanation.text = @"Select the alarm level. The alarm will sound for levels recorded higher than this figure";
     [self.view addSubview:_explanation];
     
-    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width, 150)];
-    _pickerView.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
+    _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(20, _explanation.frame.origin.y + _explanation.frame.size.height + 15, self.view.frame.size.width - 40, 150)];
+    _pickerView.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     _pickerView.dataSource = self;
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
@@ -51,10 +57,10 @@
     }
 
     _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _setButton.frame = CGRectMake(20, CGRectGetMaxX(_pickerView.frame) + KTopLogoHeight, 280, 37);
-    
-    _setButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [_setButton setImage:[UIImage imageNamed:@"button_setalarm.png"] forState:UIControlStateNormal];
+    _setButton.frame = CGRectMake(20, CGRectGetMaxY(_pickerView.frame) + 5, 280, 37);
+    [_setButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
+    [_setButton setTitle:@"Set Level" forState:UIControlStateNormal];
+    [_setButton setTintColor:[UIColor whiteColor]];
     [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_setButton];
 }

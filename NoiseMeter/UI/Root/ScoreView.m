@@ -56,37 +56,38 @@
     
     [self style];
     
+    _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
+    _tableHeader.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
+    _tableHeader.contentMode = UIViewContentModeScaleAspectFit;
+    _tableHeader.backgroundColor =[UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    [self.view addSubview:_tableHeader];
+    
     _resetButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [_resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    _resetButton.frame = CGRectMake(self.view.frame.size.width- 73, 60, 73, 29);
+    _resetButton.frame = CGRectMake(self.view.frame.size.width- 80, CGRectGetMaxY(_tableHeader.frame) + 5, 73, 29);
     [self.view addSubview:_resetButton];
     
-    _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
-    _meterBackground.frame = CGRectMake(0, CGRectGetMaxY(_resetButton.frame), 320, 150);
-    _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:_meterBackground];
-    
-    
-    [self reloadData];
-    
-    _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, _meterBackground.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y) ) style:UITableViewStylePlain];
+
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
         _shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_shareButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
-        _shareButton.frame = CGRectMake(0, CGRectGetMinY(_resetButton.frame), 73, 29);
+        _shareButton.frame = CGRectMake(5, CGRectGetMinY(_resetButton.frame), 89, 29);
         [_shareButton addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_shareButton];
-        
-        _shareButton.hidden = YES; // TODO:XX, no need for this version
     }
+    
+    
+    _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_resetButton.frame) + 5, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y) ) style:UITableViewStylePlain];
+    
     
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scoreTable.backgroundView = nil;
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
-    _scoreTable.backgroundColor = [UIColor colorWithRed:22.0/255 green:24.0/255 blue:25.0/255 alpha:1];
+    _scoreTable.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
     _scoreTable.opaque = YES;
+    [self reloadData];
     
     __weak __typeof(&*self)weakSelf = self;
     _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
@@ -135,21 +136,10 @@
 
 #pragma mark – Tableview datasource and delegate
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (_tableHeader == nil) 
-    {
-        _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
-        _tableHeader.contentMode = UIViewContentModeScaleAspectFit;
-        _tableHeader.backgroundColor =[UIColor blackColor];
-        
-    }
-    return _tableHeader;
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    return 0.01;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

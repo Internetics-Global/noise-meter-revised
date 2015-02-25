@@ -47,7 +47,7 @@
     [resetButton setImage:[UIImage imageNamed:@"button_reset.png"] forState:UIControlStateNormal];
     [resetButton addTarget:self action:@selector(resetButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     UIImageView *topBarImageView = [self findTopBarImageView];
-    resetButton.frame = CGRectMake(self.view.frame.size.width- 80, CGRectGetMaxY(topBarImageView.frame), 73, 29);
+    resetButton.frame = CGRectMake(self.view.frame.size.width- 80, CGRectGetMaxY(topBarImageView.frame), 73, 35);
     [self.view addSubview:resetButton];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {

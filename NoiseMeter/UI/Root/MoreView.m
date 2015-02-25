@@ -45,13 +45,16 @@
     if ([NSUserDefaultsHelper isProVersion]) {
         purchaseButtonHeight = 50;
     }
+    
+    int originalY;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        originalY = KTopLogoHeight + KNavigationBarHeight;
+    } else {
+        originalY = KTopLogoHeight;
+    }
 
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight + KNavigationBarHeight, self.view.frame.size.width, self.view.frame.size.height - KTopLogoHeight - KNavigationBarHeight - purchaseButtonHeight) style:UITableViewStyleGrouped];
-    } else {
-      _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, self.view.frame.size.height - KTopLogoHeight - KNavigationBarHeight - purchaseButtonHeight) style:UITableViewStyleGrouped];
-    }
+    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, originalY, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - originalY - purchaseButtonHeight) style:UITableViewStyleGrouped];
     
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
@@ -62,6 +65,11 @@
     _optionTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     _optionTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_optionTable];
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
 }
 
