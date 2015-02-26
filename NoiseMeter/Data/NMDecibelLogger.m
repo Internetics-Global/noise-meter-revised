@@ -49,7 +49,7 @@
                          [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,
                          nil];
     _logging = NO;
-    _recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]]  settings:_recorderSettings error:&error];
+    _recorder = [[AVAudioRecorder alloc] initWithURL:[FileHelper getDefaultRecordedTempAudioFile]  settings:_recorderSettings error:&error];
     _recorder.delegate = self;
     _recorder.meteringEnabled = YES;
     

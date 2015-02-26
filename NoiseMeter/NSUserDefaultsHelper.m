@@ -159,6 +159,19 @@
     [userDefaults synchronize];
 }
 
++ (NSInteger) lastNoisePeakValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSInteger val = [userDefaults integerForKey:@"LAST_NOISE_PEAK_VALUE"];
+    return val;
+}
+
++ (void) setLastNoisePeak:(NSInteger) val {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setInteger:val forKey:@"LAST_NOISE_PEAK_VALUE"];
+    [userDefaults synchronize];
+}
+
+
 
 
 @end

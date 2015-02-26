@@ -111,7 +111,7 @@
 
 - (IBAction)playButtonClicked:(id)sender {
     
-    NSURL *url = [FileHelper getDefaultRecordedaAudioFile];
+    NSURL *url = [FileHelper getDefaultRecordedTempAudioFile];
     
     if (url)
     {
@@ -134,7 +134,7 @@
 }
 
 - (IBAction)saveButtonClicked:(id)sender {
-    NSURL *path = [FileHelper getDefaultRecordedaAudioFile];
+    NSURL *path = [FileHelper getDefaultRecordedTempAudioFile];
     [FileHelper saveNewCreatedAlarm:path];
     [self dismiss];
     

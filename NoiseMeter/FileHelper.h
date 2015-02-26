@@ -14,7 +14,7 @@
 
 + (NSString *) convertDate: (NSDate *) date;
 
-+ (NSURL *) getDefaultRecordedaAudioFile;  //temp.caf
++ (NSURL *) getDefaultRecordedTempAudioFile;  //temp.caf
 
 
 //删除tmp目录下的所有文件，除了tmp.caf文件外

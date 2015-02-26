@@ -15,18 +15,30 @@
 @interface MeterView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate>{
     UIView         * _meterBackground;
     
-    UILabel        * _currentReadingLabel;
+    //top left
     UIView         * _currentReadingBaseView;
+    UILabel        * _currentReadingLabel;
     UILabel        * _currentReadingDesLabel;
     
+    //bottom right
+    UIView         * _peakBaseView;
     NSNumber       * _peakReading;
     UILabel        * _peakLabel;
-    UIView         * _peakBaseView;
     UILabel        * _peakDesLabel;
+    
+    //top right
+    UIView         * _infoMeterBaseView;
+    UILabel        * _infoMeterLabel;
+    UILabel        * _infoMeterDesLabel;
+    
+    //bottom left
+    UIView         * _captureMeterBaseView;
+    UILabel        * _captureMeterLabel;
+    UILabel        * _captureMeterDesLabel;
+    UIImageView    * _captureMeterImageView;
     
     UITableView    * _topScoreTable;
     NSArray        * _scores;
-    UIButton       * _captureButton;
     NSNumber       * _currentReading;
     UIImageView    * _formBackground;
     

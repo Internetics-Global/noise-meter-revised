@@ -190,7 +190,7 @@
 
 - (void) playback {
     
-    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    NSURL *fromURL = [FileHelper getDefaultRecordedTempAudioFile];
     
     [IDPSoundBoard addAudioAtPath:[fromURL path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
     AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
@@ -215,7 +215,7 @@
     }
     
     //Record last 10 second audio just before alarm
-    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    NSURL *fromURL = [FileHelper getDefaultRecordedTempAudioFile];
     
     NSDate *date = [NSDate date];
 	NSString *dateString = [FileHelper convertDate:date];

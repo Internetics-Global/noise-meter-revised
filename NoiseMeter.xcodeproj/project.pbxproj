@@ -178,6 +178,7 @@
 		88CB2B101A9E05E400288902 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CB2B0F1A9E05E400288902 /* Accelerate.framework */; };
 		88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
 		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
+		88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
 		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
 		88E8423018B1B69800B0FB50 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422A18B1B69700B0FB50 /* README.md */; };
@@ -471,6 +472,7 @@
 		88CB2B0F1A9E05E400288902 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings_title@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/settings_title@2x.png"; sourceTree = SOURCE_ROOT; };
 		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
+		88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_save@2x.png"; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88E8422918B1B69700B0FB50 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		88E8422A18B1B69700B0FB50 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				88FF307418AC6D1800B6E5BD /* closeButton@2x.png */,
 				88818C5817993CB3007B386F /* purchase@2x.png */,
 				11F3E5C615194CAE00549099 /* button_back.png */,
+				88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */,
 				11F3E5C715194CAE00549099 /* button_back@2x.png */,
 				11F3E5C815194CAE00549099 /* button_close.png */,
 				11F3E5C915194CAE00549099 /* button_close@2x.png */,
@@ -1200,6 +1203,7 @@
 				88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */,
 				88BEFE5418A1FCB100399680 /* 6.png in Resources */,
 				880A002818AC83D800FB84F5 /* recordButton.png in Resources */,
+				88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
 				880461101A8C28150032A3C8 /* versions.plist in Resources */,

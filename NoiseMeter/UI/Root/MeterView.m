@@ -83,10 +83,6 @@
     
     _cancelButton.hidden = NO;
     
-//    CGRect rect = _currentReadingLabel.frame;
-//    rect.origin.x = 50;
-//    _currentReadingLabel.frame = rect;
-    
 }
 
 /**
@@ -96,11 +92,8 @@
 {
     if (_cancelButton.hidden == FALSE) {
         _cancelButton.hidden = YES;
-        _captureButton.hidden = YES;
+        //_captureMeterBaseView.hidden = YES;
         
-//        CGRect rect = _currentReadingLabel.frame;
-//        rect.origin.x = 10;
-//        _currentReadingLabel.frame = rect;
     }
 }
 
@@ -200,7 +193,7 @@
     _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
-    _currentReadingDesLabel.textColor = [UIColor grayColor];
+    _currentReadingDesLabel.textColor = [UIColor redColor];
     _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
     _currentReadingDesLabel.layer.cornerRadius = 5;
     _currentReadingDesLabel.text = @"NOW";
@@ -210,7 +203,7 @@
     _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
-    _currentReadingLabel.textColor = [UIColor grayColor];
+    _currentReadingLabel.textColor = [UIColor redColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     _currentReadingLabel.layer.cornerRadius = 5;
     _currentReadingLabel.layer.masksToBounds = YES;
@@ -225,7 +218,7 @@
     [_meterBackground addSubview:_cancelButton];
     
 
-    //6. peak view
+    //6. peakview
     _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
     _peakBaseView.backgroundColor = [UIColor darkGrayColor];
     _peakBaseView.layer.cornerRadius = 5;
@@ -253,15 +246,69 @@
     
     _peakBaseView.hidden = YES;
     
-    //7. capture view
-    _captureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_captureButton setImage:[UIImage imageNamed:@"button_capture.png"] forState:UIControlStateNormal];
-    _captureButton.frame = CGRectMake(self.view.frame.size.width - 89, _meterBackground.frame.origin.y + _meterBackground.frame.size.height - 20, 89, 29);
-    [self.view addSubview:_captureButton];
-    _captureButton.hidden = YES;
-    [_captureButton addTarget:self action:@selector(capture) forControlEvents:UIControlEventTouchUpInside];
+    //7. info view
+    _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, 70, 70)];
+    _infoMeterBaseView.backgroundColor = [UIColor darkGrayColor];
+    _infoMeterBaseView.layer.cornerRadius = 5;
+    _infoMeterBaseView.layer.masksToBounds = YES;
+    [_meterBackground addSubview:_infoMeterBaseView];
     
+    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
+    _infoMeterDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    _infoMeterDesLabel.textColor = [UIColor grayColor];
+    _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
+    _infoMeterDesLabel.layer.cornerRadius = 5;
+    _infoMeterDesLabel.text = @"METER";
+    _infoMeterDesLabel.layer.masksToBounds = YES;
+    [_infoMeterBaseView addSubview:_infoMeterDesLabel];
     
+    _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _infoMeterLabel.textAlignment = UITextAlignmentCenter;
+    _infoMeterLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _infoMeterLabel.textColor = [UIColor grayColor];
+    _infoMeterLabel.backgroundColor = [UIColor clearColor];
+    _infoMeterLabel.layer.cornerRadius = 5;
+    _infoMeterLabel.text = @"OFF";
+    _infoMeterLabel.layer.masksToBounds = YES;
+    [_infoMeterBaseView addSubview:_infoMeterLabel];
+    
+    _infoMeterBaseView.hidden = YES;
+    
+    //8. capture view
+    _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
+    _captureMeterBaseView.backgroundColor = [UIColor darkGrayColor];
+    _captureMeterBaseView.layer.cornerRadius = 5;
+    _captureMeterBaseView.layer.masksToBounds = YES;
+    [_meterBackground addSubview:_captureMeterBaseView];
+    
+    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, 70, 20)];
+    _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
+    _captureMeterDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    _captureMeterDesLabel.textColor = [UIColor grayColor];
+    _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
+    _captureMeterDesLabel.layer.cornerRadius = 5;
+    _captureMeterDesLabel.text = @"LAST";
+    _captureMeterDesLabel.layer.masksToBounds = YES;
+    [_captureMeterBaseView addSubview:_captureMeterDesLabel];
+    
+    _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 70, 30)];
+    _captureMeterLabel.textAlignment = UITextAlignmentCenter;
+    _captureMeterLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _captureMeterLabel.textColor = [UIColor grayColor];
+    _captureMeterLabel.backgroundColor = [UIColor clearColor];
+    _captureMeterLabel.layer.cornerRadius = 5;
+    _captureMeterLabel.text = @"33";
+    _captureMeterLabel.layer.masksToBounds = YES;
+    [_captureMeterBaseView addSubview:_captureMeterLabel];
+    
+    _captureMeterImageView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 70, 20)];
+    [_captureMeterImageView setImage:[UIImage imageNamed:@"capture_save"]];
+    [_captureMeterBaseView addSubview:_captureMeterImageView];
+    
+    UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(capture)];
+    oneTap.numberOfTapsRequired = 1;
+    [_captureMeterBaseView addGestureRecognizer:oneTap];
     
     [self reloadData];
     
@@ -336,7 +383,7 @@
     NSString *timeString = [formatter stringFromDate:[NSDate date]];
     
     //Record last 10 second audio just before alarm
-    NSURL *fromURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+    NSURL *fromURL = [FileHelper getDefaultRecordedTempAudioFile];
     
     NSDate *date = [NSDate date];
     NSString *dateString = [FileHelper convertDate:date];
@@ -412,13 +459,17 @@
     }
     
     if (([[IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded] isPlaying])) {
-        _currentReadingLabel.text = @"Playing";
+        _infoMeterLabel.text = @"Play";
+        _infoMeterBaseView.hidden = NO;
         return;
     }
     
     if ([NSUserDefaultsHelper isLoggingPause]) {
-        _currentReadingLabel.text = @"Meter off";
+        _infoMeterBaseView.hidden = NO;
+        _infoMeterLabel.text = @"OFF";
         return;
+    } else {
+        _infoMeterBaseView.hidden = YES;
     }
     
     if ([keyPath isEqualToString:@"currentReading"]) 
@@ -483,21 +534,24 @@
         {
             //NSLog(@"Not reach threahold");
             _startForDelayAlarmSound = [NSDate date];
-            _currentReadingLabel.textColor = [UIColor grayColor];
+            _currentReadingLabel.textColor = [UIColor redColor];
             [self success];
         }
         
         
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
         {
-            _peakBaseView.hidden = NO;
-            _peakLabel.text = [NSString stringWithFormat:@"%d", [_peakReading intValue]];
-            _captureButton.hidden = NO;
-            _cancelButton.hidden = NO;
+            int peakVal = [_peakReading intValue];
+            [NSUserDefaultsHelper setLastNoisePeak:peakVal];
             
-//            CGRect rect = _currentReadingLabel.frame;
-//            rect.origin.x = 50;
-//            _currentReadingLabel.frame = rect;
+            _peakBaseView.hidden = NO;
+            _peakLabel.text = [NSString stringWithFormat:@"%d", peakVal];
+            
+            _captureMeterLabel.text = [NSString stringWithFormat:@"%d", peakVal];
+            _captureMeterBaseView.hidden = NO;
+            
+            _cancelButton.hidden = NO;
+        
         }
         
     }
@@ -580,11 +634,14 @@
     
     if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
-        _captureButton.hidden = YES;
+        NSInteger lastPeakVal = [NSUserDefaultsHelper lastNoisePeakValue];
+        if (lastPeakVal == 0) {
+          _captureMeterBaseView.hidden = YES;
+        } else {
+          _captureMeterBaseView.hidden = NO;
+            _captureMeterLabel.text = [NSString stringWithFormat:@"%d",(int)lastPeakVal];
+        }
         
-//        CGRect rect = _currentReadingLabel.frame;
-//        rect.origin.x = 10;
-//        _currentReadingLabel.frame = rect;
     }
 }
 
@@ -613,7 +670,7 @@
 }
 
 - (void)alarmFinishedNotification:(NSNotification *)notification {
-    _captureButton.hidden = YES;
+    //_captureMeterBaseView.hidden = YES;
     _cancelButton.hidden = YES;
     
 //    CGRect rect = _currentReadingLabel.frame;
@@ -626,12 +683,15 @@
     if ([NSUserDefaultsHelper isLoggingPause]) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
-        _currentReadingLabel.text = @"Meter off";
+        _infoMeterBaseView.hidden = NO;
+        _infoMeterLabel.text = @"OFF";
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
     } else {
         [[NMDecibelLogger defaultLogger] startLogging];
         [NSUserDefaultsHelper setLoggingPauseFlag:NO];
+        
+        _infoMeterBaseView.hidden = YES;
     }
 }
 
@@ -660,7 +720,8 @@
     if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         
-        _currentReadingLabel.text = @"Meter off";
+        _infoMeterBaseView.hidden = NO;
+        _infoMeterLabel.text = @"OFF";
         [NSUserDefaultsHelper setLoggingPauseFlag:YES];
         
         if ([NSUserDefaultsHelper isNotShowMeterOffDialog] == NO) {
@@ -674,6 +735,8 @@
     } else {
         [[NMDecibelLogger defaultLogger] startLogging];
         [NSUserDefaultsHelper setLoggingPauseFlag:NO];
+        
+        _infoMeterBaseView.hidden = YES;
         
         if (APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff == FALSE) {
           [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];

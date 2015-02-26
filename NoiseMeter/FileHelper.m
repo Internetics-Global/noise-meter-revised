@@ -8,6 +8,8 @@
 
 #import "FileHelper.h"
 
+#define KTempCAF  @"tmp.caf"
+
 @implementation FileHelper
 
 + (NSURL *) getRecordedAudioFile:(NSString *) fileName {
@@ -40,7 +42,7 @@
 + (void) removeAllExceptTempCafFile {
    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:NSTemporaryDirectory() error:nil];
     for (NSString *file in dirContents) {
-        if (![file isEqualToString:@"tmp.caf"]) {
+        if ((![file isEqualToString:KTempCAF])) {
             [[NSFileManager defaultManager] removeItemAtPath:[NSTemporaryDirectory() stringByAppendingPathComponent:file] error:nil];
         }
     }
@@ -48,10 +50,12 @@
     
 }
 
-+ (NSURL *) getDefaultRecordedaAudioFile {
-    NSURL *url = [self getRecordedAudioFile:@"tmp.caf"];
+
++ (NSURL *) getDefaultRecordedTempAudioFile {
+    NSURL *url = [self getRecordedAudioFile:KTempCAF];
     return url;
 }
+
 
 
 + (void) saveNewCreatedAlarm:(NSURL *) originalPath {
