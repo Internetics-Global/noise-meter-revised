@@ -31,6 +31,8 @@
 
 #define K_Meter_Square_Background_Color  [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.6]
 
+#define K_Square_Width  65.0
+
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
     
@@ -187,13 +189,13 @@
     [[NMDecibelLogger defaultLogger] startLogging];
     
     //4. current reading base view
-    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, 70, 70)];
+    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, K_Square_Width, K_Square_Width)];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _currentReadingBaseView.layer.cornerRadius = 8;
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
     
-    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
     _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
@@ -203,7 +205,7 @@
     _currentReadingDesLabel.layer.masksToBounds = YES;
     [_currentReadingBaseView addSubview:_currentReadingDesLabel];
     
-    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _currentReadingLabel.textColor = [UIColor lightGrayColor];
@@ -222,13 +224,13 @@
     
 
     //6. peakview
-    _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
+    _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, K_Square_Width, K_Square_Width)];
     _peakBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _peakBaseView.layer.cornerRadius = 8;
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
     
-    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
     _peakDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
     _peakDesLabel.textColor = [UIColor lightGrayColor];
@@ -238,7 +240,7 @@
     _peakDesLabel.layer.masksToBounds = YES;
     [_peakBaseView addSubview:_peakDesLabel];
     
-    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
+    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _peakLabel.textAlignment = UITextAlignmentCenter;
     _peakLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _peakLabel.textColor = [UIColor lightGrayColor];
@@ -250,13 +252,13 @@
     _peakBaseView.hidden = YES;
     
     //7. info view
-    _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, 70, 70)];
+    _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, K_Square_Width, K_Square_Width)];
     _infoMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _infoMeterBaseView.layer.cornerRadius = 8;
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
-    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
+    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _infoMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     _infoMeterDesLabel.textColor = [UIColor lightGrayColor];
@@ -266,7 +268,7 @@
     _infoMeterDesLabel.layer.masksToBounds = YES;
     [_infoMeterBaseView addSubview:_infoMeterDesLabel];
     
-    _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
+    _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _infoMeterLabel.textAlignment = UITextAlignmentCenter;
     _infoMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _infoMeterLabel.textColor = [UIColor lightGrayColor];
@@ -279,13 +281,13 @@
     _infoMeterBaseView.hidden = YES;
     
     //8. capture view
-    _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
+    _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, K_Square_Width, K_Square_Width)];
     _captureMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _captureMeterBaseView.layer.cornerRadius = 8;
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
-    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, 70, 20)];
+    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, K_Square_Width, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
@@ -295,7 +297,7 @@
     _captureMeterDesLabel.layer.masksToBounds = YES;
     [_captureMeterBaseView addSubview:_captureMeterDesLabel];
     
-    _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 70, 30)];
+    _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, K_Square_Width, 30)];
     _captureMeterLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _captureMeterLabel.textColor = [UIColor lightGrayColor];
