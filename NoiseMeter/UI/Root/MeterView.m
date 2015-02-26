@@ -29,7 +29,7 @@
 //在silent mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
 #define K_Second_SilentMode        1.0
 
-#define K_Meter_Square_Background_Color  [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9]
+#define K_Meter_Square_Background_Color  [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.6]
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
@@ -189,7 +189,7 @@
     //4. current reading base view
     _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, 70, 70)];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
-    _currentReadingBaseView.layer.cornerRadius = 5;
+    _currentReadingBaseView.layer.cornerRadius = 8;
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
     
@@ -224,7 +224,7 @@
     //6. peakview
     _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
     _peakBaseView.backgroundColor = K_Meter_Square_Background_Color;
-    _peakBaseView.layer.cornerRadius = 5;
+    _peakBaseView.layer.cornerRadius = 8;
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
     
@@ -252,7 +252,7 @@
     //7. info view
     _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, 70, 70)];
     _infoMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
-    _infoMeterBaseView.layer.cornerRadius = 5;
+    _infoMeterBaseView.layer.cornerRadius = 8;
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
@@ -281,7 +281,7 @@
     //8. capture view
     _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
     _captureMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
-    _captureMeterBaseView.layer.cornerRadius = 5;
+    _captureMeterBaseView.layer.cornerRadius = 8;
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
@@ -413,7 +413,7 @@
     int headerHeight = [self tableView:tableView heightForHeaderInSection:section];
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, headerHeight)];
-    headerView.backgroundColor = [UIColor colorWithRed:22.0/255 green:24.0/255 blue:25.0/255 alpha:1];
+    headerView.backgroundColor = [UIColor colorWithRed:44.0/255 green:44.0/255 blue:44.0/255 alpha:1];
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, headerView.frame.size.width - 10, headerView.frame.size.height - 10)];
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.numberOfLines = 2;

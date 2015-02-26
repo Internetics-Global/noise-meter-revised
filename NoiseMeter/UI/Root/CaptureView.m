@@ -108,29 +108,32 @@
     [self.view addSubview:_enterLabel];
     
     _nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, _enterLabel.frame.origin.y + _enterLabel.frame.size.height + 10, self.view.frame.size.width - 40, 33)];
-    [_nameField setBorderStyle:UITextBorderStyleRoundedRect];
+//    [_nameField setBorderStyle:UITextBorderStyleRoundedRect];
+    _nameField.backgroundColor = [UIColor whiteColor];
     [_nameField setTextAlignment:NSTextAlignmentCenter];
     _nameField.delegate = self;
     [self.view addSubview:_nameField];
     
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 10, 280, 37);
-    [_saveButton setImage:[UIImage imageNamed:@"button_save"] forState:UIControlStateNormal];
-    [_saveButton setTintColor:[UIColor whiteColor]];
+    [_saveButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
     _saveButton.showsTouchWhenHighlighted = YES;
-    _saveButton.layer.cornerRadius = 5;
-    _saveButton.layer.masksToBounds = YES;
+//    _saveButton.layer.cornerRadius = 5;
+//    _saveButton.layer.masksToBounds = YES;
+    [_saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [_saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_saveButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_saveButton];
     
     
     _playbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 280, 37);
-    [_playbackButton setImage:[UIImage imageNamed:@"playback"] forState:UIControlStateNormal];
-    [_playbackButton setTintColor:[UIColor whiteColor]];
+    [_playbackButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
     _playbackButton.showsTouchWhenHighlighted = YES;
-    _playbackButton.layer.cornerRadius = 5;
-    _playbackButton.layer.masksToBounds = YES;
+//    _playbackButton.layer.cornerRadius = 5;
+//    _playbackButton.layer.masksToBounds = YES;
+    [_playbackButton setTitle:@"Playback" forState:UIControlStateNormal];
+    [_playbackButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_playbackButton];
     if ([NSUserDefaultsHelper isProVersion]) {
@@ -143,15 +146,16 @@
     if ([NSUserDefaultsHelper isProVersion]) {
         _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         _cancelButton.frame =CGRectMake(20 + 150, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
-        [_cancelButton setImage:[UIImage imageNamed:@"button_cancel"] forState:UIControlStateNormal];
+        [_cancelButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
     } else {
         _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 280, 37);
-        [_cancelButton setImage:[UIImage imageNamed:@"button_cancel2"] forState:UIControlStateNormal];
+        [_cancelButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
     }
     ;
-    _cancelButton.layer.cornerRadius = 5;
-    _cancelButton.layer.masksToBounds = YES;
-    [_cancelButton setTintColor:[UIColor whiteColor]];
+//    _cancelButton.layer.cornerRadius = 5;
+//    _cancelButton.layer.masksToBounds = YES;
+    [_cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_cancelButton];
 
