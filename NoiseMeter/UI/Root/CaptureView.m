@@ -117,7 +117,7 @@
     _saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _saveButton.frame =CGRectMake(20, _nameField.frame.origin.y + _nameField.frame.size.height + 10, 280, 37);
     [_saveButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
-    _saveButton.showsTouchWhenHighlighted = YES;
+    [_saveButton setBackgroundImage:[UIImage imageNamed:@"orange_button_for_level"] forState:UIControlStateHighlighted];
 //    _saveButton.layer.cornerRadius = 5;
 //    _saveButton.layer.masksToBounds = YES;
     [_saveButton setTitle:@"Save" forState:UIControlStateNormal];
@@ -129,7 +129,7 @@
     _playbackButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 280, 37);
     [_playbackButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
-    _playbackButton.showsTouchWhenHighlighted = YES;
+    [_playbackButton setBackgroundImage:[UIImage imageNamed:@"orange_button_for_level"] forState:UIControlStateHighlighted];
 //    _playbackButton.layer.cornerRadius = 5;
 //    _playbackButton.layer.masksToBounds = YES;
     [_playbackButton setTitle:@"Playback" forState:UIControlStateNormal];
@@ -151,6 +151,7 @@
         _cancelButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 280, 37);
         [_cancelButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
     }
+    [_cancelButton setBackgroundImage:[UIImage imageNamed:@"orange_button_for_level"] forState:UIControlStateHighlighted];
     ;
 //    _cancelButton.layer.cornerRadius = 5;
 //    _cancelButton.layer.masksToBounds = YES;

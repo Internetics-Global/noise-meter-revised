@@ -31,7 +31,13 @@
 
 #define K_Meter_Square_Background_Color  [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.6]
 
-#define K_Square_Width  65.0
+#define K_Square_Width  70.0
+#define K_Square_Margin  8.0
+
+#define K_Square_FontSize 18
+#define K_Square_FontSize_Des 26
+
+#define K_Square_Font_Name  @"HelveticaNeue-Bold"
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
@@ -189,15 +195,15 @@
     [[NMDecibelLogger defaultLogger] startLogging];
     
     //4. current reading base view
-    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, K_Square_Width, K_Square_Width)];
+    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(K_Square_Margin, K_Square_Margin, K_Square_Width, K_Square_Width)];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _currentReadingBaseView.layer.cornerRadius = 8;
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
     
-    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
+    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
-    _currentReadingDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
+    _currentReadingDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
     _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
     _currentReadingDesLabel.layer.cornerRadius = 5;
@@ -207,7 +213,7 @@
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
-    _currentReadingLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _currentReadingLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _currentReadingLabel.textColor = [UIColor lightGrayColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     _currentReadingLabel.layer.cornerRadius = 5;
@@ -224,15 +230,15 @@
     
 
     //6. peakview
-    _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, K_Square_Width, K_Square_Width)];
+    _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - K_Square_Margin - K_Square_Width, CGRectGetHeight(_meterBackground.frame) - K_Square_Margin - K_Square_Width, K_Square_Width, K_Square_Width)];
     _peakBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _peakBaseView.layer.cornerRadius = 8;
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
     
-    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
+    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
-    _peakDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
+    _peakDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _peakDesLabel.textColor = [UIColor lightGrayColor];
     _peakDesLabel.backgroundColor = [UIColor clearColor];
     _peakDesLabel.layer.cornerRadius = 5;
@@ -242,7 +248,7 @@
     
     _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _peakLabel.textAlignment = UITextAlignmentCenter;
-    _peakLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _peakLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _peakLabel.textColor = [UIColor lightGrayColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
     _peakLabel.layer.cornerRadius = 5;
@@ -252,15 +258,15 @@
     _peakBaseView.hidden = YES;
     
     //7. info view
-    _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, K_Square_Width, K_Square_Width)];
+    _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - K_Square_Margin - K_Square_Width, K_Square_Margin, K_Square_Width, K_Square_Width)];
     _infoMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _infoMeterBaseView.layer.cornerRadius = 8;
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
-    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, K_Square_Width, 25)];
+    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _infoMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+    _infoMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:18];
     _infoMeterDesLabel.textColor = [UIColor lightGrayColor];
     _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
     _infoMeterDesLabel.layer.cornerRadius = 5;
@@ -270,7 +276,7 @@
     
     _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _infoMeterLabel.textAlignment = UITextAlignmentCenter;
-    _infoMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _infoMeterLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _infoMeterLabel.textColor = [UIColor lightGrayColor];
     _infoMeterLabel.backgroundColor = [UIColor clearColor];
     _infoMeterLabel.layer.cornerRadius = 5;
@@ -281,15 +287,15 @@
     _infoMeterBaseView.hidden = YES;
     
     //8. capture view
-    _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, K_Square_Width, K_Square_Width)];
+    _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(K_Square_Margin, CGRectGetHeight(_meterBackground.frame) - K_Square_Margin - K_Square_Width, K_Square_Width, K_Square_Width)];
     _captureMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _captureMeterBaseView.layer.cornerRadius = 8;
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
-    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, K_Square_Width, 20)];
+    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 2, K_Square_Width, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _captureMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
+    _captureMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:18];
     _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
     _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
     _captureMeterDesLabel.layer.cornerRadius = 5;
@@ -299,7 +305,7 @@
     
     _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, K_Square_Width, 30)];
     _captureMeterLabel.textAlignment = UITextAlignmentCenter;
-    _captureMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _captureMeterLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _captureMeterLabel.textColor = [UIColor lightGrayColor];
     _captureMeterLabel.backgroundColor = [UIColor clearColor];
     _captureMeterLabel.layer.cornerRadius = 5;
@@ -555,6 +561,8 @@
             _captureMeterBaseView.hidden = NO;
             
             _cancelButton.hidden = NO;
+            
+            _infoMeterBaseView.hidden = YES;
         
         }
         
