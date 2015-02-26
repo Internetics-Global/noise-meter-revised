@@ -28,7 +28,7 @@
 
 - (void)style:(BOOL) isToShowBackNaviBar
 {
-    self.extendedLayoutIncludesOpaqueBars = NO;
+    //self.extendedLayoutIncludesOpaqueBars = NO;
     
     //This is a special case in REFrostedViewController
     float statusBarHeight = 0;

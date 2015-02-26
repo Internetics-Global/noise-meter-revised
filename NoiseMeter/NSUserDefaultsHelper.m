@@ -165,6 +165,7 @@
     return val;
 }
 
+
 + (void) setLastNoisePeak:(NSInteger) val {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:val forKey:@"LAST_NOISE_PEAK_VALUE"];

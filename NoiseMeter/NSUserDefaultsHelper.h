@@ -57,6 +57,10 @@ typedef NS_ENUM(NSInteger, MeterDisplayType) {
 + (void) setMeterDisplayType:(MeterDisplayType) type;
 
 + (NSInteger) lastNoisePeakValue;
+
+/**
+ * set val = 0 to indicate that there's no last noise peak record
+ */
 + (void) setLastNoisePeak:(NSInteger) val;
 
 

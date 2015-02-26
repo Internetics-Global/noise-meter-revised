@@ -233,6 +233,9 @@
     cap.date = date;
     [[NMDataManager defaultManager] saveContext];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
+    
+    [NSUserDefaultsHelper setLastNoisePeak:0];
+    
     [self.navigationController popViewControllerAnimated:YES];
     
     [NMDecibelLogger defaultLogger].playingAlarm = FALSE;
