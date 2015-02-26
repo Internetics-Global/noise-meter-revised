@@ -26,31 +26,14 @@
 
 
 
-- (void)style:(BOOL) isToShowBackNaviBar
+- (void)style:(BOOL) isToShowBackButton
 {
-    //self.extendedLayoutIncludesOpaqueBars = NO;
-    
-    //This is a special case in REFrostedViewController
-    float statusBarHeight = 0;
-    if ([self isKindOfClass:[MoreView class]]) {
-        //statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-    }
-    
-    
+
     self.view.backgroundColor = kGrayColor;
-    UIButton *_backButton = nil;
-    if (isToShowBackNaviBar)
-    {
-        _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backButton.frame = CGRectMake(10, 10 + statusBarHeight, 54, 21);
-        _backButton.tag = 314;
-        [_backButton setImage:[UIImage imageNamed:@"button_back.png"] forState:UIControlStateNormal];
-        [_backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_backButton];
-    }
     
     UIView *topBlackView = [[UIView alloc] init];
     topBlackView.backgroundColor = [UIColor blackColor];
+    topBlackView.frame = CGRectMake(0, 0, self.view.frame.size.width, KTopLogoHeight);
     [self.view addSubview:topBlackView];
     
     UIImageView *_topImage;
@@ -64,19 +47,21 @@
     }
     _topImage.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _topImage.tag = K_TOP_IMAGEVIEW_TAG;
-    if (_backButton != nil) 
-    {
-        _topImage.frame = CGRectMake(30, KNavigationBarHeight + statusBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
-        topBlackView.frame = CGRectMake(0, KNavigationBarHeight + statusBarHeight, self.view.frame.size.width, KTopLogoHeight);
-    }
-    else 
-    {
-        _topImage.frame = CGRectMake(30, 0 + statusBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
-        topBlackView.frame = CGRectMake(0, 0 + statusBarHeight, self.view.frame.size.width, KTopLogoHeight);
-    }
+    _topImage.frame = CGRectMake(30, 0, self.view.frame.size.width - 30*2, KTopLogoHeight);
     [_topImage setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_topImage];
-    [self.view bringSubviewToFront:_backButton];
+    
+    if (isToShowBackButton) {
+        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        closeButton.backgroundColor = [UIColor clearColor];
+        [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+        [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+        closeButton.frame = CGRectMake(5, CGRectGetMidY(topBlackView.frame) - 15, 50, 30);
+        [self.view addSubview:closeButton];
+        [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchDown];
+    }
+    
     
     
 }
@@ -166,6 +151,10 @@
     }
     
     return imageView;
+}
+
+- (void) close {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

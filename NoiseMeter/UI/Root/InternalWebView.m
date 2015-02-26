@@ -26,14 +26,10 @@
     [super loadView];
     [self style:YES];
     _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-       _activity.frame = CGRectMake(self.view.frame.size.width - 26, KNavigationBarHeight + (KTopLogoHeight - 21)/2, 21, 21);
-    } else {
-        _activity.frame = CGRectMake(self.view.frame.size.width - 26, (KTopLogoHeight - 21)/2, 21, 21);
-    }
+    _activity.frame = CGRectMake(self.view.frame.size.width - 26, (KTopLogoHeight - 21)/2, 21, 21);
     [self.view addSubview:_activity];
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 105, self.view.frame.size.width, self.view.frame.size.height - 105)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - KTopLogoHeight)];
     _webView.delegate = self;
     _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_webView];

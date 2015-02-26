@@ -56,6 +56,8 @@
     
     _backButton = [self findBackButton];
     
+    self.view.backgroundColor = [UIColor blackColor];
+    
 }
 
 
@@ -67,13 +69,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    
-    
-    if (iPhone5) {
-        CGRect rect = self.webview.frame;
-        rect.size.height = rect.size.height + 19;
-        self.webview.frame = rect;
-    }
     
     self.webview.alpha = 0;
     
@@ -174,7 +169,7 @@
         
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismiss];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -220,7 +215,7 @@
         
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismiss];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:successDest delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -264,6 +259,14 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [_activity stopAnimating];
+}
+
+- (void) dismiss {
+    if(self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark – Memory management

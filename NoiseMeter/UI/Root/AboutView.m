@@ -21,11 +21,7 @@
     [super loadView];
     
     [self style:YES];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-      _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, KNavigationBarHeight + KTopLogoHeight, self.view.frame.size.width - 20, 300)];
-    } else {
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(10,  KTopLogoHeight, self.view.frame.size.width - 20, 300)];
-    }
+    _textView = [[UITextView alloc] initWithFrame:CGRectMake(10,  KTopLogoHeight, self.view.frame.size.width - 20, 300)];
     
     _textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _textView.text = @"\"Keep The Noise Down\" is great way to measure and control the noise levels in your home, workplace, classroom, or anywhere you need to \"keep the noise down\". \n\nPlease note that the decibel limits shown are for an approximate guidance only, are not scientifically tested or calculated and should not be relied upon for accuracy. Readings will vary from device to device and environment to environment.\n\nKeep the Noise Down is an app developed by Internetics. We welcome your feedback.";

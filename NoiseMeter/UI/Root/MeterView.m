@@ -20,6 +20,10 @@
 #import "IDPSoundBoard.h"
 #import "MoreView.h"
 
+#import "UIButton+Extensions.h"
+
+#import "AMPopTip.h"
+
 //忽略那种短暂的噪声
 #define K_Second_IgnoreSuddenNoise     0.5
 
@@ -39,6 +43,8 @@
 
 #define K_Square_Font_Name  @"HelveticaNeue-Bold"
 
+
+
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
     
@@ -51,6 +57,10 @@
     
     //用于判断下一个capture事件
     NSDate       *_startForSilentMode;
+    
+    AMPopTip *_popTipMeterPause;
+    AMPopTip *_popTipMeterCapture;
+    AMPopTip *_popTipTabBarLevel;
 }
 
 @end
@@ -162,14 +172,16 @@
     _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
     _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
-    [_infoButton addTarget:self action:@selector(infoShowV2) forControlEvents:UIControlEventTouchUpInside];
+    [_infoButton addTarget:self action:@selector(switchTips) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
+    [_infoButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
     _moreButton.frame = CGRectMake(15, 18, 20, 20);
     [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_moreButton];
+    [_moreButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     //2. meter base view
     
@@ -373,7 +385,8 @@
 
 - (void)capture
 {
-    CaptureView *cap = [[CaptureView alloc] initWithReading:_peakReading];
+    float lastNoisePeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
+    CaptureView *cap = [[CaptureView alloc] initWithReading:[NSNumber numberWithFloat:lastNoisePeakValue]];
     [self.navigationController pushViewController:cap animated:YES];
 }
 
@@ -646,8 +659,8 @@
     
     if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
-        NSInteger lastPeakVal = [NSUserDefaultsHelper lastNoisePeakValue];
-        if (lastPeakVal == 0) {
+        float lastPeakVal = [NSUserDefaultsHelper lastNoisePeakValue];
+        if ((int)lastPeakVal == 0) {
           _captureMeterBaseView.hidden = YES;
         } else {
           _captureMeterBaseView.hidden = NO;
@@ -673,6 +686,67 @@
 
     [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
     
+    
+}
+
+- (void) switchTips {
+    
+    if ((_popTipMeterPause == nil) || (_popTipTabBarLevel == nil) | (_popTipMeterCapture == nil) ||
+           (!_popTipMeterPause.isVisible) || (!_popTipTabBarLevel.isVisible) || (!_popTipMeterCapture.isVisible)) {
+      [self showTips];
+    } else {
+      [self hideTips];
+    }
+    
+    
+}
+
+- (void) hideTips {
+    [_popTipMeterPause hide];
+    [_popTipMeterCapture hide];
+    [_popTipTabBarLevel hide];
+}
+
+- (void) showTips {
+    
+     __weak __typeof(&*self)weakSelf = self;
+    
+    if (_popTipMeterPause == nil) {
+        _popTipMeterPause = [AMPopTip popTip];
+        _popTipMeterPause.arrowSize = CGSizeMake(8, 20);
+        _popTipMeterPause.popoverColor = [UIColor colorWithRed:30 green:0.3 blue:0.87 alpha:0.9];
+        _popTipMeterPause.shouldDismissOnTap = YES;
+        _popTipMeterPause.shouldDismissOnTapOutside = NO;
+        _popTipMeterPause.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipMeterPause showText:@"Tap the meter to turn on and off" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(_meterBackground.center.x, _meterBackground.center.y, 0, 0) duration:0];
+    
+    if (_popTipMeterCapture == nil) {
+        _popTipMeterCapture = [AMPopTip popTip];
+        _popTipMeterCapture.arrowSize = CGSizeMake(30, 8);
+        _popTipMeterCapture.popoverColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.17 alpha:0.9];
+        _popTipMeterCapture.shouldDismissOnTap = YES;
+        _popTipMeterCapture.shouldDismissOnTapOutside = NO;
+        _popTipMeterCapture.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipMeterCapture showText:@"When the alarm has gone off, click this button to record a name" direction:AMPopTipDirectionRight maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetMinX(_meterBackground.frame) + 65, CGRectGetMaxY(_meterBackground.frame) - 17, 0, 0) duration:0];
+    _captureMeterBaseView.backgroundColor = [UIColor redColor];
+    
+    if (_popTipTabBarLevel == nil) {
+        _popTipTabBarLevel = [AMPopTip popTip];
+        _popTipTabBarLevel.arrowSize = CGSizeMake(8, 30);
+        _popTipTabBarLevel.popoverColor = [UIColor colorWithRed:0.1 green:0.5 blue:0.67 alpha:0.9];
+        _popTipTabBarLevel.shouldDismissOnTap = YES;
+        _popTipTabBarLevel.shouldDismissOnTapOutside = NO;
+        _popTipTabBarLevel.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipTabBarLevel showText:@"Adjust the sensibility of the alarm by clicking here" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
     
 }
 

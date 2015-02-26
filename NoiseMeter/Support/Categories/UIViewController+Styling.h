@@ -11,7 +11,7 @@
 @interface UIViewController (Styling)
 
 
-- (void)style:(BOOL) isToShowBackNaviBar;
+- (void)style:(BOOL) isToShowBackButton;
 - (void)displayHelpOverlayWithText:(NSString *)text;
 - (void)dismissHelpOverlay;
 

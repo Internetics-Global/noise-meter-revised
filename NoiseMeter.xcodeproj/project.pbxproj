@@ -133,6 +133,7 @@
 		88818C5A17993CB3007B386F /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
 		88818C631799F58F007B386F /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
+		888503AE1A9FE33B0062A025 /* AMPopTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 888503AD1A9FE33B0062A025 /* AMPopTip.m */; };
 		888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */; };
 		889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 889E53B218BAC2CC00721ADF /* loop.mp3 */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
@@ -145,6 +146,7 @@
 		88A95E4418A4803000E56939 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
 		88A95E4518A4803000E56939 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
 		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
+		88B30B8B1A9F515900B0A928 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
@@ -391,6 +393,8 @@
 		88818C601799F58F007B386F /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = UI/Root/PurchaseViewController.m; sourceTree = "<group>"; };
 		88818C611799F58F007B386F /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = UI/Root/PurchaseViewController.h; sourceTree = "<group>"; };
 		88818C621799F58F007B386F /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = UI/Root/PurchaseViewController.xib; sourceTree = "<group>"; };
+		888503AC1A9FE33B0062A025 /* AMPopTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPopTip.h; sourceTree = "<group>"; };
+		888503AD1A9FE33B0062A025 /* AMPopTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPopTip.m; sourceTree = "<group>"; };
 		888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro-classroom@2x.png"; sourceTree = "<group>"; };
 		889E53B218BAC2CC00721ADF /* loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loop.mp3; sourceTree = SOURCE_ROOT; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -431,6 +435,8 @@
 		88A95E4118A4803000E56939 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
 		88A95E4218A4803000E56939 /* noads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noads.png; sourceTree = "<group>"; };
 		88A95E4318A4803000E56939 /* recordScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordScreenshot.png; sourceTree = "<group>"; };
+		88B30B891A9F515900B0A928 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extensions.h"; sourceTree = "<group>"; };
+		88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
@@ -802,6 +808,8 @@
 				11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */,
 				88BEFE6018A1FCE800399680 /* SoundLevelView.h */,
 				88BEFE6118A1FCE800399680 /* SoundLevelView.m */,
+				88B30B891A9F515900B0A928 /* UIButton+Extensions.h */,
+				88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -914,6 +922,16 @@
 			path = Support/SDWebImage;
 			sourceTree = "<group>";
 		};
+		888503AB1A9FE33B0062A025 /* AMPopTip */ = {
+			isa = PBXGroup;
+			children = (
+				888503AC1A9FE33B0062A025 /* AMPopTip.h */,
+				888503AD1A9FE33B0062A025 /* AMPopTip.m */,
+			);
+			name = AMPopTip;
+			path = Support/AMPopTip;
+			sourceTree = "<group>";
+		};
 		889FD23A177BC3C40046D281 /* appirater */ = {
 			isa = PBXGroup;
 			children = (
@@ -1017,6 +1035,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				888503AB1A9FE33B0062A025 /* AMPopTip */,
 				88CB2AFC1A9E056000288902 /* REFrostedViewController */,
 				880E85861A9D51A700EB3926 /* BCTabBarController */,
 				887632511A8E2E71004D14FA /* SDWebImage */,
@@ -1267,6 +1286,7 @@
 				886712AB1A899F3B007101FD /* SWUtilityButtonView.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,
 				88A5613018D037EA00080210 /* ShareHelper.m in Sources */,
+				88B30B8B1A9F515900B0A928 /* UIButton+Extensions.m in Sources */,
 				110F130F14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld in Sources */,
 				88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
@@ -1297,6 +1317,7 @@
 				886712AF1A899F8D007101FD /* UIAlertView+Blocks.m in Sources */,
 				886712A91A899F3B007101FD /* SWTableViewCell.m in Sources */,
 				8876327F1A8E2E71004D14FA /* UIImage+WebP.m in Sources */,
+				888503AE1A9FE33B0062A025 /* AMPopTip.m in Sources */,
 				887632781A8E2E71004D14FA /* SDWebImageDownloader.m in Sources */,
 				11A3EE81150F456B00A6496B /* CaptureView.m in Sources */,
 				88BEFE6218A1FCE800399680 /* SoundLevelView.m in Sources */,

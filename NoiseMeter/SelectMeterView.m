@@ -23,15 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight + KNavigationBarHeight, self.view.frame.size.width, screenHeight - 295) style:UITableViewStyleGrouped];
-    } else {
-        _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, screenHeight - 275) style:UITableViewStyleGrouped];
-    }
-    
+
+    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - KTopLogoHeight) style:UITableViewStyleGrouped];
     _alertTable.delegate = self;
     _alertTable.dataSource = self;
     _alertTable.opaque = NO;
@@ -107,21 +100,7 @@
     
     [NSUserDefaultsHelper setMeterDisplayType:indexPath.row];
     
-    if (indexPath.row == 0)
-    {
-        
-        [self back];
-    }
-    else if(indexPath.row == 1)
-    {
-        [self back];
-    }
-    else if (indexPath.row == 2)
-    {
-        [self back];
-    } else {
-        
-    }
+    [self dismissModalViewControllerAnimated:YES];
     
 }
 

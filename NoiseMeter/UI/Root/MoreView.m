@@ -256,8 +256,8 @@
     if(indexPath.row == 1)
     {
         SelectAlertView *about = [[SelectAlertView alloc] init];
-        self.frostedViewController.contentViewController = about;
-        [self.frostedViewController hideMenuViewController];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:about];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navController animated:YES completion:nil];
     } else if(indexPath.row == 2)
     {
         if ([NSUserDefaultsHelper isProVersion] == FALSE) {
@@ -272,28 +272,25 @@
             
         } else {
             SelectMeterView *about = [[SelectMeterView alloc] init];
-            self.frostedViewController.contentViewController = about;
-            [self.frostedViewController hideMenuViewController];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
         }
         
     }
     else if(indexPath.row == 9)
     {
         InstructionView *about = [[InstructionView alloc] init];
-        self.frostedViewController.contentViewController = about;
-        [self.frostedViewController hideMenuViewController];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
+
     }
     else if (indexPath.row == 10)
     {
         AboutView *about = [[AboutView alloc] init];
-        self.frostedViewController.contentViewController = about;
-        [self.frostedViewController hideMenuViewController];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
     }
     else if(indexPath.row == 11)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
-        self.frostedViewController.contentViewController = web;
-        [self.frostedViewController hideMenuViewController];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
     }
     
     else if ((indexPath.row == 12) || (indexPath.row ==13))
@@ -317,7 +314,7 @@
                 [_mailer setSubject:@"Keep The Noise Down Support"];
                 [_mailer setMessageBody:[NSString stringWithFormat:@"Please enter your support request here:<br><br><br><br>%@", [self supportText]] isHTML:YES];
             }
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentModalViewController:_mailer animated:YES];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:_mailer animated:YES completion:nil];
         }
         else
         {
@@ -365,13 +362,14 @@
     UISwitch *myswitch = (UISwitch *)sender;
     if ([NSUserDefaultsHelper isProVersion] == FALSE) {
         
+        [myswitch setOn:NO];
+        
         [UIAlertView showWithTitle:@"This is a PRO function" message:@"You can upgrade to Pro to run and record in the background!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self showPurchaseView];
             }
             
         }];
-        [myswitch setOn:NO];
         
         
     } else {
@@ -391,7 +389,12 @@
 
 
 - (void) continuousModeSwitchClicked:(id)sender {
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    
     if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+        
+        [myswitch setOn:NO];
         
         [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
@@ -399,50 +402,60 @@
             }
             
         }];
-    }
-    
-    
-    UISwitch *myswitch = (UISwitch *)sender;
-    
-    if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setContinuousMode:YES];
-        [NSUserDefaultsHelper setSilentMode:NO];
-        
     } else {
-        [NSUserDefaultsHelper setContinuousMode:NO];
-        [NSUserDefaultsHelper setSilentMode:YES];
+        if ([myswitch isOn]) {
+            [NSUserDefaultsHelper setContinuousMode:YES];
+            [NSUserDefaultsHelper setSilentMode:NO];
+            
+        } else {
+            [NSUserDefaultsHelper setContinuousMode:NO];
+            [NSUserDefaultsHelper setSilentMode:YES];
+        }
+        
+        [_optionTable reloadData];
     }
     
-    [_optionTable reloadData];
 }
 
 - (void) silentModeSwitchClicked:(id)sender {
+    
+    UISwitch *myswitch = (UISwitch *)sender;
+    
     if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+        
+        [myswitch setOn:NO];
+        
         [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self showPurchaseView];
             }
             
         }];
-    }
-    
-    
-    UISwitch *myswitch = (UISwitch *)sender;
-    
-    if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setSilentMode:YES];
-        [NSUserDefaultsHelper setContinuousMode:NO];
+        
         
     } else {
-        [NSUserDefaultsHelper setSilentMode:NO];
-        [NSUserDefaultsHelper setContinuousMode:YES];
+        
+        if ([myswitch isOn]) {
+            [NSUserDefaultsHelper setSilentMode:YES];
+            [NSUserDefaultsHelper setContinuousMode:NO];
+            
+        } else {
+            [NSUserDefaultsHelper setSilentMode:NO];
+            [NSUserDefaultsHelper setContinuousMode:YES];
+        }
+        
+        [_optionTable reloadData];
+        
     }
+
     
-    [_optionTable reloadData];
+    
 }
 
 
 - (void) delayAlarmSoundSwitchClicked:(id)sender {
+    
+    UISwitch *myswitch = (UISwitch *)sender;
     
     if ([NSUserDefaultsHelper isProVersion] == FALSE) {
         [UIAlertView showWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -451,19 +464,19 @@
             }
             
         }];
-    }
-    
-    
-    UISwitch *myswitch = (UISwitch *)sender;
-    
-    if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setDelayAlarmSound:YES];
-        
+        [myswitch setOn:NO];
     } else {
-        [NSUserDefaultsHelper setDelayAlarmSound:NO];
+        if ([myswitch isOn]) {
+            [NSUserDefaultsHelper setDelayAlarmSound:YES];
+            
+        } else {
+            [NSUserDefaultsHelper setDelayAlarmSound:NO];
+        }
+        
+        [_optionTable reloadData];
     }
+
     
-    [_optionTable reloadData];
 }
 
 - (void) ignoreSuddenNoiseSwitchClicked:(id)sender {
@@ -521,15 +534,21 @@
 
 
 - (void) showPurchaseView {
-    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    self.frostedViewController.contentViewController = purchaseViewController;
-    [self.frostedViewController hideMenuViewController];
+    double delayInSeconds = 0.45;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:purchaseViewController animated:YES completion:nil];
+    });
 }
 
 - (void) showPurchaseView_ClassRoom {
-    PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    self.frostedViewController.contentViewController = purchaseViewController;
-    [self.frostedViewController hideMenuViewController];
+    double delayInSeconds = 0.45;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:purchaseViewController animated:YES completion:nil];
+    });
 }
 
 
