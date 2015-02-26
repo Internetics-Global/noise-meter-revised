@@ -37,7 +37,7 @@
 #define K_Square_FontSize 18
 #define K_Square_FontSize_Des 26
 
-#define K_Square_Font_Name  @"HelveticaNeue-Bold"
+#define K_Square_Font_Name  @"AvenirNext-Bold"
 
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
