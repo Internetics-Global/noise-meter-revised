@@ -8,6 +8,7 @@
 
 #import "GAITrackedViewController.h"
 
+
 @interface BaseViewController : GAITrackedViewController
 
 @property (strong, nonatomic) UIButton *generalADButton;

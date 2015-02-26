@@ -24,7 +24,7 @@
 - (void)loadView
 {
     [super loadView];
-    [self style];
+    [self style:YES];
     _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
        _activity.frame = CGRectMake(self.view.frame.size.width - 26, KNavigationBarHeight + (KTopLogoHeight - 21)/2, 21, 21);

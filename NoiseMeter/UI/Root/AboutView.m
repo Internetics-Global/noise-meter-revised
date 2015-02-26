@@ -20,7 +20,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:YES];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
       _textView = [[UITextView alloc] initWithFrame:CGRectMake(10, KNavigationBarHeight + KTopLogoHeight, self.view.frame.size.width - 20, 300)];
     } else {

@@ -15,8 +15,10 @@
 
 #import "BCTabBarController.h"
 
-@interface RootView () {
+@interface RootView () <REFrostedViewControllerDelegate> {
     BCTabBarController *_tabBarController;
+    
+    BOOL                _isToRestartLogging;
 }
 
 @end
@@ -57,18 +59,16 @@
         _tabBarController.viewControllers = _viewControllers;
 //        _tabBarController.delegate = self; //TODO:XXXX
         
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            int statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-            int screenHeight = CGRectGetHeight([UIApplication sharedApplication].keyWindow.frame);
-            _tabBarController.view.frame = CGRectMake(0, 20, 320, screenHeight - statusBarHeight);
-            
-        } else {
-            _tabBarController.view.frame = self.view.bounds;
-        }
         _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     
+    //if you do not override addChildViewController, you do not have to call willMoveToParentViewController: method. However you do need to call the didMoveToParentViewController: method after the transition is complete. "Likewise, it is is the responsibility of the container view controller to call the willMoveToParentViewController: method before calling the removeFromParentViewController method. The removeFromParentViewController method calls the didMoveToParentViewController: method of the child view controller."
+
+    [self addChildViewController:_tabBarController];
+    _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _tabBarController.view.frame=self.view.bounds;
     [self.view addSubview:_tabBarController.view];
+    [_tabBarController didMoveToParentViewController:self];
 
     
 }
@@ -76,16 +76,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    self.view.backgroundColor = kGrayColor;
     
-    self.view.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
+    self.frostedViewController.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentMenuViewController:) name:@"K_Notification_Show_Left_View" object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"RootView Screen";
+    //self.screenName = @"RootView Screen";
 
 }
+
 
 - (void)viewDidUnload
 {
@@ -96,11 +100,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)dealloc
-{
-    _tabBarController = nil;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -146,6 +145,35 @@
     
     
     
+    
+}
+
+- (void)dealloc {
+    _tabBarController = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark – K_Notification_Show_Left_View
+- (void)presentMenuViewController:(NSNotification *) notification {
+    [self.frostedViewController presentMenuViewController];
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController {
+    
+    if ([NMDecibelLogger defaultLogger].logging) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+        _isToRestartLogging = YES;
+    } else {
+        _isToRestartLogging = NO;
+    }
+    
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController {
+    if (_isToRestartLogging) {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
     
 }
 

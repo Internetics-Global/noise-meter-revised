@@ -153,7 +153,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:NO];
     
     //1. info and more
     _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -275,7 +275,7 @@
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
     _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
-    _topScoreTable.backgroundColor = [UIColor colorWithRed:22.0/255 green:24.0/255 blue:25.0/255 alpha:1];
+    _topScoreTable.backgroundColor = kGrayColor;
     _topScoreTable.opaque = YES;
     _topScoreTable.delegate = self;
     
@@ -293,8 +293,10 @@
 }
 
 - (void) moreButtonCLicked {
-    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:moreViewController animated:YES];
+//    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
+//    [self.navigationController pushViewController:moreViewController animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"K_Notification_Show_Left_View" object:nil userInfo:nil];
+    
 }
 
 - (void) goToPurchasePage {
@@ -594,9 +596,15 @@
     _currentReadingLabel = nil;
     [_soundLevelView setSoundLevelValue:0];
     _meterBackground = nil;
+    
     [[NMDecibelLogger defaultLogger] stopLogging];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RecordFail" object:nil];
+
+    [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
+    
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

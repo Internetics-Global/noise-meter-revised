@@ -22,7 +22,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:YES];
     
     
 

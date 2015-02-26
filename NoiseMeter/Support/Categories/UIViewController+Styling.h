@@ -10,11 +10,14 @@
 
 @interface UIViewController (Styling)
 
-- (void)style;
+
+- (void)style:(BOOL) isToShowBackNaviBar;
 - (void)displayHelpOverlayWithText:(NSString *)text;
 - (void)dismissHelpOverlay;
 
 - (UIButton *) findBackButton;
 - (UIImageView *) findTopBarImageView;
+
+- (void)back;
 
 @end

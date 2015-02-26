@@ -20,6 +20,8 @@
 #import "UIAlertView+Blocks.h"
 #import "SelectMeterView.h"
 
+#import "UIViewController+REFrostedViewController.h"
+
 
 @interface MoreView ()
 
@@ -38,8 +40,9 @@
 - (void)loadView
 {
     [super loadView];
+
     
-    [self style];
+    [self style:NO];
     
     int purchaseButtonHeight = 0;
     if ([NSUserDefaultsHelper isProVersion] || [NSUserDefaultsHelper isProClassRoomVersion] ) {
@@ -48,15 +51,17 @@
         purchaseButtonHeight = 50;
     }
     
-    int originalY;
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-        originalY = KTopLogoHeight + KNavigationBarHeight;
-    } else {
-        originalY = KTopLogoHeight;
-    }
-
+    //This is a special case for REFrostedViewController
+    float statusBarHeight = 0;
     
-    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, originalY, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - originalY - purchaseButtonHeight) style:UITableViewStyleGrouped];
+    UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_title"]];
+    topImageView.frame = CGRectMake(0, KTopLogoHeight + statusBarHeight, CGRectGetWidth(self.view.frame), 40);
+    topImageView.contentMode = UIViewContentModeScaleAspectFit;
+    topImageView.backgroundColor =[UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
+    topImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.view addSubview:topImageView];
+    
+    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - purchaseButtonHeight) style:UITableViewStyleGrouped];
     
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
@@ -79,9 +84,9 @@
     return 0.01f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 40.0f;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 40.0f;
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,7 +108,7 @@
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
         switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-        switchView.transform = CGAffineTransformMakeScale(0.75, 0.75);
+//        switchView.transform = CGAffineTransformMakeScale(0.75, 0.75);
         cell.accessoryView = switchView;
         
         if (indexPath.row == 4) {
@@ -258,7 +263,8 @@
     if(indexPath.row == 1)
     {
         SelectAlertView *about = [[SelectAlertView alloc] init];
-        [self.navigationController pushViewController:about animated:YES];
+        self.frostedViewController.contentViewController = about;
+        [self.frostedViewController hideMenuViewController];
     } else if(indexPath.row == 2)
     {
         if ([NSUserDefaultsHelper isProVersion] == FALSE) {
@@ -273,24 +279,28 @@
             
         } else {
             SelectMeterView *about = [[SelectMeterView alloc] init];
-            [self.navigationController pushViewController:about animated:YES];
+            self.frostedViewController.contentViewController = about;
+            [self.frostedViewController hideMenuViewController];
         }
         
     }
     else if(indexPath.row == 9)
     {
         InstructionView *about = [[InstructionView alloc] init];
-        [self.navigationController pushViewController:about animated:YES];
+        self.frostedViewController.contentViewController = about;
+        [self.frostedViewController hideMenuViewController];
     }
     else if (indexPath.row == 10)
     {
         AboutView *about = [[AboutView alloc] init];
-        [self.navigationController pushViewController:about animated:YES];
+        self.frostedViewController.contentViewController = about;
+        [self.frostedViewController hideMenuViewController];
     }
     else if(indexPath.row == 11)
     {
         InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
-        [self.navigationController pushViewController:web animated:YES];
+        self.frostedViewController.contentViewController = web;
+        [self.frostedViewController hideMenuViewController];
     }
     
     else if ((indexPath.row == 12) || (indexPath.row ==13))
@@ -519,12 +529,14 @@
 
 - (void) showPurchaseView {
     PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    [self.navigationController pushViewController:purchaseViewController animated:YES];
+    self.frostedViewController.contentViewController = purchaseViewController;
+    [self.frostedViewController hideMenuViewController];
 }
 
 - (void) showPurchaseView_ClassRoom {
     PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
-    [self.navigationController pushViewController:purchaseViewController animated:YES];
+    self.frostedViewController.contentViewController = purchaseViewController;
+    [self.frostedViewController hideMenuViewController];
 }
 
 

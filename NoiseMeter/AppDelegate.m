@@ -18,8 +18,11 @@
 #import "IDPSoundboard.h"
 #import "FileHelper.h"
 #import "iVersion.h"
+#import "REFrostedViewController.h"
+#import "MoreView.h"
 
-
+@interface AppDelegate ()
+@end
 
 @implementation AppDelegate
 
@@ -45,8 +48,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    _rootView = [[RootView alloc] init];
-    self.window.rootViewController = _rootView;
+    
+
+    
+    // configure sliding view controller
+    RootView *rootView = [[RootView alloc] init];
+    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
+    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:rootView menuViewController:moreViewController];
+    frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    self.window.rootViewController = frostedViewController;
+    
     
     [Appirater appLaunched:YES];
     

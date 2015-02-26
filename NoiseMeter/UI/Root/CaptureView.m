@@ -80,7 +80,7 @@
 - (void)loadView
 {
     [super loadView];
-    [self style];
+    [self style:NO];
     _meterBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background_count.png"]];
     _meterBackground.frame = CGRectMake(0, KTopLogoHeight, 320, 130);
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;

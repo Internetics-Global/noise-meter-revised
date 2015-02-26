@@ -23,6 +23,8 @@
 #define IAPProductID_Pro   @"3141591001"
 #define IAPProductID_Pro_Classroom   @"3141591002"
 
+#define kGrayColor     [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1]
+
 
 //Purchase welcome url
 #define k_Pro_Introduction_URL @"http://www.noisedown.com/upgrade.html"

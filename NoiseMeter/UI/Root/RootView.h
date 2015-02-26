@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "GAITrackedViewController.h"
 
-@interface RootView : GAITrackedViewController <UITabBarControllerDelegate>
+#import "UIViewController+REFrostedViewController.h"
+#import "REFrostedViewController.h"
+
+
+@interface RootView : UIViewController <UITabBarControllerDelegate>
 
 @end

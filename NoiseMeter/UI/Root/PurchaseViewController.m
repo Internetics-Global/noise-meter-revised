@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad
 {
-    [self style];
+    [self style:YES];
     [super viewDidLoad];
     
     [_purchaseButton addTarget:self action:@selector(purchaseNow) forControlEvents:UIControlEventTouchDown];

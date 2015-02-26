@@ -9,22 +9,40 @@
 #import "UIViewController+Styling.h"
 #import "ScoreView.h"
 #import "PurchaseViewController.h"
+#import "MoreView.h"
 
 @implementation UIViewController (Styling)
 
 - (void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (self.frostedViewController) {
+        RootView *rootView = [[RootView alloc] init];
+        self.frostedViewController.contentViewController = rootView;
+        [self.frostedViewController hideMenuViewController];
+    }
 }
 
-- (void)style
+
+
+- (void)style:(BOOL) isToShowBackNaviBar
 {
-    self.view.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    
+    //This is a special case in REFrostedViewController
+    float statusBarHeight = 0;
+    if ([self isKindOfClass:[MoreView class]]) {
+        //statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    }
+    
+    
+    self.view.backgroundColor = kGrayColor;
     UIButton *_backButton = nil;
-    if ((self.navigationController) && ([[self.navigationController viewControllers] count] > 1) && (![self isMemberOfClass:NSClassFromString(@"CaptureView")])) 
+    if (isToShowBackNaviBar)
     {
         _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backButton.frame = CGRectMake(10, 10, 54, 21);
+        _backButton.frame = CGRectMake(10, 10 + statusBarHeight, 54, 21);
         _backButton.tag = 314;
         [_backButton setImage:[UIImage imageNamed:@"button_back.png"] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
@@ -44,17 +62,17 @@
     } else {
       _topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo.png"]];
     }
-    
+    _topImage.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _topImage.tag = K_TOP_IMAGEVIEW_TAG;
     if (_backButton != nil) 
     {
-        _topImage.frame = CGRectMake(30, KNavigationBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
-        topBlackView.frame = CGRectMake(0, KNavigationBarHeight, self.view.frame.size.width, KTopLogoHeight);
+        _topImage.frame = CGRectMake(30, KNavigationBarHeight + statusBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
+        topBlackView.frame = CGRectMake(0, KNavigationBarHeight + statusBarHeight, self.view.frame.size.width, KTopLogoHeight);
     }
     else 
     {
-        _topImage.frame = CGRectMake(30, 0, self.view.frame.size.width - 30*2, KTopLogoHeight);
-        topBlackView.frame = CGRectMake(0, 0, self.view.frame.size.width, KTopLogoHeight);
+        _topImage.frame = CGRectMake(30, 0 + statusBarHeight, self.view.frame.size.width - 30*2, KTopLogoHeight);
+        topBlackView.frame = CGRectMake(0, 0 + statusBarHeight, self.view.frame.size.width, KTopLogoHeight);
     }
     [_topImage setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:_topImage];
@@ -149,5 +167,6 @@
     
     return imageView;
 }
+
 
 @end

@@ -14,7 +14,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:YES];
     
     
     
@@ -110,15 +110,15 @@
     if (indexPath.row == 0)
     {
         
-        [self.navigationController popViewControllerAnimated:YES];
+        [self back];
     }
     else if(indexPath.row == 1)
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self back];
     }
     else if (indexPath.row == 2)
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self back];
     } else {
         
     }

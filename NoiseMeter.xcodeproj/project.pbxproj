@@ -169,6 +169,15 @@
 		88BEFE6C18A20E9300399680 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6918A20E9300399680 /* 18.png */; };
 		88BEFE6D18A20E9300399680 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6A18A20E9300399680 /* 19.png */; };
 		88BEFE6E18A20E9300399680 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
+		88CB2B091A9E056000288902 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2AFE1A9E056000288902 /* RECommonFunctions.m */; };
+		88CB2B0A1A9E056000288902 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B001A9E056000288902 /* REFrostedContainerViewController.m */; };
+		88CB2B0B1A9E056000288902 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B021A9E056000288902 /* REFrostedViewController.m */; };
+		88CB2B0C1A9E056000288902 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B041A9E056000288902 /* UIImage+REFrostedViewController.m */; };
+		88CB2B0D1A9E056000288902 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B061A9E056000288902 /* UIView+REFrostedViewController.m */; };
+		88CB2B0E1A9E056000288902 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */; };
+		88CB2B101A9E05E400288902 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CB2B0F1A9E05E400288902 /* Accelerate.framework */; };
+		88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
+		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
 		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
 		88E8423018B1B69800B0FB50 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422A18B1B69700B0FB50 /* README.md */; };
@@ -447,6 +456,21 @@
 		88BEFE6918A20E9300399680 /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 18.png; path = Meters/18.png; sourceTree = "<group>"; };
 		88BEFE6A18A20E9300399680 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 19.png; path = Meters/19.png; sourceTree = "<group>"; };
 		88BEFE6B18A20E9300399680 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 20.png; path = Meters/20.png; sourceTree = "<group>"; };
+		88CB2AFD1A9E056000288902 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		88CB2AFE1A9E056000288902 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		88CB2AFF1A9E056000288902 /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
+		88CB2B001A9E056000288902 /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
+		88CB2B011A9E056000288902 /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
+		88CB2B021A9E056000288902 /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
+		88CB2B031A9E056000288902 /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
+		88CB2B041A9E056000288902 /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
+		88CB2B051A9E056000288902 /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
+		88CB2B061A9E056000288902 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
+		88CB2B071A9E056000288902 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
+		88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		88CB2B0F1A9E05E400288902 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings_title@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/settings_title@2x.png"; sourceTree = SOURCE_ROOT; };
+		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88E8422918B1B69700B0FB50 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		88E8422A18B1B69700B0FB50 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -473,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CB2B101A9E05E400288902 /* Accelerate.framework in Frameworks */,
 				887632841A8E3024004D14FA /* ImageIO.framework in Frameworks */,
 				886712B31A89A6AD007101FD /* libsqlite3.dylib in Frameworks */,
 				1140FDD41517FC6400DE0A64 /* MessageUI.framework in Frameworks */,
@@ -524,6 +549,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88CB2B0F1A9E05E400288902 /* Accelerate.framework */,
 				887632831A8E3024004D14FA /* ImageIO.framework */,
 				886712B21A89A6AD007101FD /* libsqlite3.dylib */,
 				886712B01A89A64F007101FD /* MediaPlayer.framework */,
@@ -667,6 +693,7 @@
 				887169101A8A179500FD5B75 /* button_cancel2.png */,
 				880E859B1A9D807600EB3926 /* set_noise_level_title@2x.png */,
 				887169111A8A179500FD5B75 /* button_cancel2@2x.png */,
+				88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */,
 				886712861A899E80007101FD /* shareButton@2x.png */,
 				88A95E3E18A47FD200E56939 /* generalBanner@2x.png */,
 				88A95E3C18A47FC100E56939 /* cancel@2x.png */,
@@ -674,6 +701,7 @@
 				88BEFE1418A1DEB000399680 /* cancel@2x.png */,
 				1140FDD01517FBE700DE0A64 /* icon_more@2x.png */,
 				11AC53041505D3F20093C7AB /* icon_alert@2x.png */,
+				88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */,
 				880E859D1A9D815C00EB3926 /* grey_button_for_level@2x.png */,
 				11AC53061505D3F20093C7AB /* icon_meter@2x.png */,
 				11AC53081505D3F20093C7AB /* icon_scores@2x.png */,
@@ -947,6 +975,26 @@
 			name = Meters;
 			sourceTree = "<group>";
 		};
+		88CB2AFC1A9E056000288902 /* REFrostedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88CB2AFD1A9E056000288902 /* RECommonFunctions.h */,
+				88CB2AFE1A9E056000288902 /* RECommonFunctions.m */,
+				88CB2AFF1A9E056000288902 /* REFrostedContainerViewController.h */,
+				88CB2B001A9E056000288902 /* REFrostedContainerViewController.m */,
+				88CB2B011A9E056000288902 /* REFrostedViewController.h */,
+				88CB2B021A9E056000288902 /* REFrostedViewController.m */,
+				88CB2B031A9E056000288902 /* UIImage+REFrostedViewController.h */,
+				88CB2B041A9E056000288902 /* UIImage+REFrostedViewController.m */,
+				88CB2B051A9E056000288902 /* UIView+REFrostedViewController.h */,
+				88CB2B061A9E056000288902 /* UIView+REFrostedViewController.m */,
+				88CB2B071A9E056000288902 /* UIViewController+REFrostedViewController.h */,
+				88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */,
+			);
+			name = REFrostedViewController;
+			path = Support/REFrostedViewController;
+			sourceTree = "<group>";
+		};
 		88DDF47C189B198800138ADF /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +1014,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				88CB2AFC1A9E056000288902 /* REFrostedViewController */,
 				880E85861A9D51A700EB3926 /* BCTabBarController */,
 				887632511A8E2E71004D14FA /* SDWebImage */,
 				880461081A8C1F0B0032A3C8 /* iVersion */,
@@ -1122,6 +1171,7 @@
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
+				88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */,
 				8871690E1A8A0FF600FD5B75 /* playback.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
@@ -1179,6 +1229,7 @@
 				88E8423018B1B69800B0FB50 /* README.md in Resources */,
 				88FA090518C2A8960061FA0F /* soundOnButton2@2x.png in Resources */,
 				8806B39B179658510085CBF0 /* remove_ad.png in Resources */,
+				88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,6 +1267,7 @@
 				88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */,
 				11AC52E51505CCFF0093C7AB /* NMDataManager.m in Sources */,
 				11AC52EC1505CDA80093C7AB /* NMDecibelLogger.m in Sources */,
+				88CB2B0D1A9E056000288902 /* UIView+REFrostedViewController.m in Sources */,
 				886712A71A899F3B007101FD /* SWCellScrollView.m in Sources */,
 				88B4735A189A182C005668AC /* FileHelper.m in Sources */,
 				880E85961A9D51A700EB3926 /* BCTabBarView.m in Sources */,
@@ -1224,6 +1276,8 @@
 				887632811A8E2E71004D14FA /* UIImageView+WebCache.m in Sources */,
 				11AC52F01505D3010093C7AB /* RootView.m in Sources */,
 				11AC52F51505D34C0093C7AB /* UIViewController+Styling.m in Sources */,
+				88CB2B0C1A9E056000288902 /* UIImage+REFrostedViewController.m in Sources */,
+				88CB2B0A1A9E056000288902 /* REFrostedContainerViewController.m in Sources */,
 				880E85931A9D51A700EB3926 /* BCTab.m in Sources */,
 				881032AE18A361FE000CA722 /* BaseViewController.m in Sources */,
 				887632741A8E2E71004D14FA /* NSData+ImageContentType.m in Sources */,
@@ -1232,7 +1286,9 @@
 				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
+				88CB2B091A9E056000288902 /* RECommonFunctions.m in Sources */,
 				887632791A8E2E71004D14FA /* SDWebImageDownloaderOperation.m in Sources */,
+				88CB2B0E1A9E056000288902 /* UIViewController+REFrostedViewController.m in Sources */,
 				883F1F5E18BBF0880030A716 /* RMStore.m in Sources */,
 				886712AF1A899F8D007101FD /* UIAlertView+Blocks.m in Sources */,
 				886712A91A899F3B007101FD /* SWTableViewCell.m in Sources */,
@@ -1262,6 +1318,7 @@
 				1168C317151966AC00897AA4 /* InstructionView.m in Sources */,
 				886712AA1A899F3B007101FD /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				889FD23E177BC3F90046D281 /* Appirater.m in Sources */,
+				88CB2B0B1A9E056000288902 /* REFrostedViewController.m in Sources */,
 				887632761A8E2E71004D14FA /* SDWebImageCompat.m in Sources */,
 				887632751A8E2E71004D14FA /* SDImageCache.m in Sources */,
 			);

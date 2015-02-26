@@ -238,7 +238,6 @@
         return;
     }
     
-
     _sampleTimer = nil;
     
     if ((!_playingAlarm) && (APP_DELEGATE.isCreatingCustomAlarmFile == FALSE))

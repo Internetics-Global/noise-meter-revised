@@ -29,7 +29,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:NO];
     
     UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"set_noise_level_title"]];
     topImageView.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
@@ -59,6 +59,7 @@
     _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _setButton.frame = CGRectMake(20, CGRectGetMaxY(_pickerView.frame) + 5, 280, 37);
     [_setButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
+    [_setButton setBackgroundImage:[UIImage imageNamed:@"orange_button_for_level"] forState:UIControlStateHighlighted];
     [_setButton setTitle:@"Set Level" forState:UIControlStateNormal];
     [_setButton setTintColor:[UIColor whiteColor]];
     [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];

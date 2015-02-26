@@ -54,7 +54,7 @@
 {
     [super loadView];
     
-    [self style];
+    [self style:NO];
     
     _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
     _tableHeader.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
@@ -85,7 +85,7 @@
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scoreTable.backgroundView = nil;
     _scoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
-    _scoreTable.backgroundColor = [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1];
+    _scoreTable.backgroundColor = kGrayColor;
     _scoreTable.opaque = YES;
     [self reloadData];
     
