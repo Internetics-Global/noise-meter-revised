@@ -29,6 +29,8 @@
 //在silent mode中，为了防止不断的capture,需要设置最短时间，在这个时间内如果重复出现alarm，则忽略
 #define K_Second_SilentMode        1.0
 
+#define K_Meter_Square_Background_Color  [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9]
+
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
     
@@ -186,7 +188,7 @@
     
     //4. current reading base view
     _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, 70, 70)];
-    _currentReadingBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
+    _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _currentReadingBaseView.layer.cornerRadius = 5;
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
@@ -221,7 +223,7 @@
 
     //6. peakview
     _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
-    _peakBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
+    _peakBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _peakBaseView.layer.cornerRadius = 5;
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
@@ -229,7 +231,7 @@
     _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
     _peakDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
-    _peakDesLabel.textColor = [UIColor whiteColor];
+    _peakDesLabel.textColor = [UIColor grayColor];
     _peakDesLabel.backgroundColor = [UIColor clearColor];
     _peakDesLabel.layer.cornerRadius = 5;
     _peakDesLabel.text = @"HIGH";
@@ -239,7 +241,7 @@
     _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _peakLabel.textAlignment = UITextAlignmentCenter;
     _peakLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
-    _peakLabel.textColor = [UIColor whiteColor];
+    _peakLabel.textColor = [UIColor grayColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
     _peakLabel.layer.cornerRadius = 5;
     _peakLabel.layer.masksToBounds = YES;
@@ -249,7 +251,7 @@
     
     //7. info view
     _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, 70, 70)];
-    _infoMeterBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
+    _infoMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _infoMeterBaseView.layer.cornerRadius = 5;
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
@@ -278,7 +280,7 @@
     
     //8. capture view
     _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
-    _captureMeterBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
+    _captureMeterBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _captureMeterBaseView.layer.cornerRadius = 5;
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
