@@ -33,6 +33,7 @@
     _meterImageView = [[UIImageView alloc] init];
     [_meterImageView setContentMode:UIViewContentModeScaleAspectFill];
     _meterImageView.autoresizingMask = UIViewAutoresizingNone;
+    _meterImageView.backgroundColor = [UIColor clearColor];
     _meterImageView.frame = self.bounds;
     _meterImageView.tag = -1;
     [self addSubview:_meterImageView];
@@ -44,8 +45,7 @@
     for (int i = 1; i <= kNumberSlices; i++) {
         UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(width *(i-1), 0, width, KSoundMeterViewWidth)];
         overlapView.tag = i - 1;
-        [overlapView setBackgroundColor:[UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9]];
-        [overlapView setContentMode:UIViewContentModeScaleToFill];
+        [overlapView setBackgroundColor:kMeterOverlapColor];
         [self addSubview:overlapView];
         overlapView.hidden = YES;
     }

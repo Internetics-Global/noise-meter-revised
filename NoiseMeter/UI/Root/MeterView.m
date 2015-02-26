@@ -162,10 +162,11 @@
     [self.view addSubview:_moreButton];
     
     //2. meter base view
+    
     _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, 320, 248)];
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     _meterBackground.userInteractionEnabled = YES;
-    _meterBackground.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9];
+    _meterBackground.backgroundColor = kMeterOverlapColor;
     [self.view addSubview:_meterBackground];
     UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchLoggingStatus)];
     singleTapGesture.numberOfTapsRequired = 1;
@@ -185,25 +186,25 @@
     
     //4. current reading base view
     _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, 70, 70)];
-    _currentReadingBaseView.backgroundColor = [UIColor darkGrayColor];
+    _currentReadingBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
     _currentReadingBaseView.layer.cornerRadius = 5;
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
     
     _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
-    _currentReadingDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
-    _currentReadingDesLabel.textColor = [UIColor redColor];
+    _currentReadingDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
+    _currentReadingDesLabel.textColor = [UIColor grayColor];
     _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
     _currentReadingDesLabel.layer.cornerRadius = 5;
     _currentReadingDesLabel.text = @"NOW";
     _currentReadingDesLabel.layer.masksToBounds = YES;
     [_currentReadingBaseView addSubview:_currentReadingDesLabel];
     
-    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
-    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
-    _currentReadingLabel.textColor = [UIColor redColor];
+    _currentReadingLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _currentReadingLabel.textColor = [UIColor grayColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     _currentReadingLabel.layer.cornerRadius = 5;
     _currentReadingLabel.layer.masksToBounds = YES;
@@ -212,7 +213,7 @@
     //5. cancel button
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
-    _cancelButton.frame = CGRectMake(CGRectGetWidth(_meterBackground.frame)/2 - 15, CGRectGetHeight(_meterBackground.frame)/2 - 15, 30, 30);
+    _cancelButton.frame = CGRectMake(CGRectGetWidth(_meterBackground.frame)/2 - 25, CGRectGetHeight(_meterBackground.frame)/2 - 25, 50, 50);
     [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     _cancelButton.hidden = YES;
     [_meterBackground addSubview:_cancelButton];
@@ -220,25 +221,25 @@
 
     //6. peakview
     _peakBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
-    _peakBaseView.backgroundColor = [UIColor darkGrayColor];
+    _peakBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
     _peakBaseView.layer.cornerRadius = 5;
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
     
     _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
-    _peakDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
-    _peakDesLabel.textColor = [UIColor grayColor];
+    _peakDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
+    _peakDesLabel.textColor = [UIColor whiteColor];
     _peakDesLabel.backgroundColor = [UIColor clearColor];
     _peakDesLabel.layer.cornerRadius = 5;
     _peakDesLabel.text = @"HIGH";
     _peakDesLabel.layer.masksToBounds = YES;
     [_peakBaseView addSubview:_peakDesLabel];
     
-    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _peakLabel.textAlignment = UITextAlignmentCenter;
-    _peakLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
-    _peakLabel.textColor = [UIColor grayColor];
+    _peakLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
+    _peakLabel.textColor = [UIColor whiteColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
     _peakLabel.layer.cornerRadius = 5;
     _peakLabel.layer.masksToBounds = YES;
@@ -248,14 +249,14 @@
     
     //7. info view
     _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - 90, 15, 70, 70)];
-    _infoMeterBaseView.backgroundColor = [UIColor darkGrayColor];
+    _infoMeterBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
     _infoMeterBaseView.layer.cornerRadius = 5;
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
     _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _infoMeterDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    _infoMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     _infoMeterDesLabel.textColor = [UIColor grayColor];
     _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
     _infoMeterDesLabel.layer.cornerRadius = 5;
@@ -263,9 +264,9 @@
     _infoMeterDesLabel.layer.masksToBounds = YES;
     [_infoMeterBaseView addSubview:_infoMeterDesLabel];
     
-    _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 70, 40)];
+    _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _infoMeterLabel.textAlignment = UITextAlignmentCenter;
-    _infoMeterLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _infoMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _infoMeterLabel.textColor = [UIColor grayColor];
     _infoMeterLabel.backgroundColor = [UIColor clearColor];
     _infoMeterLabel.layer.cornerRadius = 5;
@@ -277,14 +278,14 @@
     
     //8. capture view
     _captureMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetHeight(_meterBackground.frame) - 90, 70, 70)];
-    _captureMeterBaseView.backgroundColor = [UIColor darkGrayColor];
+    _captureMeterBaseView.backgroundColor = [UIColor colorWithRed:40.0/255 green:40.0/255 blue:40.0/255 alpha:0.9];
     _captureMeterBaseView.layer.cornerRadius = 5;
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
     _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, 70, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _captureMeterDesLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    _captureMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
     _captureMeterDesLabel.textColor = [UIColor grayColor];
     _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
     _captureMeterDesLabel.layer.cornerRadius = 5;
@@ -294,7 +295,7 @@
     
     _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 70, 30)];
     _captureMeterLabel.textAlignment = UITextAlignmentCenter;
-    _captureMeterLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:32];
+    _captureMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
     _captureMeterLabel.textColor = [UIColor grayColor];
     _captureMeterLabel.backgroundColor = [UIColor clearColor];
     _captureMeterLabel.layer.cornerRadius = 5;
@@ -321,7 +322,7 @@
     _topScoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame) - KNavigationBarHeight) style:UITableViewStylePlain];
     _topScoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _topScoreTable.backgroundView = nil;
-    _topScoreTable.separatorColor = [UIColor colorWithRed:0.152 green:0.156 blue:0.164 alpha:1.0];
+    _topScoreTable.separatorColor = [UIColor clearColor];
     _topScoreTable.backgroundColor = kGrayColor;
     _topScoreTable.opaque = YES;
     _topScoreTable.delegate = self;
@@ -354,7 +355,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9];
+    self.view.backgroundColor = kMeterOverlapColor;
     
     [NSUserDefaultsHelper setLoggingPauseFlag:NO];
 }
@@ -534,20 +535,19 @@
         {
             //NSLog(@"Not reach threahold");
             _startForDelayAlarmSound = [NSDate date];
-            _currentReadingLabel.textColor = [UIColor redColor];
+            _currentReadingLabel.textColor = [UIColor grayColor];
             [self success];
         }
         
         
         if ((threshold != nil) && ([threshold floatValue] < [_currentReading floatValue])) 
         {
-            int peakVal = [_peakReading intValue];
-            [NSUserDefaultsHelper setLastNoisePeak:peakVal];
+            [NSUserDefaultsHelper setLastNoisePeak:[_currentReading floatValue]];
             
             _peakBaseView.hidden = NO;
-            _peakLabel.text = [NSString stringWithFormat:@"%d", peakVal];
+            _peakLabel.text = [NSString stringWithFormat:@"%d", [_peakReading intValue]];
             
-            _captureMeterLabel.text = [NSString stringWithFormat:@"%d", peakVal];
+            _captureMeterLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
             _captureMeterBaseView.hidden = NO;
             
             _cancelButton.hidden = NO;

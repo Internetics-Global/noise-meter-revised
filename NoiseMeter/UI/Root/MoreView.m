@@ -44,24 +44,17 @@
     
     [self style:NO];
     
-    int purchaseButtonHeight = 0;
-    if ([NSUserDefaultsHelper isProVersion] || [NSUserDefaultsHelper isProClassRoomVersion] ) {
-        purchaseButtonHeight = 0;
-    } else {
-        purchaseButtonHeight = 50;
-    }
-    
     //This is a special case for REFrostedViewController
     float statusBarHeight = 0;
     
     UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"settings_title"]];
     topImageView.frame = CGRectMake(0, KTopLogoHeight + statusBarHeight, CGRectGetWidth(self.view.frame), 40);
-    topImageView.contentMode = UIViewContentModeScaleAspectFit;
+    topImageView.contentMode = UIViewContentModeCenter;
     topImageView.backgroundColor =[UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     topImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:topImageView];
     
-    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - purchaseButtonHeight) style:UITableViewStyleGrouped];
+    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame)) style:UITableViewStyleGrouped];
     
     _optionTable.delegate = self;
     _optionTable.dataSource = self;

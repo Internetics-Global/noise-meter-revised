@@ -33,11 +33,11 @@
     
     UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"set_noise_level_title"]];
     topImageView.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
-    topImageView.contentMode = UIViewContentModeScaleAspectFit;
+    topImageView.contentMode = UIViewContentModeCenter;
     topImageView.backgroundColor =[UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     [self.view addSubview:topImageView];
     
-    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 5, self.view.frame.size.width - 40, 40)];
+    _explanation = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 10, self.view.frame.size.width - 40, 40)];
     _explanation.numberOfLines = 2;
     _explanation.backgroundColor = [UIColor clearColor];
     _explanation.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];

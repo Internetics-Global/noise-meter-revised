@@ -44,6 +44,10 @@
 	} else {
 		self.selectedViewController = vc;
 	}
+    
+    if (self.delegate) {
+        [self.delegate tabBarController:self didSelectViewController:vc];
+    }
 	
 }
 

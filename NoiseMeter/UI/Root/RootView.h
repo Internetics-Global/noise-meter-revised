@@ -13,6 +13,6 @@
 #import "REFrostedViewController.h"
 
 
-@interface RootView : UIViewController <UITabBarControllerDelegate>
+@interface RootView : UIViewController
 
 @end

@@ -15,7 +15,7 @@
 
 #import "BCTabBarController.h"
 
-@interface RootView () <REFrostedViewControllerDelegate> {
+@interface RootView () <REFrostedViewControllerDelegate,BCTabBarControllerDelegate> {
     BCTabBarController *_tabBarController;
     
     BOOL                _isToRestartLogging;
@@ -57,7 +57,7 @@
         
         
         _tabBarController.viewControllers = _viewControllers;
-//        _tabBarController.delegate = self; //TODO:XXXX
+        _tabBarController.delegate = self;
         
         _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
@@ -106,9 +106,40 @@
     return UIStatusBarStyleLightContent;
 }
 
-#pragma mark – UITabBarControllerDelegate
 
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+- (void)dealloc {
+    _tabBarController = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+#pragma mark – K_Notification_Show_Left_View
+- (void)presentMenuViewController:(NSNotification *) notification {
+    [self.frostedViewController presentMenuViewController];
+}
+
+#pragma mark – REFrostedViewController related
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController {
+    
+    if ([NMDecibelLogger defaultLogger].logging) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+        _isToRestartLogging = YES;
+    } else {
+        _isToRestartLogging = NO;
+    }
+    
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController {
+    if (_isToRestartLogging) {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
+    
+}
+
+#pragma mark – BCTabBarControllerDelegate related
+- (void)tabBarController:(BCTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
     UIViewController *firstviewController;
     
     if ([viewController isKindOfClass:[UINavigationController class]]) {
@@ -132,51 +163,16 @@
             }
         }
         
-
+        
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.4 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
+            [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
                 baseViewController.generalADButton.alpha = 1;
                 NSLog(@"%s:ADBanner transient",__FUNCTION__);
             }completion:nil];
         });
     }
     
-    
-    
-    
-    
 }
-
-- (void)dealloc {
-    _tabBarController = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
-#pragma mark – K_Notification_Show_Left_View
-- (void)presentMenuViewController:(NSNotification *) notification {
-    [self.frostedViewController presentMenuViewController];
-}
-
-- (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController {
-    
-    if ([NMDecibelLogger defaultLogger].logging) {
-        [[NMDecibelLogger defaultLogger] stopLogging];
-        _isToRestartLogging = YES;
-    } else {
-        _isToRestartLogging = NO;
-    }
-    
-}
-
-- (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController {
-    if (_isToRestartLogging) {
-        [[NMDecibelLogger defaultLogger] startLogging];
-    }
-    
-}
-
-
 
 @end
