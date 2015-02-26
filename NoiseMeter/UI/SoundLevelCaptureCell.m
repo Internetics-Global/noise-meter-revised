@@ -33,8 +33,8 @@
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 90, self.contentView.frame.size.height)];
         _nameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _nameLabel.backgroundColor = [UIColor clearColor];
-        _nameLabel.textColor = [UIColor whiteColor];
-        _nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:_nameLabel.font.pointSize];
+        _nameLabel.textColor = [UIColor lightGrayColor];
+        _nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
           _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         }
@@ -43,15 +43,17 @@
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 95, 0, 90, self.contentView.frame.size.height)];
         _dateLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _dateLabel.textAlignment = NSTextAlignmentRight;
+        _dateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
         _dateLabel.backgroundColor = [UIColor clearColor];
-        _dateLabel.textColor = [UIColor whiteColor];
+        _dateLabel.textColor = [UIColor lightGrayColor];
         [self.contentView addSubview:_dateLabel];
         
         
         _levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(_dateLabel.frame.origin.x - 45, 0, 45, self.contentView.frame.size.height)];
         _levelLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         _levelLabel.backgroundColor = [UIColor clearColor];
-        _levelLabel.textColor = [UIColor whiteColor];
+        _levelLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        _levelLabel.textColor = [UIColor lightGrayColor];
         [self.contentView addSubview:_levelLabel];
         
         

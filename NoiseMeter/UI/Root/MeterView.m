@@ -196,7 +196,7 @@
     _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
-    _currentReadingDesLabel.textColor = [UIColor grayColor];
+    _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
     _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
     _currentReadingDesLabel.layer.cornerRadius = 5;
     _currentReadingDesLabel.text = @"NOW";
@@ -206,7 +206,7 @@
     _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _currentReadingLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
-    _currentReadingLabel.textColor = [UIColor grayColor];
+    _currentReadingLabel.textColor = [UIColor lightGrayColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
     _currentReadingLabel.layer.cornerRadius = 5;
     _currentReadingLabel.layer.masksToBounds = YES;
@@ -231,7 +231,7 @@
     _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
     _peakDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:22];
-    _peakDesLabel.textColor = [UIColor grayColor];
+    _peakDesLabel.textColor = [UIColor lightGrayColor];
     _peakDesLabel.backgroundColor = [UIColor clearColor];
     _peakDesLabel.layer.cornerRadius = 5;
     _peakDesLabel.text = @"HIGH";
@@ -241,7 +241,7 @@
     _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _peakLabel.textAlignment = UITextAlignmentCenter;
     _peakLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
-    _peakLabel.textColor = [UIColor grayColor];
+    _peakLabel.textColor = [UIColor lightGrayColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
     _peakLabel.layer.cornerRadius = 5;
     _peakLabel.layer.masksToBounds = YES;
@@ -259,7 +259,7 @@
     _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 70, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _infoMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
-    _infoMeterDesLabel.textColor = [UIColor grayColor];
+    _infoMeterDesLabel.textColor = [UIColor lightGrayColor];
     _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
     _infoMeterDesLabel.layer.cornerRadius = 5;
     _infoMeterDesLabel.text = @"METER";
@@ -269,7 +269,7 @@
     _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 70, 40)];
     _infoMeterLabel.textAlignment = UITextAlignmentCenter;
     _infoMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
-    _infoMeterLabel.textColor = [UIColor grayColor];
+    _infoMeterLabel.textColor = [UIColor lightGrayColor];
     _infoMeterLabel.backgroundColor = [UIColor clearColor];
     _infoMeterLabel.layer.cornerRadius = 5;
     _infoMeterLabel.text = @"OFF";
@@ -288,7 +288,7 @@
     _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, 70, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterDesLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:18];
-    _captureMeterDesLabel.textColor = [UIColor grayColor];
+    _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
     _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
     _captureMeterDesLabel.layer.cornerRadius = 5;
     _captureMeterDesLabel.text = @"LAST";
@@ -298,7 +298,7 @@
     _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 70, 30)];
     _captureMeterLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:28];
-    _captureMeterLabel.textColor = [UIColor grayColor];
+    _captureMeterLabel.textColor = [UIColor lightGrayColor];
     _captureMeterLabel.backgroundColor = [UIColor clearColor];
     _captureMeterLabel.layer.cornerRadius = 5;
     _captureMeterLabel.text = @"33";
@@ -426,8 +426,8 @@
         _titleLabel.text = @"  Top Noise Makers:";
     }
     _titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    _titleLabel.textColor = [UIColor whiteColor];
+    _titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+    _titleLabel.textColor = [UIColor lightGrayColor];
     [headerView addSubview:_titleLabel];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(headerView.frame) -0.5, CGRectGetWidth(headerView.frame), 0.5)] ;
@@ -537,7 +537,7 @@
         {
             //NSLog(@"Not reach threahold");
             _startForDelayAlarmSound = [NSDate date];
-            _currentReadingLabel.textColor = [UIColor grayColor];
+            _currentReadingLabel.textColor = [UIColor lightGrayColor];
             [self success];
         }
         
