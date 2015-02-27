@@ -305,7 +305,7 @@
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
-    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 8, K_Square_Width, 20)];
+    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 8, K_Square_Width - 6, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:20];
     _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
