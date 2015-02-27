@@ -713,8 +713,9 @@
     
     if (_popTipMeterPause == nil) {
         _popTipMeterPause = [AMPopTip popTip];
+        _popTipMeterPause.textColor = [UIColor darkGrayColor];
         _popTipMeterPause.arrowSize = CGSizeMake(8, 20);
-        _popTipMeterPause.popoverColor = [UIColor colorWithRed:30 green:0.3 blue:0.87 alpha:0.9];
+        _popTipMeterPause.popoverColor = [UIColor greenColor];
         _popTipMeterPause.shouldDismissOnTap = YES;
         _popTipMeterPause.shouldDismissOnTapOutside = NO;
         _popTipMeterPause.dismissHandler = ^() {
@@ -725,8 +726,9 @@
     
     if (_popTipMeterCapture == nil) {
         _popTipMeterCapture = [AMPopTip popTip];
+        _popTipMeterCapture.textColor = [UIColor darkGrayColor];
         _popTipMeterCapture.arrowSize = CGSizeMake(30, 8);
-        _popTipMeterCapture.popoverColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.17 alpha:0.9];
+        _popTipMeterCapture.popoverColor = [UIColor greenColor];
         _popTipMeterCapture.shouldDismissOnTap = YES;
         _popTipMeterCapture.shouldDismissOnTapOutside = NO;
         _popTipMeterCapture.dismissHandler = ^() {
@@ -738,8 +740,9 @@
     
     if (_popTipTabBarLevel == nil) {
         _popTipTabBarLevel = [AMPopTip popTip];
+        _popTipTabBarLevel.textColor = [UIColor darkGrayColor];
         _popTipTabBarLevel.arrowSize = CGSizeMake(8, 30);
-        _popTipTabBarLevel.popoverColor = [UIColor colorWithRed:0.1 green:0.5 blue:0.67 alpha:0.9];
+        _popTipTabBarLevel.popoverColor = [UIColor greenColor];
         _popTipTabBarLevel.shouldDismissOnTap = YES;
         _popTipTabBarLevel.shouldDismissOnTapOutside = NO;
         _popTipTabBarLevel.dismissHandler = ^() {
