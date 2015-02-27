@@ -84,7 +84,7 @@
         [_purchaseButton setTitle:@"Purchase - $6.99 " forState:UIControlStateNormal];
     }
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:cachedFileStr];
-    if (fileExists) {
+    if (NO) { //TODO:XXX
         NSData *htmlData = [NSData  dataWithContentsOfFile:cachedFileStr];
         NSString *htmlStr = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
         [self.webview loadHTMLString:htmlStr baseURL:nil];

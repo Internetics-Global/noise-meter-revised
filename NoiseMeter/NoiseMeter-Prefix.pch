@@ -28,8 +28,8 @@
 
 
 //Purchase welcome url
-#define k_Pro_Introduction_URL @"http://www.noisedown.com/upgrade.html"
-#define k_Pro_Classroom_Introduction_URL @"http://www.w3schools.com/html/default.asp"
+#define k_Pro_Introduction_URL @"http://www.noisedown.com/upgrade2.html"
+#define k_Pro_Classroom_Introduction_URL @"http://www.noisedown.com/upgrade2.html"
 
 //Banner url
 #define k_Pro_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"
