@@ -55,15 +55,7 @@
     
     cell.shareButton.tag = indexPath.row;
     [cell.shareButton addTarget:self action:@selector(share:) forControlEvents:UIControlEventTouchDown];
-    
-    BOOL flag = [NSUserDefaultsHelper isProVersion];
-    if (flag) {
-        cell.playButton.hidden = NO;
-        cell.shareButton.hidden = NO;
-    } else {
-        cell.playButton.hidden = YES;
-        cell.shareButton.hidden = YES;
-    }
+
     
     if ([NSUserDefaultsHelper isProVersion]) {
         cell.rightUtilityButtons = [self rightCellButtons];
