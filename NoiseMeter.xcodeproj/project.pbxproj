@@ -58,7 +58,6 @@
 		11F3E5D11519501800549099 /* SelectAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D01519501800549099 /* SelectAlertView.m */; };
 		11F3E5D41519561400549099 /* InternalWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D31519561400549099 /* InternalWebView.m */; };
 		11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
-		880461101A8C28150032A3C8 /* versions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8804610F1A8C28150032A3C8 /* versions.plist */; };
 		8806B39B179658510085CBF0 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
 		8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75018CFF38B0042AC59 /* button_cancel.png */; };
 		8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75118CFF38B0042AC59 /* button_cancel@2x.png */; };
@@ -268,7 +267,6 @@
 		11F3E5D21519561400549099 /* InternalWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalWebView.h; path = UI/Root/InternalWebView.h; sourceTree = "<group>"; };
 		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalWebView.m; path = UI/Root/InternalWebView.m; sourceTree = "<group>"; };
 		11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		8804610F1A8C28150032A3C8 /* versions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = versions.plist; sourceTree = "<group>"; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		8807E75018CFF38B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
 		8807E75118CFF38B0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
@@ -1008,7 +1006,6 @@
 		88DDF47C189B198800138ADF /* App */ = {
 			isa = PBXGroup;
 			children = (
-				8804610F1A8C28150032A3C8 /* versions.plist */,
 				110F130A14EDD52E00BE4481 /* AppDelegate.h */,
 				110F130B14EDD52E00BE4481 /* AppDelegate.m */,
 				110F130D14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld */,
@@ -1212,7 +1209,6 @@
 				88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
-				880461101A8C28150032A3C8 /* versions.plist in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
 				883069B218B4CC460067750A /* home_alarm.caf in Resources */,
 				88BEFE5318A1FCB100399680 /* 5.png in Resources */,
