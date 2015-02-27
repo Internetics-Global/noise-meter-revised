@@ -213,7 +213,7 @@
     _currentReadingBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_currentReadingBaseView];
     
-    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
+    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
     _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
     _currentReadingDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
@@ -248,7 +248,7 @@
     _peakBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_peakBaseView];
     
-    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
+    _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
     _peakDesLabel.textAlignment = UITextAlignmentCenter;
     _peakDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _peakDesLabel.textColor = [UIColor lightGrayColor];
@@ -276,9 +276,9 @@
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
-    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 7, K_Square_Width, 25)];
+    _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _infoMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:18];
+    _infoMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:16];
     _infoMeterDesLabel.textColor = [UIColor lightGrayColor];
     _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
     _infoMeterDesLabel.layer.cornerRadius = 5;
@@ -305,9 +305,9 @@
     _captureMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_captureMeterBaseView];
     
-    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 2, K_Square_Width, 20)];
+    _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 8, K_Square_Width, 20)];
     _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
-    _captureMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:18];
+    _captureMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:20];
     _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
     _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
     _captureMeterDesLabel.layer.cornerRadius = 5;
@@ -315,7 +315,7 @@
     _captureMeterDesLabel.layer.masksToBounds = YES;
     [_captureMeterBaseView addSubview:_captureMeterDesLabel];
     
-    _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, K_Square_Width, 30)];
+    _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 30)];
     _captureMeterLabel.textAlignment = UITextAlignmentCenter;
     _captureMeterLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _captureMeterLabel.textColor = [UIColor lightGrayColor];
@@ -325,8 +325,9 @@
     _captureMeterLabel.layer.masksToBounds = YES;
     [_captureMeterBaseView addSubview:_captureMeterLabel];
     
-    _captureMeterImageView= [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 70, 20)];
+    _captureMeterImageView= [[UIImageView alloc] initWithFrame:CGRectMake(6, 48, 70-12, 20)];
     [_captureMeterImageView setImage:[UIImage imageNamed:@"capture_save"]];
+    [_captureMeterImageView setContentMode:UIViewContentModeScaleAspectFit];
     [_captureMeterBaseView addSubview:_captureMeterImageView];
     
     UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(capture)];
