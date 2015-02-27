@@ -136,14 +136,14 @@
     [_playbackButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_playbackButton];
-    if ([NSUserDefaultsHelper isProVersion]) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
         _playbackButton.hidden = FALSE;
     } else {
         _playbackButton.hidden = TRUE;
     }
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    if ([NSUserDefaultsHelper isProVersion]) {
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
         _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         _cancelButton.frame =CGRectMake(20 + 150, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         [_cancelButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];

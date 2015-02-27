@@ -385,9 +385,17 @@
 
 - (void)capture
 {
-    float lastNoisePeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
-    CaptureView *cap = [[CaptureView alloc] initWithReading:[NSNumber numberWithFloat:lastNoisePeakValue]];
-    [self.navigationController pushViewController:cap animated:YES];
+    NSUInteger noOfRecords = [[SoundLevelCapture sortedScoreArray] count];
+    if (noOfRecords >= 11) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached max number of recording" message:@"You can upgrade to Pro to be unlimited number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    } else {
+        float lastNoisePeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
+        CaptureView *cap = [[CaptureView alloc] initWithReading:[NSNumber numberWithFloat:lastNoisePeakValue]];
+        [self.navigationController pushViewController:cap animated:YES];
+    }
+    
+    
 }
 
 

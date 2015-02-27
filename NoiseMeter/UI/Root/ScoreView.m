@@ -205,14 +205,22 @@
 #pragma mark – Share action
 
 - (void) share {
-    _fullScrenshotImage = [ShareHelper fullScreenshot];
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
-                            @"Share on Facebook",
-                            @"Share on Twitter",
-                            
-                            nil];
-    popup.tag = 1;
-    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+        _fullScrenshotImage = [ShareHelper fullScreenshot];
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                                @"Share on Facebook",
+                                @"Share on Twitter",
+                                
+                                nil];
+        popup.tag = 1;
+        [popup showInView:[UIApplication sharedApplication].keyWindow];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO Classroom function" message:@"You can upgrade to Pro Classroom to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
