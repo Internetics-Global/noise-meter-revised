@@ -815,6 +815,10 @@
 #pragma mark – Others
 - (void) switchLoggingStatus {
     
+    if (_cancelButton.hidden == FALSE) {
+        return;
+    }
+    
     if ([NSUserDefaultsHelper isLoggingPause] == FALSE) {
         [[NMDecibelLogger defaultLogger] stopLogging];
         

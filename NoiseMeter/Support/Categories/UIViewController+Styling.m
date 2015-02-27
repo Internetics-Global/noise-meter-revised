@@ -54,10 +54,11 @@
     if (isToShowBackButton) {
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         closeButton.backgroundColor = [UIColor clearColor];
-        [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
-        [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [closeButton setTitle:@"Close" forState:UIControlStateNormal];
-        closeButton.frame = CGRectMake(5, CGRectGetMidY(topBlackView.frame) - 15, 50, 30);
+        [closeButton setImage:[UIImage imageNamed:@"close-white"] forState:UIControlStateNormal];
+//        [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+//        [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+        closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
         [self.view addSubview:closeButton];
         [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchDown];
     }

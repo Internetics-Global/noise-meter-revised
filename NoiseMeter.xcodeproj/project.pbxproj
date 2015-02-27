@@ -132,6 +132,7 @@
 		88818C641799F58F007B386F /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
 		888503AE1A9FE33B0062A025 /* AMPopTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 888503AD1A9FE33B0062A025 /* AMPopTip.m */; };
 		888503B11AA00B1D0062A025 /* VersionReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 888503B01AA00B1D0062A025 /* VersionReminder.m */; };
+		888503E71AA0256D0062A025 /* close-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888503E61AA0256D0062A025 /* close-white@2x.png */; };
 		888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */; };
 		889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 889E53B218BAC2CC00721ADF /* loop.mp3 */; };
 		889FD23E177BC3F90046D281 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
@@ -391,6 +392,7 @@
 		888503AD1A9FE33B0062A025 /* AMPopTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPopTip.m; sourceTree = "<group>"; };
 		888503AF1AA00B1D0062A025 /* VersionReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionReminder.h; sourceTree = "<group>"; };
 		888503B01AA00B1D0062A025 /* VersionReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionReminder.m; sourceTree = "<group>"; };
+		888503E61AA0256D0062A025 /* close-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-white@2x.png"; sourceTree = "<group>"; };
 		888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro-classroom@2x.png"; sourceTree = "<group>"; };
 		889E53B218BAC2CC00721ADF /* loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loop.mp3; sourceTree = SOURCE_ROOT; };
 		889FD223177BC3160046D281 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				11F3E5C915194CAE00549099 /* button_close@2x.png */,
 				117D94241516B8DE002C5479 /* button_info@2x.png */,
 				117D941F1516B8A4002C5479 /* close_button.png */,
+				888503E61AA0256D0062A025 /* close-white@2x.png */,
 				117D94201516B8A4002C5479 /* overlay02.png */,
 				880A002718AC83D800FB84F5 /* recordButton.png */,
 				117D94181516B66A002C5479 /* button_reset@2x.png */,
@@ -1184,6 +1187,7 @@
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,
 				8807E75318CFF38B0042AC59 /* button_cancel@2x.png in Resources */,
 				8807E75218CFF38B0042AC59 /* button_cancel.png in Resources */,
+				888503E71AA0256D0062A025 /* close-white@2x.png in Resources */,
 				8868EB7E1A9C9C11007D877D /* bars_circle.png in Resources */,
 				880E85821A9D495300EB3926 /* bars_triangle.png in Resources */,
 				880E85A01A9D827700EB3926 /* settings_title@2x.png in Resources */,
@@ -1443,7 +1447,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
@@ -1473,7 +1477,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
