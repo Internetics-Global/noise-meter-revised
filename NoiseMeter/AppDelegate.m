@@ -19,6 +19,7 @@
 #import "FileHelper.h"
 #import "REFrostedViewController.h"
 #import "MoreView.h"
+#import <Crashlytics/Crashlytics.h>
 
 #import "VersionReminder.h"
 
@@ -44,6 +45,8 @@
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     [self downloadProIntroductionHTMLFile];
+    
+    [Crashlytics startWithAPIKey:@"d0dadc70629e055bc9c8f4afd26d2cc0565f37c2"];
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

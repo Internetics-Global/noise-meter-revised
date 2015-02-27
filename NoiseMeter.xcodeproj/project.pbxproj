@@ -195,6 +195,7 @@
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
 		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
+		9AB923B51AA03232008413A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB923B41AA03232008413A9 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -496,6 +497,7 @@
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9AB923B41AA03232008413A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +515,7 @@
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
 				8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */,
+				9AB923B51AA03232008413A9 /* Crashlytics.framework in Frameworks */,
 				88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */,
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
@@ -541,6 +544,7 @@
 				110F130114EDD52E00BE4481 /* NoiseMeter */,
 				110F12F814EDD52E00BE4481 /* Frameworks */,
 				110F12F614EDD52E00BE4481 /* Products */,
+				9AB923B41AA03232008413A9 /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1064,6 +1068,7 @@
 				110F12F214EDD52E00BE4481 /* Frameworks */,
 				110F12F314EDD52E00BE4481 /* Resources */,
 				8804610E1A8C1FEF0032A3C8 /* ShellScript */,
+				9AB923B31AA031DC008413A9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1259,6 +1264,19 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
 		};
+		9AB923B31AA031DC008413A9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run d0dadc70629e055bc9c8f4afd26d2cc0565f37c2 6e5441bed3193080fadf87d62674c44a85cd645a1208c5c6cdeb2d86fbf3f1d5";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1443,6 +1461,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
@@ -1473,6 +1492,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
