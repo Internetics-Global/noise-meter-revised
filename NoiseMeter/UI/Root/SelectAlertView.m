@@ -54,7 +54,9 @@
     UIButton *createCustomAlarmButton = [UIButton buttonWithType:UIButtonTypeCustom];
     createCustomAlarmButton.frame = CGRectMake(20, CGRectGetMaxY(self.view.frame) - 10 -37, 280, 37);
     createCustomAlarmButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [createCustomAlarmButton setImage:[UIImage imageNamed:@"createCustomAlarmButton"] forState:UIControlStateNormal];
+    [createCustomAlarmButton setTitle:@"Create custom alarm" forState:UIControlStateNormal];
+    [createCustomAlarmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [createCustomAlarmButton setBackgroundColor:[UIColor darkGrayColor]];
     [createCustomAlarmButton addTarget:self action:@selector(createCustomAlarmButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createCustomAlarmButton];
     
