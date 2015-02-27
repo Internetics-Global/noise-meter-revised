@@ -32,8 +32,7 @@
 #define k_Pro_Classroom_Introduction_URL @"http://www.noisedown.com/upgrade2.html"
 
 //Banner url
-#define k_Pro_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/generalBanner%402x.png"
-#define k_Pro_Classroom_Banner @"https://s3-ap-southeast-2.amazonaws.com/noisedown/top_logo-pro-classroom%402x.png"
+#define k_Pro_Banner @"http://www.noisedown.com/generalBanner.png"
 
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch]!=NSOrderedAscending)
