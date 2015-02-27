@@ -388,7 +388,7 @@
 {
     NSUInteger noOfRecords = [[SoundLevelCapture sortedScoreArray] count];
     if (noOfRecords >= 11) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached max number of recording" message:@"You can upgrade to Pro to be unlimited number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached the maximum number of recordings" message:@"You can upgrade to Noise Down PRO for an unlimited number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     } else {
         float lastNoisePeakValue = [NSUserDefaultsHelper lastNoisePeakValue];

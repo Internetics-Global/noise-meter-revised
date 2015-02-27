@@ -123,7 +123,7 @@
         
         NSLog(@"Fail to get product info (myProduct.count = 0)");
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                            message:@"Fail to get product info, try again later"
+                                                            message:@"Failed to get product information, please try again later"
                                                            delegate:self
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil, nil];
@@ -171,7 +171,7 @@
         
         [self dismiss];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored PRO upgrade" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Successfully restored" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
     } failure:^(NSError *error) {
@@ -196,10 +196,10 @@
     NSString *successDest;
     if ([NSUserDefaultsHelper isProVersion] == false) {
         productIdentifier =IAPProductID_Pro;
-        successDest = @"Thank you for upgrading to Noise Down Pro";
+        successDest = @"Thank you for upgrading";
     } else {
         productIdentifier =IAPProductID_Pro_Classroom;
-        successDest = @"Thank you for upgrading to Noise Down Pro Classroom";
+        successDest = @"Thank you for upgrading";
     }
     
     [[RMStore defaultStore] addPayment:productIdentifier success:^(SKPaymentTransaction *transaction) {

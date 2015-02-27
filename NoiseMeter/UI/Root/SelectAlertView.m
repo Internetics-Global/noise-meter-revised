@@ -158,7 +158,7 @@
 
 - (void) createCustomAlarmButtonClicked {
     if ([NSUserDefaultsHelper isProVersion] == NO) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a PRO function" message:@"Upgrade to Pro to record your own alarms!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"Upgrade to Noise Down PRO to record your own alarms!" delegate:self cancelButtonTitle:@"Not yet" otherButtonTitles:@"More details",nil];
         alert.tag = 0;
         [alert show];
     } else {

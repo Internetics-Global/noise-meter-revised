@@ -99,7 +99,7 @@
     
     if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
         return;
     }
@@ -122,7 +122,7 @@
         
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:composeViewController animated:YES completion:nil];
     } else {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your mail in setting" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your email in Settings" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
     
 }
@@ -169,7 +169,7 @@
         
             if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO CLASSROOM function" message:@"You can upgrade to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             } else {
                 UIAlertView *alertView = [UIAlertView showWithTitle:@"Rename"

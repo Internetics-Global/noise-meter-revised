@@ -179,7 +179,7 @@
 
 - (void)resetButtonClicked
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset all recordings" message:@"Are you sure you want to reset? You will lose all recordings." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset all recordings" message:@"Are you sure you want to reset? You will lose all your recordings." delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes",nil];
     alert.tag = 0;
     [alert show];
     
@@ -216,7 +216,7 @@
         popup.tag = 1;
         [popup showInView:[UIApplication sharedApplication].keyWindow];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a PRO Classroom function" message:@"You can upgrade to Pro Classroom to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
     

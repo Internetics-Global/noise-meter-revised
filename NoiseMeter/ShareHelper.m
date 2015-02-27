@@ -36,7 +36,7 @@
         [controller setInitialText:msg];
         [currentViewController presentViewController:controller animated:YES completion:nil];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Twitter Account" message:@"There are no Twitter accounts configured. You can add or create a Facebook account in Settings." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Twitter Account" message:@"There are no Twitter accounts configured. You can add or create a Twitter account in Settings." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
 }

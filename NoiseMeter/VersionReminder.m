@@ -22,7 +22,7 @@
         
         BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:K_Reminder_PRO_CLASSROOM_Flag];
         if (val == FALSE) {
-            [UIAlertView showWithTitle:@"Thank you for fully purchase" message:@"You have everything now" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Thank you for your purchase" message:@"You have the full version of Noise Down CLASSROOM." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:K_Reminder_PRO_CLASSROOM_Flag];
             }];
         }
@@ -31,7 +31,7 @@
         
         BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:K_Reminder_PRO_Flag];
         if (val == FALSE) {
-            [UIAlertView showWithTitle:@"Thank you for upgrading NoiseDown" message:@"exciting to get more function for Pro Classroom version? go to setting and find out the linkage of purchase pro classroom" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Thank you for upgrading Noise Down" message:@"Want even more power? Go to Settings > Upgrade and look at our CLASSROOM edition." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:K_Reminder_PRO_Flag];
             }];
         }
@@ -41,7 +41,7 @@
         
         BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:K_Reminder_Free_Flag];
         if (val == FALSE) {
-            [UIAlertView showWithTitle:@"Thank you for using NoiseDown" message:@"Have you seen the great new features in our PRO or Classroom versions?\nIf you haven't already upgraded, visit SETTINGS > UPGRADE to see what's on offer including background running, continuous mode, silent mode, email found files and much more." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Thank you for using NoiseDown" message:@"Have you seen the great new features in our PRO or CLASSROOM versions?\nIf you haven't already upgraded, visit SETTINGS > UPGRADE to see what's on offer including background running, continuous mode, silent mode, email found files and much more." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:K_Reminder_Free_Flag];
             }];
         }
