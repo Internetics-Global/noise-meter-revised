@@ -44,7 +44,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(purchasedFinishedNotification:)
-                                                    name:@"PURCHASE_FINISHED_NOTIFICATION"
+                                                    name:K_Notification_Alarm_Finished
                                                    object:nil];
 }
 

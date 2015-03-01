@@ -79,12 +79,17 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(alarmFinishedNotification:)
-                                                 name:@"ALARM_FINISHED_NOTIFICATION"
+                                                 name:K_Notification_Alarm_Finished
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(pauseLoggingSwitchNotification:)
-                                                 name:@"PAUSE_LOGGING_SWITCH_NOTIFICATION"
+                                                 name:K_Notification_Log_Pause_Switch_Setting
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateMeterPlayStatusNotification:)
+                                                 name:K_Notification_Update_Meter_Play_Status
                                                object:nil];
     
     _startForDelayAlarmSound = [NSDate date];
@@ -357,8 +362,8 @@
     _topScoreTable.dataSource = _scoreArrayDataSource;
     
     [self.view addSubview:_topScoreTable];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:@"RecordFail" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:K_Notification_Sound_Captured object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:K_Notification_Record_Fail object:nil];
     
     
 }
@@ -366,7 +371,7 @@
 - (void) moreButtonCLicked {
 //    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
 //    [self.navigationController pushViewController:moreViewController animated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"K_Notification_Show_Left_View" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Show_Left_Setting_View object:nil userInfo:nil];
     
 }
 
@@ -690,8 +695,8 @@
     
     [[NMDecibelLogger defaultLogger] stopLogging];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RecordFail" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_Sound_Captured object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_Record_Fail object:nil];
 
     [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
     
@@ -776,6 +781,11 @@
 //    _currentReadingLabel.frame = rect;
 }
 
+
+
+/**
+ *  K_Notification_Log_Pause_Switch_Setting
+ */
 - (void)pauseLoggingSwitchNotification:(NSNotification *)notification {
     
     if ([NSUserDefaultsHelper isLoggingPause]) {
@@ -793,6 +803,20 @@
     }
 }
 
+/**
+ *  K_Notification_Update_Meter_Play_Status
+ */
+- (void) updateMeterPlayStatusNotification :(NSNotification *) notification {
+    NSDictionary *dict = [notification userInfo];
+    BOOL isPlaying = [dict objectForKey:@"isPlaying"];
+    if (isPlaying) {
+        _infoMeterBaseView.hidden = NO;
+        _infoMeterLabel.text = @"Play";
+    } else {
+        _infoMeterBaseView.hidden = YES;
+    }
+    
+}
 
 
 - (void)purchasedFinishedNotification:(NSNotification *)notification {

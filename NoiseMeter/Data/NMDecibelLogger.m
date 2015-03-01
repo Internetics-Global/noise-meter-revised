@@ -164,7 +164,7 @@
     
     _playingAlarm = NO;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ALARM_FINISHED_NOTIFICATION" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
     
     BOOL flag = [NSUserDefaultsHelper isProVersion];
     if (([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) && (flag == false)) {
@@ -197,7 +197,7 @@
     if(![_recorder record])
     {
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-          [[NSNotificationCenter defaultCenter] postNotificationName:@"RecordFail" object:nil];
+          [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Record_Fail object:nil];
         }
         
     }

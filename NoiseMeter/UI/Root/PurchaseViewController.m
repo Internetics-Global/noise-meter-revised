@@ -165,7 +165,7 @@
             [NSUserDefaultsHelper setProClassRoomVersion:YES];
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
         
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         
@@ -211,7 +211,7 @@
             [NSUserDefaultsHelper setProClassRoomVersion:YES];
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"PURCHASE_FINISHED_NOTIFICATION" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
         
         [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:FALSE];
         

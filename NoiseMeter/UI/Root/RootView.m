@@ -81,7 +81,7 @@
     
     self.frostedViewController.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentMenuViewController:) name:@"K_Notification_Show_Left_View" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentMenuViewController:) name:K_Notification_Show_Left_Setting_View object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

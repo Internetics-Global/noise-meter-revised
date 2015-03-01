@@ -98,7 +98,7 @@
     
     _scoreTable.delegate= self;
     [self.view addSubview:_scoreTable];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:@"SoundCaptured" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:K_Notification_Sound_Captured object:nil];
     
 }
 
@@ -112,7 +112,7 @@
     [super viewDidUnload];
     _scoreTable = nil;
     _meterBackground = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SoundCaptured" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_Sound_Captured object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -155,7 +155,7 @@
         for (int i = 0; i < [_scores count]; i++) {
             [[[_scores objectAtIndex:i] managedObjectContext] deleteObject:[_scores objectAtIndex:i]];
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Sound_Captured object:nil];
         [[NMDataManager defaultManager] saveContext];
         
         [FileHelper removeAllExceptTempCafFile];

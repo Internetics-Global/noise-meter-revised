@@ -533,7 +533,7 @@
         
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PAUSE_LOGGING_SWITCH_NOTIFICATION" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Log_Pause_Switch_Setting object:nil];
     
     [_optionTable reloadData];
     

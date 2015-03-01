@@ -19,6 +19,11 @@ static const void *SoundTypeKey = &SoundTypeKey;
 @implementation IDPSoundBoard {
     NSMutableDictionary *_sounds;
     NSMutableDictionary *_audio;
+    
+    /**
+     *  No logging is allowed during playback, it's necessary to resume logging after we stop logging during playback
+     */
+    BOOL                 _isNeedToResumeLogging;
 }
 
 #pragma mark – Life Cycle
@@ -60,6 +65,9 @@ static const void *SoundTypeKey = &SoundTypeKey;
     [[self sharedInstance] addSoundAtPath:filePath forKey:key] ;
 }
 
+/**
+ *  Be careful, we don't disable logging during playSoundForKey,
+ */
 - (void)playSoundForKey:(id)key
 {
     SystemSoundID soundId = [(NSNumber *)[_sounds objectForKey:key] intValue];
@@ -91,10 +99,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
 
 - (void)removeAudioForKey:(id)key {
     NSLog(@"%s",__FUNCTION__);
-  AVAudioPlayer *player = [_audio objectForKey:key];
-  [self stopAudioForKey:key fadeOutInterval:0]; //we will directly stop player since we can know the details of playback state (pause, playing, etc)
-  [_audio removeObjectForKey:key];
-  player = nil;
+    AVAudioPlayer *player = [_audio objectForKey:key];
+    [self stopAudioForKey:key fadeOutInterval:0]; //we will directly stop player since we can know the details of playback state (pause, playing, etc)
+    [_audio removeObjectForKey:key];
+    player = nil;
 }
 
 + (void)removeAudioForKey:(id)key {
@@ -117,6 +125,15 @@ static const void *SoundTypeKey = &SoundTypeKey;
 
 - (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
 {
+    
+    if ([NMDecibelLogger defaultLogger].logging) {
+        _isNeedToResumeLogging = YES;
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    } else {
+        _isNeedToResumeLogging = NO;
+    }
+    
+    
     NSLog(@"%s",__FUNCTION__);
     AVAudioPlayer *player = [_audio objectForKey:key];
     
@@ -132,6 +149,8 @@ static const void *SoundTypeKey = &SoundTypeKey;
     }
     
     [player play];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@YES}];
 }
 
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
@@ -200,6 +219,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
         [timer invalidate];
         [player stop];
     }
+    
+    if (_isNeedToResumeLogging) {
+        [[NMDecibelLogger defaultLogger] stopLogging];
+    }
 }
 
 - (void)pauseAudioForKey:(id)key fadeOutInterval:(NSTimeInterval)fadeOutInterval
@@ -216,6 +239,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
                                         repeats:YES];
     } else {
         [player pause];
+        
+        if (_isNeedToResumeLogging) {
+            [[NMDecibelLogger defaultLogger] stopLogging];
+        }
     }
 }
 
@@ -297,19 +324,33 @@ static const void *SoundTypeKey = &SoundTypeKey;
  *  这个方法会将player置成nil,以快速回收资源
  */
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-  NSLog(@"%s",__FUNCTION__);
-  EnumSoundType soundType = [objc_getAssociatedObject(player, SoundTypeKey) integerValue];
-  player.delegate = nil;
-  player = nil;
+    NSLog(@"%s",__FUNCTION__);
+    EnumSoundType soundType = [objc_getAssociatedObject(player, SoundTypeKey) integerValue];
+    player.delegate = nil;
+    player = nil;
     if ([self.IDPDelegate respondsToSelector:@selector(didFinishSoundPlay:)]) {
-    [self.IDPDelegate didFinishSoundPlay:soundType];
-  } else {
-      NSLog(@"%s:self.IDPDelegate can not respondsToSelector of didFinishSoundPlay",__FUNCTION__);
-  }
+        [self.IDPDelegate didFinishSoundPlay:soundType];
+    } else {
+        NSLog(@"%s:self.IDPDelegate can not respondsToSelector of didFinishSoundPlay",__FUNCTION__);
+    }
+    
+    if (_isNeedToResumeLogging) {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@NO}];
+    
 }
 
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error {
-  NSLog(@"%s",__FUNCTION__);
+    NSLog(@"%s",__FUNCTION__);
+    
+    if (_isNeedToResumeLogging) {
+        [[NMDecibelLogger defaultLogger] startLogging];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@NO}];
+    
 }
 
 
@@ -321,7 +362,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark – save last 10 second recorded 
+#pragma mark – save last 10 second recorded
 
 static void checkError(OSStatus err,const char *message){
     if(err){
@@ -423,25 +464,25 @@ static void checkError(OSStatus err,const char *message){
  */
 - (void) runBackgroundSound {
     
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
-        AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
-        if (player == nil) {
-            //choose demo.mpe (mute) or loop.mpe (non-mute)
-            [IDPSoundBoard addAudioAtPath:[[NSBundle mainBundle] pathForResource:@"demo.mp3" ofType:nil] forKey:Key_PlayerBackground forType:EnumSoundType_Background];
-            player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
-            player.numberOfLoops = -1;  // Endless
-            
-        }
+    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
+    if (player == nil) {
+        //choose demo.mpe (mute) or loop.mpe (non-mute)
+        [IDPSoundBoard addAudioAtPath:[[NSBundle mainBundle] pathForResource:@"demo.mp3" ofType:nil] forKey:Key_PlayerBackground forType:EnumSoundType_Background];
+        player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
+        player.numberOfLoops = -1;  // Endless
         
-        if ([player isPlaying]) {
-            NSLog(@"%s:Already background running",__FUNCTION__);
-        } else {
-            [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0];
-            NSLog(@"%s:Begin background running",__FUNCTION__);
-        }
-        
-//    });
+    }
+    
+    if ([player isPlaying]) {
+        NSLog(@"%s:Already background running",__FUNCTION__);
+    } else {
+        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0];
+        NSLog(@"%s:Begin background running",__FUNCTION__);
+    }
+    
+    //    });
     
 }
 

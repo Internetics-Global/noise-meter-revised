@@ -237,7 +237,7 @@
     cap.soundLevel = [NSDecimalNumber decimalNumberWithString:[_reading stringValue]];
     cap.date = date;
     [[NMDataManager defaultManager] saveContext];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SoundCaptured" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Sound_Captured object:nil];
     
     [NSUserDefaultsHelper setLastNoisePeak:0];
     
