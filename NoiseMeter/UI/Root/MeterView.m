@@ -750,7 +750,6 @@
         };
     }
     [_popTipMeterCapture showText:@"When the alarm has gone off, click this button to record a name" direction:AMPopTipDirectionRight maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetMinX(_meterBackground.frame) + 65, CGRectGetMaxY(_meterBackground.frame) - 17, 0, 0) duration:0];
-    _captureMeterBaseView.backgroundColor = [UIColor redColor];
     
     if (_popTipTabBarLevel == nil) {
         _popTipTabBarLevel = [AMPopTip popTip];
