@@ -272,7 +272,14 @@
     _peakLabel.layer.masksToBounds = YES;
     [_peakBaseView addSubview:_peakLabel];
     
-    _peakBaseView.hidden = YES;
+    float lastPeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
+    if ((int)lastPeakValue == 0) {
+      _peakBaseView.hidden = YES;
+    } else {
+        _peakBaseView.hidden = NO;
+        _peakLabel.text = [NSString stringWithFormat:@"%.f",lastPeakValue];
+    }
+    
     
     //7. info view
     _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - K_Square_Margin - K_Square_Width, K_Square_Margin, K_Square_Width, K_Square_Width)];
@@ -648,7 +655,7 @@
 {
     _peakReading = nil;
     //_captureButton.hidden = YES;
-    _peakBaseView.hidden = YES;
+//    _peakBaseView.hidden = YES;
     [super viewDidDisappear:animated];
 }
 
