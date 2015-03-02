@@ -38,10 +38,15 @@
 	return array;
 }
 
+/**
+ *  rated by noise level
+ */
 + (NSArray *) sortedScoreArray {
     NSArray *scores = [self all];
-    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"soundLevel" ascending:NO];
     scores = [scores sortedArrayUsingDescriptors:[NSArray arrayWithObject:desc]];
+    
     return  scores;
 }
 
