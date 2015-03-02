@@ -147,6 +147,7 @@
 		88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
 		88B30B8B1A9F515900B0A928 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
+		88B87C7E1AA4269B004ECF76 /* AlertViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
 		88BEFE4F18A1FCB100399680 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
@@ -438,6 +439,8 @@
 		88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
 		88B47358189A182C005668AC /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewV2.h; sourceTree = "<group>"; };
+		88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewV2.m; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
@@ -765,6 +768,8 @@
 				111A18D11505E3A9005655F1 /* ScoreView.m */,
 				111A18D31505E3B8005655F1 /* AlertView.h */,
 				111A18D41505E3B8005655F1 /* AlertView.m */,
+				88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */,
+				88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */,
 				11A3EE7F150F456B00A6496B /* CaptureView.h */,
 				11A3EE80150F456B00A6496B /* CaptureView.m */,
 				1140FDCB1517FA3400DE0A64 /* MoreView.h */,
@@ -1287,6 +1292,7 @@
 				887632801A8E2E71004D14FA /* UIImageView+HighlightedWebCache.m in Sources */,
 				880E85851A9D4A5600EB3926 /* SelectMeterView.m in Sources */,
 				88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */,
+				88B87C7E1AA4269B004ECF76 /* AlertViewV2.m in Sources */,
 				110F130814EDD52E00BE4481 /* main.m in Sources */,
 				886712AB1A899F3B007101FD /* SWUtilityButtonView.m in Sources */,
 				110F130C14EDD52E00BE4481 /* AppDelegate.m in Sources */,

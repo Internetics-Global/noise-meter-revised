@@ -14,6 +14,7 @@
 #import "NMDecibelLogger.h"
 
 #import "BCTabBarController.h"
+#import "AlertViewV2.h"
 
 @interface RootView () <REFrostedViewControllerDelegate,BCTabBarControllerDelegate> {
     BCTabBarController *_tabBarController;
@@ -50,7 +51,7 @@
         [scoreNav setNavigationBarHidden:YES];
         [_viewControllers addObject:scoreNav];
         
-        AlertView *alert = [[AlertView alloc] init];
+        AlertViewV2 *alert = [[AlertViewV2 alloc] init];
         UINavigationController *alertNav = [[UINavigationController alloc] initWithRootViewController:alert];
         [alertNav setNavigationBarHidden:YES];
         [_viewControllers addObject:alertNav];

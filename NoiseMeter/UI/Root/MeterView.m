@@ -103,7 +103,9 @@
 - (void)failed
 {
     _currentReadingLabel.text = @"N/A";
-    [_soundLevelView setSoundLevelValue:0];
+    
+    int maxValue = [[[NMDecibelLogger defaultLogger] alertThreshold] intValue];
+    [_soundLevelView setSoundLevelValue:0 withMaxLevel:maxValue];
     _currentReadingLabel.textColor = [UIColor redColor];
     
     _cancelButton.hidden = NO;
@@ -522,8 +524,9 @@
             return;
         }
         
+        int maxValue = [[[NMDecibelLogger defaultLogger] alertThreshold] intValue];
         _currentReadingLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
-        [_soundLevelView setSoundLevelValue:[_currentReading floatValue]];
+        [_soundLevelView setSoundLevelValue:[_currentReading floatValue] withMaxLevel:maxValue];
         NSNumber *threshold = [NMDecibelLogger defaultLogger].alertThreshold;
         if ((_peakReading == nil) || ([_peakReading floatValue] < [_currentReading floatValue])) 
         {
@@ -701,7 +704,8 @@
     [super viewDidUnload];
     
     _currentReadingLabel = nil;
-    [_soundLevelView setSoundLevelValue:0];
+    int maxValue = [[[NMDecibelLogger defaultLogger] alertThreshold] intValue];
+    [_soundLevelView setSoundLevelValue:0 withMaxLevel:maxValue];
     _meterBackground = nil;
     
     [[NMDecibelLogger defaultLogger] stopLogging];

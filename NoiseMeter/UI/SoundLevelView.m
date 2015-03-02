@@ -9,8 +9,6 @@
 #import "SoundLevelView.h"
 #import "NMDecibelLogger.h"
 
-#define kMinSoundLevel 30
-
 @interface SoundLevelView () {
     UIImageView *_meterImageView;
 }
@@ -30,6 +28,9 @@
 
 - (void) setupSubviews {
     
+    self.MIN_LEVEL = kMinSoundLevel;
+    self.MAX_LEVEL = kMaxSoundLevel;
+    
     _meterImageView = [[UIImageView alloc] init];
     [_meterImageView setContentMode:UIViewContentModeScaleAspectFill];
     _meterImageView.autoresizingMask = UIViewAutoresizingNone;
@@ -40,10 +41,10 @@
     
     [self refreshMeterImageView];
     
-    float width = KSoundMeterViewWidth/kNumberSlices;
+    float width = CGRectGetWidth(self.bounds)/kNumberSlices;
     
     for (int i = 1; i <= kNumberSlices; i++) {
-        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(width *(i-1), 0, width, KSoundMeterViewWidth)];
+        UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(width *(i-1), 0, width, CGRectGetWidth(self.bounds))];
         overlapView.tag = i - 1;
         [overlapView setBackgroundColor:kMeterOverlapColor];
         [self addSubview:overlapView];
@@ -51,20 +52,18 @@
     }
 }
 
-- (void) setSoundLevelValue:(float) val {
-    
-     NSInteger maxAllowedSoundLevel = [[[NMDecibelLogger defaultLogger] alertThreshold] integerValue];
+- (void) setSoundLevelValue:(float) val withMaxLevel:(int) maxAllowedSoundLevel {
     
     if (val > maxAllowedSoundLevel) {
-        val = maxAllowedSoundLevel;
+        val = self.MAX_LEVEL;
     }
     
-    if (val < kMinSoundLevel) {
-        val = kMinSoundLevel;
+    if (val < self.MIN_LEVEL) {
+        val = self.MIN_LEVEL;
     }
     
-    float inteval = (maxAllowedSoundLevel - kMinSoundLevel)/kNumberSlices;
-    int no = (val - kMinSoundLevel)/inteval;
+    float inteval = (maxAllowedSoundLevel - self.MIN_LEVEL)/kNumberSlices;
+    int no = (val - self.MIN_LEVEL)/inteval;
    
     NSMutableArray *overlapArray = [NSMutableArray array];
     for (UIView *myView in self.subviews) {

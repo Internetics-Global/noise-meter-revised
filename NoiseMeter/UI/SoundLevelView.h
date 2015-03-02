@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#define kMinSoundLevel 30
+#define kMaxSoundLevel 120
+
 @interface SoundLevelView : UIView
 
+@property (assign, nonatomic) int MIN_LEVEL;
+@property (assign, nonatomic) int MAX_LEVEL;
+
+
 - (void) setupSubviews;
-- (void) setSoundLevelValue:(float) val;
+- (void) setSoundLevelValue:(float) val withMaxLevel:(int) maxAllowedSoundLevel;
 
 - (void) refreshMeterImageView;
 
