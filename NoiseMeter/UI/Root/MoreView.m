@@ -409,7 +409,6 @@
             
         } else {
             [NSUserDefaultsHelper setContinuousMode:NO];
-            [NSUserDefaultsHelper setSilentMode:YES];
         }
         
         [_optionTable reloadData];
@@ -441,7 +440,6 @@
             
         } else {
             [NSUserDefaultsHelper setSilentMode:NO];
-            [NSUserDefaultsHelper setContinuousMode:YES];
         }
         
         [_optionTable reloadData];
