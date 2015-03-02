@@ -40,8 +40,6 @@
     
     [self setupGeneralADView];
     
-    
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(purchasedFinishedNotification:)
                                                     name:K_Notification_Alarm_Finished

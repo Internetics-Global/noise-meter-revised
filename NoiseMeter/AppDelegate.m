@@ -50,7 +50,7 @@
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
     
 
@@ -60,6 +60,7 @@
     MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
     REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:rootView menuViewController:moreViewController];
     frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    frostedViewController.contentFrame = CGRectMake(0, 20, CGRectGetWidth(self.window.bounds), CGRectGetHeight(self.window.bounds) - 20); //in iOS7+, status bar is overlapped
     frostedViewController.menuViewSize = self.window.frame.size;
     self.window.rootViewController = frostedViewController;
     

@@ -46,6 +46,9 @@ typedef NS_ENUM(NSInteger, REFrostedViewControllerLiveBackgroundStyle) {
 @property (assign, readwrite, nonatomic) BOOL panGestureEnabled;
 @property (assign, readwrite, nonatomic) REFrostedViewControllerDirection direction;
 
+//ccaa added
+@property (assign, readwrite, nonatomic) CGRect contentFrame;
+
 /**
  * The backgroundFadeAmount is how much the backgound view fades when the menu
  * view is presented.

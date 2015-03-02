@@ -59,7 +59,6 @@
         _tabBarController.viewControllers = _viewControllers;
         _tabBarController.delegate = self;
         
-        _tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
     
     //if you do not override addChildViewController, you do not have to call willMoveToParentViewController: method. However you do need to call the didMoveToParentViewController: method after the transition is complete. "Likewise, it is is the responsibility of the container view controller to call the willMoveToParentViewController: method before calling the removeFromParentViewController method. The removeFromParentViewController method calls the didMoveToParentViewController: method of the child view controller."

@@ -96,7 +96,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self re_displayController:self.contentViewController frame:self.view.bounds];
+    if (CGRectEqualToRect(self.contentFrame, CGRectZero) == FALSE) {
+        [self re_displayController:self.contentViewController frame:CGRectMake(0, 20, 320, CGRectGetHeight(self.view.bounds) - 20)];
+    } else {
+        [self re_displayController:self.contentViewController frame:self.view.bounds];
+    }
+    
+    
 }
 
 - (UIViewController *)childViewControllerForStatusBarStyle
