@@ -25,7 +25,7 @@
 #import "AMPopTip.h"
 
 //忽略那种短暂的噪声
-#define K_Second_IgnoreSuddenNoise     0.5
+#define K_Second_IgnoreSuddenNoise     0.25
 
 //当alarm出现后，继续保持录音的时间
 #define K_Second_DelayAlarmSound       1.0
