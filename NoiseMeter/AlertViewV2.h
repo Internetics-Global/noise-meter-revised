@@ -16,6 +16,8 @@
     UISlider       *_slider;
     
     UILabel        *_sliderAttachedLabel;
+    
+    UILabel        *_currentReadingLabel;
 }
 
 

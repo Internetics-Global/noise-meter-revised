@@ -126,12 +126,16 @@ static const void *SoundTypeKey = &SoundTypeKey;
 - (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
 {
     
-    if ([NMDecibelLogger defaultLogger].logging) {
-        _isNeedToResumeLogging = YES;
-        [[NMDecibelLogger defaultLogger] stopLogging];
-    } else {
-        _isNeedToResumeLogging = NO;
+    if (Key_PlayerBackground != key) {
+        //由于Key_PlayerBackground用于保持后台运行，所以这时不能stopLogging，
+        if ([NMDecibelLogger defaultLogger].logging) {
+            _isNeedToResumeLogging = YES;
+            [[NMDecibelLogger defaultLogger] stopLogging];
+        } else {
+            _isNeedToResumeLogging = NO;
+        }
     }
+    
     
     
     NSLog(@"%s",__FUNCTION__);

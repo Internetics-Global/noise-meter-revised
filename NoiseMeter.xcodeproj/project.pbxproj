@@ -19,7 +19,6 @@
 		111A18CE1505E38D005655F1 /* background_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 111A18CC1505E38D005655F1 /* background_count.png */; };
 		111A18CF1505E38D005655F1 /* background_count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 111A18CD1505E38D005655F1 /* background_count@2x.png */; };
 		111A18D21505E3A9005655F1 /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A18D11505E3A9005655F1 /* ScoreView.m */; };
-		111A18D51505E3B8005655F1 /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A18D41505E3B8005655F1 /* AlertView.m */; };
 		1140FDCD1517FA3400DE0A64 /* MoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDCC1517FA3400DE0A64 /* MoreView.m */; };
 		1140FDD21517FBE700DE0A64 /* icon_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1140FDD01517FBE700DE0A64 /* icon_more@2x.png */; };
 		1140FDD41517FC6400DE0A64 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD31517FC6400DE0A64 /* MessageUI.framework */; };
@@ -218,8 +217,6 @@
 		111A18CD1505E38D005655F1 /* background_count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_count@2x.png"; sourceTree = "<group>"; };
 		111A18D01505E3A9005655F1 /* ScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreView.h; path = UI/Root/ScoreView.h; sourceTree = "<group>"; };
 		111A18D11505E3A9005655F1 /* ScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreView.m; path = UI/Root/ScoreView.m; sourceTree = "<group>"; };
-		111A18D31505E3B8005655F1 /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertView.h; path = UI/Root/AlertView.h; sourceTree = "<group>"; };
-		111A18D41505E3B8005655F1 /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertView.m; path = UI/Root/AlertView.m; sourceTree = "<group>"; };
 		1140FDCB1517FA3400DE0A64 /* MoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreView.h; path = UI/Root/MoreView.h; sourceTree = "<group>"; };
 		1140FDCC1517FA3400DE0A64 /* MoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreView.m; path = UI/Root/MoreView.m; sourceTree = "<group>"; };
 		1140FDD01517FBE700DE0A64 /* icon_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_more@2x.png"; sourceTree = "<group>"; };
@@ -769,8 +766,6 @@
 				11AC531C1505D4420093C7AB /* MeterView.m */,
 				111A18D01505E3A9005655F1 /* ScoreView.h */,
 				111A18D11505E3A9005655F1 /* ScoreView.m */,
-				111A18D31505E3B8005655F1 /* AlertView.h */,
-				111A18D41505E3B8005655F1 /* AlertView.m */,
 				88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */,
 				88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */,
 				11A3EE7F150F456B00A6496B /* CaptureView.h */,
@@ -1323,7 +1318,6 @@
 				887632741A8E2E71004D14FA /* NSData+ImageContentType.m in Sources */,
 				11AC531D1505D4420093C7AB /* MeterView.m in Sources */,
 				111A18D21505E3A9005655F1 /* ScoreView.m in Sources */,
-				111A18D51505E3B8005655F1 /* AlertView.m in Sources */,
 				11A3EE73150F3D2D00A6496B /* SoundLevelCapture.m in Sources */,
 				11A3EE7E150F441F00A6496B /* SoundLevelCaptureCell.m in Sources */,
 				88CB2B091A9E056000288902 /* RECommonFunctions.m in Sources */,

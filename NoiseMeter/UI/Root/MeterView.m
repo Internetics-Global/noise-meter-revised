@@ -61,6 +61,7 @@
     AMPopTip *_popTipMeterPause;
     AMPopTip *_popTipMeterCapture;
     AMPopTip *_popTipTabBarLevel;
+    
 }
 
 @end
@@ -211,7 +212,6 @@
     [_meterBackground addSubview:_soundLevelView];
     [_soundLevelView addGestureRecognizer:singleTapGesture];
     
-    [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
     [[NMDecibelLogger defaultLogger] startLogging];
     
     //4. current reading base view
@@ -500,6 +500,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+    
+    //NSLog(@"observeValueForKeyPath in MeterView is called");
+    
     if (_isAlarmPrepareToBeTriggered) {
         //wait for finish on delay alarm sound
         return;
@@ -684,6 +687,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
+    
     if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
         float lastPeakVal = [NSUserDefaultsHelper lastNoisePeakValue];
@@ -705,6 +710,12 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
+}
+
 
 - (void)viewDidUnload
 {
@@ -719,8 +730,6 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_Sound_Captured object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:K_Notification_Record_Fail object:nil];
-
-    [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
     
     
 }

@@ -9,7 +9,6 @@
 #import "RootView.h"
 #import "MeterView.h"
 #import "ScoreView.h"
-#import "AlertView.h"
 #import "MoreView.h"
 #import "NMDecibelLogger.h"
 

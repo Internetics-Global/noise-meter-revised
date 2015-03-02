@@ -10,11 +10,11 @@
 
 #import "MeterView.h"
 #import "ScoreView.h"
-#import "AlertView.h"
 #import "MoreView.h"
 #import "PurchaseViewController.h"
 #import "InternalWebView.h"
 #import "UIButton+WebCache.h"
+#import "AlertViewV2.h"
 
 @interface BaseViewController ()
 
@@ -80,7 +80,7 @@
     
     if ([self isMemberOfClass:[MeterView class]] ||
         [self isMemberOfClass:[ScoreView class]] ||
-        [self isMemberOfClass:[AlertView class]] ||
+        [self isMemberOfClass:[AlertViewV2 class]] ||
         [self isMemberOfClass:[MoreView class]] ) {
         
         if (self.generalADButton == nil) {

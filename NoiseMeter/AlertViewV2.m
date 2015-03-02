@@ -94,6 +94,16 @@
     [_soundLevelView setupSubviews];
     [self.view addSubview:_soundLevelView];
     
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame) + 10, 40, 15)];
+    _currentReadingLabel.textAlignment = NSTextAlignmentCenter;
+    _currentReadingLabel.center = _soundLevelView.center;
+    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
+    _currentReadingLabel.text = @"N/A";
+    _currentReadingLabel.numberOfLines = 1;
+    _currentReadingLabel.textColor = [UIColor whiteColor];
+    _currentReadingLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_currentReadingLabel];
+    
 }
 
 
@@ -121,6 +131,8 @@
     [super viewWillAppear:animated];
     self.screenName = @"AlertView Screen";
     
+    [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
+    
     NSNumber *alertThreshold = [NMDecibelLogger defaultLogger].alertThreshold;
     if (alertThreshold) {
         _slider.value = [alertThreshold integerValue];
@@ -131,10 +143,16 @@
     }
     [self updateSilderAttachedPositionWithAnimation:NO];
     
-    [_soundLevelView setSoundLevelValue:[alertThreshold integerValue] withMaxLevel:120];
     [_soundLevelView refreshMeterImageView];
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
+}
+
 
 - (void)viewDidUnload
 {
@@ -150,11 +168,6 @@
 
 
 - (void) sliderAction:(UISlider *) slider {
-    
-    int slideVal = (int)slider.value;
-    
-    [_soundLevelView setSoundLevelValue:slideVal withMaxLevel:kMaxSoundLevel];
-    
     [self updateSilderAttachedPositionWithAnimation:YES];
     
 }
@@ -177,6 +190,30 @@
     } completion:^(BOOL finished) {
         _sliderAttachedLabel.text = [NSString stringWithFormat:@"%d",(int)_slider.value];
     }];
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    
+    //NSLog(@"observeValueForKeyPath in AlertViewV2 is called");
+    
+    if ([keyPath isEqualToString:@"currentReading"])
+    {
+        NSNumber *currentReading = [[NMDecibelLogger defaultLogger] currentReading];
+        
+        if ([currentReading integerValue] <= 0) {
+        } else {
+            _currentReadingLabel.text = [NSString stringWithFormat:@"%d",[currentReading intValue]];
+          [_soundLevelView setSoundLevelValue:[currentReading integerValue] withMaxLevel:120];
+        }
+    
+        
+    }
+    else
+    {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
     
