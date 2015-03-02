@@ -392,7 +392,7 @@
 - (void)capture
 {
     NSUInteger noOfRecords = [[SoundLevelCapture sortedScoreArray] count];
-    if (noOfRecords >= 11) {
+    if ((noOfRecords >= 11) && ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE)) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached the maximum number of recordings" message:@"You can upgrade to Noise Down PRO for an unlimited number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     } else {
