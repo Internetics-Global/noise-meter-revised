@@ -30,10 +30,7 @@
 - (void)loadView
 {
     [super loadView];
-    
-//    UIView *baseView = [[UIView alloc] initWithFrame:self.view.bounds];
-//    baseView.backgroundColor = kMeterOverlapColor;;
-//    [self.view addSubview:baseView];
+
     
     [self style:NO];
     
@@ -118,7 +115,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
+    self.view.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:1];
 }
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
