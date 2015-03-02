@@ -73,7 +73,14 @@
     }
     
     
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
+                                                                                             |UIRemoteNotificationTypeSound
+                                                                                             |UIRemoteNotificationTypeAlert) categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    }
     
     
     if (TARGET_IPHONE_SIMULATOR) {
