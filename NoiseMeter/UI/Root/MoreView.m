@@ -405,7 +405,6 @@
     } else {
         if ([myswitch isOn]) {
             [NSUserDefaultsHelper setContinuousMode:YES];
-            [NSUserDefaultsHelper setSilentMode:NO];
             
         } else {
             [NSUserDefaultsHelper setContinuousMode:NO];
@@ -436,7 +435,6 @@
         
         if ([myswitch isOn]) {
             [NSUserDefaultsHelper setSilentMode:YES];
-            [NSUserDefaultsHelper setContinuousMode:NO];
             
         } else {
             [NSUserDefaultsHelper setSilentMode:NO];
