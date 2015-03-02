@@ -42,7 +42,7 @@
     [super loadView];
 
     
-    [self style:NO];
+    [self style:YES];
     
     //This is a special case for REFrostedViewController
     float statusBarHeight = 0;

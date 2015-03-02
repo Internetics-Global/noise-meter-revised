@@ -60,6 +60,7 @@
     MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
     REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:rootView menuViewController:moreViewController];
     frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    frostedViewController.menuViewSize = self.window.frame.size;
     self.window.rootViewController = frostedViewController;
     
     
