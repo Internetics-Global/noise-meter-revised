@@ -205,6 +205,7 @@
     //3. sound level view
     _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((CGRectGetWidth(_meterBackground.frame) - KSoundMeterViewWidth)/2, (CGRectGetHeight(_meterBackground.frame) - KSoundMeterViewWidth)/2, KSoundMeterViewWidth, KSoundMeterViewWidth)];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
+    _soundLevelView.isForMeterView = YES;
     [_soundLevelView setupSubviews];
     _soundLevelView.backgroundColor = [UIColor clearColor];
     [_meterBackground addSubview:_soundLevelView];

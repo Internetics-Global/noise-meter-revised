@@ -16,6 +16,8 @@
 @property (assign, nonatomic) int MIN_LEVEL;
 @property (assign, nonatomic) int MAX_LEVEL;
 
+//仅用于overlapp的颜色区分
+@property (assign, nonatomic) BOOL isForMeterView;
 
 - (void) setupSubviews;
 - (void) setSoundLevelValue:(float) val withMaxLevel:(int) maxAllowedSoundLevel;

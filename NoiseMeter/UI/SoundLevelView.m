@@ -46,8 +46,11 @@
     for (int i = 1; i <= kNumberSlices; i++) {
         UIView *overlapView = [[UIView alloc] initWithFrame:CGRectMake(width *(i-1), 0, width, CGRectGetWidth(self.bounds))];
         overlapView.tag = i - 1;
-        //[overlapView setBackgroundColor:kMeterOverlapColor];
-        [overlapView setBackgroundColor:[UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9]];
+        if (self.isForMeterView) {
+          [overlapView setBackgroundColor:kMeterOverlapColor];
+        } else {
+          [overlapView setBackgroundColor:[UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:0.9]];
+        }
         [self addSubview:overlapView];
         overlapView.hidden = YES;
     }

@@ -89,7 +89,7 @@
     [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_setButton];
     
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(_setButton.frame) + 20, 200, 200)];
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((320-150)/2, CGRectGetMaxY(_setButton.frame) + 20, 150, 150)];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     [_soundLevelView setupSubviews];
     [self.view addSubview:_soundLevelView];
