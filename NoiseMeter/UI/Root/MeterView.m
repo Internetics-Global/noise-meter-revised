@@ -587,7 +587,10 @@
             _captureMeterLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
             _captureMeterBaseView.hidden = NO;
             
-            _cancelButton.hidden = NO;
+            if ([NSUserDefaultsHelper isIgnoreSuddenNoise] && (_isAlarmPrepareToBeTriggered == FALSE)) {
+            } else {
+                _cancelButton.hidden = NO;
+            }
             
             _infoMeterBaseView.hidden = YES;
         
