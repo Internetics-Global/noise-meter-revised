@@ -204,8 +204,14 @@
         
         if ([currentReading integerValue] <= 0) {
         } else {
+            
+            NSNumber *alertThreshold = [[NMDecibelLogger defaultLogger] alertThreshold];
+            if (alertThreshold == nil) {
+                alertThreshold = [NSNumber numberWithFloat:90.0f];
+            }
+            
             _currentReadingLabel.text = [NSString stringWithFormat:@"%d",[currentReading intValue]];
-          [_soundLevelView setSoundLevelValue:[currentReading integerValue] withMaxLevel:120];
+          [_soundLevelView setSoundLevelValue:[currentReading integerValue] withMaxLevel:[alertThreshold intValue]];
         }
     
         
