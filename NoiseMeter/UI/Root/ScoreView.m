@@ -79,7 +79,7 @@
     }
     
     
-    _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_resetButton.frame) + 5, self.view.frame.size.width, self.view.frame.size.height - (_meterBackground.frame.origin.y) ) style:UITableViewStylePlain];
+    _scoreTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_resetButton.frame) + 5, self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_resetButton.frame) ) style:UITableViewStylePlain];
     
     
     _scoreTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
