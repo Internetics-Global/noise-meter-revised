@@ -31,7 +31,13 @@
 {
     [super loadView];
     
+//    UIView *baseView = [[UIView alloc] initWithFrame:self.view.bounds];
+//    baseView.backgroundColor = kMeterOverlapColor;;
+//    [self.view addSubview:baseView];
+    
     [self style:NO];
+    
+    
     
     UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"set_noise_level_title"]];
     topImageView.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
@@ -49,6 +55,15 @@
     _slider.maximumValue = kMaxSoundLevel;
     _slider.continuous = YES;
     [self.view addSubview:_slider];
+    
+    _sliderAttachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame) + 10, 30, 10)];
+    _sliderAttachedLabel.textAlignment = NSTextAlignmentCenter;
+    _sliderAttachedLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
+    _sliderAttachedLabel.text = @"N/A";
+    _sliderAttachedLabel.numberOfLines = 1;
+    _sliderAttachedLabel.textColor = [UIColor whiteColor];
+    _sliderAttachedLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_sliderAttachedLabel];
     
     UILabel *my40Lable = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_slider.frame) + 10, 40, 20)];
     my40Lable.textAlignment = NSTextAlignmentLeft;
@@ -80,7 +95,6 @@
     _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(_setButton.frame) + 20, 200, 200)];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     [_soundLevelView setupSubviews];
-    _soundLevelView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_soundLevelView];
     
 }
@@ -104,12 +118,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
 }
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.screenName = @"AlertView Screen";
-    
-    
     
     NSNumber *alertThreshold = [NMDecibelLogger defaultLogger].alertThreshold;
     if (alertThreshold) {
@@ -119,8 +132,7 @@
         alertThreshold = [NSNumber numberWithInt:90];
         [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:90]];
     }
-    
-    [_setButton setTitle:[NSString stringWithFormat:@"Set Level (%d)",[alertThreshold intValue]] forState:UIControlStateNormal];
+    [self updateSilderAttachedPositionWithAnimation:NO];
     
     [_soundLevelView setSoundLevelValue:[alertThreshold integerValue] withMaxLevel:120];
     [_soundLevelView refreshMeterImageView];
@@ -144,11 +156,33 @@
     
     int slideVal = (int)slider.value;
     
-    [_setButton setTitle:[NSString stringWithFormat:@"Set Level (%d)",slideVal] forState:UIControlStateNormal];
-    
     [_soundLevelView setSoundLevelValue:slideVal withMaxLevel:kMaxSoundLevel];
     
+    [self updateSilderAttachedPositionWithAnimation:YES];
+    
 }
+
+- (void) updateSilderAttachedPositionWithAnimation:(BOOL) animated {
+    float interval = _slider.maximumValue - _slider.minimumValue;
+    float width = CGRectGetWidth(_slider.frame) - CGRectGetWidth(_sliderAttachedLabel.frame);
+    
+    int xPosition = CGRectGetMinX(_slider.frame) + width * (_slider.value - _slider.minimumValue)/interval;
+    
+    double duration = 0;
+    if (animated) {
+        animated = 0.3;
+    }
+    
+    CGRect rect = _sliderAttachedLabel.frame;
+    rect.origin.x = xPosition;
+    [UIView animateWithDuration:duration animations:^{
+        _sliderAttachedLabel.frame = rect;
+    } completion:^(BOOL finished) {
+        _sliderAttachedLabel.text = [NSString stringWithFormat:@"%d",(int)_slider.value];
+    }];
+}
+
+    
 
 
 @end

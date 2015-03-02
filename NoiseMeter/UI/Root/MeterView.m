@@ -282,6 +282,12 @@
     _infoMeterBaseView.layer.masksToBounds = YES;
     [_meterBackground addSubview:_infoMeterBaseView];
     
+    UITapGestureRecognizer *singleTapGesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchLoggingStatus)];
+    singleTapGesture2.numberOfTapsRequired = 1;
+    singleTapGesture2.numberOfTouchesRequired = 1;
+    [_infoMeterBaseView addGestureRecognizer:singleTapGesture2];
+    
+    
     _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
     _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
     _infoMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:16];
@@ -499,7 +505,7 @@
     }
     
     if (([[IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded] isPlaying])) {
-        _infoMeterLabel.text = @"Play";
+        _infoMeterLabel.text = @"OFF";
         _infoMeterBaseView.hidden = NO;
         return;
     }
@@ -825,7 +831,7 @@
     BOOL isPlaying = [dict objectForKey:@"isPlaying"];
     if (isPlaying) {
         _infoMeterBaseView.hidden = NO;
-        _infoMeterLabel.text = @"Play";
+        _infoMeterLabel.text = @"OFF";
     } else {
         _infoMeterBaseView.hidden = YES;
     }

@@ -55,10 +55,8 @@
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         closeButton.backgroundColor = [UIColor clearColor];
         if ([self isKindOfClass:[MoreView class]]) {
-            [closeButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
-            [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [closeButton setTitle:@"Done" forState:UIControlStateNormal];
-            closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 42, 22);
+            [closeButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+            closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
         } else {
           [closeButton setImage:[UIImage imageNamed:@"close-white"] forState:UIControlStateNormal];
             closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);

@@ -148,6 +148,7 @@
 		88B30B8B1A9F515900B0A928 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */; };
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88B87C7E1AA4269B004ECF76 /* AlertViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */; };
+		88B87C801AA43DC5004ECF76 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B87C7F1AA43DC5004ECF76 /* back@2x.png */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
 		88BEFE4F18A1FCB100399680 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
@@ -441,6 +442,7 @@
 		88B47359189A182C005668AC /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewV2.h; sourceTree = "<group>"; };
 		88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewV2.m; sourceTree = "<group>"; };
+		88B87C7F1AA43DC5004ECF76 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "NoiseMeter/Resources/Images/Icons/back@2x.png"; sourceTree = SOURCE_ROOT; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
@@ -665,6 +667,7 @@
 		11AC53011505D3E70093C7AB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				88B87C7F1AA43DC5004ECF76 /* back@2x.png */,
 				880E859F1A9D827700EB3926 /* settings_title@2x.png */,
 				8871690C1A8A0FF600FD5B75 /* playback.png */,
 				8871690D1A8A0FF600FD5B75 /* playback@2x.png */,
@@ -1206,6 +1209,7 @@
 				88BEFE5A18A1FCB100399680 /* 12.png in Resources */,
 				887169121A8A179500FD5B75 /* button_cancel2.png in Resources */,
 				88131CDA18AB224000D2541A /* overlay@2x.png in Resources */,
+				88B87C801AA43DC5004ECF76 /* back@2x.png in Resources */,
 				117D94161516B5F7002C5479 /* top_logo_scores@2x.png in Resources */,
 				880A003918ACD22C00FB84F5 /* upgrade.css in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
