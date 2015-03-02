@@ -70,6 +70,8 @@
 {
     [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:([_pickerView selectedRowInComponent:0] + 40)]];
     self.tabBarController.selectedIndex = 0;
+    
+    [NSUserDefaultsHelper setLastNoisePeak:0.0]; //reset
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

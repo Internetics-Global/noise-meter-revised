@@ -34,7 +34,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    _scores = [SoundLevelCapture sortedScoreArray];
+    if (self.sortedByDate) {
+      _scores = [SoundLevelCapture sortedScoreArrayByDate];
+    } else {
+      _scores = [SoundLevelCapture sortedScoreArrayByNoiseLevel];
+    }
+    
     return [_scores count];
 }
 
@@ -206,7 +211,11 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture sortedScoreArray];
+    if (self.sortedByDate) {
+        _scores = [SoundLevelCapture sortedScoreArrayByDate];
+    } else {
+        _scores = [SoundLevelCapture sortedScoreArrayByNoiseLevel];
+    }
     _reloadTableBlock();
     
 }

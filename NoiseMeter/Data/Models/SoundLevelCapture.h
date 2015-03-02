@@ -20,7 +20,9 @@
 
 + (NSArray *)all;
 
-+ (NSArray *) sortedScoreArray;
++ (NSArray *) sortedScoreArrayByNoiseLevel;
+
++ (NSArray *) sortedScoreArrayByDate;
 
 + (void) remove:(SoundLevelCapture *) capture;
 

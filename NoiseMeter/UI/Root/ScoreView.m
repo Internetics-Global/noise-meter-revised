@@ -46,7 +46,7 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture sortedScoreArray];
+    _scores = [SoundLevelCapture sortedScoreArrayByDate];
     [_scoreTable reloadData];
 }
 
@@ -87,14 +87,14 @@
     _scoreTable.separatorColor = [UIColor clearColor];
     _scoreTable.backgroundColor = kGrayColor;
     _scoreTable.opaque = YES;
-    [self reloadData];
     
     __weak __typeof(&*self)weakSelf = self;
     _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
         [weakSelf reloadData];
     }];
+    _scoreArrayDataSource.sortedByDate = YES;
     _scoreTable.dataSource = _scoreArrayDataSource;
-
+    [self reloadData];
     
     _scoreTable.delegate= self;
     [self.view addSubview:_scoreTable];

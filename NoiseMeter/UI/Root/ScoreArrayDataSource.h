@@ -12,6 +12,9 @@ typedef void (^ReloadTableBlock)(void);
 
 @interface ScoreArrayDataSource : NSObject <UITableViewDataSource>
 
+@property (assign, nonatomic) BOOL   sortedByDate;
+
+
 - (id)initWithReloadTableBlock:(ReloadTableBlock) aReloadTableBlock;
 
 @end

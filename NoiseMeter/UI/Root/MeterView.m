@@ -124,7 +124,7 @@
 
 - (void)reloadData
 {
-    _scores = [SoundLevelCapture sortedScoreArray];
+    _scores = [SoundLevelCapture sortedScoreArrayByNoiseLevel];
     _titleLabel.numberOfLines = 2;
     if ([_scores count] == 0) 
     {
@@ -272,14 +272,6 @@
     _peakLabel.layer.masksToBounds = YES;
     [_peakBaseView addSubview:_peakLabel];
     
-    float lastPeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
-    if ((int)lastPeakValue == 0) {
-      _peakBaseView.hidden = YES;
-    } else {
-        _peakBaseView.hidden = NO;
-        _peakLabel.text = [NSString stringWithFormat:@"%.f",lastPeakValue];
-    }
-    
     
     //7. info view
     _infoMeterBaseView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(_meterBackground.frame) - K_Square_Margin - K_Square_Width, K_Square_Margin, K_Square_Width, K_Square_Width)];
@@ -366,6 +358,7 @@
     _scoreArrayDataSource = [[ScoreArrayDataSource alloc] initWithReloadTableBlock:^() {
         [weakSelf reloadData];
     }];
+    _scoreArrayDataSource.sortedByDate = NO;
     _topScoreTable.dataSource = _scoreArrayDataSource;
     
     [self.view addSubview:_topScoreTable];
@@ -398,7 +391,7 @@
 
 - (void)capture
 {
-    NSUInteger noOfRecords = [[SoundLevelCapture sortedScoreArray] count];
+    NSUInteger noOfRecords = [[SoundLevelCapture all] count];
     if ((noOfRecords >= 11) && ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE)) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached the maximum number of recordings" message:@"You can upgrade to Noise Down PRO for an unlimited number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
@@ -688,6 +681,14 @@
             _captureMeterLabel.text = [NSString stringWithFormat:@"%d",(int)lastPeakVal];
         }
         
+    }
+    
+    float lastPeakValue = [NSUserDefaultsHelper lastNoisePeakValue];
+    if ((int)lastPeakValue == 0) {
+        _peakBaseView.hidden = YES;
+    } else {
+        _peakBaseView.hidden = NO;
+        _peakLabel.text = [NSString stringWithFormat:@"%.f",lastPeakValue];
     }
 }
 
