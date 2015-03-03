@@ -177,7 +177,7 @@
     [_currentReadingBaseView addSubview:_currentReadingLabel];
     
     frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMinY(_currentReadingBaseView.frame), K_Square_Width, K_Square_Width);
-    _setReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
+    _setReadingBaseView = [[UIView alloc] initWithFrame:frame];
     _setReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _setReadingBaseView.layer.cornerRadius = 8;
     _setReadingBaseView.layer.masksToBounds = YES;
