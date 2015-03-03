@@ -18,9 +18,10 @@
     UIButton    * _shareButton;
     UIImageView * _tableHeader;
 
-    int         _playingIndex;
+    int              _playingIndex;
 
-    UIImage     * _fullScrenshotImage;
+    UIImage        * _fullScrenshotImage;
+    UIButton       * _moreButton;
 }
 
 @end

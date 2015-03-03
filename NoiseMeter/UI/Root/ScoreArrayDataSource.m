@@ -155,18 +155,14 @@
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index
 {
     long cellIndex = cell.tag;
+    SoundLevelCapture *capture = [_scores objectAtIndex:cellIndex];
+        
     
     switch (index) {
         case 1:
         {
-            NSInteger index = cell.tag;
-            if ([_scores count] > index) {
-                SoundLevelCapture *capture = [_scores objectAtIndex:index];
-                [SoundLevelCapture remove:capture];
-                [self reloadData];
-            } else {
-                NSLog(@"error [_scores count] should > index");
-            }
+            [SoundLevelCapture remove:capture];
+            [self reloadData];
             break;
         }
         case 0:
@@ -177,7 +173,7 @@
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             } else {
-                UIAlertView *alertView = [UIAlertView showWithTitle:@"Rename"
+                UIAlertView *alertView = [UIAlertView showWithTitle:@"Please enter a new name below"
                                                             message:@""
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:@[@"OK"]

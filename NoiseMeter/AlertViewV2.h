@@ -14,10 +14,8 @@
     UIButton       * _setButton;
     SoundLevelView * _soundLevelView;
     UISlider       *_slider;
-    
     UILabel        *_sliderAttachedLabel;
-    
-    UILabel        *_currentReadingLabel;
+    UIButton       * _moreButton;
 }
 
 

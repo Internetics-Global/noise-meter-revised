@@ -18,6 +18,7 @@
 #import <MessageUI/MessageUI.h>
 #import "SWTableViewCell.h"
 #import "ScoreArrayDataSource.h"
+#import "UIButton+Extensions.h"
 
 
 @interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate> {
@@ -55,6 +56,13 @@
     [super loadView];
     
     [self style:NO];
+    
+    _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
+    _moreButton.frame = CGRectMake(15, 18, 20, 20);
+    [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_moreButton];
+    [_moreButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
     _tableHeader.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
@@ -232,6 +240,13 @@
     } else if (buttonIndex == 1) {
         [ShareHelper postToTwitter:weakSelf withImage:_fullScrenshotImage withMsg:@"How noisy! This noisy! \nSent from noise control app Noise Down! (http://tinyurl.com/nejj2gv)"];
     }
+}
+
+- (void) moreButtonCLicked {
+    //    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
+    //    [self.navigationController pushViewController:moreViewController animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Show_Left_Setting_View object:nil userInfo:nil];
+    
 }
 
 @end

@@ -9,8 +9,23 @@
 #import "AlertViewV2.h"
 #import "NMDecibelLogger.h"
 #import "SoundLevelView.h"
+#import "UIButton+Extensions.h"
 
-@interface AlertViewV2 ()
+#define K_Square_Width  70.0
+#define K_Meter_Square_Background_Color  [UIColor colorWithRed:80.0/255 green:80.0/255 blue:80.0/255 alpha:0.6]
+#define K_Square_FontSize 18
+#define K_Square_FontSize_Des 26
+#define K_Square_Font_Name  @"AvenirNext-Bold"
+
+@interface AlertViewV2 () {
+    UIView         * _currentReadingBaseView;
+    UILabel        * _currentReadingLabel;
+    UILabel        * _currentReadingDesLabel;
+    
+    UIView         * _setReadingBaseView;
+    UILabel        * _setReadingLabel;
+    UILabel        * _setReadingDesLabel;
+}
 
 @end
 
@@ -19,6 +34,8 @@
 - (NSString *)iconImageName {
     return @"icon_alert";
 }
+
+#pragma mark – Life cycle
 
 - (id)init
 {
@@ -34,7 +51,13 @@
     
     [self style:NO];
     
-    
+    //step1
+    _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
+    _moreButton.frame = CGRectMake(15, 18, 20, 20);
+    [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_moreButton];
+    [_moreButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     UIImageView *topImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"set_noise_level_title"]];
     topImageView.frame = CGRectMake(0, KTopLogoHeight, CGRectGetWidth(self.view.frame), 40);
@@ -43,7 +66,7 @@
     [self.view addSubview:topImageView];
     
     
-    
+    //step2
     CGRect frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 30, 280, 10);
     _slider = [[UISlider alloc] initWithFrame:frame];
     [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
@@ -79,44 +102,86 @@
     my120Lable.textColor = [UIColor whiteColor];
     my120Lable.backgroundColor = [UIColor clearColor];
     [self.view addSubview:my120Lable];
+
     
-    _setButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _setButton.frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 40, 280, 37);
-    [_setButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];
-    [_setButton setBackgroundImage:[UIImage imageNamed:@"orange_button_for_level"] forState:UIControlStateHighlighted];
-    [_setButton setTitle:@"Set Level" forState:UIControlStateNormal];
-    [_setButton setTintColor:[UIColor whiteColor]];
-    [_setButton addTarget:self action:@selector(set) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_setButton];
-    
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((320-150)/2, CGRectGetMaxY(_setButton.frame) + 20, 150, 150)];
+    //step3
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 90, 150, 150)];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     [_soundLevelView setupSubviews];
     [self.view addSubview:_soundLevelView];
     
-    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame) + 10, 40, 15)];
+    
+    //step4
+    UILabel *moreLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, CGRectGetMaxY(_soundLevelView.frame) + 10, 160, 15)];
+    moreLabel.textAlignment = NSTextAlignmentCenter;
+    moreLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
+    moreLabel.text = @"For more settings please click";
+    moreLabel.numberOfLines = 1;
+    moreLabel.textColor = [UIColor whiteColor];
+    moreLabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:moreLabel];
+    
+    UIImageView *moreImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_more.png"]];
+    [moreImageView setContentMode:UIViewContentModeScaleAspectFit];
+    moreImageView.autoresizingMask = UIViewAutoresizingNone;
+    moreImageView.frame = CGRectMake(CGRectGetMaxX(moreLabel.frame) + 5, CGRectGetMinY(moreLabel.frame), 15, 15);
+    [self.view addSubview:moreImageView];
+    
+    
+    //step5
+    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
+    _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
+    _currentReadingBaseView.layer.cornerRadius = 8;
+    _currentReadingBaseView.layer.masksToBounds = YES;
+    [self.view addSubview:_currentReadingBaseView];
+    
+    _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
+    _currentReadingDesLabel.textAlignment = NSTextAlignmentCenter;
+    _currentReadingDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
+    _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
+    _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
+    _currentReadingDesLabel.layer.cornerRadius = 5;
+    _currentReadingDesLabel.text = @"NOW";
+    _currentReadingDesLabel.layer.masksToBounds = YES;
+    [_currentReadingBaseView addSubview:_currentReadingDesLabel];
+    
+    _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
     _currentReadingLabel.textAlignment = NSTextAlignmentCenter;
-    _currentReadingLabel.center = _soundLevelView.center;
-    _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
-    _currentReadingLabel.text = @"N/A";
-    _currentReadingLabel.numberOfLines = 1;
-    _currentReadingLabel.textColor = [UIColor whiteColor];
+    _currentReadingLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
+    _currentReadingLabel.textColor = [UIColor lightGrayColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_currentReadingLabel];
+    _currentReadingLabel.layer.cornerRadius = 5;
+    _currentReadingLabel.layer.masksToBounds = YES;
+    [_currentReadingBaseView addSubview:_currentReadingLabel];
+    
+    
+    _setReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
+    _setReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
+    _setReadingBaseView.layer.cornerRadius = 8;
+    _setReadingBaseView.layer.masksToBounds = YES;
+    [self.view addSubview:_setReadingBaseView];
+    
+    _setReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
+    _setReadingDesLabel.textAlignment = NSTextAlignmentCenter;
+    _setReadingDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
+    _setReadingDesLabel.textColor = [UIColor lightGrayColor];
+    _setReadingDesLabel.backgroundColor = [UIColor clearColor];
+    _setReadingDesLabel.layer.cornerRadius = 5;
+    _setReadingDesLabel.text = @"SET";
+    _setReadingDesLabel.layer.masksToBounds = YES;
+    [_setReadingBaseView addSubview:_setReadingDesLabel];
+    
+    _setReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
+    _setReadingLabel.textAlignment = NSTextAlignmentCenter;
+    _setReadingLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
+    _setReadingLabel.textColor = [UIColor lightGrayColor];
+    _setReadingLabel.backgroundColor = [UIColor clearColor];
+    _setReadingLabel.layer.cornerRadius = 5;
+    _setReadingLabel.layer.masksToBounds = YES;
+    [_setReadingBaseView addSubview:_setReadingLabel];
     
 }
 
-
-- (void)set
-{
-    
-    int val = [_slider value];
-    
-    [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:val]];
-    self.tabBarController.selectedIndex = 0;
-    
-    [NSUserDefaultsHelper setLastNoisePeak:0.0]; //reset
-}
 
 
 
@@ -127,6 +192,8 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:55.0/255 green:55.0/255 blue:55.0/255 alpha:1];
 }
+
+
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.screenName = @"AlertView Screen";
@@ -144,6 +211,7 @@
     [self updateSilderAttachedPositionWithAnimation:NO];
     
     [_soundLevelView refreshMeterImageView];
+    _setReadingLabel.text = [NSString stringWithFormat:@"%d",[alertThreshold intValue]];
     
 }
 
@@ -161,14 +229,17 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 
 - (void) sliderAction:(UISlider *) slider {
+    
     [self updateSilderAttachedPositionWithAnimation:YES];
+    
+    [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:[_slider value]]];
+    
+    [NSUserDefaultsHelper setLastNoisePeak:0.0]; //reset
+    
+    _setReadingLabel.text = [NSString stringWithFormat:@"%d",(int)slider.value];
     
 }
 
@@ -190,6 +261,14 @@
     } completion:^(BOOL finished) {
         _sliderAttachedLabel.text = [NSString stringWithFormat:@"%d",(int)_slider.value];
     }];
+}
+
+
+- (void) moreButtonCLicked {
+    //    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
+    //    [self.navigationController pushViewController:moreViewController animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Show_Left_Setting_View object:nil userInfo:nil];
+    
 }
 
 
@@ -222,7 +301,12 @@
     }
 }
 
-    
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
 
 
 @end
