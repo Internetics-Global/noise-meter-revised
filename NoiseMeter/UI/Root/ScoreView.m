@@ -149,11 +149,20 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NMDecibelLogger defaultLogger] startLogging];
+    
+    [self hideTips];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    
+
 }
 
 
@@ -289,7 +298,7 @@
     
     if (_popTipShare == nil) {
         _popTipShare = [AMPopTip popTip];
-        _popTipShare.textColor = [UIColor darkGrayColor];
+        _popTipShare.textColor = [UIColor blackColor];
         _popTipShare.arrowSize = CGSizeMake(8, 120);
         _popTipShare.popoverColor = [UIColor greenColor];
         _popTipShare.shouldDismissOnTap = YES;
@@ -300,9 +309,10 @@
     }
     [_popTipShare showText:@"Share your Noise League on social media" direction:AMPopTipDirectionDown maxWidth:160 inView:self.view fromFrame:CGRectMake(_shareButton.center.x + 5, _shareButton.center.y, 0, 0) duration:0];
     
+    
     if (_popTipReset == nil) {
         _popTipReset = [AMPopTip popTip];
-        _popTipReset.textColor = [UIColor darkGrayColor];
+        _popTipReset.textColor = [UIColor blackColor];
         _popTipReset.arrowSize = CGSizeMake(8, 160);
         _popTipReset.popoverColor = [UIColor greenColor];
         _popTipReset.shouldDismissOnTap = YES;
@@ -316,7 +326,7 @@
     
     if (_popTipMail == nil) {
         _popTipMail = [AMPopTip popTip];
-        _popTipMail.textColor = [UIColor darkGrayColor];
+        _popTipMail.textColor = [UIColor blackColor];
         _popTipMail.arrowSize = CGSizeMake(8, 20);
         _popTipMail.popoverColor = [UIColor greenColor];
         _popTipMail.shouldDismissOnTap = YES;
@@ -325,7 +335,7 @@
             
         };
     }
-    if ([_scores count] == 0) {
+    if ([_scores count] == 0 || [NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
         [_popTipMail hide];
     } else {
         [_popTipMail showText:@"Email individual recordings" direction:AMPopTipDirectionDown maxWidth:110 inView:self.view fromFrame:CGRectMake(CGRectGetMidX(_scoreTable.frame) - 28,CGRectGetMinY(_scoreTable.frame) + 20, 0, 0) duration:0];
@@ -333,7 +343,7 @@
     
     if (_popTipSound == nil) {
         _popTipSound = [AMPopTip popTip];
-        _popTipSound.textColor = [UIColor darkGrayColor];
+        _popTipSound.textColor = [UIColor blackColor];
         _popTipSound.arrowSize = CGSizeMake(8, 20);
         _popTipSound.popoverColor = [UIColor greenColor];
         _popTipSound.shouldDismissOnTap = YES;
@@ -350,7 +360,7 @@
     
     if (_popTipEmpty == nil) {
         _popTipEmpty = [AMPopTip popTip];
-        _popTipEmpty.textColor = [UIColor darkGrayColor];
+        _popTipEmpty.textColor = [UIColor blackColor];
         _popTipEmpty.arrowSize = CGSizeZero;
         _popTipEmpty.popoverColor = [UIColor greenColor];
         _popTipEmpty.shouldDismissOnTap = YES;

@@ -252,7 +252,16 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    [self hideTips];
+    
     [[NMDecibelLogger defaultLogger] removeObserver:self forKeyPath:@"currentReading" context:NULL];
+}
+
+- (void) viewDidDisappear:(BOOL)animated  {
+    [super viewDidDisappear:animated];
+    
+    
+
 }
 
 
@@ -366,7 +375,7 @@
     
     if (_popTipSlider == nil) {
         _popTipSlider = [AMPopTip popTip];
-        _popTipSlider.textColor = [UIColor darkGrayColor];
+        _popTipSlider.textColor = [UIColor blackColor];
         _popTipSlider.arrowSize = CGSizeMake(8, 20);
         _popTipSlider.popoverColor = [UIColor greenColor];
         _popTipSlider.shouldDismissOnTap = YES;
@@ -379,7 +388,7 @@
     
     if (_popTipMetter == nil) {
         _popTipMetter = [AMPopTip popTip];
-        _popTipMetter.textColor = [UIColor darkGrayColor];
+        _popTipMetter.textColor = [UIColor blackColor];
         _popTipMetter.arrowSize = CGSizeMake(20, 8);
         _popTipMetter.popoverColor = [UIColor greenColor];
         _popTipMetter.shouldDismissOnTap = YES;
@@ -392,7 +401,7 @@
     
     if (_popTipSetLabel == nil) {
         _popTipSetLabel = [AMPopTip popTip];
-        _popTipSetLabel.textColor = [UIColor darkGrayColor];
+        _popTipSetLabel.textColor = [UIColor blackColor];
         _popTipSetLabel.arrowSize = CGSizeMake(8, 110);
         _popTipSetLabel.popoverColor = [UIColor greenColor];
         _popTipSetLabel.shouldDismissOnTap = YES;
