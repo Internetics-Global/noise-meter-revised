@@ -1481,8 +1481,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1512,8 +1512,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "dc64b1ce-c870-47c4-833c-9d58fde6c42e";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -185,6 +185,7 @@
     _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
     [_infoButton addTarget:self action:@selector(switchTips) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
+    _infoButton.showsTouchWhenHighlighted = YES;
     [_infoButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -192,6 +193,7 @@
     _moreButton.frame = CGRectMake(15, 18, 20, 20);
     [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_moreButton];
+    _moreButton.showsTouchWhenHighlighted = YES;
     [_moreButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     //2. meter base view

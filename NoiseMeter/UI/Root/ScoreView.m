@@ -70,6 +70,7 @@
     _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
     [_infoButton addTarget:self action:@selector(switchTips) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
+    _infoButton.showsTouchWhenHighlighted = YES;
     [_infoButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -77,6 +78,7 @@
     _moreButton.frame = CGRectMake(15, 18, 20, 20);
     [_moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_moreButton];
+    _moreButton.showsTouchWhenHighlighted = YES;
     [_moreButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _tableHeader = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_logo_scores.png"]];
@@ -370,7 +372,7 @@
         };
     }
     if ([_scores count] == 0) {
-        [_popTipEmpty showText:@"When you save noise recordings they will appear here in list form." direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(_scoreTable.center.x, CGRectGetMinY(_scoreTable.frame) + 80, 0, 0) duration:0];
+        [_popTipEmpty showText:@"When you save noise recordings they will appear here in list form" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(_scoreTable.center.x, CGRectGetMinY(_scoreTable.frame) + 80, 0, 0) duration:0];
     } else {
         [_popTipEmpty hide];
     }

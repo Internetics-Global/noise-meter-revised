@@ -56,6 +56,7 @@
         closeButton.backgroundColor = [UIColor clearColor];
         [closeButton setImage:[UIImage imageNamed:@"close-white"] forState:UIControlStateNormal];
         closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
+        closeButton.showsTouchWhenHighlighted = YES;
         
         [self.view addSubview:closeButton];
         [closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
