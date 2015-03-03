@@ -25,7 +25,7 @@
 #import "AMPopTip.h"
 
 //忽略那种短暂的噪声
-#define K_Second_IgnoreSuddenNoise     0.25
+#define K_Second_IgnoreSuddenNoise     0.5
 
 //当alarm出现后，继续保持录音的时间
 #define K_Second_DelayAlarmSound       1.0
@@ -193,7 +193,11 @@
     
     //2. meter base view
     
-    _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, 320, 248)];
+    if (iPhone5) {
+        _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, 320, 248)];
+    } else {
+        _meterBackground = [[UIView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, 320, 200)];
+    }
     _meterBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     _meterBackground.userInteractionEnabled = YES;
     _meterBackground.backgroundColor = kMeterOverlapColor;
@@ -204,7 +208,11 @@
     [_meterBackground addGestureRecognizer:singleTapGesture];
     
     //3. sound level view
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((CGRectGetWidth(_meterBackground.frame) - KSoundMeterViewWidth)/2, (CGRectGetHeight(_meterBackground.frame) - KSoundMeterViewWidth)/2, KSoundMeterViewWidth, KSoundMeterViewWidth)];
+    if (iPhone5) {
+        _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((CGRectGetWidth(_meterBackground.frame) - KSoundMeterViewWidth)/2, (CGRectGetHeight(_meterBackground.frame) - KSoundMeterViewWidth)/2, KSoundMeterViewWidth, KSoundMeterViewWidth)];
+    } else {
+        _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((CGRectGetWidth(_meterBackground.frame) - KSoundMeterViewWidth_iPhone4)/2, (CGRectGetHeight(_meterBackground.frame) - KSoundMeterViewWidth_iPhone4)/2, KSoundMeterViewWidth_iPhone4, KSoundMeterViewWidth_iPhone4)];
+    }
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     _soundLevelView.isForMeterView = YES;
     [_soundLevelView setupSubviews];

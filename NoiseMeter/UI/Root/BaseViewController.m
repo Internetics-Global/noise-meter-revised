@@ -87,8 +87,14 @@
             
             self.generalADButton = [UIButton buttonWithType:UIButtonTypeCustom];
             self.generalADButton.frame = CGRectMake(0, 0, 320, 50);
-            self.generalADButton.center = CGPointMake(self.view.center.x,
-                                                      CGRectGetHeight(self.view.frame) - 25);
+            if ([self isMemberOfClass:[MoreView class]]) {
+                //this is because we have a non full screen MoreView, see frostedViewController.contentFrame = CGRectMake(0, 20, CGRectGetWidth(self.window.bounds), 
+                self.generalADButton.center = CGPointMake(self.view.center.x,
+                                                          CGRectGetHeight(self.view.frame) - 25 - 20);
+            } else {
+                self.generalADButton.center = CGPointMake(self.view.center.x,
+                                                          CGRectGetHeight(self.view.frame) - 25);
+            }
             
             self.generalADButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
             [self.generalADButton setBackgroundColor:[UIColor redColor]];
@@ -104,7 +110,8 @@
             [self.generalADButton addTarget:self action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
             [self.view addSubview:self.generalADButton];
             
-        }
+       }
+
     }
 }
 

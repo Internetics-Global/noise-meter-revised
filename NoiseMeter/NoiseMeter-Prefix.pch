@@ -39,7 +39,8 @@
 #define K_TOP_IMAGEVIEW_TAG 99
 
 //Meter display view related
-#define KSoundMeterViewWidth        220
+#define KSoundMeterViewWidth                220
+#define KSoundMeterViewWidth_iPhone4        180
 #define kNumberSlices               12.0
 #define kSliceInterval              0
 

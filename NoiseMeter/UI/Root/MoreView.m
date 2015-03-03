@@ -63,7 +63,13 @@
     topImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:topImageView];
     
-    _optionTable = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame)) style:UITableViewStyleGrouped];
+    CGRect frame;
+    if ([NSUserDefaultsHelper isProVersion]) {
+        frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame));
+    } else {
+        frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - CGRectGetHeight(self.generalADButton.frame));
+    }
+    _optionTable = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
     _optionTable.delegate = self;
     _optionTable.dataSource = self;
