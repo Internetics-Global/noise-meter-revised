@@ -21,7 +21,7 @@
     NSDateFormatter *date = [[NSDateFormatter alloc] init];
 	NSLocale *au = [[NSLocale alloc] initWithLocaleIdentifier:@"en_AU"];
 	[date setLocale:au];
-	[date setDateFormat:@"dd.MM.yyyy"];
+	[date setDateFormat:@"dd/MM/yyyy"];
 	_dateLabel.text = [date stringFromDate:_capture.date];
     [self didChangeValueForKey:@"capture"];
 }

@@ -970,7 +970,7 @@
             
         };
     }
-    [_popTipTabBarScore showText:@"Name the noisest" direction:AMPopTipDirectionUp maxWidth:140 inView:self.view fromFrame:CGRectMake(self.view.center.x, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
+    [_popTipTabBarScore showText:@"Name the noisiest" direction:AMPopTipDirectionUp maxWidth:140 inView:self.view fromFrame:CGRectMake(self.view.center.x, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
     
 }
 
