@@ -174,7 +174,11 @@
     _currentReadingLabel.layer.masksToBounds = YES;
     [_currentReadingBaseView addSubview:_currentReadingLabel];
     
-    
+    if (iPhone5) {
+        frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 53, K_Square_Width, K_Square_Width);
+    } else {
+        frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width);
+    }
     _setReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
     _setReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _setReadingBaseView.layer.cornerRadius = 8;
