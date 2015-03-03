@@ -91,6 +91,8 @@
 {
     if (!_playingAlarm) 
     {
+        _playingAlarm = YES;
+        
         NSString *path  = [[NSBundle mainBundle] pathForResource:self.alarmName ofType:@"caf"];
         NSLog(@"path = %@; alarmName = %@", path, self.alarmName);
         
@@ -113,8 +115,6 @@
             else
             {
                 [self stopLogging];
-                
-                _playingAlarm = YES;
                 
                 [IDPSoundBoard addAudioAtPath:[pathURL path] forKey:Key_PlayerAlarm forType:EnumSoundType_Alarm];
                 AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerAlarm];

@@ -48,7 +48,11 @@
 @interface MeterView () <MFMailComposeViewControllerDelegate> {
     MPVolumeView *_volumeView;
     
-    BOOL         *_isAlarmPrepareToBeTriggered;
+    /**
+     *当在Delay Alarm Sound = YES时,设置这个标志用来，防止在这段时间内重新触发alarm
+     *如果 ＝ YES，则不允许触发observeValueForKeyPath
+     */
+    BOOL         _isAlarmPrepareToBeTriggered;
     
     ScoreArrayDataSource *_scoreArrayDataSource;
     
@@ -517,7 +521,6 @@
     //NSLog(@"observeValueForKeyPath in MeterView is called");
     
     if (_isAlarmPrepareToBeTriggered) {
-        //wait for finish on delay alarm sound
         return;
     }
     
@@ -572,11 +575,11 @@
                         double delayInSeconds = K_Second_DelayAlarmSound;
                         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                            [self triggerAlarmInDifferentMode];
+                            [self triggerAlarmConditionally];
                             _isAlarmPrepareToBeTriggered = NO;
                         });
                     } else {
-                        [self triggerAlarmInDifferentMode];
+                        [self triggerAlarmConditionally];
                     }
                     
                 }
@@ -586,11 +589,11 @@
                     double delayInSeconds = K_Second_DelayAlarmSound;
                     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
                     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [self triggerAlarmInDifferentMode];
+                        [self triggerAlarmConditionally];
                         _isAlarmPrepareToBeTriggered = NO;
                     });
                 } else {
-                    [self triggerAlarmInDifferentMode];
+                    [self triggerAlarmConditionally];
                 }
             }
         }
@@ -613,11 +616,6 @@
             _captureMeterLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
             _captureMeterBaseView.hidden = NO;
             
-            if ([NSUserDefaultsHelper isIgnoreSuddenNoise] && (_isAlarmPrepareToBeTriggered == FALSE)) {
-            } else {
-                _cancelButton.hidden = NO;
-            }
-            
             _infoMeterBaseView.hidden = YES;
         
         }
@@ -635,7 +633,13 @@
     2. 保存声音文件，如果需要
     3. 2秒后自动关闭alarm并继续Logging，如果需要  (continuous mode)
  */
-- (void) triggerAlarmInDifferentMode {
+- (void) triggerAlarmConditionally {
+    
+    if ([NSUserDefaultsHelper isSilentMode] == FALSE && ([NSUserDefaultsHelper isContinuousMode] == FALSE)) {
+        // in silent mode and continous mode, we never show cancel button
+        _cancelButton.hidden = NO;
+    }
+    
     if ([NSUserDefaultsHelper isSilentMode]) {
         //为了防止不停的catch，设置了K_Second_SilentMode内不允许重新catch
         NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForSilentMode];
@@ -651,7 +655,7 @@
         if (executionTime2 > K_Second_SilentMode) {
             _startForSilentMode = [NSDate date];
             
-            [self catchAndSaveSound_Without_StartLoggingAgain];//1.抓取音频，并存盘。这时没有loging,所以不用担心triggerAlarmInDifferentMode会被不断执行
+            [self catchAndSaveSound_Without_StartLoggingAgain];//1.抓取音频，并存盘。这时没有loging,所以不用担心triggerAlarmConditionally会被不断执行
             
             [[NMDecibelLogger defaultLogger] playAlarm];//2.播放alarm
             

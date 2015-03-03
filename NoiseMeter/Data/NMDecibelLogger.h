@@ -39,6 +39,9 @@
 
 @property (nonatomic, strong          ) AVQueuePlayer *keepAlivePlayer;
 
+/**
+ *  if true, then forbid to execute [self willChangeValueForKey:@"currentReading"]
+ */
 @property (assign, nonatomic          ) BOOL          playingAlarm;
 
 + (NMDecibelLogger *)defaultLogger;
