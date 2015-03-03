@@ -902,7 +902,7 @@
     if (_popTipInfo == nil) {
         _popTipInfo = [AMPopTip popTip];
         _popTipInfo.textColor = [UIColor blackColor];
-        _popTipInfo.arrowSize = CGSizeMake(8, 40);
+        _popTipInfo.arrowSize = CGSizeMake(8, 20);
         _popTipInfo.popoverColor = [UIColor greenColor];
         _popTipInfo.shouldDismissOnTap = YES;
         _popTipInfo.shouldDismissOnTapOutside = NO;
@@ -910,7 +910,7 @@
             
         };
     }
-    [_popTipInfo showText:@"Show context help" direction:AMPopTipDirectionDown maxWidth:140 inView:self.view fromFrame:CGRectMake(_infoButton.center.x, _infoButton.center.y, 0, 0) duration:0];
+    [_popTipInfo showText:@"Turn help on or off" direction:AMPopTipDirectionDown maxWidth:140 inView:self.view fromFrame:CGRectMake(_infoButton.center.x, _infoButton.center.y + 20, 0, 0) duration:0];
     
     if (_popTipMeterPause == nil) {
         _popTipMeterPause = [AMPopTip popTip];

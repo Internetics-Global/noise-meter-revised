@@ -83,9 +83,9 @@
     //step2
     CGRect frame;
     if (iPhone5) {
-        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 44, 280, 10);
+        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 31, 280, 30);
     } else {
-        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 27, 280, 10);
+        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 14, 280, 30);
     }
     _slider = [[UISlider alloc] initWithFrame:frame];
     [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
@@ -95,7 +95,7 @@
     _slider.continuous = YES;
     [self.view addSubview:_slider];
     
-    _sliderAttachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(_slider.frame) - 20, 30, 10)];
+    _sliderAttachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(_slider.frame) - 10, 30, 10)];
     _sliderAttachedLabel.textAlignment = NSTextAlignmentCenter;
     _sliderAttachedLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
     _sliderAttachedLabel.text = @"N/A";
@@ -104,7 +104,7 @@
     _sliderAttachedLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_sliderAttachedLabel];
     
-    UILabel *my40Lable = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_slider.frame) + 10, 40, 20)];
+    UILabel *my40Lable = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_slider.frame), 40, 20)];
     my40Lable.textAlignment = NSTextAlignmentLeft;
     my40Lable.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
     my40Lable.text = @"40db";
@@ -113,7 +113,7 @@
     my40Lable.backgroundColor = [UIColor clearColor];
     [self.view addSubview:my40Lable];
     
-    UILabel *my120Lable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_slider.frame) - 40, CGRectGetMaxY(_slider.frame) + 10, 40, 20)];
+    UILabel *my120Lable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_slider.frame) - 40, CGRectGetMaxY(_slider.frame), 40, 20)];
     my120Lable.textAlignment = NSTextAlignmentRight;
     my120Lable.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
     my120Lable.text = @"120db";
@@ -125,9 +125,9 @@
     
     //step3
     if (iPhone5) {
-        frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 107, 150, 150);
+        frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 102, 150, 150);
     } else {
-        frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 87, 150, 150);
+        frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 82, 150, 150);
     }
     _soundLevelView = [[SoundLevelView alloc] initWithFrame:frame];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
@@ -161,9 +161,9 @@
     
     //step5
     if (iPhone5) {
-        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 47, K_Square_Width, K_Square_Width);
-    } else {
         frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 42, K_Square_Width, K_Square_Width);
+    } else {
+        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 37, K_Square_Width, K_Square_Width);
     }
     _currentReadingBaseView = [[UIView alloc] initWithFrame:frame];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
