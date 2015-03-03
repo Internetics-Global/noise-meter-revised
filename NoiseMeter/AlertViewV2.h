@@ -16,6 +16,7 @@
     UISlider       *_slider;
     UILabel        *_sliderAttachedLabel;
     UIButton       * _moreButton;
+    UIButton       * _infoButton;
 }
 
 

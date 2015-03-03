@@ -22,6 +22,7 @@
 
     UIImage        * _fullScrenshotImage;
     UIButton       * _moreButton;
+    UIButton       * _infoButton;
 }
 
 @end

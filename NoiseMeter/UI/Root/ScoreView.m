@@ -20,9 +20,17 @@
 #import "ScoreArrayDataSource.h"
 #import "UIButton+Extensions.h"
 
+#import "AMPopTip.h"
+
 
 @interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate> {
     ScoreArrayDataSource *_scoreArrayDataSource;
+    
+    AMPopTip *_popTipShare;
+    AMPopTip *_popTipReset;
+    AMPopTip *_popTipEmpty;
+    AMPopTip *_popTipMail;
+    AMPopTip *_popTipSound;
 }
 
 
@@ -56,6 +64,13 @@
     [super loadView];
     
     [self style:NO];
+    
+    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
+    _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
+    [_infoButton addTarget:self action:@selector(switchTips) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_infoButton];
+    [_infoButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
@@ -246,6 +261,109 @@
     //    MoreView *moreViewController = [[MoreView alloc] initWithNibName:nil bundle:nil];
     //    [self.navigationController pushViewController:moreViewController animated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Show_Left_Setting_View object:nil userInfo:nil];
+    
+}
+
+#pragma mark – Tooltip
+
+- (void) switchTips {
+    
+    if ((_popTipShare.isVisible) || (_popTipReset.isVisible) || (_popTipEmpty.isVisible) || (_popTipMail.isVisible) || (_popTipSound.isVisible)) {
+        [self hideTips];
+    } else {
+        [self showTips];
+    }
+}
+
+- (void) hideTips {
+    [_popTipShare hide];
+    [_popTipReset hide];
+    [_popTipEmpty hide];
+    [_popTipMail hide];
+    [_popTipSound hide];
+}
+
+- (void) showTips {
+    
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (_popTipShare == nil) {
+        _popTipShare = [AMPopTip popTip];
+        _popTipShare.textColor = [UIColor darkGrayColor];
+        _popTipShare.arrowSize = CGSizeMake(8, 120);
+        _popTipShare.popoverColor = [UIColor greenColor];
+        _popTipShare.shouldDismissOnTap = YES;
+        _popTipShare.shouldDismissOnTapOutside = NO;
+        _popTipShare.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipShare showText:@"Share your Noise League on social media" direction:AMPopTipDirectionDown maxWidth:160 inView:self.view fromFrame:CGRectMake(_shareButton.center.x + 5, _shareButton.center.y, 0, 0) duration:0];
+    
+    if (_popTipReset == nil) {
+        _popTipReset = [AMPopTip popTip];
+        _popTipReset.textColor = [UIColor darkGrayColor];
+        _popTipReset.arrowSize = CGSizeMake(8, 160);
+        _popTipReset.popoverColor = [UIColor greenColor];
+        _popTipReset.shouldDismissOnTap = YES;
+        _popTipReset.shouldDismissOnTapOutside = NO;
+        _popTipReset.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipReset showText:@"Reset this list" direction:AMPopTipDirectionDown maxWidth:180 inView:self.view fromFrame:CGRectMake(_resetButton.center.x, _resetButton.center.y, 0, 0) duration:0];
+    
+    
+    if (_popTipMail == nil) {
+        _popTipMail = [AMPopTip popTip];
+        _popTipMail.textColor = [UIColor darkGrayColor];
+        _popTipMail.arrowSize = CGSizeMake(8, 20);
+        _popTipMail.popoverColor = [UIColor greenColor];
+        _popTipMail.shouldDismissOnTap = YES;
+        _popTipMail.shouldDismissOnTapOutside = NO;
+        _popTipMail.dismissHandler = ^() {
+            
+        };
+    }
+    if ([_scores count] == 0) {
+        [_popTipMail hide];
+    } else {
+        [_popTipMail showText:@"Email individual recordings" direction:AMPopTipDirectionDown maxWidth:110 inView:self.view fromFrame:CGRectMake(CGRectGetMidX(_scoreTable.frame) - 28,CGRectGetMinY(_scoreTable.frame) + 20, 0, 0) duration:0];
+    }
+    
+    if (_popTipSound == nil) {
+        _popTipSound = [AMPopTip popTip];
+        _popTipSound.textColor = [UIColor darkGrayColor];
+        _popTipSound.arrowSize = CGSizeMake(8, 20);
+        _popTipSound.popoverColor = [UIColor greenColor];
+        _popTipSound.shouldDismissOnTap = YES;
+        _popTipSound.shouldDismissOnTapOutside = NO;
+        _popTipSound.dismissHandler = ^() {
+            
+        };
+    }
+    if ([_scores count] == 0) {
+        [_popTipSound hide];
+    } else {
+        [_popTipSound showText:@"Play recordings" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetMidX(_scoreTable.frame),CGRectGetMinY(_scoreTable.frame) + 20, 0, 0) duration:0];
+    }
+    
+    if (_popTipEmpty == nil) {
+        _popTipEmpty = [AMPopTip popTip];
+        _popTipEmpty.textColor = [UIColor darkGrayColor];
+        _popTipEmpty.arrowSize = CGSizeZero;
+        _popTipEmpty.popoverColor = [UIColor greenColor];
+        _popTipEmpty.shouldDismissOnTap = YES;
+        _popTipEmpty.shouldDismissOnTapOutside = NO;
+        _popTipEmpty.dismissHandler = ^() {
+            
+        };
+    }
+    if ([_scores count] == 0) {
+        [_popTipEmpty showText:@"When you save noise recordings they will appear here in list form." direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(_scoreTable.center.x, CGRectGetMinY(_scoreTable.frame) + 80, 0, 0) duration:0];
+    } else {
+        [_popTipEmpty hide];
+    }
     
 }
 

@@ -10,6 +10,7 @@
 #import "NMDecibelLogger.h"
 #import "SoundLevelView.h"
 #import "UIButton+Extensions.h"
+#import "AMPopTip.h"
 
 #define K_Square_Width  70.0
 #define K_Meter_Square_Background_Color  [UIColor colorWithRed:80.0/255 green:80.0/255 blue:80.0/255 alpha:0.6]
@@ -25,6 +26,10 @@
     UIView         * _setReadingBaseView;
     UILabel        * _setReadingLabel;
     UILabel        * _setReadingDesLabel;
+    
+    AMPopTip *_popTipSlider;
+    AMPopTip *_popTipMetter;
+    AMPopTip *_popTipSetLabel;
 }
 
 @end
@@ -50,6 +55,13 @@
 
     
     [self style:NO];
+    
+    _infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_infoButton setImage:[UIImage imageNamed:@"button_info.png"] forState:UIControlStateNormal];
+    _infoButton.frame = CGRectMake(self.view.frame.size.width - 35, 18, 20, 20);
+    [_infoButton addTarget:self action:@selector(switchTips) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_infoButton];
+    [_infoButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     //step1
     _moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -329,6 +341,68 @@
 }
 
 
+#pragma mark – Tooltip
 
+- (void) switchTips {
+    
+    if ((_popTipSlider.isVisible) || (_popTipMetter.isVisible) || (_popTipSetLabel.isVisible)) {
+        [self hideTips];
+    } else {
+        [self showTips];
+    }
+    
+    
+}
+
+- (void) hideTips {
+    [_popTipSlider hide];
+    [_popTipMetter hide];
+    [_popTipSetLabel hide];
+}
+
+- (void) showTips {
+    
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (_popTipSlider == nil) {
+        _popTipSlider = [AMPopTip popTip];
+        _popTipSlider.textColor = [UIColor darkGrayColor];
+        _popTipSlider.arrowSize = CGSizeMake(8, 20);
+        _popTipSlider.popoverColor = [UIColor greenColor];
+        _popTipSlider.shouldDismissOnTap = YES;
+        _popTipSlider.shouldDismissOnTapOutside = NO;
+        _popTipSlider.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipSlider showText:@"Adjust the decibel level to suit the maximum volume level you want to get" direction:AMPopTipDirectionUp maxWidth:260 inView:self.view fromFrame:CGRectMake(_slider.center.x + 20, _slider.center.y, 0, 0) duration:0];
+    
+    if (_popTipMetter == nil) {
+        _popTipMetter = [AMPopTip popTip];
+        _popTipMetter.textColor = [UIColor darkGrayColor];
+        _popTipMetter.arrowSize = CGSizeMake(20, 8);
+        _popTipMetter.popoverColor = [UIColor greenColor];
+        _popTipMetter.shouldDismissOnTap = YES;
+        _popTipMetter.shouldDismissOnTapOutside = NO;
+        _popTipMetter.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipMetter showText:@"When you adjust the decibel level, see how it affects the meter" direction:AMPopTipDirectionLeft maxWidth:200 inView:self.view fromFrame:CGRectMake(_soundLevelView.center.x, _soundLevelView.center.y, 0, 0) duration:0];
+    
+    if (_popTipSetLabel == nil) {
+        _popTipSetLabel = [AMPopTip popTip];
+        _popTipSetLabel.textColor = [UIColor darkGrayColor];
+        _popTipSetLabel.arrowSize = CGSizeMake(8, 110);
+        _popTipSetLabel.popoverColor = [UIColor greenColor];
+        _popTipSetLabel.shouldDismissOnTap = YES;
+        _popTipSetLabel.shouldDismissOnTapOutside = NO;
+        _popTipSetLabel.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipSetLabel showText:@"This is the current setting" direction:AMPopTipDirectionDown maxWidth:180 inView:self.view fromFrame:CGRectMake(_setReadingBaseView.center.x, _setReadingBaseView.center.y, 0, 0) duration:0];
+    
+}
 
 @end

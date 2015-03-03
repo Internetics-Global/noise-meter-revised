@@ -60,7 +60,10 @@
     
     AMPopTip *_popTipMeterPause;
     AMPopTip *_popTipMeterCapture;
+    AMPopTip *_popTipInfo;
     AMPopTip *_popTipTabBarLevel;
+    AMPopTip *_popTipTabBarScore;
+
     
 }
 
@@ -742,68 +745,7 @@
     
 }
 
-- (void) switchTips {
-    
-    if ((_popTipMeterPause == nil) || (_popTipTabBarLevel == nil) | (_popTipMeterCapture == nil) ||
-           (!_popTipMeterPause.isVisible) || (!_popTipTabBarLevel.isVisible) || (!_popTipMeterCapture.isVisible)) {
-      [self showTips];
-    } else {
-      [self hideTips];
-    }
-    
-    
-}
 
-- (void) hideTips {
-    [_popTipMeterPause hide];
-    [_popTipMeterCapture hide];
-    [_popTipTabBarLevel hide];
-}
-
-- (void) showTips {
-    
-     __weak __typeof(&*self)weakSelf = self;
-    
-    if (_popTipMeterPause == nil) {
-        _popTipMeterPause = [AMPopTip popTip];
-        _popTipMeterPause.textColor = [UIColor darkGrayColor];
-        _popTipMeterPause.arrowSize = CGSizeMake(8, 20);
-        _popTipMeterPause.popoverColor = [UIColor greenColor];
-        _popTipMeterPause.shouldDismissOnTap = YES;
-        _popTipMeterPause.shouldDismissOnTapOutside = NO;
-        _popTipMeterPause.dismissHandler = ^() {
-            
-        };
-    }
-    [_popTipMeterPause showText:@"Tap the meter to turn on and off" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(_meterBackground.center.x, _meterBackground.center.y, 0, 0) duration:0];
-    
-    if (_popTipMeterCapture == nil) {
-        _popTipMeterCapture = [AMPopTip popTip];
-        _popTipMeterCapture.textColor = [UIColor darkGrayColor];
-        _popTipMeterCapture.arrowSize = CGSizeMake(30, 8);
-        _popTipMeterCapture.popoverColor = [UIColor greenColor];
-        _popTipMeterCapture.shouldDismissOnTap = YES;
-        _popTipMeterCapture.shouldDismissOnTapOutside = NO;
-        _popTipMeterCapture.dismissHandler = ^() {
-            
-        };
-    }
-    [_popTipMeterCapture showText:@"When the alarm has gone off, click this button to record a name" direction:AMPopTipDirectionRight maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetMinX(_meterBackground.frame) + 65, CGRectGetMaxY(_meterBackground.frame) - 17, 0, 0) duration:0];
-    
-    if (_popTipTabBarLevel == nil) {
-        _popTipTabBarLevel = [AMPopTip popTip];
-        _popTipTabBarLevel.textColor = [UIColor darkGrayColor];
-        _popTipTabBarLevel.arrowSize = CGSizeMake(8, 30);
-        _popTipTabBarLevel.popoverColor = [UIColor greenColor];
-        _popTipTabBarLevel.shouldDismissOnTap = YES;
-        _popTipTabBarLevel.shouldDismissOnTapOutside = NO;
-        _popTipTabBarLevel.dismissHandler = ^() {
-            
-        };
-    }
-    [_popTipTabBarLevel showText:@"Adjust the sensibility of the alarm by clicking here" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
-    
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -925,6 +867,102 @@
     _overlayImageView = nil;
 }
 
+
+#pragma mark – Tooltip related
+
+- (void) switchTips {
+    
+    if ((_popTipMeterPause.isVisible) || (_popTipTabBarLevel.isVisible) || (_popTipMeterCapture.isVisible) || (_popTipTabBarScore.isVisible) || (_popTipInfo.isVisible)) {
+        [self hideTips];
+    } else {
+        [self showTips];
+    }
+    
+    
+}
+
+- (void) hideTips {
+    [_popTipMeterPause hide];
+    [_popTipMeterCapture hide];
+    [_popTipTabBarLevel hide];
+    [_popTipTabBarScore hide];
+    [_popTipInfo hide];
+}
+
+- (void) showTips {
+    
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (_popTipInfo == nil) {
+        _popTipInfo = [AMPopTip popTip];
+        _popTipInfo.textColor = [UIColor darkGrayColor];
+        _popTipInfo.arrowSize = CGSizeMake(8, 40);
+        _popTipInfo.popoverColor = [UIColor greenColor];
+        _popTipInfo.shouldDismissOnTap = YES;
+        _popTipInfo.shouldDismissOnTapOutside = NO;
+        _popTipInfo.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipInfo showText:@"Show context help" direction:AMPopTipDirectionDown maxWidth:140 inView:self.view fromFrame:CGRectMake(_infoButton.center.x, _infoButton.center.y, 0, 0) duration:0];
+    
+    if (_popTipMeterPause == nil) {
+        _popTipMeterPause = [AMPopTip popTip];
+        _popTipMeterPause.textColor = [UIColor darkGrayColor];
+        _popTipMeterPause.arrowSize = CGSizeMake(20, 8);
+        _popTipMeterPause.popoverColor = [UIColor greenColor];
+        _popTipMeterPause.shouldDismissOnTap = YES;
+        _popTipMeterPause.shouldDismissOnTapOutside = NO;
+        _popTipMeterPause.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipMeterPause showText:@"Tap the meter to turn on and off" direction:AMPopTipDirectionRight maxWidth:140 inView:self.view fromFrame:CGRectMake(_meterBackground.center.x, _meterBackground.center.y, 0, 0) duration:0];
+    
+    if (_popTipMeterCapture == nil) {
+        _popTipMeterCapture = [AMPopTip popTip];
+        _popTipMeterCapture.textColor = [UIColor darkGrayColor];
+        _popTipMeterCapture.arrowSize = CGSizeMake(30, 8);
+        _popTipMeterCapture.popoverColor = [UIColor greenColor];
+        _popTipMeterCapture.shouldDismissOnTap = YES;
+        _popTipMeterCapture.shouldDismissOnTapOutside = NO;
+        _popTipMeterCapture.dismissHandler = ^() {
+            
+        };
+    }
+    if (_captureMeterBaseView.hidden == YES) {
+        [_popTipMeterCapture hide];
+    } else {
+        [_popTipMeterCapture showText:@"Save the last noise to your list" direction:AMPopTipDirectionRight maxWidth:140 inView:self.view fromFrame:CGRectMake(CGRectGetMinX(_meterBackground.frame) + 65, CGRectGetMaxY(_meterBackground.frame) - 17, 0, 0) duration:0];
+    }
+    
+    if (_popTipTabBarLevel == nil) {
+        _popTipTabBarLevel = [AMPopTip popTip];
+        _popTipTabBarLevel.textColor = [UIColor darkGrayColor];
+        _popTipTabBarLevel.arrowSize = CGSizeMake(8, 80);
+        _popTipTabBarLevel.popoverColor = [UIColor greenColor];
+        _popTipTabBarLevel.shouldDismissOnTap = YES;
+        _popTipTabBarLevel.shouldDismissOnTapOutside = NO;
+        _popTipTabBarLevel.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipTabBarLevel showText:@"Adjust the sensitivity of the meter" direction:AMPopTipDirectionUp maxWidth:180 inView:self.view fromFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 50, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
+    
+    if (_popTipTabBarScore == nil) {
+        _popTipTabBarScore = [AMPopTip popTip];
+        _popTipTabBarScore.textColor = [UIColor darkGrayColor];
+        _popTipTabBarScore.arrowSize = CGSizeMake(8, 30);
+        _popTipTabBarScore.popoverColor = [UIColor greenColor];
+        _popTipTabBarScore.shouldDismissOnTap = YES;
+        _popTipTabBarScore.shouldDismissOnTapOutside = NO;
+        _popTipTabBarScore.dismissHandler = ^() {
+            
+        };
+    }
+    [_popTipTabBarScore showText:@"Name the noisest" direction:AMPopTipDirectionUp maxWidth:140 inView:self.view fromFrame:CGRectMake(self.view.center.x, CGRectGetHeight(self.view.frame), 0, 0) duration:0];
+    
+}
 
 
 
