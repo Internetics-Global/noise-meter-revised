@@ -111,7 +111,7 @@
     
     //step3
     if (iPhone5) {
-        frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 102, 150, 150);
+        frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 107, 150, 150);
     } else {
         frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 87, 150, 150);
     }
@@ -147,7 +147,7 @@
     
     //step5
     if (iPhone5) {
-        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 53, K_Square_Width, K_Square_Width);
+        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 47, K_Square_Width, K_Square_Width);
     } else {
         frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 42, K_Square_Width, K_Square_Width);
     }
