@@ -54,16 +54,11 @@
     if (isToShowBackButton) {
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         closeButton.backgroundColor = [UIColor clearColor];
-        if ([self isKindOfClass:[MoreView class]]) {
-            [closeButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-            closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
-        } else {
-          [closeButton setImage:[UIImage imageNamed:@"close-white"] forState:UIControlStateNormal];
-            closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
-        }
+        [closeButton setImage:[UIImage imageNamed:@"close-white"] forState:UIControlStateNormal];
+        closeButton.frame = CGRectMake(10, CGRectGetMidY(topBlackView.frame) - 11, 22, 22);
         
         [self.view addSubview:closeButton];
-        [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchDown];
+        [closeButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchDown];
     }
     
     
@@ -157,12 +152,9 @@
     return imageView;
 }
 
-- (void) close {
-    if ([self isKindOfClass:[MoreView class]]) {
-        [self.frostedViewController hideMenuViewController];
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+- (void) dismiss {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

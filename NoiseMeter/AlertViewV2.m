@@ -71,7 +71,7 @@
     if (iPhone5) {
         frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 44, 280, 10);
     } else {
-        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 30, 280, 10);
+        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 27, 280, 10);
     }
     _slider = [[UISlider alloc] initWithFrame:frame];
     [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
@@ -113,7 +113,7 @@
     if (iPhone5) {
         frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 107, 150, 150);
     } else {
-        frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 90, 150, 150);
+        frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 87, 150, 150);
     }
     _soundLevelView = [[SoundLevelView alloc] initWithFrame:frame];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
@@ -123,9 +123,9 @@
     
     //step4
     if (iPhone5) {
-        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 40, 245, 16);
+        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 40, 242, 20);
     } else {
-        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 10, 245, 16);
+        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 4, 242, 20);
     }
     UILabel *moreLabel = [[UILabel alloc] initWithFrame:frame];
     moreLabel.textAlignment = NSTextAlignmentCenter;
@@ -136,18 +136,20 @@
     moreLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:moreLabel];
     
-    UIImageView *moreImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_more.png"]];
-    [moreImageView setContentMode:UIViewContentModeScaleAspectFit];
-    moreImageView.autoresizingMask = UIViewAutoresizingNone;
-    moreImageView.frame = CGRectMake(CGRectGetMaxX(moreLabel.frame), CGRectGetMinY(moreLabel.frame), 16, 16);
-    [self.view addSubview:moreImageView];
+    UIButton *moreButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [moreButton setImage:[UIImage imageNamed:@"icon_more.png"] forState:UIControlStateNormal];
+    [moreButton setContentMode:UIViewContentModeScaleAspectFit];
+    moreButton.autoresizingMask = UIViewAutoresizingNone;
+    moreButton.frame = CGRectMake(CGRectGetMaxX(moreLabel.frame), CGRectGetMinY(moreLabel.frame), 20, 20);
+    [moreButton addTarget:self action:@selector(moreButtonCLicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:moreButton];
     
     
     //step5
     if (iPhone5) {
         frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 53, K_Square_Width, K_Square_Width);
     } else {
-        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width);
+        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 42, K_Square_Width, K_Square_Width);
     }
     _currentReadingBaseView = [[UIView alloc] initWithFrame:frame];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
@@ -174,11 +176,7 @@
     _currentReadingLabel.layer.masksToBounds = YES;
     [_currentReadingBaseView addSubview:_currentReadingLabel];
     
-    if (iPhone5) {
-        frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 53, K_Square_Width, K_Square_Width);
-    } else {
-        frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width);
-    }
+    frame = CGRectMake(320- 20 - K_Square_Width, CGRectGetMinY(_currentReadingBaseView.frame), K_Square_Width, K_Square_Width);
     _setReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(320- 20 - K_Square_Width, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
     _setReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _setReadingBaseView.layer.cornerRadius = 8;

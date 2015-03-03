@@ -19,6 +19,7 @@
 #import "NMDecibelLogger.h"
 #import "UIAlertView+Blocks.h"
 #import "SelectMeterView.h"
+#import "UIButton+Extensions.h"
 
 #import "UIViewController+REFrostedViewController.h"
 
@@ -42,7 +43,15 @@
     [super loadView];
 
     
-    [self style:YES];
+    [self style:NO];
+    
+
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    backButton.frame = CGRectMake(320 - 20 - 15, 18, 20, 20);
+    [backButton addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventTouchDown];
+    [self.view addSubview:backButton];
+    [backButton setHitTestEdgeInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
     
     //This is a special case for REFrostedViewController
     float statusBarHeight = 0;
@@ -563,6 +572,10 @@
         PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:purchaseViewController animated:YES completion:nil];
     });
+}
+
+- (void) backButtonClicked {
+    [self.frostedViewController hideMenuViewController];
 }
 
 
