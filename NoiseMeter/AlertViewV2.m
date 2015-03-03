@@ -67,7 +67,12 @@
     
     
     //step2
-    CGRect frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 30, 280, 10);
+    CGRect frame;
+    if (iPhone5) {
+        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 44, 280, 10);
+    } else {
+        frame = CGRectMake(20, CGRectGetMaxY(topImageView.frame) + 30, 280, 10);
+    }
     _slider = [[UISlider alloc] initWithFrame:frame];
     [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
     [_slider setBackgroundColor:[UIColor clearColor]];
@@ -76,7 +81,7 @@
     _slider.continuous = YES;
     [self.view addSubview:_slider];
     
-    _sliderAttachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topImageView.frame) + 10, 30, 10)];
+    _sliderAttachedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(_slider.frame) - 20, 30, 10)];
     _sliderAttachedLabel.textAlignment = NSTextAlignmentCenter;
     _sliderAttachedLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:10];
     _sliderAttachedLabel.text = @"N/A";
@@ -105,16 +110,26 @@
 
     
     //step3
-    _soundLevelView = [[SoundLevelView alloc] initWithFrame:CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 90, 150, 150)];
+    if (iPhone5) {
+        frame = CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 107, 150, 150);
+    } else {
+        frame =  CGRectMake((320-150)/2, CGRectGetMaxY(_slider.frame) + 90, 150, 150);
+    }
+    _soundLevelView = [[SoundLevelView alloc] initWithFrame:frame];
     _soundLevelView.autoresizingMask = UIViewAutoresizingNone;
     [_soundLevelView setupSubviews];
     [self.view addSubview:_soundLevelView];
     
     
     //step4
-    UILabel *moreLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, CGRectGetMaxY(_soundLevelView.frame) + 10, 160, 15)];
+    if (iPhone5) {
+        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 40, 245, 16);
+    } else {
+        frame = CGRectMake(27, CGRectGetMaxY(_soundLevelView.frame) + 10, 245, 16);
+    }
+    UILabel *moreLabel = [[UILabel alloc] initWithFrame:frame];
     moreLabel.textAlignment = NSTextAlignmentCenter;
-    moreLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:11];
+    moreLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     moreLabel.text = @"For more settings please click";
     moreLabel.numberOfLines = 1;
     moreLabel.textColor = [UIColor whiteColor];
@@ -124,12 +139,17 @@
     UIImageView *moreImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_more.png"]];
     [moreImageView setContentMode:UIViewContentModeScaleAspectFit];
     moreImageView.autoresizingMask = UIViewAutoresizingNone;
-    moreImageView.frame = CGRectMake(CGRectGetMaxX(moreLabel.frame) + 5, CGRectGetMinY(moreLabel.frame), 15, 15);
+    moreImageView.frame = CGRectMake(CGRectGetMaxX(moreLabel.frame), CGRectGetMinY(moreLabel.frame), 16, 16);
     [self.view addSubview:moreImageView];
     
     
     //step5
-    _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width)];
+    if (iPhone5) {
+        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 53, K_Square_Width, K_Square_Width);
+    } else {
+        frame = CGRectMake(20, CGRectGetMaxY(_slider.frame) + 45, K_Square_Width, K_Square_Width);
+    }
+    _currentReadingBaseView = [[UIView alloc] initWithFrame:frame];
     _currentReadingBaseView.backgroundColor = K_Meter_Square_Background_Color;
     _currentReadingBaseView.layer.cornerRadius = 8;
     _currentReadingBaseView.layer.masksToBounds = YES;
