@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 #import <iAd/iAd.h>
 #import "SoundLevelView.h"
 #import "IDPSoundBoard.h"

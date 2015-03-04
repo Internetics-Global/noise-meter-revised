@@ -95,7 +95,6 @@
 		886712871A899E80007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712861A899E80007101FD /* shareButton@2x.png */; };
 		8867128A1A899EAC007101FD /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712891A899EAC007101FD /* ScoreArrayDataSource.m */; };
 		8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */; };
-		886712981A899F18007101FD /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712971A899F18007101FD /* libGoogleAnalyticsServices.a */; };
 		886712A61A899F3B007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */; };
 		886712A71A899F3B007101FD /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129D1A899F3A007101FD /* SWCellScrollView.m */; };
 		886712A81A899F3B007101FD /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129F1A899F3B007101FD /* SWLongPressGestureRecognizer.m */; };
@@ -326,17 +325,6 @@
 		886712881A899EAC007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreArrayDataSource.h; path = ../../UI/Root/ScoreArrayDataSource.h; sourceTree = "<group>"; };
 		886712891A899EAC007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreArrayDataSource.m; path = ../../UI/Root/ScoreArrayDataSource.m; sourceTree = "<group>"; };
 		8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.0.0.a; path = Flurry/libFlurry_6.0.0.a; sourceTree = "<group>"; };
-		8867128D1A899F18007101FD /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = GoogleAnalytics/GAI.h; sourceTree = "<group>"; };
-		8867128E1A899F18007101FD /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = GoogleAnalytics/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		8867128F1A899F18007101FD /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = GoogleAnalytics/GAIEcommerceFields.h; sourceTree = "<group>"; };
-		886712901A899F18007101FD /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = GoogleAnalytics/GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		886712911A899F18007101FD /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = GoogleAnalytics/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		886712921A899F18007101FD /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = GoogleAnalytics/GAIEcommercePromotion.h; sourceTree = "<group>"; };
-		886712931A899F18007101FD /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = GoogleAnalytics/GAIFields.h; sourceTree = "<group>"; };
-		886712941A899F18007101FD /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = GoogleAnalytics/GAILogger.h; sourceTree = "<group>"; };
-		886712951A899F18007101FD /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = GoogleAnalytics/GAITrackedViewController.h; sourceTree = "<group>"; };
-		886712961A899F18007101FD /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = GoogleAnalytics/GAITracker.h; sourceTree = "<group>"; };
-		886712971A899F18007101FD /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = GoogleAnalytics/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		8867129A1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
 		8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
 		8867129C1A899F3A007101FD /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
@@ -540,7 +528,6 @@
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
 				110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */,
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
-				886712981A899F18007101FD /* libGoogleAnalyticsServices.a in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
 				88B9C3B91AA6885100B49EDA /* Parse.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
@@ -842,25 +829,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		883788D917839670000BBF3D /* Google Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				8867128D1A899F18007101FD /* GAI.h */,
-				8867128E1A899F18007101FD /* GAIDictionaryBuilder.h */,
-				8867128F1A899F18007101FD /* GAIEcommerceFields.h */,
-				886712901A899F18007101FD /* GAIEcommerceProduct.h */,
-				886712911A899F18007101FD /* GAIEcommerceProductAction.h */,
-				886712921A899F18007101FD /* GAIEcommercePromotion.h */,
-				886712931A899F18007101FD /* GAIFields.h */,
-				886712941A899F18007101FD /* GAILogger.h */,
-				886712951A899F18007101FD /* GAITrackedViewController.h */,
-				886712961A899F18007101FD /* GAITracker.h */,
-				886712971A899F18007101FD /* libGoogleAnalyticsServices.a */,
-			);
-			name = "Google Analytics";
-			path = Support;
-			sourceTree = "<group>";
-		};
 		883F1F5B18BBEDAC0030A716 /* RMStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1062,7 +1030,6 @@
 				886712AC1A899F8D007101FD /* UIAlertView-Blocks */,
 				886712991A899F3A007101FD /* SWTableViewCell */,
 				883F1F5B18BBEDAC0030A716 /* RMStore */,
-				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
 				88376CE2177BB41900F9F477 /* Flurry */,
 			);
@@ -1080,6 +1047,7 @@
 				110F12F214EDD52E00BE4481 /* Frameworks */,
 				110F12F314EDD52E00BE4481 /* Resources */,
 				8804610E1A8C1FEF0032A3C8 /* ShellScript */,
+				8859F1201AA71AEA00EC88D8 /* Run Script (Parse) */,
 			);
 			buildRules = (
 			);
@@ -1273,6 +1241,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
+		8859F1201AA71AEA00EC88D8 /* Run Script (Parse) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Parse)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "exit 0\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

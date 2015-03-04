@@ -6,7 +6,6 @@
 //  Copyright (c) 2013年 Internetics Pty Ltd. All rights reserved.
 //
 
-#import "GAITrackedViewController.h"
 
 @interface PurchaseViewController : BaseViewController <UIWebViewDelegate>{
     

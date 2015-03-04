@@ -9,6 +9,7 @@
 #import "PurchaseViewController.h"
 #import "RMStore.h"
 #import "FileHelper.h"
+#import <Parse/PFAnalytics.h>
 
 @interface PurchaseViewController ()
 
@@ -106,7 +107,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"PurchaseView Screen";
+    NSDictionary *dimensions = @{@"category": @"PurchaseView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
 
 }
 

@@ -22,6 +22,7 @@
 #import "UIButton+Extensions.h"
 
 #import "UIViewController+REFrostedViewController.h"
+#import <Parse/PFAnalytics.h>
 
 
 @interface MoreView ()
@@ -356,7 +357,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"MoreView Screen";
+    NSDictionary *dimensions = @{@"category": @"MoreView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
     [_optionTable reloadData];
 }

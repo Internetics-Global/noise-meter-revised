@@ -85,7 +85,6 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //self.screenName = @"RootView Screen";
 
 }
 
@@ -138,6 +137,9 @@
 
 #pragma mark – BCTabBarControllerDelegate related
 - (void)tabBarController:(BCTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
+    NSArray *array = @[@1];
+    array[2];
     
     UIViewController *firstviewController;
     

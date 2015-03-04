@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 
 @interface InternalWebView : BaseViewController<UIWebViewDelegate>{
     UIWebView *_webView;

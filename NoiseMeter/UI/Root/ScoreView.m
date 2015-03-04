@@ -19,6 +19,7 @@
 #import "SWTableViewCell.h"
 #import "ScoreArrayDataSource.h"
 #import "UIButton+Extensions.h"
+#import <Parse/PFAnalytics.h>
 
 #import "AMPopTip.h"
 
@@ -142,7 +143,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"ScoreView Screen";
+    NSDictionary *dimensions = @{@"category": @"ScoreView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
     [self reloadData];
 

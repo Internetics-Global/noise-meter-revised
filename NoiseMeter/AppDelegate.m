@@ -10,9 +10,6 @@
 #import "NMDecibelLogger.h"
 #import "Flurry.h"
 #import "Appirater.h"
-#import "GAI.h"
-#import "GAIFields.h"
-#import "GAIDictionaryBuilder.h"
 #import "NSUserDefaultsHelper.h"
 #import "IDPSoundboard.h"
 #import "FileHelper.h"
@@ -20,6 +17,7 @@
 #import "MoreView.h"
 #import <ParseCrashReporting/ParseCrashReporting.h>
 #import <Parse/Parse.h>
+#import <Parse/PFAnalytics.h>
 
 #import "VersionReminder.h"
 
@@ -33,15 +31,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //##warning: only for test purpose,need to be removed in formal version
-    //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    //[userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
     
-    [self setupParse];
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
+                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    
+    //A utility that reminds your iPhone app's users to review the app.
     [self setAppirater];
-    [self setGoogleAnalytics];
+    
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     [self downloadProIntroductionHTMLFile];
@@ -163,21 +161,6 @@
     [Appirater setDebug:NO];
 }
 
-- (void) setGoogleAnalytics {
-    
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    [GAI sharedInstance].dispatchInterval = 120;
-    
-    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
-    
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-42160166-1"];
-    [tracker set:kGAIUseSecure value:[@NO stringValue]];
-    [tracker send:[[[GAIDictionaryBuilder createEventWithCategory:@"UX"
-                                                           action:@"appstart"
-                                                            label:nil
-                                                            value:nil] set:@"start" forKey:kGAISessionControl] build]];
-
-}
 
 - (void) downloadProIntroductionHTMLFile {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -210,15 +193,6 @@
     
 }
 
-- (void) setupParse {
-    [ParseCrashReporting enable];
-    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
-                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
-    //simulate a crash issue
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [NSException raise:NSGenericException format:@"Everything is ok. This is just a test crash."];
-//    });
-}
 
 
 

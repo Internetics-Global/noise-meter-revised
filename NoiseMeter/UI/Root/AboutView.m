@@ -8,6 +8,7 @@
 
 #import "AboutView.h"
 #import "FileHelper.h"
+#import <Parse/PFAnalytics.h>
 
 @interface AboutView ()
 
@@ -54,7 +55,9 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"AboutView Screen";
+    
+    NSDictionary *dimensions = @{@"category": @"AboutView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
 
 }
 

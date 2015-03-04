@@ -6,10 +6,8 @@
 //  Copyright (c) 2014年 Internetics Pty Ltd. All rights reserved.
 //
 
-#import "GAITrackedViewController.h"
 
-
-@interface BaseViewController : GAITrackedViewController
+@interface BaseViewController : UIViewController
 
 @property (strong, nonatomic) UIButton *generalADButton;
 

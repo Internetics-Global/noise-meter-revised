@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 #import "SoundLevelView.h"
 
 @interface AlertViewV2 : BaseViewController{

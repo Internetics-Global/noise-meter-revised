@@ -7,6 +7,7 @@
 //
 
 #import "SelectMeterView.h"
+#import <Parse/PFAnalytics.h>
 
 @implementation SelectMeterView
 
@@ -108,7 +109,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"SlectMeterView Screen";
+    NSDictionary *dimensions = @{@"category": @"SlectMeterView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
 }
 

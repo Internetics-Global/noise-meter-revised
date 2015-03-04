@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 
 @interface AboutView : BaseViewController{
     UITextView *_textView;

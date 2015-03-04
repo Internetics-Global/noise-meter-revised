@@ -11,6 +11,7 @@
 #import "CreateAlarmSoundViewController.h"
 #import "FileHelper.h"
 #import "PurchaseViewController.h"
+#import <Parse/PFAnalytics.h>
 
 @interface SelectAlertView ()
 
@@ -176,7 +177,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"SelectedAlertView Screen";
+    NSDictionary *dimensions = @{@"category": @"SelectedAlertView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
 
 }
 

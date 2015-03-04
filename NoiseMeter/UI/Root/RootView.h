@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 
 #import "UIViewController+REFrostedViewController.h"
 #import "REFrostedViewController.h"

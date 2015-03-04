@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GAITrackedViewController.h"
 #import "IDPSoundBoard.h"
 
 @interface ScoreView : BaseViewController<UITableViewDelegate,UIAlertViewDelegate,IDPSoundBoardDelegate,UIActionSheetDelegate>{

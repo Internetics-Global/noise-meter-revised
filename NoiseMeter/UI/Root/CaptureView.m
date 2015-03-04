@@ -14,6 +14,7 @@
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
 #import "NSUserDefaultsHelper.h"
+#import <Parse/PFAnalytics.h>
 
 
 @interface CaptureView () {
@@ -262,7 +263,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.screenName = @"CaptureView Screen";
+    NSDictionary *dimensions = @{@"category": @"CaptureView Screen"};
+    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
