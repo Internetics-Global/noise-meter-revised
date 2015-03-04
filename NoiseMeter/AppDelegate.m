@@ -44,7 +44,7 @@
     
     [TestFlight takeOff:@"fc71ce67-b62a-4e6e-9cf9-5071518588c3"];
     
-    [self setupVersionReminder];
+    
     [self setAppirater];
     [self setGoogleAnalytics];
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
@@ -93,6 +93,12 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert You are using simulator" message:@"Background running and IAP are not supported on simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     }
+    
+    double delayInSeconds = 10;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self setupVersionReminder];
+    });
     
     return YES;
 }
