@@ -148,6 +148,13 @@
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88B87C7E1AA4269B004ECF76 /* AlertViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */; };
 		88B87C801AA43DC5004ECF76 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B87C7F1AA43DC5004ECF76 /* back@2x.png */; };
+		88B9C3B81AA6885100B49EDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B61AA6885100B49EDA /* Bolts.framework */; };
+		88B9C3B91AA6885100B49EDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B71AA6885100B49EDA /* Parse.framework */; };
+		88B9C3BB1AA6888C00B49EDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */; };
+		88B9C3BD1AA6889500B49EDA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */; };
+		88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
+		88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C01AA688A400B49EDA /* Security.framework */; };
+		88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C21AA6895300B49EDA /* Accounts.framework */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
 		88BEFE4F18A1FCB100399680 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
@@ -440,6 +447,13 @@
 		88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewV2.h; sourceTree = "<group>"; };
 		88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewV2.m; sourceTree = "<group>"; };
 		88B87C7F1AA43DC5004ECF76 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "NoiseMeter/Resources/Images/Icons/back@2x.png"; sourceTree = SOURCE_ROOT; };
+		88B9C3B61AA6885100B49EDA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Support/Bolts.framework; sourceTree = "<group>"; };
+		88B9C3B71AA6885100B49EDA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Support/Parse.framework; sourceTree = "<group>"; };
+		88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		88B9C3C01AA688A400B49EDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		88B9C3C21AA6895300B49EDA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
@@ -507,13 +521,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */,
+				88A5613218D038F700080210 /* Social.framework in Frameworks */,
+				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
+				88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */,
+				88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */,
+				88B9C3BD1AA6889500B49EDA /* MobileCoreServices.framework in Frameworks */,
+				88B9C3BB1AA6888C00B49EDA /* CoreLocation.framework in Frameworks */,
 				88CB2B101A9E05E400288902 /* Accelerate.framework in Frameworks */,
 				887632841A8E3024004D14FA /* ImageIO.framework in Frameworks */,
 				886712B31A89A6AD007101FD /* libsqlite3.dylib in Frameworks */,
 				1140FDD41517FC6400DE0A64 /* MessageUI.framework in Frameworks */,
 				886712B11A89A64F007101FD /* MediaPlayer.framework in Frameworks */,
-				88A5613218D038F700080210 /* Social.framework in Frameworks */,
-				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
 				8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */,
@@ -522,12 +541,14 @@
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
+				88B9C3B81AA6885100B49EDA /* Bolts.framework in Frameworks */,
 				11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */,
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
 				110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */,
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
 				886712981A899F18007101FD /* libGoogleAnalyticsServices.a in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
+				88B9C3B91AA6885100B49EDA /* Parse.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +582,11 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88B9C3C21AA6895300B49EDA /* Accounts.framework */,
+				88B9C3C01AA688A400B49EDA /* Security.framework */,
+				88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */,
+				88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */,
+				88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */,
 				88CB2B0F1A9E05E400288902 /* Accelerate.framework */,
 				887632831A8E3024004D14FA /* ImageIO.framework */,
 				886712B21A89A6AD007101FD /* libsqlite3.dylib */,
@@ -1031,6 +1057,8 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				88B9C3B61AA6885100B49EDA /* Bolts.framework */,
+				88B9C3B71AA6885100B49EDA /* Parse.framework */,
 				888503AB1A9FE33B0062A025 /* AMPopTip */,
 				88CB2AFC1A9E056000288902 /* REFrostedViewController */,
 				880E85861A9D51A700EB3926 /* BCTabBarController */,
@@ -1466,6 +1494,7 @@
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NoiseMeter/Support",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
@@ -1481,8 +1510,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "3c914858-2843-4563-b874-1f9351275d9a";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3c914858-2843-4563-b874-1f9351275d9a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1497,6 +1526,7 @@
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NoiseMeter/Support",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
@@ -1512,8 +1542,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "3c914858-2843-4563-b874-1f9351275d9a";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3c914858-2843-4563-b874-1f9351275d9a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

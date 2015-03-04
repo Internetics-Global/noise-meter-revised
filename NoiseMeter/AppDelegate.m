@@ -21,6 +21,8 @@
 #import "MoreView.h"
 #import <Crashlytics/Crashlytics.h>
 
+#import <Parse/Parse.h>
+
 #import "VersionReminder.h"
 
 @interface AppDelegate ()
@@ -36,6 +38,9 @@
     //##warning: only for test purpose,need to be removed in formal version
     //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //[userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
+    
+    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
+                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
     
     [TestFlight takeOff:@"fc71ce67-b62a-4e6e-9cf9-5071518588c3"];
     
@@ -78,6 +83,7 @@
                                                                                              |UIRemoteNotificationTypeSound
                                                                                              |UIRemoteNotificationTypeAlert) categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     } else {
       [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     }
@@ -89,6 +95,18 @@
     }
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
 }
 
 
