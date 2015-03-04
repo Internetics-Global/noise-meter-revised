@@ -46,7 +46,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 
  @param error Pointer to an `NSError` that will be set if necessary.
 
- @returns Instance of PFConfig if the operation succeeded, otherwise `nil`.
+ @return Instance of PFConfig if the operation succeeded, otherwise `nil`.
  */
 + (PFConfig *)getConfig:(NSError **)error;
 
@@ -74,7 +74,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 
  @param key The key for which to return the corresponding configuration value.
 
- @returns The value associated with `key`, or `nil` if there is no such value.
+ @return The value associated with `key`, or `nil` if there is no such value.
  */
 - (id)objectForKey:(NSString *)key;
 
@@ -88,7 +88,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 
  @param keyedSubscript The keyed subscript for which to return the corresponding configuration value.
 
- @returns The value associated with `key`, or `nil` if there is no such value.
+ @return The value associated with `key`, or `nil` if there is no such value.
  */
 - (id)objectForKeyedSubscript:(NSString *)keyedSubscript;
 

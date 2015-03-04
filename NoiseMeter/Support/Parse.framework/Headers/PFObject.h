@@ -18,9 +18,6 @@
 @class BFTask;
 @class PFRelation;
 
-/*!
- The name of the default pin that for PFObject local data store.
- */
 extern NSString *const PFObjectDefaultPin;
 
 /*!
@@ -309,7 +306,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  */
 - (void)saveInBackgroundWithBlock:(PFBooleanResultBlock)block;
 
-/*
+/*!
  @abstract Saves the `PFObject` asynchronously and calls the given callback.
 
  @param target The object to call selector on.
@@ -321,23 +318,9 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 - (void)saveInBackgroundWithTarget:(id)target selector:(SEL)selector;
 
 /*!
- @abstract Saves this object to the server at some unspecified time in the future,
- even if Parse is currently inaccessible.
-
- @discussion Use this when you may not have a solid network connection, and don't need to know when the save completes.
- If there is some problem with the object such that it can't be saved, it will be silently discarded. If the save
- completes successfully while the object is still in memory, then callback will be called.
-
- Objects saved with this method will be stored locally in an on-disk cache until they can be delivered to Parse.
- They will be sent immediately if possible. Otherwise, they will be sent the next time a network connection is
- available. Objects saved this way will persist even after the app is closed, in which case they will be sent the
- next time the app is opened. If more than 10MB of data is waiting to be sent, subsequent calls to <saveEventually>
- will cause old saves to be silently discarded until the connection can be re-established, and the queued objects
- can be saved.
-
- @returns The task that encapsulates the work being done.
+ @see saveEventually:
  */
-- (BFTask *)saveEventually;
+- (void)saveEventually;
 
 /*!
  @abstract Saves this object to the server at some unspecified time in the future,
@@ -401,7 +384,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 + (void)saveAllInBackground:(NSArray *)objects
                       block:(PFBooleanResultBlock)block;
 
-/*
+/*!
  @abstract Saves a collection of objects all at once *asynchronously* and calls a callback when done.
 
  @param objects The array of objects to save.
@@ -455,7 +438,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 + (void)deleteAllInBackground:(NSArray *)objects
                         block:(PFBooleanResultBlock)block;
 
-/*
+/*!
  @abstract Deletes a collection of objects all at once *asynchronously* and calls a callback when done.
 
  @param objects The array of objects to delete.
@@ -508,7 +491,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  */
 - (void)refreshInBackgroundWithBlock:(PFObjectResultBlock)block PARSE_DEPRECATED("Please use `-fetchInBackgroundWithBlock:` instead.");
 
-/*
+/*!
  @abstract *Asynchronously* refreshes the `PFObject` and calls the given callback.
 
  @param target The target on which the selector will be called.
@@ -562,7 +545,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  */
 - (void)fetchInBackgroundWithBlock:(PFObjectResultBlock)block;
 
-/*
+/*!
  @abstract Fetches the `PFObject *asynchronously* and calls the given callback.
 
  @param target The target on which the selector will be called.
@@ -589,7 +572,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  */
 - (void)fetchIfNeededInBackgroundWithBlock:(PFObjectResultBlock)block;
 
-/*
+/*!
  @abstract Fetches the PFObject's data asynchronously if isDataAvailable is false, then calls the callback.
 
  @param target The target on which the selector will be called.
@@ -656,7 +639,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 + (void)fetchAllInBackground:(NSArray *)objects
                        block:(PFArrayResultBlock)block;
 
-/*
+/*!
  @abstract Fetches all of the `PFObject` objects with the current data from the server *asynchronously*
  and calls the given callback.
 
@@ -691,7 +674,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 + (void)fetchAllIfNeededInBackground:(NSArray *)objects
                                block:(PFArrayResultBlock)block;
 
-/*
+/*!
  @abstract Fetches all of the PFObjects with the current data from the server *asynchronously*
  and calls the given callback.
 
@@ -731,7 +714,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @abstract *Asynchronously* loads data from the local datastore into this object,
  if it has not been fetched from the server already.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
  */
 - (BFTask *)fetchFromLocalDatastoreInBackground;
 
@@ -779,7 +762,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  */
 - (void)deleteInBackgroundWithBlock:(PFBooleanResultBlock)block;
 
-/*
+/*!
  @abstract Deletes the `PFObject` *asynchronously* and calls the given callback.
 
  @param target The object to call selector on.
@@ -805,10 +788,8 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  next time the app is opened. If more than 10MB of <saveEventually> or <deleteEventually> commands are waiting
  to be sent, subsequent calls to <saveEventually> or <deleteEventually> will cause old requests to be silently discarded
  until the connection can be re-established, and the queued requests can go through.
-
- @returns The task that encapsulates the work being done.
  */
-- (BFTask *)deleteEventually;
+- (void)deleteEventually;
 
 ///--------------------------------------
 /// @name Dirtiness
@@ -843,9 +824,9 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpin:
  @see PFObjectDefaultPin
@@ -859,11 +840,11 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param error Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpin:
  @see PFObjectDefaultPin
@@ -876,11 +857,11 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param name The name of the pin.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinWithName:
  */
@@ -892,12 +873,12 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param name    The name of the pin.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinWithName:
  */
@@ -911,11 +892,11 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
- @see unpinInBackground
+ @see unpinInBackground:
  @see PFObjectDefaultPin
  */
 - (BFTask *)pinInBackground;
@@ -927,7 +908,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param block The block to execute.
  It should have the following argument signature: `^(BOOL succeeded, NSError *error)`.
@@ -943,11 +924,11 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param name The name of the pin.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see unpinInBackgroundWithName:
  */
@@ -959,7 +940,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @discussion If those other objects have not been fetched from Parse, they will not be stored. However,
  if they have changed data, all the changes will be retained. To get the objects back later, you can
  use a <PFQuery> that uses <[PFQuery fromLocalDatastore]>, or you can create an unfetched pointer with
- <[PFObject objectWithoutDataWithClassName:objectId:]> and then call <fetchFromLocalDatastore> on it.
+ <[PFObject objectWithoutDataWithClassName:objectId]> and then call <fetchFromLocalDatastore> on it.
 
  @param name    The name of the pin.
  @param block   The block to execute.
@@ -985,7 +966,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param objects The objects to be pinned.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinAll:
  @see PFObjectDefaultPin
@@ -1004,7 +985,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects The objects to be pinned.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinAll:error:
  @see PFObjectDefaultPin
@@ -1022,7 +1003,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects The objects to be pinned.
  @param name    The name of the pin.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinAll:withName:
  */
@@ -1040,7 +1021,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param name    The name of the pin.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the pin succeeded.
+ @return Returns whether the pin succeeded.
 
  @see unpinAll:withName:error:
  */
@@ -1059,7 +1040,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param objects The objects to be pinned.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see unpinAllInBackground:
  @see PFObjectDefaultPin
@@ -1096,7 +1077,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects     The objects to be pinned.
  @param name        The name of the pin.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see unpinAllInBackground:withName:
  */
@@ -1130,7 +1111,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @abstract *Synchronously* removes the object and every object it points to in the local datastore, recursively,
  using a default pin name: `PFObjectDefaultPin`.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pin:
  @see PFObjectDefaultPin
@@ -1143,7 +1124,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param error Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pin:
  @see PFObjectDefaultPin
@@ -1155,7 +1136,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param name The name of the pin.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinWithName:
  */
@@ -1167,7 +1148,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param name    The name of the pin.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinWithName:error:
  */
@@ -1178,9 +1159,9 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @abstract *Asynchronously* removes the object and every object it points to in the local datastore, recursively,
  using a default pin name: `PFObjectDefaultPin`.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
- @see pinInBackground
+ @see pinInBackground:
  @see PFObjectDefaultPin
  */
 - (BFTask *)unpinInBackground;
@@ -1202,7 +1183,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param name The name of the pin.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see pinInBackgroundWithName:
  */
@@ -1228,7 +1209,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @abstract *Synchronously* removes all objects in the local datastore
  using a default pin name: `PFObjectDefaultPin`.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see PFObjectDefaultPin
  */
@@ -1240,7 +1221,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see PFObjectDefaultPin
  */
@@ -1251,7 +1232,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param name    The name of the pin.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
  */
 + (BOOL)unpinAllObjectsWithName:(NSString *)name;
 
@@ -1261,7 +1242,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param name    The name of the pin.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
  */
 + (BOOL)unpinAllObjectsWithName:(NSString *)name
                           error:(NSError **)error;
@@ -1270,7 +1251,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @abstract *Asynchronously* removes all objects in the local datastore
  using a default pin name: `PFObjectDefaultPin`.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see PFObjectDefaultPin
  */
@@ -1292,7 +1273,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param name    The name of the pin.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
  */
 + (BFTask *)unpinAllObjectsInBackgroundWithName:(NSString *)name;
 
@@ -1312,7 +1293,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param objects The objects.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinAll:
  @see PFObjectDefaultPin
@@ -1326,7 +1307,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects The objects.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinAll:error:
  @see PFObjectDefaultPin
@@ -1339,7 +1320,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects The objects.
  @param name    The name of the pin.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinAll:withName:
  */
@@ -1352,7 +1333,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param name    The name of the pin.
  @param error   Pointer to an `NSError` that will be set if necessary.
 
- @returns Returns whether the unpin succeeded.
+ @return Returns whether the unpin succeeded.
 
  @see pinAll:withName:error:
  */
@@ -1366,7 +1347,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
 
  @param objects The objects.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see pinAllInBackground:
  @see PFObjectDefaultPin
@@ -1393,7 +1374,7 @@ NS_REQUIRES_PROPERTY_DEFINITIONS
  @param objects The objects.
  @param name    The name of the pin.
 
- @returns The task that encapsulates the work being done.
+ @return The task that encapsulates the work being done.
 
  @see pinAllInBackground:withName:
  */
