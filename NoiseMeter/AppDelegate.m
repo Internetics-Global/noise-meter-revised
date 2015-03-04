@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "NMDecibelLogger.h"
-#import "Flurry.h"
 #import "Appirater.h"
 #import "NSUserDefaultsHelper.h"
 #import "IDPSoundboard.h"
@@ -39,8 +38,6 @@
     
     //A utility that reminds your iPhone app's users to review the app.
     [self setAppirater];
-    
-    [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     [self downloadProIntroductionHTMLFile];
 
@@ -91,6 +88,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self setupVersionReminder];
     });
+    
     
     return YES;
 }

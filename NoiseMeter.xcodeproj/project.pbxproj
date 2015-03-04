@@ -94,7 +94,6 @@
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		886712871A899E80007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712861A899E80007101FD /* shareButton@2x.png */; };
 		8867128A1A899EAC007101FD /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712891A899EAC007101FD /* ScoreArrayDataSource.m */; };
-		8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */; };
 		886712A61A899F3B007101FD /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */; };
 		886712A71A899F3B007101FD /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129D1A899F3A007101FD /* SWCellScrollView.m */; };
 		886712A81A899F3B007101FD /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129F1A899F3B007101FD /* SWLongPressGestureRecognizer.m */; };
@@ -308,7 +307,6 @@
 		883069B118B4CC460067750A /* siren_wail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.caf; sourceTree = "<group>"; };
 		883391091793CEA70051DE50 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = demo.mp3; sourceTree = SOURCE_ROOT; };
 		8833910B1793D0680051DE50 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		88376CE3177BB42700F9F477 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = Flurry/Flurry.h; sourceTree = "<group>"; };
 		88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		883F1F5C18BBEDAC0030A716 /* RMStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStore.h; sourceTree = "<group>"; };
 		883F1F5D18BBF0880030A716 /* RMStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStore.m; sourceTree = "<group>"; };
@@ -324,7 +322,6 @@
 		886712861A899E80007101FD /* shareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareButton@2x.png"; sourceTree = "<group>"; };
 		886712881A899EAC007101FD /* ScoreArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreArrayDataSource.h; path = ../../UI/Root/ScoreArrayDataSource.h; sourceTree = "<group>"; };
 		886712891A899EAC007101FD /* ScoreArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreArrayDataSource.m; path = ../../UI/Root/ScoreArrayDataSource.m; sourceTree = "<group>"; };
-		8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.0.0.a; path = Flurry/libFlurry_6.0.0.a; sourceTree = "<group>"; };
 		8867129A1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
 		8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
 		8867129C1A899F3A007101FD /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
@@ -519,7 +516,6 @@
 				886712B11A89A64F007101FD /* MediaPlayer.framework in Frameworks */,
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
-				8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */,
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
@@ -819,16 +815,6 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		88376CE2177BB41900F9F477 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				8867128B1A899EEA007101FD /* libFlurry_6.0.0.a */,
-				88376CE3177BB42700F9F477 /* Flurry.h */,
-			);
-			name = Flurry;
-			path = Support;
-			sourceTree = "<group>";
-		};
 		883F1F5B18BBEDAC0030A716 /* RMStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,7 +1017,6 @@
 				886712991A899F3A007101FD /* SWTableViewCell */,
 				883F1F5B18BBEDAC0030A716 /* RMStore */,
 				889FD23A177BC3C40046D281 /* appirater */,
-				88376CE2177BB41900F9F477 /* Flurry */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -1254,7 +1239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exit 0\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
+			shellScript = "if [ $CONFIGURATION == Release ]; then\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
