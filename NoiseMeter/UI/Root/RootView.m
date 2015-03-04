@@ -138,9 +138,6 @@
 #pragma mark – BCTabBarControllerDelegate related
 - (void)tabBarController:(BCTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     
-    NSArray *array = @[@1];
-    array[2];
-    
     UIViewController *firstviewController;
     
     if ([viewController isKindOfClass:[UINavigationController class]]) {
