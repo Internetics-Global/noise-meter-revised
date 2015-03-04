@@ -163,7 +163,12 @@
     [_timer30Second invalidate];
     _timer30Second= nil;
     
-    _playingAlarm = NO;
+    //实际情况中如果没有delay，会造成alarm的声音触发下一个alarm，造成循环alarm
+    double delayInSeconds = 1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        _playingAlarm = NO;
+    });
     
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
     

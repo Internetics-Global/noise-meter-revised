@@ -40,7 +40,7 @@
 @property (nonatomic, strong          ) AVQueuePlayer *keepAlivePlayer;
 
 /**
- *  if true, then forbid to execute [self willChangeValueForKey:@"currentReading"]
+ *  if true, then not allow to execute [self willChangeValueForKey:@"currentReading"] or not allow to trigger next alarm
  */
 @property (assign, nonatomic          ) BOOL          playingAlarm;
 
