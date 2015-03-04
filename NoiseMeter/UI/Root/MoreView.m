@@ -134,7 +134,7 @@
         } else if (indexPath.row == 3) {
             [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
-            [cell.textLabel setText:@"Work In Background"];
+            [cell.textLabel setText:@"Run App In The Background"];
             if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == YES) {
                 [switchView setOn:NO];
                 
@@ -168,7 +168,7 @@
             }
         } else if (indexPath.row == 6) {
             [switchView addTarget:self action:@selector(delayAlarmSoundSwitchClicked:) forControlEvents:UIControlEventValueChanged];
-            [cell.textLabel setText:@"Delay Alarm Sound"];
+            [cell.textLabel setText:@"Delay Before Sounding Alert"];
             if ([NSUserDefaultsHelper isDelayAlarmSound] == YES) {
                 [switchView setOn:YES];
             } else {
@@ -177,7 +177,7 @@
             }
         } else if (indexPath.row == 7) {
             [switchView addTarget:self action:@selector(continuousModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
-            [cell.textLabel setText:@"Continous Mode"];
+            [cell.textLabel setText:@"Continuous Mode"];
             if ([NSUserDefaultsHelper isContinuousMode] == YES) {
                 [switchView setOn:YES];
             } else {
@@ -209,7 +209,7 @@
             cell.textLabel.text = @"Select Alert Sound";
         }else if (indexPath.row == 2)
         {
-            cell.textLabel.text = @"Meter Display";
+            cell.textLabel.text = @"Meter Display Shape";
         }
         else if (indexPath.row == 9)
         {
