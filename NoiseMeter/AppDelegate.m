@@ -106,6 +106,13 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+        [currentInstallation setChannels:@[@"classroom"]];
+    } else if ([NSUserDefaultsHelper isProVersion]) {
+        [currentInstallation setChannels:@[@"pro"]];
+    } else {
+        [currentInstallation setChannels:@[@"free"]];
+    }
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
 }
