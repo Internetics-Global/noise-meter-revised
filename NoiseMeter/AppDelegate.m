@@ -13,14 +13,12 @@
 #import "GAI.h"
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
-#import "TestFlight.h"
 #import "NSUserDefaultsHelper.h"
 #import "IDPSoundboard.h"
 #import "FileHelper.h"
 #import "REFrostedViewController.h"
 #import "MoreView.h"
-#import <Crashlytics/Crashlytics.h>
-
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #import <Parse/Parse.h>
 
 #import "VersionReminder.h"
@@ -39,10 +37,7 @@
     //NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     //[userDefaults setBool:TRUE forKey:@"AD_REMOVED"];
     
-    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
-                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
-    
-    [TestFlight takeOff:@"fc71ce67-b62a-4e6e-9cf9-5071518588c3"];
+    [self setupParse];
     
     
     [self setAppirater];
@@ -50,13 +45,12 @@
     [Flurry startSession:@"YBZ58DG2BDVN6D962Z3P"];
     
     [self downloadProIntroductionHTMLFile];
-    
-    [Crashlytics startWithAPIKey:@"d0dadc70629e055bc9c8f4afd26d2cc0565f37c2"];
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor clearColor];
     [self.window makeKeyAndVisible];
+    
     
 
     
@@ -214,6 +208,16 @@
     
     [VersionReminder setupVersionReminder];
     
+}
+
+- (void) setupParse {
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
+                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
+    //simulate a crash issue
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [NSException raise:NSGenericException format:@"Everything is ok. This is just a test crash."];
+//    });
 }
 
 

@@ -89,6 +89,8 @@
 		883F1F5E18BBF0880030A716 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
+		8859F11D1AA7140D00EC88D8 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */; };
+		8859F11F1AA7186700EC88D8 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		886712871A899E80007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712861A899E80007101FD /* shareButton@2x.png */; };
 		8867128A1A899EAC007101FD /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712891A899EAC007101FD /* ScoreArrayDataSource.m */; };
@@ -189,9 +191,6 @@
 		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
 		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
-		88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E8422918B1B69700B0FB50 /* libTestFlight.a */; };
-		88E8423018B1B69800B0FB50 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422A18B1B69700B0FB50 /* README.md */; };
-		88E8423118B1B69800B0FB50 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 88E8422B18B1B69700B0FB50 /* release_notes.md */; };
 		88FA090318C2A8960061FA0F /* soundOnButton0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */; };
 		88FA090418C2A8960061FA0F /* soundOnButton1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */; };
 		88FA090518C2A8960061FA0F /* soundOnButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */; };
@@ -203,7 +202,6 @@
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
 		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
-		9AB923B51AA03232008413A9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB923B41AA03232008413A9 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -318,6 +316,9 @@
 		88570E6818A340B400BF526F /* top_logo-pro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo-pro@2x.png"; sourceTree = "<group>"; };
 		88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
 		88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
+		8859F11A1AA7138300EC88D8 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Support/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5D177BC2A200DA6634 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -495,12 +496,6 @@
 		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
 		88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_save@2x.png"; sourceTree = "<group>"; };
 		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		88E8422918B1B69700B0FB50 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		88E8422A18B1B69700B0FB50 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		88E8422B18B1B69700B0FB50 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
-		88E8422C18B1B69700B0FB50 /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
-		88E8422D18B1B69700B0FB50 /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
-		88E8422E18B1B69700B0FB50 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton0@2x.png"; sourceTree = "<group>"; };
 		88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton1@2x.png"; sourceTree = "<group>"; };
 		88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton2@2x.png"; sourceTree = "<group>"; };
@@ -513,7 +508,6 @@
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		9AB923B41AA03232008413A9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,7 +515,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8859F11F1AA7186700EC88D8 /* libstdc++.6.dylib in Frameworks */,
 				88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */,
+				8859F11D1AA7140D00EC88D8 /* ParseCrashReporting.framework in Frameworks */,
 				88A5613218D038F700080210 /* Social.framework in Frameworks */,
 				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */,
@@ -536,8 +532,6 @@
 				8833910C1793D0680051DE50 /* CoreMedia.framework in Frameworks */,
 				889FD240177BC4960046D281 /* CFNetwork.framework in Frameworks */,
 				8867128C1A899EEA007101FD /* libFlurry_6.0.0.a in Frameworks */,
-				9AB923B51AA03232008413A9 /* Crashlytics.framework in Frameworks */,
-				88E8422F18B1B69700B0FB50 /* libTestFlight.a in Frameworks */,
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
@@ -567,7 +561,6 @@
 				110F130114EDD52E00BE4481 /* NoiseMeter */,
 				110F12F814EDD52E00BE4481 /* Frameworks */,
 				110F12F614EDD52E00BE4481 /* Products */,
-				9AB923B41AA03232008413A9 /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -582,6 +575,8 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */,
+				8859F11A1AA7138300EC88D8 /* libstdc++.dylib */,
 				88B9C3C21AA6895300B49EDA /* Accounts.framework */,
 				88B9C3C01AA688A400B49EDA /* Security.framework */,
 				88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */,
@@ -1057,6 +1052,7 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */,
 				88B9C3B61AA6885100B49EDA /* Bolts.framework */,
 				88B9C3B71AA6885100B49EDA /* Parse.framework */,
 				888503AB1A9FE33B0062A025 /* AMPopTip */,
@@ -1066,26 +1062,11 @@
 				886712AC1A899F8D007101FD /* UIAlertView-Blocks */,
 				886712991A899F3A007101FD /* SWTableViewCell */,
 				883F1F5B18BBEDAC0030A716 /* RMStore */,
-				88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */,
 				883788D917839670000BBF3D /* Google Analytics */,
 				889FD23A177BC3C40046D281 /* appirater */,
 				88376CE2177BB41900F9F477 /* Flurry */,
 			);
 			name = Vendor;
-			sourceTree = "<group>";
-		};
-		88E8422818B1B69700B0FB50 /* TestFlightSDK2.2.1 */ = {
-			isa = PBXGroup;
-			children = (
-				88E8422918B1B69700B0FB50 /* libTestFlight.a */,
-				88E8422A18B1B69700B0FB50 /* README.md */,
-				88E8422B18B1B69700B0FB50 /* release_notes.md */,
-				88E8422C18B1B69700B0FB50 /* TestFlight+AsyncLogging.h */,
-				88E8422D18B1B69700B0FB50 /* TestFlight+ManualSessions.h */,
-				88E8422E18B1B69700B0FB50 /* TestFlight.h */,
-			);
-			name = TestFlightSDK2.2.1;
-			path = Support/TestFlightSDK2.2.1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1099,7 +1080,6 @@
 				110F12F214EDD52E00BE4481 /* Frameworks */,
 				110F12F314EDD52E00BE4481 /* Resources */,
 				8804610E1A8C1FEF0032A3C8 /* ShellScript */,
-				9AB923B31AA031DC008413A9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1186,7 +1166,6 @@
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
 				88A95E4418A4803000E56939 /* mic.png in Resources */,
 				88A95E4518A4803000E56939 /* noads.png in Resources */,
-				88E8423118B1B69800B0FB50 /* release_notes.md in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
 				11AC530C1505D3F20093C7AB /* icon_meter@2x.png in Resources */,
 				88BEFE5718A1FCB100399680 /* 9.png in Resources */,
@@ -1273,7 +1252,6 @@
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
 				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
-				88E8423018B1B69800B0FB50 /* README.md in Resources */,
 				88FA090518C2A8960061FA0F /* soundOnButton2@2x.png in Resources */,
 				8806B39B179658510085CBF0 /* remove_ad.png in Resources */,
 				88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */,
@@ -1295,19 +1273,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
-		};
-		9AB923B31AA031DC008413A9 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run d0dadc70629e055bc9c8f4afd26d2cc0565f37c2 6e5441bed3193080fadf87d62674c44a85cd645a1208c5c6cdeb2d86fbf3f1d5";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1504,7 +1469,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
-					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
 					"$(PROJECT_DIR)/NoiseMeter/Support/Flurry",
 					"$(PROJECT_DIR)/NoiseMeter/Support/GoogleAnalytics",
 				);
@@ -1536,7 +1500,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/NoiseMeter/Support/Flurry",
 					"$(SRCROOT)/NoiseMeter/Support/GoogleAnalytics",
-					"$(SRCROOT)/NoiseMeter/Support/TestFlightSDK2.2.1",
 					"$(PROJECT_DIR)/NoiseMeter/Support/Flurry",
 					"$(PROJECT_DIR)/NoiseMeter/Support/GoogleAnalytics",
 				);
