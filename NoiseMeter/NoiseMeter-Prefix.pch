@@ -24,7 +24,7 @@
 #define IAPProductID_Pro_Classroom   @"3141591002"
 
 #define kGrayColor     [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1]
-#define kMeterOverlapColor   [UIColor colorWithRed:125.0/255 green:125.0/255 blue:125.0/255 alpha:0.9]
+#define kMeterOverlapColor   [UIColor colorWithRed:85.0/255 green:85.0/255 blue:85.0/255 alpha:0.9]
 
 //Purchase welcome url
 #define k_Pro_Introduction_URL @"http://www.noisedown.com/upgrade2.html"

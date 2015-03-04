@@ -409,7 +409,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = kMeterOverlapColor;
+    self.view.backgroundColor = [UIColor colorWithRed:85.0/255 green:85.0/255 blue:85.0/255 alpha:1];
     
     [NSUserDefaultsHelper setLoggingPauseFlag:NO];
 }
