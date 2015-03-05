@@ -87,7 +87,7 @@
  *   1. caf which is located in mainBundle 
  *   2. caf, which is created by user with name of 0.caf, 1.caf  (index from 0)
  */
-- (void)playAlarm
+- (void)playAlarm:(PlayAlarmFinished)finishBlock
 {
     if (!_playingAlarm) 
     {
@@ -119,8 +119,15 @@
                 [IDPSoundBoard addAudioAtPath:[pathURL path] forKey:Key_PlayerAlarm forType:EnumSoundType_Alarm];
                 AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerAlarm];
                 player.numberOfLoops = 0;
-                [IDPSoundBoard sharedInstance].IDPDelegate = self;
-                [IDPSoundBoard playAudioForKey:Key_PlayerAlarm fadeInInterval:2.0];
+                [IDPSoundBoard playAudioForKey:Key_PlayerAlarm fadeInInterval:2.0 withFinishBlock:^(BOOL finishSuccess) {
+                    
+                    if (finishBlock) {
+                        finishBlock(finishSuccess);
+                    }
+                    
+                    //这里实际上只是立刻简单执行了alarmComplete，没有任何Timer作用
+                    _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
+                }];
             }
             
         }
@@ -136,18 +143,6 @@
     }
     
     
-}
-
-
-
-#pragma mark – IDPSoundBoardDelegate
-
-- (void)didFinishSoundPlay:(EnumSoundType)soundType {
-    if (soundType == EnumSoundType_Alarm) {
-      NSLog(@"%s:didFinishSoundPlay of Alarm",__FUNCTION__);
-      _timer30Second = [NSTimer scheduledTimerWithTimeInterval:(30.0 - 5) target:self selector:@selector(alarmComplete) userInfo:nil repeats:NO];
-        
-    }
 }
 
 
@@ -269,6 +264,7 @@
     [_recorder stop]; //必须执行这个，否则无法进行播放声音
     NSLog(@"%s",__FUNCTION__);
 }
+
 
 #pragma mark – kAudioSessionProperty_AudioRouteChange
 

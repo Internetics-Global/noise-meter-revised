@@ -97,7 +97,7 @@
     [IDPSoundBoard addAudioAtPath:[url path] forKey:Key_PlayerRecorded forType:EnumSoundType_Recorded];
     AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerRecorded];
     player.numberOfLoops = 0;  
-    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0];
+    [IDPSoundBoard playAudioForKey:Key_PlayerRecorded fadeInInterval:2.0 withFinishBlock:nil];
 }
 
 - (void) share: (id) sender {

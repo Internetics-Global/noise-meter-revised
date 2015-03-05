@@ -130,7 +130,6 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    _playingIndex = -1;
 }
 
 - (void)viewDidUnload
@@ -195,17 +194,6 @@
         [[NMDataManager defaultManager] saveContext];
         
         [FileHelper removeAllExceptTempCafFile];
-    }
-}
-
-
-#pragma mark – IDPSoundBoardDelegate
-
-- (void)didFinishSoundPlay:(EnumSoundType)soundType {
-    if (soundType == EnumSoundType_Recorded) {
-        _playingIndex = -1;
-        [_scoreTable reloadData];
-        
     }
 }
 

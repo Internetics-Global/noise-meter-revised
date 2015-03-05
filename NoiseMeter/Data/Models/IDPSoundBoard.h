@@ -27,17 +27,11 @@ typedef NS_ENUM(NSInteger, EnumSoundType)
     EnumSoundType_Recorded = 3 //recorded sound
 };
 
-@protocol IDPSoundBoardDelegate <NSObject>
-
-- (void)didFinishSoundPlay:(EnumSoundType) soundType;
-
-@end
+typedef void(^PlayFinishBlock)(BOOL finishSuccess);
 
 @interface IDPSoundBoard : NSObject <AVAudioPlayerDelegate> {
     NSTimer *_backgroundRunningTimer;
 }
-
-@property (nonatomic, assign) id<IDPSoundBoardDelegate> IDPDelegate;
 
 + (IDPSoundBoard *)sharedInstance;
 
@@ -55,14 +49,12 @@ typedef NS_ENUM(NSInteger, EnumSoundType)
  */
 + (void)removeAudioForKey:(id)key;
 
++ (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock;
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval;
 + (void)playAudioForKey:(id)key;
 
 + (void)stopAudioForKey:(id)key fadeOutInterval:(NSTimeInterval)fadeOutInterval;
 + (void)stopAudioForKey:(id)key;
-
-+ (void)pauseAudioForKey:(id)key fadeOutInterval:(NSTimeInterval)fadeOutInterval;
-+ (void)pauseAudioForKey:(id)key;
 
 /**
  *  Alert: As long as the sound play finished, the instance of AVAudioPlayer will be set to nil

@@ -676,23 +676,18 @@
             
             [self catchAndSaveSound_Without_StartLoggingAgain];//1.抓取音频，并存盘。这时没有loging,所以不用担心triggerAlarmConditionally会被不断执行
             
-            [[NMDecibelLogger defaultLogger] playAlarm];//2.播放alarm
-            
-            //delayInSeconds后关闭alarm，然后重新开始recording
-            double delayInSeconds = 3;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                [self cancel];
+            //2.播放alarm
+            __weak __typeof(&*self)weakSelf = self;
+            [[NMDecibelLogger defaultLogger] playAlarm:^(BOOL successFinish) {
+                [weakSelf cancel];
                 [[NMDecibelLogger defaultLogger] startLogging];
-                
-            });
-            
+            }];
             
         }
         
         
     } else {
-        [[NMDecibelLogger defaultLogger] playAlarm];
+        [[NMDecibelLogger defaultLogger] playAlarm:nil];
     }
 }
 

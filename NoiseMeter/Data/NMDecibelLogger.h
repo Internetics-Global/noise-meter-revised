@@ -11,7 +11,9 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "IDPSoundBoard.h"
 
-@interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate,IDPSoundBoardDelegate>{
+typedef void(^PlayAlarmFinished)(BOOL successFinish);
+
+@interface NMDecibelLogger : NSObject<AVAudioRecorderDelegate>{
     
     AVAudioRecorder * _recorder;
     NSDictionary    * _recorderSettings;
@@ -49,7 +51,9 @@
 - (float)rawReading;
 - (void) startLogging;
 - (void) stopLogging;
-- (void) playAlarm;
+
+- (void) playAlarm:(PlayAlarmFinished)finishBlock;
+
 - (void) ensureLogging;
 - (void) updateReading;
 - (void) alarmComplete;

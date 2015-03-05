@@ -24,6 +24,8 @@ static const void *SoundTypeKey = &SoundTypeKey;
      *  No logging is allowed during playback, it's necessary to resume logging after we stop logging during playback
      */
     BOOL                 _isNeedToResumeLogging;
+    
+    PlayFinishBlock   _playFinishBlock;
 }
 
 #pragma mark – Life Cycle
@@ -123,7 +125,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
     }
 }
 
-- (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
+- (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock
 {
     
     if (Key_PlayerBackground != key) {
@@ -152,6 +154,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
                                         repeats:YES];
     }
     
+    _playFinishBlock = doneblock;
     [player play];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@YES}];
@@ -159,12 +162,17 @@ static const void *SoundTypeKey = &SoundTypeKey;
 
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
 {
-    [[self sharedInstance] playAudioForKey:key fadeInInterval:fadeInInterval];
+    [[self sharedInstance] playAudioForKey:key fadeInInterval:fadeInInterval withFinishBlock:nil];
+}
+
++ (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock
+{
+    [[self sharedInstance] playAudioForKey:key fadeInInterval:fadeInInterval withFinishBlock:doneblock];
 }
 
 + (void)playAudioForKey:(id)key
 {
-    [[self sharedInstance] playAudioForKey:key fadeInInterval:0.0];
+    [[self sharedInstance] playAudioForKey:key fadeInInterval:0.0 withFinishBlock:nil];
 }
 
 
@@ -229,38 +237,6 @@ static const void *SoundTypeKey = &SoundTypeKey;
     }
 }
 
-- (void)pauseAudioForKey:(id)key fadeOutInterval:(NSTimeInterval)fadeOutInterval
-{
-    AVAudioPlayer *player = [_audio objectForKey:key];
-    
-    // If fade in inteval interval is not 0, schedule fade in
-    if (fadeOutInterval > 0) {
-        NSTimeInterval interval = fadeOutInterval / MCSOUNDBOARD_AUDIO_FADE_STEPS;
-        [NSTimer scheduledTimerWithTimeInterval:interval
-                                         target:self
-                                       selector:@selector(fadeOutAndPause:)
-                                       userInfo:player
-                                        repeats:YES];
-    } else {
-        [player pause];
-        
-        if (_isNeedToResumeLogging) {
-            [[NMDecibelLogger defaultLogger] stopLogging];
-        }
-    }
-}
-
-
-+ (void)pauseAudioForKey:(id)key fadeOutInterval:(NSTimeInterval)fadeOutInterval
-{
-    NSLog(@"%s",__FUNCTION__);
-    [[self sharedInstance] pauseAudioForKey:key fadeOutInterval:fadeOutInterval];
-}
-
-+ (void)pauseAudioForKey:(id)key
-{
-    [[self sharedInstance] pauseAudioForKey:key fadeOutInterval:0.0];
-}
 
 
 - (AVAudioPlayer *)audioPlayerForKey:(id)key
@@ -332,10 +308,9 @@ static const void *SoundTypeKey = &SoundTypeKey;
     EnumSoundType soundType = [objc_getAssociatedObject(player, SoundTypeKey) integerValue];
     player.delegate = nil;
     player = nil;
-    if ([self.IDPDelegate respondsToSelector:@selector(didFinishSoundPlay:)]) {
-        [self.IDPDelegate didFinishSoundPlay:soundType];
-    } else {
-        NSLog(@"%s:self.IDPDelegate can not respondsToSelector of didFinishSoundPlay",__FUNCTION__);
+
+    if (_playFinishBlock) {
+        _playFinishBlock(NO);
     }
     
     if (_isNeedToResumeLogging) {
@@ -351,6 +326,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
     
     if (_isNeedToResumeLogging) {
         [[NMDecibelLogger defaultLogger] startLogging];
+    }
+    
+    if (_playFinishBlock) {
+        _playFinishBlock(NO);
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@NO}];
