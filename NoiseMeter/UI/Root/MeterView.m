@@ -68,6 +68,8 @@
     AMPopTip *_popTipInfo;
     AMPopTip *_popTipTabBarLevel;
     AMPopTip *_popTipTabBarScore;
+    
+    BOOL      _isKVC_CurrentReading_Allowed;
 
     
 }
@@ -230,7 +232,6 @@
     [_meterBackground addSubview:_soundLevelView];
     [_soundLevelView addGestureRecognizer:singleTapGesture];
     
-    [[NMDecibelLogger defaultLogger] startLogging];
     
     //4. current reading base view
     _currentReadingBaseView = [[UIView alloc] initWithFrame:CGRectMake(K_Square_Margin, K_Square_Margin, K_Square_Width, K_Square_Width)];
@@ -393,6 +394,19 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failed) name:K_Notification_Record_Fail object:nil];
     
     
+    [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+        if (granted) {
+            _isKVC_CurrentReading_Allowed = YES;
+            NSLog(@"microphone permission is granted");
+        } else {
+            _isKVC_CurrentReading_Allowed = NO;
+            NSLog(@"microphone permission is denied");
+        }
+    }];
+    
+    [[NMDecibelLogger defaultLogger] startLogging];
+    
+    
 }
 
 - (void) moreButtonCLicked {
@@ -520,6 +534,10 @@
 {
     
     //NSLog(@"observeValueForKeyPath in MeterView is called");
+    
+    if (_isKVC_CurrentReading_Allowed == NO) {
+        return;
+    }
     
     if (_isAlarmPrepareToBeTriggered) {
         return;
