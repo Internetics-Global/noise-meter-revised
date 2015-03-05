@@ -633,7 +633,12 @@
             _peakLabel.text = [NSString stringWithFormat:@"%d", [_peakReading intValue]];
             
             _captureMeterLabel.text = [NSString stringWithFormat:@"%d", [_currentReading intValue]];
-            _captureMeterBaseView.hidden = NO;
+            
+            if ([NSUserDefaultsHelper isContinuousMode]||[NSUserDefaultsHelper isSilentMode]) {
+                _captureMeterBaseView.hidden = YES;
+            } else {
+                _captureMeterBaseView.hidden = NO;
+            }
             
             _infoMeterBaseView.hidden = YES;
         
@@ -726,7 +731,7 @@
     if (([[NMDecibelLogger defaultLogger] logging]) && ([[NMDecibelLogger defaultLogger] playingAlarm] == FALSE)) {
         _cancelButton.hidden = YES;
         float lastPeakVal = [NSUserDefaultsHelper lastNoisePeakValue];
-        if ((int)lastPeakVal == 0) {
+        if ((int)lastPeakVal == 0 || [NSUserDefaultsHelper isContinuousMode]||[NSUserDefaultsHelper isSilentMode]) {
           _captureMeterBaseView.hidden = YES;
         } else {
           _captureMeterBaseView.hidden = NO;
