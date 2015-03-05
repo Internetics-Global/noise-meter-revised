@@ -295,14 +295,14 @@
     }
     else if(indexPath.row == 9)
     {
-        InstructionView *about = [[InstructionView alloc] init];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
+        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"www.noisedown.com/tips.html"];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
 
     }
     else if (indexPath.row == 10)
     {
-        AboutView *about = [[AboutView alloc] init];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
+        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/about.html"];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
     }
     else if(indexPath.row == 11)
     {

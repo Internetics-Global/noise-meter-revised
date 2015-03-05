@@ -44,7 +44,7 @@
         NSLog(@"Products loaded");
         [self updateProduct:products withInvalidProductIdentifiers: invalidProductIdentifiers];
     } failure:^(NSError *error) {
-        NSLog(@"Something went wrong");
+        NSLog(@"%s:%@",__FUNCTION__,error);
     }];
     
     
@@ -177,7 +177,7 @@
         [alert show];
         
     } failure:^(NSError *error) {
-        NSLog(@"Something went wrong");
+        NSLog(@"%s:%@",__FUNCTION__,error);
     }];
     
 }
@@ -223,7 +223,7 @@
         [alert show];
         
     } failure:^(SKPaymentTransaction *transaction, NSError *error) {
-        NSLog(@"Something went wrong, or you have cancelled the purchase");
+        NSLog(@"%s:%@",__FUNCTION__,error);
     }];
 }
 

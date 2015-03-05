@@ -8,6 +8,7 @@
 
 #import "InternalWebView.h"
 #import <Parse/PFAnalytics.h>
+#import "FileHelper.h"
 
 @interface InternalWebView ()
 
@@ -36,6 +37,16 @@
     [self.view addSubview:_webView];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_destination]]];
+    
+    
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.view.frame) - 50, 320, 30)];
+    versionLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    versionLabel.backgroundColor = [UIColor clearColor];
+    versionLabel.text = [NSString stringWithFormat:@"Version:%@ - Build:%@",[FileHelper appVersion],[FileHelper build]];
+    versionLabel.textAlignment = NSTextAlignmentCenter;
+    versionLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    versionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+    [self.view addSubview:versionLabel];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView

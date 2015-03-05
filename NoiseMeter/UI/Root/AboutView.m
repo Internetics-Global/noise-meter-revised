@@ -36,7 +36,7 @@
     versionLabel.backgroundColor = [UIColor clearColor];
     versionLabel.text = [NSString stringWithFormat:@"Version:%@ - Build:%@",[FileHelper appVersion],[FileHelper build]];
     versionLabel.textAlignment = NSTextAlignmentCenter;
-    versionLabel.textColor = [UIColor darkGrayColor];
+    versionLabel.textColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     versionLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
     [self.view addSubview:versionLabel];
 }
