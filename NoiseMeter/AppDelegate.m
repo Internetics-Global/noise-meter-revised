@@ -32,8 +32,13 @@
 {
     
     [ParseCrashReporting enable];
+#ifdef TARGET_PRO_VERSION
+    [Parse setApplicationId:@"xQnOZXmWIt7FOlk75RSDLZelhQIt5VQIE13bPX81"
+                  clientKey:@"f1egk5mV5DQcYk9xsP7dkQVl4r1rrf44FWogXKvb"];
+#else
     [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
                   clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
+#endif
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     //A utility that reminds your iPhone app's users to review the app.
