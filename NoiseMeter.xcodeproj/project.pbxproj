@@ -185,6 +185,199 @@
 		88CB2B0D1A9E056000288902 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B061A9E056000288902 /* UIView+REFrostedViewController.m */; };
 		88CB2B0E1A9E056000288902 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */; };
 		88CB2B101A9E05E400288902 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CB2B0F1A9E05E400288902 /* Accelerate.framework */; };
+		88DD57791AA7E1C800196F98 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876326E1A8E2E71004D14FA /* UIImageView+HighlightedWebCache.m */; };
+		88DD577A1AA7E1C800196F98 /* SelectMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85841A9D4A5600EB3926 /* SelectMeterView.m */; };
+		88DD577B1AA7E1C800196F98 /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
+		88DD577C1AA7E1C800196F98 /* AlertViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */; };
+		88DD577D1AA7E1C800196F98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F130714EDD52E00BE4481 /* main.m */; };
+		88DD577E1AA7E1C800196F98 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712A51A899F3B007101FD /* SWUtilityButtonView.m */; };
+		88DD577F1AA7E1C800196F98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F130B14EDD52E00BE4481 /* AppDelegate.m */; };
+		88DD57801AA7E1C800196F98 /* ShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A5612F18D037EA00080210 /* ShareHelper.m */; };
+		88DD57811AA7E1C800196F98 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B30B8A1A9F515900B0A928 /* UIButton+Extensions.m */; };
+		88DD57821AA7E1C800196F98 /* NoiseMeter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 110F130D14EDD52E00BE4481 /* NoiseMeter.xcdatamodeld */; };
+		88DD57831AA7E1C800196F98 /* CreateAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */; };
+		88DD57841AA7E1C800196F98 /* NMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC52E41505CCFF0093C7AB /* NMDataManager.m */; };
+		88DD57851AA7E1C800196F98 /* NMDecibelLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC52EB1505CDA80093C7AB /* NMDecibelLogger.m */; };
+		88DD57861AA7E1C800196F98 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B061A9E056000288902 /* UIView+REFrostedViewController.m */; };
+		88DD57871AA7E1C800196F98 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129D1A899F3A007101FD /* SWCellScrollView.m */; };
+		88DD57881AA7E1C800196F98 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
+		88DD57891AA7E1C800196F98 /* BCTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858E1A9D51A700EB3926 /* BCTabBarView.m */; };
+		88DD578A1AA7E1C800196F98 /* IDPSoundBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */; };
+		88DD578B1AA7E1C800196F98 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632611A8E2E71004D14FA /* SDWebImageManager.m */; };
+		88DD578C1AA7E1C800196F98 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632701A8E2E71004D14FA /* UIImageView+WebCache.m */; };
+		88DD578D1AA7E1C800196F98 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC52EF1505D3010093C7AB /* RootView.m */; };
+		88DD578E1AA7E1C800196F98 /* UIViewController+Styling.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC52F41505D34C0093C7AB /* UIViewController+Styling.m */; };
+		88DD578F1AA7E1C800196F98 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B041A9E056000288902 /* UIImage+REFrostedViewController.m */; };
+		88DD57901AA7E1C800196F98 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B001A9E056000288902 /* REFrostedContainerViewController.m */; };
+		88DD57911AA7E1C800196F98 /* BCTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85881A9D51A700EB3926 /* BCTab.m */; };
+		88DD57921AA7E1C800196F98 /* VersionReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 888503B01AA00B1D0062A025 /* VersionReminder.m */; };
+		88DD57931AA7E1C800196F98 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
+		88DD57941AA7E1C800196F98 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632551A8E2E71004D14FA /* NSData+ImageContentType.m */; };
+		88DD57951AA7E1C800196F98 /* MeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AC531C1505D4420093C7AB /* MeterView.m */; };
+		88DD57961AA7E1C800196F98 /* ScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111A18D11505E3A9005655F1 /* ScoreView.m */; };
+		88DD57971AA7E1C800196F98 /* SoundLevelCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */; };
+		88DD57981AA7E1C800196F98 /* SoundLevelCaptureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3EE7D150F441F00A6496B /* SoundLevelCaptureCell.m */; };
+		88DD57991AA7E1C800196F98 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2AFE1A9E056000288902 /* RECommonFunctions.m */; };
+		88DD579A1AA7E1C800196F98 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876325F1A8E2E71004D14FA /* SDWebImageDownloaderOperation.m */; };
+		88DD579B1AA7E1C800196F98 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */; };
+		88DD579C1AA7E1C800196F98 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
+		88DD579D1AA7E1C800196F98 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */; };
+		88DD579E1AA7E1C800196F98 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712A11A899F3B007101FD /* SWTableViewCell.m */; };
+		88DD579F1AA7E1C800196F98 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876326C1A8E2E71004D14FA /* UIImage+WebP.m */; };
+		88DD57A01AA7E1C800196F98 /* AMPopTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 888503AD1A9FE33B0062A025 /* AMPopTip.m */; };
+		88DD57A11AA7E1C800196F98 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876325D1A8E2E71004D14FA /* SDWebImageDownloader.m */; };
+		88DD57A21AA7E1C800196F98 /* CaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A3EE80150F456B00A6496B /* CaptureView.m */; };
+		88DD57A31AA7E1C800196F98 /* SoundLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BEFE6118A1FCE800399680 /* SoundLevelView.m */; };
+		88DD57A41AA7E1C800196F98 /* MoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDCC1517FA3400DE0A64 /* MoreView.m */; };
+		88DD57A51AA7E1C800196F98 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876326A1A8E2E71004D14FA /* UIImage+MultiFormat.m */; };
+		88DD57A61AA7E1C800196F98 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876325B1A8E2E71004D14FA /* SDWebImageDecoder.m */; };
+		88DD57A71AA7E1C800196F98 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129F1A899F3B007101FD /* SWLongPressGestureRecognizer.m */; };
+		88DD57A81AA7E1C800196F98 /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1140FDDC1517FE5100DE0A64 /* AboutView.m */; };
+		88DD57A91AA7E1C800196F98 /* SelectAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D01519501800549099 /* SelectAlertView.m */; };
+		88DD57AA1AA7E1C800196F98 /* UIViewController+iconImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85921A9D51A700EB3926 /* UIViewController+iconImage.m */; };
+		88DD57AB1AA7E1C800196F98 /* BCTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858A1A9D51A700EB3926 /* BCTabBar.m */; };
+		88DD57AC1AA7E1C800196F98 /* ScoreArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712891A899EAC007101FD /* ScoreArrayDataSource.m */; };
+		88DD57AD1AA7E1C800196F98 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632661A8E2E71004D14FA /* UIButton+WebCache.m */; };
+		88DD57AE1AA7E1C800196F98 /* BCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E858C1A9D51A700EB3926 /* BCTabBarController.m */; };
+		88DD57AF1AA7E1C800196F98 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632641A8E2E71004D14FA /* SDWebImagePrefetcher.m */; };
+		88DD57B01AA7E1C800196F98 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632721A8E2E71004D14FA /* UIView+WebCacheOperation.m */; };
+		88DD57B11AA7E1C800196F98 /* InternalWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D31519561400549099 /* InternalWebView.m */; };
+		88DD57B21AA7E1C800196F98 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */; };
+		88DD57B31AA7E1C800196F98 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
+		88DD57B41AA7E1C800196F98 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632681A8E2E71004D14FA /* UIImage+GIF.m */; };
+		88DD57B51AA7E1C800196F98 /* UINavigationController+icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85901A9D51A700EB3926 /* UINavigationController+icons.m */; };
+		88DD57B61AA7E1C800196F98 /* InstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1168C316151966AB00897AA4 /* InstructionView.m */; };
+		88DD57B71AA7E1C800196F98 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712A31A899F3B007101FD /* SWUtilityButtonTapGestureRecognizer.m */; };
+		88DD57B81AA7E1C800196F98 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 889FD23C177BC3F90046D281 /* Appirater.m */; };
+		88DD57B91AA7E1C800196F98 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B021A9E056000288902 /* REFrostedViewController.m */; };
+		88DD57BA1AA7E1C800196F98 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632591A8E2E71004D14FA /* SDWebImageCompat.m */; };
+		88DD57BB1AA7E1C800196F98 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632571A8E2E71004D14FA /* SDImageCache.m */; };
+		88DD57BD1AA7E1C800196F98 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */; };
+		88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C21AA6895300B49EDA /* Accounts.framework */; };
+		88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */; };
+		88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A5613118D038F700080210 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		88DD57C11AA7E1C800196F98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
+		88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C01AA688A400B49EDA /* Security.framework */; };
+		88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
+		88DD57C41AA7E1C800196F98 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */; };
+		88DD57C51AA7E1C800196F98 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */; };
+		88DD57C61AA7E1C800196F98 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CB2B0F1A9E05E400288902 /* Accelerate.framework */; };
+		88DD57C71AA7E1C800196F98 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887632831A8E3024004D14FA /* ImageIO.framework */; };
+		88DD57C81AA7E1C800196F98 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B21A89A6AD007101FD /* libsqlite3.dylib */; };
+		88DD57C91AA7E1C800196F98 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD31517FC6400DE0A64 /* MessageUI.framework */; };
+		88DD57CA1AA7E1C800196F98 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886712B01A89A64F007101FD /* MediaPlayer.framework */; };
+		88DD57CB1AA7E1C800196F98 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8833910B1793D0680051DE50 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		88DD57CC1AA7E1C800196F98 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889FD23F177BC4960046D281 /* CFNetwork.framework */; };
+		88DD57CD1AA7E1C800196F98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
+		88DD57CE1AA7E1C800196F98 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDE21518016400DE0A64 /* libz.dylib */; };
+		88DD57CF1AA7E1C800196F98 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */; };
+		88DD57D01AA7E1C800196F98 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B61AA6885100B49EDA /* Bolts.framework */; };
+		88DD57D11AA7E1C800196F98 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
+		88DD57D21AA7E1C800196F98 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110AC87C14FE1B6000F86262 /* AVFoundation.framework */; };
+		88DD57D31AA7E1C800196F98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12F914EDD52E00BE4481 /* UIKit.framework */; };
+		88DD57D41AA7E1C800196F98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FB14EDD52E00BE4481 /* Foundation.framework */; };
+		88DD57D51AA7E1C800196F98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FD14EDD52E00BE4481 /* CoreGraphics.framework */; };
+		88DD57D61AA7E1C800196F98 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B71AA6885100B49EDA /* Parse.framework */; };
+		88DD57D71AA7E1C800196F98 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FF14EDD52E00BE4481 /* CoreData.framework */; };
+		88DD57D91AA7E1C800196F98 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5613918D0400D00080210 /* share@2x.png */; };
+		88DD57DA1AA7E1C800196F98 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6918A20E9300399680 /* 18.png */; };
+		88DD57DB1AA7E1C800196F98 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4518A1FCB100399680 /* 8.png */; };
+		88DD57DC1AA7E1C800196F98 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 883391091793CEA70051DE50 /* demo.mp3 */; };
+		88DD57DD1AA7E1C800196F98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 110F130414EDD52E00BE4481 /* InfoPlist.strings */; };
+		88DD57DE1AA7E1C800196F98 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC52F71505D3850093C7AB /* Default.png */; };
+		88DD57DF1AA7E1C800196F98 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC52F91505D3950093C7AB /* Default@2x.png */; };
+		88DD57E01AA7E1C800196F98 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4A18A1FCB100399680 /* 13.png */; };
+		88DD57E11AA7E1C800196F98 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4118A4803000E56939 /* mic.png */; };
+		88DD57E21AA7E1C800196F98 /* noads.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4218A4803000E56939 /* noads.png */; };
+		88DD57E31AA7E1C800196F98 /* icon_alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53041505D3F20093C7AB /* icon_alert@2x.png */; };
+		88DD57E41AA7E1C800196F98 /* icon_meter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53061505D3F20093C7AB /* icon_meter@2x.png */; };
+		88DD57E51AA7E1C800196F98 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4618A1FCB100399680 /* 9.png */; };
+		88DD57E61AA7E1C800196F98 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4818A1FCB100399680 /* 11.png */; };
+		88DD57E71AA7E1C800196F98 /* top_logo-pro-classroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888F688B1A9416340036D6F3 /* top_logo-pro-classroom@2x.png */; };
+		88DD57E81AA7E1C800196F98 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
+		88DD57E91AA7E1C800196F98 /* commonButtonBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887945AF18ADB10100C6C88F /* commonButtonBackground@2x.png */; };
+		88DD57EA1AA7E1C800196F98 /* icon_scores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53081505D3F20093C7AB /* icon_scores@2x.png */; };
+		88DD57EB1AA7E1C800196F98 /* playback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690D1A8A0FF600FD5B75 /* playback@2x.png */; };
+		88DD57EC1AA7E1C800196F98 /* loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 889E53B218BAC2CC00721ADF /* loop.mp3 */; };
+		88DD57ED1AA7E1C800196F98 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
+		88DD57EE1AA7E1C800196F98 /* button_capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC530F1505D4140093C7AB /* button_capture.png */; };
+		88DD57EF1AA7E1C800196F98 /* button_capture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53101505D4140093C7AB /* button_capture@2x.png */; };
+		88DD57F01AA7E1C800196F98 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6B18A20E9300399680 /* 20.png */; };
+		88DD57F11AA7E1C800196F98 /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712861A899E80007101FD /* shareButton@2x.png */; };
+		88DD57F21AA7E1C800196F98 /* set_noise_level_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E859B1A9D807600EB3926 /* set_noise_level_title@2x.png */; };
+		88DD57F31AA7E1C800196F98 /* generalBanner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E3E18A47FD200E56939 /* generalBanner@2x.png */; };
+		88DD57F41AA7E1C800196F98 /* soundOnButton1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */; };
+		88DD57F51AA7E1C800196F98 /* button_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53131505D4190093C7AB /* button_save.png */; };
+		88DD57F61AA7E1C800196F98 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4718A1FCB100399680 /* 10.png */; };
+		88DD57F71AA7E1C800196F98 /* button_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53141505D4190093C7AB /* button_save@2x.png */; };
+		88DD57F81AA7E1C800196F98 /* button_setalarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53151505D4190093C7AB /* button_setalarm.png */; };
+		88DD57F91AA7E1C800196F98 /* button_setalarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11AC53161505D4190093C7AB /* button_setalarm@2x.png */; };
+		88DD57FA1AA7E1C800196F98 /* background_count.png in Resources */ = {isa = PBXBuildFile; fileRef = 111A18CC1505E38D005655F1 /* background_count.png */; };
+		88DD57FB1AA7E1C800196F98 /* background_count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 111A18CD1505E38D005655F1 /* background_count@2x.png */; };
+		88DD57FC1AA7E1C800196F98 /* grey_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E859D1A9D815C00EB3926 /* grey_button_for_level@2x.png */; };
+		88DD57FD1AA7E1C800196F98 /* button_cancel2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 887169111A8A179500FD5B75 /* button_cancel2@2x.png */; };
+		88DD57FE1AA7E1C800196F98 /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
+		88DD57FF1AA7E1C800196F98 /* createCustomAlarmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A003218AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png */; };
+		88DD58001AA7E1C800196F98 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4B18A1FCB100399680 /* 14.png */; };
+		88DD58011AA7E1C800196F98 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
+		88DD58021AA7E1C800196F98 /* playback.png in Resources */ = {isa = PBXBuildFile; fileRef = 8871690C1A8A0FF600FD5B75 /* playback.png */; };
+		88DD58031AA7E1C800196F98 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4118A1FCB000399680 /* 4.png */; };
+		88DD58041AA7E1C800196F98 /* siren_wail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B118B4CC460067750A /* siren_wail.caf */; };
+		88DD58051AA7E1C800196F98 /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75118CFF38B0042AC59 /* button_cancel@2x.png */; };
+		88DD58061AA7E1C800196F98 /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75018CFF38B0042AC59 /* button_cancel.png */; };
+		88DD58071AA7E1C800196F98 /* close-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 888503E61AA0256D0062A025 /* close-white@2x.png */; };
+		88DD58081AA7E1C800196F98 /* bars_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868EB7C1A9C9C11007D877D /* bars_circle.png */; };
+		88DD58091AA7E1C800196F98 /* bars_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E85811A9D495300EB3926 /* bars_triangle.png */; };
+		88DD580A1AA7E1C800196F98 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E859F1A9D827700EB3926 /* settings_title@2x.png */; };
+		88DD580B1AA7E1C800196F98 /* overlay568.png in Resources */ = {isa = PBXBuildFile; fileRef = 8807E75618D0052B0042AC59 /* overlay568.png */; };
+		88DD580C1AA7E1C800196F98 /* BCTabBarController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 880E85991A9D53CC00EB3926 /* BCTabBarController.bundle */; };
+		88DD580D1AA7E1C800196F98 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4918A1FCB100399680 /* 12.png */; };
+		88DD580E1AA7E1C800196F98 /* button_cancel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 887169101A8A179500FD5B75 /* button_cancel2.png */; };
+		88DD580F1AA7E1C800196F98 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
+		88DD58101AA7E1C800196F98 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B87C7F1AA43DC5004ECF76 /* back@2x.png */; };
+		88DD58111AA7E1C800196F98 /* top_logo_scores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94151516B5F7002C5479 /* top_logo_scores@2x.png */; };
+		88DD58121AA7E1C800196F98 /* upgrade.css in Resources */ = {isa = PBXBuildFile; fileRef = 880A003818ACD22C00FB84F5 /* upgrade.css */; };
+		88DD58131AA7E1C800196F98 /* 17.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4E18A1FCB100399680 /* 17.png */; };
+		88DD58141AA7E1C800196F98 /* recordScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A95E4318A4803000E56939 /* recordScreenshot.png */; };
+		88DD58151AA7E1C800196F98 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4418A1FCB100399680 /* 7.png */; };
+		88DD58161AA7E1C800196F98 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
+		88DD58171AA7E1C800196F98 /* button_reset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94181516B66A002C5479 /* button_reset@2x.png */; };
+		88DD58181AA7E1C800196F98 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D941F1516B8A4002C5479 /* close_button.png */; };
+		88DD58191AA7E1C800196F98 /* overlay02.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94201516B8A4002C5479 /* overlay02.png */; };
+		88DD581A1AA7E1C800196F98 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3F18A1FCB000399680 /* 2.png */; };
+		88DD581B1AA7E1C800196F98 /* purchase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88818C5817993CB3007B386F /* purchase@2x.png */; };
+		88DD581C1AA7E1C800196F98 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88818C621799F58F007B386F /* PurchaseViewController.xib */; };
+		88DD581D1AA7E1C800196F98 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4318A1FCB100399680 /* 6.png */; };
+		88DD581E1AA7E1C800196F98 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002718AC83D800FB84F5 /* recordButton.png */; };
+		88DD581F1AA7E1C800196F98 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
+		88DD58201AA7E1C800196F98 /* button_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 117D94241516B8DE002C5479 /* button_info@2x.png */; };
+		88DD58211AA7E1C800196F98 /* upgradeInstruction.html in Resources */ = {isa = PBXBuildFile; fileRef = 880A003418ACB91B00FB84F5 /* upgradeInstruction.html */; };
+		88DD58221AA7E1C800196F98 /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307418AC6D1800B6E5BD /* closeButton@2x.png */; };
+		88DD58231AA7E1C800196F98 /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
+		88DD58241AA7E1C800196F98 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4218A1FCB100399680 /* 5.png */; };
+		88DD58251AA7E1C800196F98 /* icon_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1140FDD01517FBE700DE0A64 /* icon_more@2x.png */; };
+		88DD58261AA7E1C800196F98 /* soundOnButton0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */; };
+		88DD58271AA7E1C800196F98 /* createCustomAlarmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 880A002918AC993B00FB84F5 /* createCustomAlarmButton.png */; };
+		88DD58281AA7E1C800196F98 /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4C18A1FCB100399680 /* 15.png */; };
+		88DD58291AA7E1C800196F98 /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3E5C615194CAE00549099 /* button_back.png */; };
+		88DD582A1AA7E1C800196F98 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6A18A20E9300399680 /* 19.png */; };
+		88DD582B1AA7E1C800196F98 /* button_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3E5C715194CAE00549099 /* button_back@2x.png */; };
+		88DD582C1AA7E1C800196F98 /* button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3E5C815194CAE00549099 /* button_close.png */; };
+		88DD582D1AA7E1C800196F98 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4D18A1FCB100399680 /* 16.png */; };
+		88DD582E1AA7E1C800196F98 /* button_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3E5C915194CAE00549099 /* button_close@2x.png */; };
+		88DD582F1AA7E1C800196F98 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
+		88DD58301AA7E1C800196F98 /* bars_square.png in Resources */ = {isa = PBXBuildFile; fileRef = 8868EB7D1A9C9C11007D877D /* bars_square.png */; };
+		88DD58311AA7E1C800196F98 /* soundOnButton3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090218C2A8960061FA0F /* soundOnButton3@2x.png */; };
+		88DD58321AA7E1C800196F98 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
+		88DD58331AA7E1C800196F98 /* CreateAlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */; };
+		88DD58341AA7E1C800196F98 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE4018A1FCB000399680 /* 3.png */; };
+		88DD58351AA7E1C800196F98 /* scifialarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B018B4CC460067750A /* scifialarm.caf */; };
+		88DD58361AA7E1C800196F98 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
+		88DD58371AA7E1C800196F98 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
+		88DD58381AA7E1C800196F98 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
+		88DD58391AA7E1C800196F98 /* soundOnButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */; };
+		88DD583A1AA7E1C800196F98 /* remove_ad.png in Resources */ = {isa = PBXBuildFile; fileRef = 8806B39A179658510085CBF0 /* remove_ad.png */; };
+		88DD583B1AA7E1C800196F98 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
 		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
@@ -477,6 +670,8 @@
 		88CB2B071A9E056000288902 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
 		88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
 		88CB2B0F1A9E05E400288902 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		88DD58411AA7E1C800196F98 /* NoiseMeter copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NoiseMeter copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DD58421AA7E1C800196F98 /* NoiseMeter copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NoiseMeter copy-Info.plist"; path = "/Users/BourneWang/Documents/Project/noise-meter-revised/NoiseMeter copy-Info.plist"; sourceTree = "<absolute>"; };
 		88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings_title@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/settings_title@2x.png"; sourceTree = SOURCE_ROOT; };
 		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
 		88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_save@2x.png"; sourceTree = "<group>"; };
@@ -530,6 +725,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		88DD57BC1AA7E1C800196F98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DD57BD1AA7E1C800196F98 /* libstdc++.6.dylib in Frameworks */,
+				88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */,
+				88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */,
+				88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */,
+				88DD57C11AA7E1C800196F98 /* StoreKit.framework in Frameworks */,
+				88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */,
+				88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */,
+				88DD57C41AA7E1C800196F98 /* MobileCoreServices.framework in Frameworks */,
+				88DD57C51AA7E1C800196F98 /* CoreLocation.framework in Frameworks */,
+				88DD57C61AA7E1C800196F98 /* Accelerate.framework in Frameworks */,
+				88DD57C71AA7E1C800196F98 /* ImageIO.framework in Frameworks */,
+				88DD57C81AA7E1C800196F98 /* libsqlite3.dylib in Frameworks */,
+				88DD57C91AA7E1C800196F98 /* MessageUI.framework in Frameworks */,
+				88DD57CA1AA7E1C800196F98 /* MediaPlayer.framework in Frameworks */,
+				88DD57CB1AA7E1C800196F98 /* CoreMedia.framework in Frameworks */,
+				88DD57CC1AA7E1C800196F98 /* CFNetwork.framework in Frameworks */,
+				88DD57CD1AA7E1C800196F98 /* SystemConfiguration.framework in Frameworks */,
+				88DD57CE1AA7E1C800196F98 /* libz.dylib in Frameworks */,
+				88DD57CF1AA7E1C800196F98 /* CoreTelephony.framework in Frameworks */,
+				88DD57D01AA7E1C800196F98 /* Bolts.framework in Frameworks */,
+				88DD57D11AA7E1C800196F98 /* AudioToolbox.framework in Frameworks */,
+				88DD57D21AA7E1C800196F98 /* AVFoundation.framework in Frameworks */,
+				88DD57D31AA7E1C800196F98 /* UIKit.framework in Frameworks */,
+				88DD57D41AA7E1C800196F98 /* Foundation.framework in Frameworks */,
+				88DD57D51AA7E1C800196F98 /* CoreGraphics.framework in Frameworks */,
+				88DD57D61AA7E1C800196F98 /* Parse.framework in Frameworks */,
+				88DD57D71AA7E1C800196F98 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -544,6 +773,7 @@
 				110F130114EDD52E00BE4481 /* NoiseMeter */,
 				110F12F814EDD52E00BE4481 /* Frameworks */,
 				110F12F614EDD52E00BE4481 /* Products */,
+				88DD58421AA7E1C800196F98 /* NoiseMeter copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -551,6 +781,7 @@
 			isa = PBXGroup;
 			children = (
 				110F12F514EDD52E00BE4481 /* NoiseMeter.app */,
+				88DD58411AA7E1C800196F98 /* NoiseMeter copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1043,6 +1274,25 @@
 			productReference = 110F12F514EDD52E00BE4481 /* NoiseMeter.app */;
 			productType = "com.apple.product-type.application";
 		};
+		88DD57771AA7E1C800196F98 /* NoiseMeter PRO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88DD583E1AA7E1C800196F98 /* Build configuration list for PBXNativeTarget "NoiseMeter PRO" */;
+			buildPhases = (
+				88DD57781AA7E1C800196F98 /* Sources */,
+				88DD57BC1AA7E1C800196F98 /* Frameworks */,
+				88DD57D81AA7E1C800196F98 /* Resources */,
+				88DD583C1AA7E1C800196F98 /* ShellScript */,
+				88DD583D1AA7E1C800196F98 /* Run Script (Parse) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NoiseMeter PRO";
+			productName = NoiseMeter;
+			productReference = 88DD58411AA7E1C800196F98 /* NoiseMeter copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1100,6 +1350,7 @@
 			projectRoot = "";
 			targets = (
 				110F12F414EDD52E00BE4481 /* NoiseMeter */,
+				88DD57771AA7E1C800196F98 /* NoiseMeter PRO */,
 			);
 		};
 /* End PBXProject section */
@@ -1211,6 +1462,112 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		88DD57D81AA7E1C800196F98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DD57D91AA7E1C800196F98 /* share@2x.png in Resources */,
+				88DD57DA1AA7E1C800196F98 /* 18.png in Resources */,
+				88DD57DB1AA7E1C800196F98 /* 8.png in Resources */,
+				88DD57DC1AA7E1C800196F98 /* demo.mp3 in Resources */,
+				88DD57DD1AA7E1C800196F98 /* InfoPlist.strings in Resources */,
+				88DD57DE1AA7E1C800196F98 /* Default.png in Resources */,
+				88DD57DF1AA7E1C800196F98 /* Default@2x.png in Resources */,
+				88DD57E01AA7E1C800196F98 /* 13.png in Resources */,
+				88DD57E11AA7E1C800196F98 /* mic.png in Resources */,
+				88DD57E21AA7E1C800196F98 /* noads.png in Resources */,
+				88DD57E31AA7E1C800196F98 /* icon_alert@2x.png in Resources */,
+				88DD57E41AA7E1C800196F98 /* icon_meter@2x.png in Resources */,
+				88DD57E51AA7E1C800196F98 /* 9.png in Resources */,
+				88DD57E61AA7E1C800196F98 /* 11.png in Resources */,
+				88DD57E71AA7E1C800196F98 /* top_logo-pro-classroom@2x.png in Resources */,
+				88DD57E81AA7E1C800196F98 /* 1.png in Resources */,
+				88DD57E91AA7E1C800196F98 /* commonButtonBackground@2x.png in Resources */,
+				88DD57EA1AA7E1C800196F98 /* icon_scores@2x.png in Resources */,
+				88DD57EB1AA7E1C800196F98 /* playback@2x.png in Resources */,
+				88DD57EC1AA7E1C800196F98 /* loop.mp3 in Resources */,
+				88DD57ED1AA7E1C800196F98 /* soundOnButton@2x.png in Resources */,
+				88DD57EE1AA7E1C800196F98 /* button_capture.png in Resources */,
+				88DD57EF1AA7E1C800196F98 /* button_capture@2x.png in Resources */,
+				88DD57F01AA7E1C800196F98 /* 20.png in Resources */,
+				88DD57F11AA7E1C800196F98 /* shareButton@2x.png in Resources */,
+				88DD57F21AA7E1C800196F98 /* set_noise_level_title@2x.png in Resources */,
+				88DD57F31AA7E1C800196F98 /* generalBanner@2x.png in Resources */,
+				88DD57F41AA7E1C800196F98 /* soundOnButton1@2x.png in Resources */,
+				88DD57F51AA7E1C800196F98 /* button_save.png in Resources */,
+				88DD57F61AA7E1C800196F98 /* 10.png in Resources */,
+				88DD57F71AA7E1C800196F98 /* button_save@2x.png in Resources */,
+				88DD57F81AA7E1C800196F98 /* button_setalarm.png in Resources */,
+				88DD57F91AA7E1C800196F98 /* button_setalarm@2x.png in Resources */,
+				88DD57FA1AA7E1C800196F98 /* background_count.png in Resources */,
+				88DD57FB1AA7E1C800196F98 /* background_count@2x.png in Resources */,
+				88DD57FC1AA7E1C800196F98 /* grey_button_for_level@2x.png in Resources */,
+				88DD57FD1AA7E1C800196F98 /* button_cancel2@2x.png in Resources */,
+				88DD57FE1AA7E1C800196F98 /* top_logo-pro@2x.png in Resources */,
+				88DD57FF1AA7E1C800196F98 /* createCustomAlarmButton@2x.png in Resources */,
+				88DD58001AA7E1C800196F98 /* 14.png in Resources */,
+				88DD58011AA7E1C800196F98 /* settings_title@2x.png in Resources */,
+				88DD58021AA7E1C800196F98 /* playback.png in Resources */,
+				88DD58031AA7E1C800196F98 /* 4.png in Resources */,
+				88DD58041AA7E1C800196F98 /* siren_wail.caf in Resources */,
+				88DD58051AA7E1C800196F98 /* button_cancel@2x.png in Resources */,
+				88DD58061AA7E1C800196F98 /* button_cancel.png in Resources */,
+				88DD58071AA7E1C800196F98 /* close-white@2x.png in Resources */,
+				88DD58081AA7E1C800196F98 /* bars_circle.png in Resources */,
+				88DD58091AA7E1C800196F98 /* bars_triangle.png in Resources */,
+				88DD580A1AA7E1C800196F98 /* settings_title@2x.png in Resources */,
+				88DD580B1AA7E1C800196F98 /* overlay568.png in Resources */,
+				88DD580C1AA7E1C800196F98 /* BCTabBarController.bundle in Resources */,
+				88DD580D1AA7E1C800196F98 /* 12.png in Resources */,
+				88DD580E1AA7E1C800196F98 /* button_cancel2.png in Resources */,
+				88DD580F1AA7E1C800196F98 /* overlay@2x.png in Resources */,
+				88DD58101AA7E1C800196F98 /* back@2x.png in Resources */,
+				88DD58111AA7E1C800196F98 /* top_logo_scores@2x.png in Resources */,
+				88DD58121AA7E1C800196F98 /* upgrade.css in Resources */,
+				88DD58131AA7E1C800196F98 /* 17.png in Resources */,
+				88DD58141AA7E1C800196F98 /* recordScreenshot.png in Resources */,
+				88DD58151AA7E1C800196F98 /* 7.png in Resources */,
+				88DD58161AA7E1C800196F98 /* cancel@2x.png in Resources */,
+				88DD58171AA7E1C800196F98 /* button_reset@2x.png in Resources */,
+				88DD58181AA7E1C800196F98 /* close_button.png in Resources */,
+				88DD58191AA7E1C800196F98 /* overlay02.png in Resources */,
+				88DD581A1AA7E1C800196F98 /* 2.png in Resources */,
+				88DD581B1AA7E1C800196F98 /* purchase@2x.png in Resources */,
+				88DD581C1AA7E1C800196F98 /* PurchaseViewController.xib in Resources */,
+				88DD581D1AA7E1C800196F98 /* 6.png in Resources */,
+				88DD581E1AA7E1C800196F98 /* recordButton.png in Resources */,
+				88DD581F1AA7E1C800196F98 /* capture_save@2x.png in Resources */,
+				88DD58201AA7E1C800196F98 /* button_info@2x.png in Resources */,
+				88DD58211AA7E1C800196F98 /* upgradeInstruction.html in Resources */,
+				88DD58221AA7E1C800196F98 /* closeButton@2x.png in Resources */,
+				88DD58231AA7E1C800196F98 /* home_alarm.caf in Resources */,
+				88DD58241AA7E1C800196F98 /* 5.png in Resources */,
+				88DD58251AA7E1C800196F98 /* icon_more@2x.png in Resources */,
+				88DD58261AA7E1C800196F98 /* soundOnButton0@2x.png in Resources */,
+				88DD58271AA7E1C800196F98 /* createCustomAlarmButton.png in Resources */,
+				88DD58281AA7E1C800196F98 /* 15.png in Resources */,
+				88DD58291AA7E1C800196F98 /* button_back.png in Resources */,
+				88DD582A1AA7E1C800196F98 /* 19.png in Resources */,
+				88DD582B1AA7E1C800196F98 /* button_back@2x.png in Resources */,
+				88DD582C1AA7E1C800196F98 /* button_close.png in Resources */,
+				88DD582D1AA7E1C800196F98 /* 16.png in Resources */,
+				88DD582E1AA7E1C800196F98 /* button_close@2x.png in Resources */,
+				88DD582F1AA7E1C800196F98 /* top_logo@2x.png in Resources */,
+				88DD58301AA7E1C800196F98 /* bars_square.png in Resources */,
+				88DD58311AA7E1C800196F98 /* soundOnButton3@2x.png in Resources */,
+				88DD58321AA7E1C800196F98 /* Default-568h@2x.png in Resources */,
+				88DD58331AA7E1C800196F98 /* CreateAlarmSoundViewController.xib in Resources */,
+				88DD58341AA7E1C800196F98 /* 3.png in Resources */,
+				88DD58351AA7E1C800196F98 /* scifialarm.caf in Resources */,
+				88DD58361AA7E1C800196F98 /* AppiraterLocalizable.strings in Resources */,
+				88DD58371AA7E1C800196F98 /* Icon@2x.png in Resources */,
+				88DD58381AA7E1C800196F98 /* Icon.png in Resources */,
+				88DD58391AA7E1C800196F98 /* soundOnButton2@2x.png in Resources */,
+				88DD583A1AA7E1C800196F98 /* remove_ad.png in Resources */,
+				88DD583B1AA7E1C800196F98 /* orange_button_for_level@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1228,6 +1585,33 @@
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
 		};
 		8859F1201AA71AEA00EC88D8 /* Run Script (Parse) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Parse)";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Release ]; then\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
+		};
+		88DD583C1AA7E1C800196F98 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
+		88DD583D1AA7E1C800196F98 /* Run Script (Parse) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1315,6 +1699,80 @@
 				88CB2B0B1A9E056000288902 /* REFrostedViewController.m in Sources */,
 				887632761A8E2E71004D14FA /* SDWebImageCompat.m in Sources */,
 				887632751A8E2E71004D14FA /* SDImageCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88DD57781AA7E1C800196F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88DD57791AA7E1C800196F98 /* UIImageView+HighlightedWebCache.m in Sources */,
+				88DD577A1AA7E1C800196F98 /* SelectMeterView.m in Sources */,
+				88DD577B1AA7E1C800196F98 /* NSUserDefaultsHelper.m in Sources */,
+				88DD577C1AA7E1C800196F98 /* AlertViewV2.m in Sources */,
+				88DD577D1AA7E1C800196F98 /* main.m in Sources */,
+				88DD577E1AA7E1C800196F98 /* SWUtilityButtonView.m in Sources */,
+				88DD577F1AA7E1C800196F98 /* AppDelegate.m in Sources */,
+				88DD57801AA7E1C800196F98 /* ShareHelper.m in Sources */,
+				88DD57811AA7E1C800196F98 /* UIButton+Extensions.m in Sources */,
+				88DD57821AA7E1C800196F98 /* NoiseMeter.xcdatamodeld in Sources */,
+				88DD57831AA7E1C800196F98 /* CreateAlarmSoundViewController.m in Sources */,
+				88DD57841AA7E1C800196F98 /* NMDataManager.m in Sources */,
+				88DD57851AA7E1C800196F98 /* NMDecibelLogger.m in Sources */,
+				88DD57861AA7E1C800196F98 /* UIView+REFrostedViewController.m in Sources */,
+				88DD57871AA7E1C800196F98 /* SWCellScrollView.m in Sources */,
+				88DD57881AA7E1C800196F98 /* FileHelper.m in Sources */,
+				88DD57891AA7E1C800196F98 /* BCTabBarView.m in Sources */,
+				88DD578A1AA7E1C800196F98 /* IDPSoundBoard.m in Sources */,
+				88DD578B1AA7E1C800196F98 /* SDWebImageManager.m in Sources */,
+				88DD578C1AA7E1C800196F98 /* UIImageView+WebCache.m in Sources */,
+				88DD578D1AA7E1C800196F98 /* RootView.m in Sources */,
+				88DD578E1AA7E1C800196F98 /* UIViewController+Styling.m in Sources */,
+				88DD578F1AA7E1C800196F98 /* UIImage+REFrostedViewController.m in Sources */,
+				88DD57901AA7E1C800196F98 /* REFrostedContainerViewController.m in Sources */,
+				88DD57911AA7E1C800196F98 /* BCTab.m in Sources */,
+				88DD57921AA7E1C800196F98 /* VersionReminder.m in Sources */,
+				88DD57931AA7E1C800196F98 /* BaseViewController.m in Sources */,
+				88DD57941AA7E1C800196F98 /* NSData+ImageContentType.m in Sources */,
+				88DD57951AA7E1C800196F98 /* MeterView.m in Sources */,
+				88DD57961AA7E1C800196F98 /* ScoreView.m in Sources */,
+				88DD57971AA7E1C800196F98 /* SoundLevelCapture.m in Sources */,
+				88DD57981AA7E1C800196F98 /* SoundLevelCaptureCell.m in Sources */,
+				88DD57991AA7E1C800196F98 /* RECommonFunctions.m in Sources */,
+				88DD579A1AA7E1C800196F98 /* SDWebImageDownloaderOperation.m in Sources */,
+				88DD579B1AA7E1C800196F98 /* UIViewController+REFrostedViewController.m in Sources */,
+				88DD579C1AA7E1C800196F98 /* RMStore.m in Sources */,
+				88DD579D1AA7E1C800196F98 /* UIAlertView+Blocks.m in Sources */,
+				88DD579E1AA7E1C800196F98 /* SWTableViewCell.m in Sources */,
+				88DD579F1AA7E1C800196F98 /* UIImage+WebP.m in Sources */,
+				88DD57A01AA7E1C800196F98 /* AMPopTip.m in Sources */,
+				88DD57A11AA7E1C800196F98 /* SDWebImageDownloader.m in Sources */,
+				88DD57A21AA7E1C800196F98 /* CaptureView.m in Sources */,
+				88DD57A31AA7E1C800196F98 /* SoundLevelView.m in Sources */,
+				88DD57A41AA7E1C800196F98 /* MoreView.m in Sources */,
+				88DD57A51AA7E1C800196F98 /* UIImage+MultiFormat.m in Sources */,
+				88DD57A61AA7E1C800196F98 /* SDWebImageDecoder.m in Sources */,
+				88DD57A71AA7E1C800196F98 /* SWLongPressGestureRecognizer.m in Sources */,
+				88DD57A81AA7E1C800196F98 /* AboutView.m in Sources */,
+				88DD57A91AA7E1C800196F98 /* SelectAlertView.m in Sources */,
+				88DD57AA1AA7E1C800196F98 /* UIViewController+iconImage.m in Sources */,
+				88DD57AB1AA7E1C800196F98 /* BCTabBar.m in Sources */,
+				88DD57AC1AA7E1C800196F98 /* ScoreArrayDataSource.m in Sources */,
+				88DD57AD1AA7E1C800196F98 /* UIButton+WebCache.m in Sources */,
+				88DD57AE1AA7E1C800196F98 /* BCTabBarController.m in Sources */,
+				88DD57AF1AA7E1C800196F98 /* SDWebImagePrefetcher.m in Sources */,
+				88DD57B01AA7E1C800196F98 /* UIView+WebCacheOperation.m in Sources */,
+				88DD57B11AA7E1C800196F98 /* InternalWebView.m in Sources */,
+				88DD57B21AA7E1C800196F98 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				88DD57B31AA7E1C800196F98 /* PurchaseViewController.m in Sources */,
+				88DD57B41AA7E1C800196F98 /* UIImage+GIF.m in Sources */,
+				88DD57B51AA7E1C800196F98 /* UINavigationController+icons.m in Sources */,
+				88DD57B61AA7E1C800196F98 /* InstructionView.m in Sources */,
+				88DD57B71AA7E1C800196F98 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				88DD57B81AA7E1C800196F98 /* Appirater.m in Sources */,
+				88DD57B91AA7E1C800196F98 /* REFrostedViewController.m in Sources */,
+				88DD57BA1AA7E1C800196F98 /* SDWebImageCompat.m in Sources */,
+				88DD57BB1AA7E1C800196F98 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1430,13 +1888,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c914858-2843-4563-b874-1f9351275d9a";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3c914858-2843-4563-b874-1f9351275d9a";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1460,8 +1922,63 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c914858-2843-4563-b874-1f9351275d9a";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3c914858-2843-4563-b874-1f9351275d9a";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		88DD583F1AA7E1C800196F98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NoiseMeter/Support",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					TARGET_PRO_VERSION,
+				);
+				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "NoiseMeter copy";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		88DD58401AA7E1C800196F98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NoiseMeter/Support",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NoiseMeter/NoiseMeter-Prefix.pch";
+				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "NoiseMeter copy";
+				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1483,6 +2000,15 @@
 			buildConfigurations = (
 				110F131314EDD52E00BE4481 /* Debug */,
 				110F131414EDD52E00BE4481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88DD583E1AA7E1C800196F98 /* Build configuration list for PBXNativeTarget "NoiseMeter PRO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88DD583F1AA7E1C800196F98 /* Debug */,
+				88DD58401AA7E1C800196F98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -15,6 +15,10 @@
     
     //return YES; //only for debug
     
+#ifdef TARGET_PRO_VERSION
+    return YES;
+#endif
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL flag = [userDefaults boolForKey:@"AD_REMOVED"];
     return flag;
