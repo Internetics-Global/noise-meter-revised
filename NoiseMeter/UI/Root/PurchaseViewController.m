@@ -7,9 +7,13 @@
 //
 
 #import "PurchaseViewController.h"
-#import "RMStore.h"
+
 #import "FileHelper.h"
 #import <Parse/PFAnalytics.h>
+
+#ifndef TARGET_PRO_VERSION
+#import "RMStore.h"
+#endif
 
 @interface PurchaseViewController ()
 
@@ -33,6 +37,8 @@
     
     [_purchaseButton addTarget:self action:@selector(purchaseNow) forControlEvents:UIControlEventTouchDown];
     
+#ifndef TARGET_PRO_VERSION
+    
     //request product info
     NSSet *products;
     if ([NSUserDefaultsHelper isProVersion] == false) {
@@ -47,7 +53,7 @@
         NSLog(@"%s:%@",__FUNCTION__,error);
     }];
     
-    
+#endif
     
     self.webview.delegate = self;
     
@@ -109,7 +115,7 @@
 
 }
 
-
+#ifndef TARGET_PRO_VERSION
 
 #pragma mark – Restore and buy
 
@@ -176,7 +182,6 @@
 }
 
 
-
 #pragma mark – Purchase
 
 - (void) purchaseNow {
@@ -228,7 +233,7 @@
     return formattedString;
 }
 
-
+#endif
 
 #pragma mark – UIWebViewDelegate
 

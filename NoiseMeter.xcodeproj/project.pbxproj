@@ -220,7 +220,6 @@
 		88DD57991AA7E1C800196F98 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2AFE1A9E056000288902 /* RECommonFunctions.m */; };
 		88DD579A1AA7E1C800196F98 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876325F1A8E2E71004D14FA /* SDWebImageDownloaderOperation.m */; };
 		88DD579B1AA7E1C800196F98 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88CB2B081A9E056000288902 /* UIViewController+REFrostedViewController.m */; };
-		88DD579C1AA7E1C800196F98 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
 		88DD579D1AA7E1C800196F98 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712AE1A899F8D007101FD /* UIAlertView+Blocks.m */; };
 		88DD579E1AA7E1C800196F98 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886712A11A899F3B007101FD /* SWTableViewCell.m */; };
 		88DD579F1AA7E1C800196F98 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 8876326C1A8E2E71004D14FA /* UIImage+WebP.m */; };
@@ -243,7 +242,6 @@
 		88DD57B01AA7E1C800196F98 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632721A8E2E71004D14FA /* UIView+WebCacheOperation.m */; };
 		88DD57B11AA7E1C800196F98 /* InternalWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11F3E5D31519561400549099 /* InternalWebView.m */; };
 		88DD57B21AA7E1C800196F98 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8867129B1A899F3A007101FD /* NSMutableArray+SWUtilityButtons.m */; };
-		88DD57B31AA7E1C800196F98 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88DD57B41AA7E1C800196F98 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632681A8E2E71004D14FA /* UIImage+GIF.m */; };
 		88DD57B51AA7E1C800196F98 /* UINavigationController+icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 880E85901A9D51A700EB3926 /* UINavigationController+icons.m */; };
 		88DD57B61AA7E1C800196F98 /* InstructionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1168C316151966AB00897AA4 /* InstructionView.m */; };
@@ -256,7 +254,6 @@
 		88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C21AA6895300B49EDA /* Accounts.framework */; };
 		88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */; };
 		88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A5613118D038F700080210 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		88DD57C11AA7E1C800196F98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
 		88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C01AA688A400B49EDA /* Security.framework */; };
 		88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
 		88DD57C41AA7E1C800196F98 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */; };
@@ -381,7 +378,9 @@
 		88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
 		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
-		88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DDF498189B1B6E00138ADF /* StoreKit.framework */; };
+		88F64FB11AA7E58200379FF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F64FB01AA7E58200379FF2 /* StoreKit.framework */; };
+		88F64FB21AA7E7F500379FF2 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
+		88F64FB31AA7E8BA00379FF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F64FB01AA7E58200379FF2 /* StoreKit.framework */; };
 		88FA090318C2A8960061FA0F /* soundOnButton0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */; };
 		88FA090418C2A8960061FA0F /* soundOnButton1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */; };
 		88FA090518C2A8960061FA0F /* soundOnButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */; };
@@ -675,7 +674,7 @@
 		88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings_title@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/settings_title@2x.png"; sourceTree = SOURCE_ROOT; };
 		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
 		88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_save@2x.png"; sourceTree = "<group>"; };
-		88DDF498189B1B6E00138ADF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		88F64FB01AA7E58200379FF2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton0@2x.png"; sourceTree = "<group>"; };
 		88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton1@2x.png"; sourceTree = "<group>"; };
 		88FA090118C2A8960061FA0F /* soundOnButton2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton2@2x.png"; sourceTree = "<group>"; };
@@ -699,7 +698,6 @@
 				88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */,
 				8859F11D1AA7140D00EC88D8 /* ParseCrashReporting.framework in Frameworks */,
 				88A5613218D038F700080210 /* Social.framework in Frameworks */,
-				88DDF49A189B2C7100138ADF /* StoreKit.framework in Frameworks */,
 				88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */,
 				88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */,
 				88B9C3BD1AA6889500B49EDA /* MobileCoreServices.framework in Frameworks */,
@@ -714,6 +712,7 @@
 				88376CE7177BB4A700F9F477 /* SystemConfiguration.framework in Frameworks */,
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
+				88F64FB11AA7E58200379FF2 /* StoreKit.framework in Frameworks */,
 				88B9C3B81AA6885100B49EDA /* Bolts.framework in Frameworks */,
 				11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */,
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
@@ -729,11 +728,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F64FB31AA7E8BA00379FF2 /* StoreKit.framework in Frameworks */,
 				88DD57BD1AA7E1C800196F98 /* libstdc++.6.dylib in Frameworks */,
 				88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */,
 				88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */,
 				88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */,
-				88DD57C11AA7E1C800196F98 /* StoreKit.framework in Frameworks */,
 				88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */,
 				88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */,
 				88DD57C41AA7E1C800196F98 /* MobileCoreServices.framework in Frameworks */,
@@ -789,6 +788,7 @@
 		110F12F814EDD52E00BE4481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				88F64FB01AA7E58200379FF2 /* StoreKit.framework */,
 				8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */,
 				8859F11A1AA7138300EC88D8 /* libstdc++.dylib */,
 				88B9C3C21AA6895300B49EDA /* Accounts.framework */,
@@ -801,7 +801,6 @@
 				886712B21A89A6AD007101FD /* libsqlite3.dylib */,
 				886712B01A89A64F007101FD /* MediaPlayer.framework */,
 				88A5613118D038F700080210 /* Social.framework */,
-				88DDF498189B1B6E00138ADF /* StoreKit.framework */,
 				8833910B1793D0680051DE50 /* CoreMedia.framework */,
 				889FD23F177BC4960046D281 /* CFNetwork.framework */,
 				88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */,
@@ -1308,6 +1307,17 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
+					88DD57771AA7E1C800196F98 = {
+						DevelopmentTeam = Y8HQA4YE8L;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -1711,6 +1721,7 @@
 				88DD577B1AA7E1C800196F98 /* NSUserDefaultsHelper.m in Sources */,
 				88DD577C1AA7E1C800196F98 /* AlertViewV2.m in Sources */,
 				88DD577D1AA7E1C800196F98 /* main.m in Sources */,
+				88F64FB21AA7E7F500379FF2 /* PurchaseViewController.m in Sources */,
 				88DD577E1AA7E1C800196F98 /* SWUtilityButtonView.m in Sources */,
 				88DD577F1AA7E1C800196F98 /* AppDelegate.m in Sources */,
 				88DD57801AA7E1C800196F98 /* ShareHelper.m in Sources */,
@@ -1741,7 +1752,6 @@
 				88DD57991AA7E1C800196F98 /* RECommonFunctions.m in Sources */,
 				88DD579A1AA7E1C800196F98 /* SDWebImageDownloaderOperation.m in Sources */,
 				88DD579B1AA7E1C800196F98 /* UIViewController+REFrostedViewController.m in Sources */,
-				88DD579C1AA7E1C800196F98 /* RMStore.m in Sources */,
 				88DD579D1AA7E1C800196F98 /* UIAlertView+Blocks.m in Sources */,
 				88DD579E1AA7E1C800196F98 /* SWTableViewCell.m in Sources */,
 				88DD579F1AA7E1C800196F98 /* UIImage+WebP.m in Sources */,
@@ -1764,7 +1774,6 @@
 				88DD57B01AA7E1C800196F98 /* UIView+WebCacheOperation.m in Sources */,
 				88DD57B11AA7E1C800196F98 /* InternalWebView.m in Sources */,
 				88DD57B21AA7E1C800196F98 /* NSMutableArray+SWUtilityButtons.m in Sources */,
-				88DD57B31AA7E1C800196F98 /* PurchaseViewController.m in Sources */,
 				88DD57B41AA7E1C800196F98 /* UIImage+GIF.m in Sources */,
 				88DD57B51AA7E1C800196F98 /* UINavigationController+icons.m in Sources */,
 				88DD57B61AA7E1C800196F98 /* InstructionView.m in Sources */,
@@ -1878,8 +1887,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -1897,7 +1906,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1907,8 +1916,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Reveal.app/Contents/SharedSupport/iOS-Libraries",
@@ -1922,7 +1931,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
 				WRAPPER_EXTENSION = app;
 			};
