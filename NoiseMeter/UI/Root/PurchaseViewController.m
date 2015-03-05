@@ -78,12 +78,9 @@
     if ([NSUserDefaultsHelper isProVersion] == false) {
         cachedFileStr = [FileHelper cachedProIntroductionHTMLFile];
         request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Introduction_URL]];
-        [_purchaseButton setTitle:@"Purchase - $2.99 " forState:UIControlStateNormal];
-    } else {
-        cachedFileStr = [FileHelper cachedProClassroomIntroductionHTMLFile];
-        request = [NSURLRequest requestWithURL:[NSURL URLWithString:k_Pro_Classroom_Introduction_URL]];
-        [_purchaseButton setTitle:@"Purchase - $6.99 " forState:UIControlStateNormal];
+        [_purchaseButton setTitle:@"Purchase - $7.99 " forState:UIControlStateNormal];
     }
+    
     BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:cachedFileStr];
     if (NO) { //TODO:XXX
         NSData *htmlData = [NSData  dataWithContentsOfFile:cachedFileStr];
@@ -161,11 +158,7 @@
     [[RMStore defaultStore] restoreTransactionsOnSuccess:^(NSArray *transactions){
         NSLog(@"Transactions restored");
         
-        if ([NSUserDefaultsHelper isProVersion] == false) {
-            [NSUserDefaultsHelper setProVersionFlag:YES];
-        } else {
-            [NSUserDefaultsHelper setProClassRoomVersion:YES];
-        }
+        [NSUserDefaultsHelper setProVersionFlag:YES];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
         
@@ -207,11 +200,7 @@
     [[RMStore defaultStore] addPayment:productIdentifier success:^(SKPaymentTransaction *transaction) {
         NSLog(@"Product purchased");
         
-        if ([NSUserDefaultsHelper isProVersion] == false) {
-            [NSUserDefaultsHelper setProVersionFlag:YES];
-        } else {
-            [NSUserDefaultsHelper setProClassRoomVersion:YES];
-        }
+        [NSUserDefaultsHelper setProVersionFlag:YES];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Alarm_Finished object:self];
         

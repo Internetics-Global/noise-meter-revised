@@ -88,7 +88,7 @@
     [self.view addSubview:_meterBackground];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:_meterBackground.frame];
-    _currentReadingLabel.textAlignment = UITextAlignmentCenter;
+    _currentReadingLabel.textAlignment = NSTextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:90];
     _currentReadingLabel.text = [NSString stringWithFormat:@"%.1f", [_reading floatValue]];
     _currentReadingLabel.center = _meterBackground.center;
@@ -137,14 +137,14 @@
     [_playbackButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_playbackButton addTarget:self action:@selector(playback) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_playbackButton];
-    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _playbackButton.hidden = FALSE;
     } else {
         _playbackButton.hidden = TRUE;
     }
     
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _playbackButton.frame =CGRectMake(20, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         _cancelButton.frame =CGRectMake(20 + 150, _saveButton.frame.origin.y + _saveButton.frame.size.height + 10, 130, 37);
         [_cancelButton setBackgroundImage:[UIImage imageNamed:@"grey_button_for_level"] forState:UIControlStateNormal];

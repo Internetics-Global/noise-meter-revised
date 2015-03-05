@@ -242,7 +242,7 @@
 
 - (void) share {
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         _fullScrenshotImage = [ShareHelper fullScreenshot];
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
                                 @"Share on Facebook",
@@ -252,7 +252,7 @@
         popup.tag = 1;
         [popup showInView:[UIApplication sharedApplication].keyWindow];
     } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
     
@@ -298,8 +298,6 @@
 
 - (void) showTips {
     
-    __weak __typeof(&*self)weakSelf = self;
-    
     if (_popTipShare == nil) {
         _popTipShare = [AMPopTip popTip];
         _popTipShare.textColor = [UIColor blackColor];
@@ -339,7 +337,7 @@
             
         };
     }
-    if ([_scores count] == 0 || [NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+    if ([_scores count] == 0 || [NSUserDefaultsHelper isProVersion] == FALSE) {
         [_popTipMail hide];
     } else {
         [_popTipMail showText:@"Email individual recordings" direction:AMPopTipDirectionDown maxWidth:110 inView:self.view fromFrame:CGRectMake(CGRectGetMidX(_scoreTable.frame) - 28,CGRectGetMinY(_scoreTable.frame) + 20, 0, 0) duration:0];

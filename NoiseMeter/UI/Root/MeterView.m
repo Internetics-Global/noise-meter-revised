@@ -240,7 +240,7 @@
     [_meterBackground addSubview:_currentReadingBaseView];
     
     _currentReadingDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
-    _currentReadingDesLabel.textAlignment = UITextAlignmentCenter;
+    _currentReadingDesLabel.textAlignment = NSTextAlignmentCenter;
     _currentReadingDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _currentReadingDesLabel.textColor = [UIColor lightGrayColor];
     _currentReadingDesLabel.backgroundColor = [UIColor clearColor];
@@ -250,7 +250,7 @@
     [_currentReadingBaseView addSubview:_currentReadingDesLabel];
     
     _currentReadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
-    _currentReadingLabel.textAlignment = UITextAlignmentCenter;
+    _currentReadingLabel.textAlignment = NSTextAlignmentCenter;
     _currentReadingLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _currentReadingLabel.textColor = [UIColor lightGrayColor];
     _currentReadingLabel.backgroundColor = [UIColor clearColor];
@@ -275,7 +275,7 @@
     [_meterBackground addSubview:_peakBaseView];
     
     _peakDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
-    _peakDesLabel.textAlignment = UITextAlignmentCenter;
+    _peakDesLabel.textAlignment = NSTextAlignmentCenter;
     _peakDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize];
     _peakDesLabel.textColor = [UIColor lightGrayColor];
     _peakDesLabel.backgroundColor = [UIColor clearColor];
@@ -285,7 +285,7 @@
     [_peakBaseView addSubview:_peakDesLabel];
     
     _peakLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
-    _peakLabel.textAlignment = UITextAlignmentCenter;
+    _peakLabel.textAlignment = NSTextAlignmentCenter;
     _peakLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _peakLabel.textColor = [UIColor lightGrayColor];
     _peakLabel.backgroundColor = [UIColor clearColor];
@@ -308,7 +308,7 @@
     
     
     _infoMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 11, K_Square_Width, 25)];
-    _infoMeterDesLabel.textAlignment = UITextAlignmentCenter;
+    _infoMeterDesLabel.textAlignment = NSTextAlignmentCenter;
     _infoMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:16];
     _infoMeterDesLabel.textColor = [UIColor lightGrayColor];
     _infoMeterDesLabel.backgroundColor = [UIColor clearColor];
@@ -318,7 +318,7 @@
     [_infoMeterBaseView addSubview:_infoMeterDesLabel];
     
     _infoMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 40)];
-    _infoMeterLabel.textAlignment = UITextAlignmentCenter;
+    _infoMeterLabel.textAlignment = NSTextAlignmentCenter;
     _infoMeterLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _infoMeterLabel.textColor = [UIColor lightGrayColor];
     _infoMeterLabel.backgroundColor = [UIColor clearColor];
@@ -337,7 +337,7 @@
     [_meterBackground addSubview:_captureMeterBaseView];
     
     _captureMeterDesLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 8, K_Square_Width - 6, 20)];
-    _captureMeterDesLabel.textAlignment = UITextAlignmentCenter;
+    _captureMeterDesLabel.textAlignment = NSTextAlignmentCenter;
     _captureMeterDesLabel.font = [UIFont fontWithName:K_Square_Font_Name size:20];
     _captureMeterDesLabel.textColor = [UIColor lightGrayColor];
     _captureMeterDesLabel.backgroundColor = [UIColor clearColor];
@@ -347,7 +347,7 @@
     [_captureMeterBaseView addSubview:_captureMeterDesLabel];
     
     _captureMeterLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, K_Square_Width, 30)];
-    _captureMeterLabel.textAlignment = UITextAlignmentCenter;
+    _captureMeterLabel.textAlignment = NSTextAlignmentCenter;
     _captureMeterLabel.font = [UIFont fontWithName:K_Square_Font_Name size:K_Square_FontSize_Des];
     _captureMeterLabel.textColor = [UIColor lightGrayColor];
     _captureMeterLabel.backgroundColor = [UIColor clearColor];
@@ -419,7 +419,7 @@
 - (void)capture
 {
     NSUInteger noOfRecords = [[SoundLevelCapture all] count];
-    if ((noOfRecords >= 11) && ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE)) {
+    if ((noOfRecords >= 11) && ([NSUserDefaultsHelper isProVersion] == FALSE)) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"You have reached the maximum number of recordings" message:@"You can upgrade to Noise Down PRO for an unlimited number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     } else {
@@ -902,8 +902,6 @@
 }
 
 - (void) showTips {
-    
-    __weak __typeof(&*self)weakSelf = self;
     
     if (_popTipInfo == nil) {
         _popTipInfo = [AMPopTip popTip];

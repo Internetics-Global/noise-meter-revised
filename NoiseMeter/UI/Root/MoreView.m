@@ -101,12 +101,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    BOOL isToShowProClassroom = [NSUserDefaultsHelper isProVersion] && ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE);
-    if (isToShowProClassroom) {
-        return 15;
-    } else {
-        return 14;
-    }
+    return 14;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -231,8 +226,6 @@
         else if (indexPath.row == 13)
         {
             cell.textLabel.text = @"Support";
-        } else if (indexPath.row == 14) {
-            cell.textLabel.text = @"Purchase Pro Classroom";
         }
     }
     
@@ -410,11 +403,11 @@
     
     UISwitch *myswitch = (UISwitch *)sender;
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
         
         [myswitch setOn:NO];
         
-        [UIAlertView showWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self showPurchaseView];
             }
@@ -437,11 +430,11 @@
     
     UISwitch *myswitch = (UISwitch *)sender;
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion] == FALSE) {
+    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
         
         [myswitch setOn:NO];
         
-        [UIAlertView showWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 [self showPurchaseView];
             }

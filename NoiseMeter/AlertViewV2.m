@@ -376,8 +376,6 @@
 
 - (void) showTips {
     
-    __weak __typeof(&*self)weakSelf = self;
-    
     if (_popTipSlider == nil) {
         _popTipSlider = [AMPopTip popTip];
         _popTipSlider.textColor = [UIColor blackColor];

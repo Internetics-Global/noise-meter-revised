@@ -102,9 +102,9 @@
 
 - (void) share: (id) sender {
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
+    if ([NSUserDefaultsHelper isProVersion] == false) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
         return;
     }
@@ -168,9 +168,9 @@
         case 0:
         {
         
-            if ([NSUserDefaultsHelper isProClassRoomVersion] == false) {
+            if ([NSUserDefaultsHelper isProVersion] == false) {
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down CLASSROOM function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                 [alertView show];
             } else {
                 UIAlertView *alertView = [UIAlertView showWithTitle:@"Please enter a new name below"

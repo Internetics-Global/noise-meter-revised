@@ -68,7 +68,7 @@
 - (void) setupGeneralADView {
     
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion] || [NSUserDefaultsHelper isProVersion]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         
         if (self.generalADButton) {
             [self.generalADButton removeFromSuperview];
@@ -102,7 +102,6 @@
             [self.generalADButton.titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
             
             if ([NSUserDefaultsHelper isProVersion]) {
-//                [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Classroom_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"top_logo-pro-classroom"]];
             } else {
                 [self.generalADButton sd_setBackgroundImageWithURL:[NSURL URLWithString:k_Pro_Banner] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"generalBanner"]];
             }
@@ -123,15 +122,13 @@
     //step1: update top logo
     UIImageView *imageView = [self findTopBarImageView];
     if (imageView) {
-        if ([NSUserDefaultsHelper isProClassRoomVersion]) {
-          [imageView setImage:[UIImage imageNamed:@"top_logo-pro-classroom.png"]];
-        } else {
-          [imageView setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
+        if ([NSUserDefaultsHelper isProVersion]) {
+            [imageView setImage:[UIImage imageNamed:@"top_logo-pro.png"]];
         }
         
     }
     
-    if ([NSUserDefaultsHelper isProClassRoomVersion] || [NSUserDefaultsHelper isProVersion]) {
+    if ([NSUserDefaultsHelper isProVersion]) {
         //step2: remove the AD view
         [self.generalADButton removeFromSuperview];
         self.generalADButton = nil;

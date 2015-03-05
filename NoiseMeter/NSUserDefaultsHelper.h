@@ -18,12 +18,6 @@ typedef NS_ENUM(NSInteger, MeterDisplayType) {
 @interface NSUserDefaultsHelper : NSObject
 
 /**
- *  This is to indicate whether currently it's pro classroom version. pro classroom version is also pro version.
- */
-+ (BOOL) isProClassRoomVersion;
-+ (void) setProClassRoomVersion:(BOOL) flag;
-
-/**
  *  This is to indicate whether currently it's pro version
  */
 + (BOOL) isProVersion;
