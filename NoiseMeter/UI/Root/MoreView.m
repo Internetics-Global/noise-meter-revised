@@ -288,7 +288,7 @@
     }
     else if(indexPath.row == 9)
     {
-        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"www.noisedown.com/tips.html"];
+        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/tips.html"];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
 
     }

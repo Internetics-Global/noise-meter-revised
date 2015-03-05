@@ -33,6 +33,8 @@
     
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - KTopLogoHeight)];
     _webView.delegate = self;
+    _webView.backgroundColor = kGrayColor;
+    _webView.opaque=NO;
     _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:_webView];
     
