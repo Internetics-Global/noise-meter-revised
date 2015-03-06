@@ -12,6 +12,12 @@
 
 @implementation FileHelper
 
++ (NSURL *) getFileForCapturePlayback{
+    NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:
+                                         @"capture_playback.caf"]];
+    return url;
+}
+
 + (NSURL *) getRecordedAudioFile:(NSString *) fileName {
     NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:
                             fileName]];

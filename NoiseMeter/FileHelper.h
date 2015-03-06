@@ -10,6 +10,11 @@
 
 @interface FileHelper : NSObject
 
+/**
+ *  Only for playback in capture view
+ */
++ (NSURL *) getFileForCapturePlayback;
+
 + (NSURL *) getRecordedAudioFile:(NSString *) fileName;
 
 + (NSString *) convertDate: (NSDate *) date;
