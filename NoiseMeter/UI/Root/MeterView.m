@@ -60,8 +60,8 @@
     //用于判断是否delay的时间是否大于K_Second_DelayAlarmSound
     NSDate       *_startForDelayAlarmSound;
     
-    //用于判断下一个capture事件
-    NSDate       *_startForSilentMode;
+    //在continuous模式中，由于会连续的capture，为了防止cycle，需要有一个时间段间隔用于判断下一个capture事件
+    NSDate       *_startForContinuousMode;
     
     AMPopTip *_popTipMeterPause;
     AMPopTip *_popTipMeterCapture;
@@ -104,7 +104,7 @@
                                                object:nil];
     
     _startForDelayAlarmSound = [NSDate date];
-    _startForSilentMode =  [NSDate date];
+    _startForContinuousMode =  [NSDate date];
     
     
     
@@ -150,7 +150,7 @@
     [_topScoreTable reloadData];
 }
 
-- (void) cancel {
+- (void) cancelAlarm {
     
     [[NMDecibelLogger defaultLogger] alarmComplete];
     
@@ -263,7 +263,7 @@
     _cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_cancelButton setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
     _cancelButton.frame = CGRectMake(CGRectGetWidth(_meterBackground.frame)/2 - 25, CGRectGetHeight(_meterBackground.frame)/2 - 25, 50, 50);
-    [_cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [_cancelButton addTarget:self action:@selector(cancelAlarm) forControlEvents:UIControlEventTouchUpInside];
     _cancelButton.hidden = YES;
     [_meterBackground addSubview:_cancelButton];
     
@@ -672,36 +672,41 @@
         _cancelButton.hidden = NO;
     }
     
+    BOOL isAllowPlayAlarm;
     if ([NSUserDefaultsHelper isSilentMode]) {
-        //为了防止不停的catch，设置了K_Second_SilentMode内不允许重新catch
-        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForSilentMode];
-        if (executionTime2 > K_Second_SilentMode) {
-            _startForSilentMode = [NSDate date];
-            [self catchAndSaveSound_With_StartLoggingAgain];
-            
-        }
+        isAllowPlayAlarm = NO;
+    } else {
+        isAllowPlayAlarm = YES;
+    }
+    
+    if ([NSUserDefaultsHelper isContinuousMode]) {
         
-    } else if ([NSUserDefaultsHelper isContinuousMode]) {
-        
-        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForSilentMode];
+        NSTimeInterval executionTime2 =[[NSDate date] timeIntervalSinceDate:_startForContinuousMode];
         if (executionTime2 > K_Second_SilentMode) {
-            _startForSilentMode = [NSDate date];
+            _startForContinuousMode = [NSDate date];
             
             [self catchAndSaveSound_Without_StartLoggingAgain];//1.抓取音频，并存盘。这时没有loging,所以不用担心triggerAlarmConditionally会被不断执行
             
-            //2.播放alarm
-            __weak __typeof(&*self)weakSelf = self;
-            [[NMDecibelLogger defaultLogger] playAlarm:^(BOOL successFinish) {
-                [weakSelf cancel];
+            if (isAllowPlayAlarm == NO) {
                 [[NMDecibelLogger defaultLogger] startLogging];
-            }];
+            } else {
+                //2.播放alarm
+                __weak __typeof(&*self)weakSelf = self;
+                [[NMDecibelLogger defaultLogger] playAlarm:^(BOOL successFinish) {
+                    [weakSelf cancelAlarm];
+                    [[NMDecibelLogger defaultLogger] startLogging];
+                }];
+            }
             
         }
         
         
     } else {
-        [[NMDecibelLogger defaultLogger] playAlarm:nil];
+        if (isAllowPlayAlarm) {
+          [[NMDecibelLogger defaultLogger] playAlarm:nil];
+        }
     }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
