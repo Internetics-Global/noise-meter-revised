@@ -68,7 +68,6 @@
     _tabBarController.view.frame=self.view.bounds;
     [self.view addSubview:_tabBarController.view];
     [_tabBarController didMoveToParentViewController:self];
-
     
 }
 
@@ -81,6 +80,8 @@
     self.frostedViewController.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentMenuViewController:) name:K_Notification_Show_Left_Setting_View object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActiveNotification:) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -102,12 +103,6 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
-}
-
-
-- (void)dealloc {
-    _tabBarController = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -172,5 +167,21 @@
     }
     
 }
+
+#pragma mark – UIApplicationWillResignActiveNotification
+- (void) willResignActiveNotification:(NSNotification *) notification {
+    if ((_tabBarController.selectedIndex != 0) && [NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
+        [_tabBarController setSelectedIndex:0];
+    }
+    
+}
+
+
+
+- (void)dealloc {
+    _tabBarController = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 @end
