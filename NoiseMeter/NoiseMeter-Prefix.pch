@@ -57,6 +57,6 @@
 #define K_Notification_Show_Left_Setting_View             @"K_Notification_Show_Left_Setting_View"
 #define K_Notification_Alarm_Finished                     @"K_Notification_Alarm_Finished"
 #define K_Notification_Purchase_Finished                  @"K_Notification_Purchase_Finished"
-#define K_Notification_Update_Meter_Play_Status           @"K_Notification_Update_Meter_Play_Status"
+#define K_Notification_Update_Meter_Display_Status        @"K_Notification_Update_Meter_Display_Status"
 #define K_Notification_Log_Pause_Switch_Setting           @"K_Notification_Log_Pause_Switch_Setting"
 #define K_Notification_Record_Fail                        @"K_Notification_Record_Fail"

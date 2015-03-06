@@ -100,7 +100,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateMeterPlayStatusNotification:)
-                                                 name:K_Notification_Update_Meter_Play_Status
+                                                 name:K_Notification_Update_Meter_Display_Status
                                                object:nil];
     
     _startForDelayAlarmSound = [NSDate date];
@@ -835,7 +835,7 @@
 }
 
 /**
- *  K_Notification_Update_Meter_Play_Status
+ *  K_Notification_Update_Meter_Display_Status
  */
 - (void) updateMeterPlayStatusNotification :(NSNotification *) notification {
     NSDictionary *dict = [notification userInfo];

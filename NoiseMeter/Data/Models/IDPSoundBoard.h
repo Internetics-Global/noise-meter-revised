@@ -29,9 +29,7 @@ typedef NS_ENUM(NSInteger, EnumSoundType)
 
 typedef void(^PlayFinishBlock)(BOOL finishSuccess);
 
-@interface IDPSoundBoard : NSObject <AVAudioPlayerDelegate> {
-    NSTimer *_backgroundRunningTimer;
-}
+@interface IDPSoundBoard : NSObject <AVAudioPlayerDelegate>
 
 + (IDPSoundBoard *)sharedInstance;
 
@@ -68,7 +66,7 @@ typedef void(^PlayFinishBlock)(BOOL finishSuccess);
 /**
  *  Seconds that the audio file could play
  */
-+ (int) lengthOfAudioFile:(NSURL *) url;
++ (int) durationOfAudioFile:(NSURL *) url;
 
 #pragma mark – save last 10 second recorded 
 

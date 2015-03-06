@@ -9,7 +9,6 @@
 #import "IDPSoundBoard.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "NMDecibelLogger.h"
-
 #import <objc/runtime.h>
 
 #define MCSOUNDBOARD_AUDIO_FADE_STEPS   30
@@ -24,8 +23,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
      *  No logging is allowed during playback, it's necessary to resume logging after we stop logging during playback
      */
     BOOL                 _isNeedToResumeLogging;
-    
-    PlayFinishBlock   _playFinishBlock;
+    PlayFinishBlock      _playFinishBlock;
 }
 
 #pragma mark – Life Cycle
@@ -157,7 +155,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
     _playFinishBlock = doneblock;
     [player play];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@YES}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Display_Status object:self userInfo:@{@"isPlaying":@YES}];
 }
 
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
@@ -219,26 +217,6 @@ static const void *SoundTypeKey = &SoundTypeKey;
 }
 
 
-- (void)fadeOutAndPause:(NSTimer *)timer
-{
-    AVAudioPlayer *player = timer.userInfo;
-    float volume = player.volume;
-    volume = volume - 1.0 / MCSOUNDBOARD_AUDIO_FADE_STEPS;
-    volume = volume < 0.0 ? 0.0 : volume;
-    player.volume = volume;
-    
-    if (volume == 0.0) {
-        [timer invalidate];
-        [player stop];
-    }
-    
-    if (_isNeedToResumeLogging) {
-        [[NMDecibelLogger defaultLogger] stopLogging];
-    }
-}
-
-
-
 - (AVAudioPlayer *)audioPlayerForKey:(id)key
 {
     return [_audio objectForKey:key];
@@ -282,7 +260,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
     }
 }
 
-+ (int) lengthOfAudioFile:(NSURL *) url {
++ (int) durationOfAudioFile:(NSURL *) url {
     AudioFileID audioFileID;
     AudioFileOpenURL((__bridge CFURLRef)url, kAudioFileReadPermission, 0, &audioFileID);
     NSTimeInterval seconds;
@@ -317,7 +295,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
         [[NMDecibelLogger defaultLogger] startLogging];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@NO}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Display_Status object:self userInfo:@{@"isPlaying":@NO}];
     
 }
 
@@ -332,18 +310,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
         _playFinishBlock(NO);
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Play_Status object:self userInfo:@{@"isPlaying":@NO}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:K_Notification_Update_Meter_Display_Status object:self userInfo:@{@"isPlaying":@NO}];
     
 }
 
-
-
-
-#pragma mark – Memory management
-- (void)dealloc {
-    NSLog(@"%s",__FUNCTION__);
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 #pragma mark – save last 10 second recorded
 
@@ -476,8 +446,6 @@ static void checkError(OSStatus err,const char *message){
 
 - (void) stopBackgroundSoundRunning {
     NSLog(@"%s",__FUNCTION__);
-    [_backgroundRunningTimer invalidate];
-    _backgroundRunningTimer = nil; //确保被nil
     [self removeAudioForKey:Key_PlayerBackground]; //if not stop, will stop automatically
     
 }
@@ -488,5 +456,10 @@ static void checkError(OSStatus err,const char *message){
 
 
 
+#pragma mark – Memory management
+- (void)dealloc {
+    NSLog(@"%s",__FUNCTION__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end
