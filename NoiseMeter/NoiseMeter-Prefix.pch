@@ -20,8 +20,8 @@
 #import "AppDelegate.h"
 
 
-#define IAPProductID_Pro   @"3141591001"
-#define IAPProductID_Pro_Classroom   @"3141591002"
+#define IAPProductID_Pro   @"com.internetics.noisedown.upgrade"
+#define IAPProductID_Pro_Classroom   @"com.internetics.noisedown.upgrade"
 
 #define kGrayColor     [UIColor colorWithRed:57.0/255 green:57.0/255 blue:57.0/255 alpha:1]
 #define kMeterOverlapColor   [UIColor colorWithRed:85.0/255 green:85.0/255 blue:85.0/255 alpha:0.9]

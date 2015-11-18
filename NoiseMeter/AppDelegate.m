@@ -159,7 +159,7 @@
     [Appirater setUsesUntilPrompt:1];
     [Appirater setSignificantEventsUntilPrompt:-1];
     [Appirater setTimeBeforeReminding:2];
-    [Appirater setDebug:NO];
+    [Appirater setDebug:FALSE];
 }
 
 
