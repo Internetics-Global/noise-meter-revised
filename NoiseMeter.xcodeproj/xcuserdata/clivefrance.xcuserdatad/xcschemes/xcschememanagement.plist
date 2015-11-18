@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NoiseMeter PRO.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>NoiseMeter.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>110F12F414EDD52E00BE4481</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88DD57771AA7E1C800196F98</key>
 		<dict>
 			<key>primary</key>
 			<true/>
