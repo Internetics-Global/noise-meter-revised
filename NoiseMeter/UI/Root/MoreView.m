@@ -70,6 +70,7 @@
         frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame));
     } else {
         frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - CGRectGetHeight(self.generalADButton.frame) - 44);
+        
     }
     _optionTable = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
@@ -265,9 +266,14 @@
     
     if(indexPath.row == 1)
     {
-        SelectAlertView *about = [[SelectAlertView alloc] init];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:about];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navController animated:YES completion:nil];
+        double delayInSeconds = 0.45;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            SelectAlertView *about = [[SelectAlertView alloc] init];
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:about];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:navController animated:YES completion:nil];
+        });
+        
     } else if(indexPath.row == 2)
     {
         if ([NSUserDefaultsHelper isProVersion] == FALSE) {
@@ -281,26 +287,42 @@
             
             
         } else {
-            SelectMeterView *about = [[SelectMeterView alloc] init];
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
+            double delayInSeconds = 0.45;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                SelectMeterView *about = [[SelectMeterView alloc] init];
+                [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:about animated:YES completion:nil];
+            });
         }
         
     }
     else if(indexPath.row == 9)
     {
-        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/tips.html"];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        double delayInSeconds = 0.45;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/tips.html"];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        });
 
     }
     else if (indexPath.row == 10)
     {
-        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/about.html"];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        double delayInSeconds = 0.45;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.noisedown.com/about.html"];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        });
     }
     else if(indexPath.row == 11)
     {
-        InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        double delayInSeconds = 0.45;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            InternalWebView *web = [[InternalWebView alloc] initWithDestination:@"http://www.internetics.net.au"];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
+        });
     }
     
     else if ((indexPath.row == 12) || (indexPath.row ==13))
@@ -325,7 +347,7 @@
                 [_mailer setMessageBody:[NSString stringWithFormat:@"Please enter your support request here:<br><br><br><br>%@", [self supportText]] isHTML:YES];
             }
             
-            double delayInSeconds = 0.4;
+            double delayInSeconds = 0.45;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:_mailer animated:YES completion:nil];
