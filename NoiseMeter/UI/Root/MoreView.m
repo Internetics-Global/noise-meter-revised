@@ -69,7 +69,7 @@
     if ([NSUserDefaultsHelper isProVersion]) {
         frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame));
     } else {
-        frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - CGRectGetHeight(self.generalADButton.frame));
+        frame = CGRectMake(0, CGRectGetMaxY(topImageView.frame), self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - CGRectGetMaxY(topImageView.frame) - CGRectGetHeight(self.generalADButton.frame) - 44);
     }
     _optionTable = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
