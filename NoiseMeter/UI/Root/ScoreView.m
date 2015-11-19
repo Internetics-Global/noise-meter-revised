@@ -230,7 +230,7 @@
 
 - (void) share {
     
-    if ([NSUserDefaultsHelper isProVersion]) {
+    if (true) {
         _fullScrenshotImage = [ShareHelper fullScreenshot];
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
                                 @"Share on Facebook",

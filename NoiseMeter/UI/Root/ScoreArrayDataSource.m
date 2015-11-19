@@ -11,7 +11,8 @@
 #import <MessageUI/MessageUI.h>
 #import "FileHelper.h"
 #import "UIAlertView+Blocks.h"
-#import "IDPSoundBoard.H"
+#import "IDPSoundBoard.h"
+#import "PurchaseViewController.h"
 
 @interface ScoreArrayDataSource () <SWTableViewCellDelegate,MFMailComposeViewControllerDelegate> {
     NSArray           *_scores;
@@ -104,8 +105,12 @@
     
     if ([NSUserDefaultsHelper isProVersion] == false) {
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alertView show];
+        [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView];
+            }
+            
+        }];
         return;
     }
     
@@ -130,6 +135,16 @@
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Please configure your email in Settings" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
     
+}
+
+
+- (void) showPurchaseView {
+    double delayInSeconds = 0.45;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        PurchaseViewController *purchaseViewController = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:purchaseViewController animated:YES completion:nil];
+    });
 }
 
 - (NSURL *) selecedRecordedFile:(long) tableCellIndex {
@@ -170,8 +185,12 @@
         
             if ([NSUserDefaultsHelper isProVersion] == false) {
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alertView show];
+                [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    if (buttonIndex == 1) {
+                        [self showPurchaseView];
+                    }
+                    
+                }];
             } else {
                 UIAlertView *alertView = [UIAlertView showWithTitle:@"Please enter a new name below"
                                                             message:@""
