@@ -25,7 +25,7 @@
         
         BOOL val = [[NSUserDefaults standardUserDefaults] boolForKey:K_Reminder_Free_Flag];
         if (val == FALSE) {
-            [UIAlertView showWithTitle:@"Thank you for using NoiseDown" message:@"Have you seen the great new features in our PRO versions?\nIf you haven't already upgraded, visit SETTINGS > UPGRADE to see what's on offer including background running, continuous mode, silent mode, email found files and much more." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Thank you for using NoiseDown" message:@"Have you seen the great new features in our PRO version?\n\nIf you haven't already upgraded, go to the Settings screen or click the banner below to check it out. \n\nBackground running... continuous mode... silent mode... email sound files and so much more." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:K_Reminder_Free_Flag];
             }];
         }
