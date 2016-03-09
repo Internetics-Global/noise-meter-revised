@@ -80,6 +80,16 @@
 		880E85A01A9D827700EB3926 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 880E859F1A9D827700EB3926 /* settings_title@2x.png */; };
 		881032AE18A361FE000CA722 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 881032AD18A361FE000CA722 /* BaseViewController.m */; };
 		88131CDA18AB224000D2541A /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88131CD818AB223F00D2541A /* overlay@2x.png */; };
+		8822FE3E1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3A1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 */; };
+		8822FE3F1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3A1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 */; };
+		8822FE401C9002D6004FD2AA /* bg_loop_birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3B1C9002D6004FD2AA /* bg_loop_birds.mp3 */; };
+		8822FE411C9002D6004FD2AA /* bg_loop_birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3B1C9002D6004FD2AA /* bg_loop_birds.mp3 */; };
+		8822FE421C9002D6004FD2AA /* bg_loop_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3C1C9002D6004FD2AA /* bg_loop_nature.mp3 */; };
+		8822FE431C9002D6004FD2AA /* bg_loop_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3C1C9002D6004FD2AA /* bg_loop_nature.mp3 */; };
+		8822FE441C9002D6004FD2AA /* bg_loop_piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3D1C9002D6004FD2AA /* bg_loop_piano.mp3 */; };
+		8822FE451C9002D6004FD2AA /* bg_loop_piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8822FE3D1C9002D6004FD2AA /* bg_loop_piano.mp3 */; };
+		8822FE481C90030D004FD2AA /* BackgroundMusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8822FE471C90030D004FD2AA /* BackgroundMusicView.m */; };
+		8822FE491C90030D004FD2AA /* BackgroundMusicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8822FE471C90030D004FD2AA /* BackgroundMusicView.m */; };
 		883069B218B4CC460067750A /* home_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069AF18B4CC460067750A /* home_alarm.caf */; };
 		883069B318B4CC460067750A /* scifialarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B018B4CC460067750A /* scifialarm.caf */; };
 		883069B418B4CC460067750A /* siren_wail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 883069B118B4CC460067750A /* siren_wail.caf */; };
@@ -499,6 +509,12 @@
 		881032AC18A361FE000CA722 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = UI/Root/BaseViewController.h; sourceTree = "<group>"; };
 		881032AD18A361FE000CA722 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = UI/Root/BaseViewController.m; sourceTree = "<group>"; };
 		88131CD818AB223F00D2541A /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
+		8822FE3A1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bg_loop_birds_at_sea.mp3; path = NoiseMeter/bg_loop_birds_at_sea.mp3; sourceTree = SOURCE_ROOT; };
+		8822FE3B1C9002D6004FD2AA /* bg_loop_birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bg_loop_birds.mp3; path = NoiseMeter/bg_loop_birds.mp3; sourceTree = SOURCE_ROOT; };
+		8822FE3C1C9002D6004FD2AA /* bg_loop_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bg_loop_nature.mp3; path = NoiseMeter/bg_loop_nature.mp3; sourceTree = SOURCE_ROOT; };
+		8822FE3D1C9002D6004FD2AA /* bg_loop_piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bg_loop_piano.mp3; path = NoiseMeter/bg_loop_piano.mp3; sourceTree = SOURCE_ROOT; };
+		8822FE461C90030D004FD2AA /* BackgroundMusicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundMusicView.h; path = NoiseMeter/BackgroundMusicView.h; sourceTree = SOURCE_ROOT; };
+		8822FE471C90030D004FD2AA /* BackgroundMusicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundMusicView.m; path = NoiseMeter/BackgroundMusicView.m; sourceTree = SOURCE_ROOT; };
 		883069AF18B4CC460067750A /* home_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = home_alarm.caf; sourceTree = "<group>"; };
 		883069B018B4CC460067750A /* scifialarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = scifialarm.caf; sourceTree = "<group>"; };
 		883069B118B4CC460067750A /* siren_wail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = siren_wail.caf; sourceTree = "<group>"; };
@@ -864,6 +880,8 @@
 				11A3EE72150F3D2D00A6496B /* SoundLevelCapture.m */,
 				88A2FE9F18B6CD9D0046E07D /* IDPSoundBoard.h */,
 				88A2FEA018B6CD9D0046E07D /* IDPSoundBoard.m */,
+				8822FE461C90030D004FD2AA /* BackgroundMusicView.h */,
+				8822FE471C90030D004FD2AA /* BackgroundMusicView.m */,
 			);
 			name = Models;
 			path = Data/Models;
@@ -972,6 +990,10 @@
 		11FBD43615117B7D00FF47C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				8822FE3A1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 */,
+				8822FE3B1C9002D6004FD2AA /* bg_loop_birds.mp3 */,
+				8822FE3C1C9002D6004FD2AA /* bg_loop_nature.mp3 */,
+				8822FE3D1C9002D6004FD2AA /* bg_loop_piano.mp3 */,
 				889E53B218BAC2CC00721ADF /* loop.mp3 */,
 				883391091793CEA70051DE50 /* demo.mp3 */,
 				883069AF18B4CC460067750A /* home_alarm.caf */,
@@ -1398,6 +1420,7 @@
 				888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
+				8822FE421C9002D6004FD2AA /* bg_loop_nature.mp3 in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
 				8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */,
 				889E53B318BAC2CC00721ADF /* loop.mp3 in Resources */,
@@ -1421,6 +1444,7 @@
 				88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */,
 				880A003318AC9C5E00FB84F5 /* createCustomAlarmButton@2x.png in Resources */,
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
+				8822FE441C9002D6004FD2AA /* bg_loop_piano.mp3 in Resources */,
 				88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */,
 				8871690E1A8A0FF600FD5B75 /* playback.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
@@ -1478,8 +1502,10 @@
 				88BEFE5118A1FCB100399680 /* 3.png in Resources */,
 				883069B318B4CC460067750A /* scifialarm.caf in Resources */,
 				8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */,
+				8822FE3E1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 in Resources */,
 				9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */,
 				9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */,
+				8822FE401C9002D6004FD2AA /* bg_loop_birds.mp3 in Resources */,
 				88FA090518C2A8960061FA0F /* soundOnButton2@2x.png in Resources */,
 				8806B39B179658510085CBF0 /* remove_ad.png in Resources */,
 				88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */,
@@ -1491,6 +1517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88DD57D91AA7E1C800196F98 /* share@2x.png in Resources */,
+				8822FE3F1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 in Resources */,
 				88DD57DA1AA7E1C800196F98 /* 18.png in Resources */,
 				88DD57DB1AA7E1C800196F98 /* 8.png in Resources */,
 				88DD57DC1AA7E1C800196F98 /* demo.mp3 in Resources */,
@@ -1505,6 +1532,7 @@
 				88DD57E51AA7E1C800196F98 /* 9.png in Resources */,
 				88DD57E61AA7E1C800196F98 /* 11.png in Resources */,
 				88DD57E71AA7E1C800196F98 /* top_logo-pro-classroom@2x.png in Resources */,
+				8822FE431C9002D6004FD2AA /* bg_loop_nature.mp3 in Resources */,
 				88DD57E81AA7E1C800196F98 /* 1.png in Resources */,
 				88DD57E91AA7E1C800196F98 /* commonButtonBackground@2x.png in Resources */,
 				88DD57EA1AA7E1C800196F98 /* icon_scores@2x.png in Resources */,
@@ -1537,6 +1565,7 @@
 				88DD58051AA7E1C800196F98 /* button_cancel@2x.png in Resources */,
 				9A81D92B1BFDB1720057A804 /* appicon120x120.png in Resources */,
 				88DD58061AA7E1C800196F98 /* button_cancel.png in Resources */,
+				8822FE451C9002D6004FD2AA /* bg_loop_piano.mp3 in Resources */,
 				88DD58071AA7E1C800196F98 /* close-white@2x.png in Resources */,
 				88DD58081AA7E1C800196F98 /* bars_circle.png in Resources */,
 				88DD58091AA7E1C800196F98 /* bars_triangle.png in Resources */,
@@ -1577,6 +1606,7 @@
 				88DD582B1AA7E1C800196F98 /* button_back@2x.png in Resources */,
 				88DD582C1AA7E1C800196F98 /* button_close.png in Resources */,
 				88DD582D1AA7E1C800196F98 /* 16.png in Resources */,
+				8822FE411C9002D6004FD2AA /* bg_loop_birds.mp3 in Resources */,
 				88DD582E1AA7E1C800196F98 /* button_close@2x.png in Resources */,
 				88DD582F1AA7E1C800196F98 /* top_logo@2x.png in Resources */,
 				88DD58301AA7E1C800196F98 /* bars_square.png in Resources */,
@@ -1698,6 +1728,7 @@
 				886712A91A899F3B007101FD /* SWTableViewCell.m in Sources */,
 				8876327F1A8E2E71004D14FA /* UIImage+WebP.m in Sources */,
 				888503AE1A9FE33B0062A025 /* AMPopTip.m in Sources */,
+				8822FE481C90030D004FD2AA /* BackgroundMusicView.m in Sources */,
 				887632781A8E2E71004D14FA /* SDWebImageDownloader.m in Sources */,
 				11A3EE81150F456B00A6496B /* CaptureView.m in Sources */,
 				88BEFE6218A1FCE800399680 /* SoundLevelView.m in Sources */,
@@ -1788,6 +1819,7 @@
 				88DD57AE1AA7E1C800196F98 /* BCTabBarController.m in Sources */,
 				88DD57AF1AA7E1C800196F98 /* SDWebImagePrefetcher.m in Sources */,
 				88DD57B01AA7E1C800196F98 /* UIView+WebCacheOperation.m in Sources */,
+				8822FE491C90030D004FD2AA /* BackgroundMusicView.m in Sources */,
 				88DD57B11AA7E1C800196F98 /* InternalWebView.m in Sources */,
 				88DD57B21AA7E1C800196F98 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				88DD57B41AA7E1C800196F98 /* UIImage+GIF.m in Sources */,
@@ -1982,9 +2014,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29d2fe27-809a-48de-9aa1-31d2adde2094";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2007,9 +2040,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
-				PROVISIONING_PROFILE = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ee1f14d0-d7b9-45ec-a8b0-43fe9e8eede4";
+				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29d2fe27-809a-48de-9aa1-31d2adde2094";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
