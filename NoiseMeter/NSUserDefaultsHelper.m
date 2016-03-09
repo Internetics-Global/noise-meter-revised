@@ -141,6 +141,23 @@
     return type;
 }
 
+
++ (NSString *) backgroundMusicFileName {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *string = [userDefaults stringForKey:@"BACKGROUND_MUSIC_FILE_NAME"];
+    if (string == nil) {
+        string = @"bg_loop_birds.mp3";
+    }
+    return string;
+}
+
++ (void) setBackgroundMusicFileName:(NSString *) backgroundMusicFileName {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:backgroundMusicFileName forKey:@"BACKGROUND_MUSIC_FILE_NAME"];
+    [userDefaults synchronize];
+}
+
+
 + (void) setMeterDisplayType:(MeterDisplayType) type {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setInteger:type forKey:@"METER_DISPLAY_TYPE"];

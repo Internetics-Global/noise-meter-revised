@@ -13,6 +13,8 @@
 
 #define MCSOUNDBOARD_AUDIO_FADE_STEPS   30
 
+#define IPOD_MUSIC_IDENTIFIER @"ipod-library"
+
 static const void *SoundTypeKey = &SoundTypeKey;
 
 @implementation IDPSoundBoard {
@@ -84,7 +86,12 @@ static const void *SoundTypeKey = &SoundTypeKey;
 - (void)addAudioAtPath:(NSString *)filePath forKey:(id)key forType:(EnumSoundType) soundType
 {
     NSLog(@"%s",__FUNCTION__);
-    NSURL* fileURL = [NSURL fileURLWithPath:filePath];
+    NSURL* fileURL;
+    if (filePath!= nil && [filePath rangeOfString:IPOD_MUSIC_IDENTIFIER].location != NSNotFound) {
+        fileURL = [NSURL URLWithString:filePath];
+    } else {
+        fileURL = [NSURL fileURLWithPath:filePath];
+    }
     AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:NULL];
     player.delegate = self;
     objc_setAssociatedObject(player, SoundTypeKey, [NSNumber numberWithInt:soundType], OBJC_ASSOCIATION_ASSIGN);
@@ -112,18 +119,28 @@ static const void *SoundTypeKey = &SoundTypeKey;
 
 - (void)fadeIn:(NSTimer *)timer
 {
-    AVAudioPlayer *player = timer.userInfo;
+    NSDictionary *dict = timer.userInfo;
+    
+    AVAudioPlayer *player = [dict objectForKey:@"player"];
+    float targetVolume = [[dict objectForKey:@"volume"] floatValue];
+    
     float volume = player.volume;
     volume = volume + 1.0 / MCSOUNDBOARD_AUDIO_FADE_STEPS;
-    volume = volume > 1.0 ? 1.0 : volume;
+    volume = volume > targetVolume ? targetVolume : volume;
     player.volume = volume;
     
-    if (volume == 1.0) {
+    if (volume == targetVolume) {
         [timer invalidate];
     }
 }
 
 - (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock
+{
+    
+    [self playAudioForKey:key fadeInInterval:fadeInInterval withFinishBlock:doneblock withVolume:1];
+}
+
+- (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock withVolume:(float) volume
 {
     
     if (Key_PlayerBackground != key) {
@@ -148,7 +165,7 @@ static const void *SoundTypeKey = &SoundTypeKey;
         [NSTimer scheduledTimerWithTimeInterval:interval
                                          target:self
                                        selector:@selector(fadeIn:)
-                                       userInfo:player
+                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:player,@"player",[NSNumber numberWithFloat:volume],@"volume", nil]
                                         repeats:YES];
     }
     
@@ -160,7 +177,12 @@ static const void *SoundTypeKey = &SoundTypeKey;
 
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval
 {
-    [[self sharedInstance] playAudioForKey:key fadeInInterval:fadeInInterval withFinishBlock:nil];
+    [self playAudioForKey:key fadeInInterval:fadeInInterval withVolume:1];
+}
+
++ (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withVolume:(float) volume
+{
+    [[self sharedInstance] playAudioForKey:key fadeInInterval:fadeInInterval withFinishBlock:nil withVolume:volume];
 }
 
 + (void)playAudioForKey:(id)key fadeInInterval:(NSTimeInterval)fadeInInterval withFinishBlock:(PlayFinishBlock)doneblock
@@ -421,8 +443,12 @@ static void checkError(OSStatus err,const char *message){
     
     AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
     if (player == nil) {
-        //choose demo.mpe (mute) or loop.mpe (non-mute)
-        [IDPSoundBoard addAudioAtPath:[[NSBundle mainBundle] pathForResource:@"demo.mp3" ofType:nil] forKey:Key_PlayerBackground forType:EnumSoundType_Background];
+        NSString *backgroundMusicFileName = [NSUserDefaultsHelper backgroundMusicFileName];
+        if (backgroundMusicFileName!= nil && [backgroundMusicFileName rangeOfString:IPOD_MUSIC_IDENTIFIER].location != NSNotFound) {
+            [IDPSoundBoard addAudioAtPath:backgroundMusicFileName forKey:Key_PlayerBackground forType:EnumSoundType_Background];
+        } else {
+            [IDPSoundBoard addAudioAtPath:[[NSBundle mainBundle] pathForResource:backgroundMusicFileName ofType:nil] forKey:Key_PlayerBackground forType:EnumSoundType_Background];
+        }
         player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
         player.numberOfLoops = -1;  // Endless
         
@@ -431,7 +457,7 @@ static void checkError(OSStatus err,const char *message){
     if ([player isPlaying]) {
         NSLog(@"%s:Already background running",__FUNCTION__);
     } else {
-        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0];
+        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0 withVolume:0.02];
         NSLog(@"%s:Begin background running",__FUNCTION__);
     }
     

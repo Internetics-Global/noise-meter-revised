@@ -89,6 +89,7 @@
  */
 - (void)playAlarm:(PlayAlarmFinished)finishBlock
 {
+    
     if (!_playingAlarm) 
     {
         _playingAlarm = YES;

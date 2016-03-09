@@ -57,5 +57,8 @@ typedef NS_ENUM(NSInteger, MeterDisplayType) {
  */
 + (void) setLastNoisePeak:(float) val;
 
++ (NSString *) backgroundMusicFileName;
++ (void) setBackgroundMusicFileName:(NSString *) backgroundMusicFileName;
+
 
 @end
