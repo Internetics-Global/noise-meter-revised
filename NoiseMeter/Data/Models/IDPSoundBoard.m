@@ -457,7 +457,7 @@ static void checkError(OSStatus err,const char *message){
     if ([player isPlaying]) {
         NSLog(@"%s:Already background running",__FUNCTION__);
     } else {
-        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0 withVolume:0.02];
+        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0 withVolume:0.2];
         NSLog(@"%s:Begin background running",__FUNCTION__);
     }
     
