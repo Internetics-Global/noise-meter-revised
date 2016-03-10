@@ -153,7 +153,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        [IDPSoundBoard runBackgroundSound];
+        [IDPSoundBoard restartBackgroundSound];
     });
 
     

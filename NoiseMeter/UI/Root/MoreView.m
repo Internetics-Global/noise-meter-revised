@@ -147,7 +147,7 @@
         } else if (indexPath.row == 4) {
             [switchView addTarget:self action:@selector(backgroundMusicSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
-            [cell.textLabel setText:@"Backround music/noise"];
+            [cell.textLabel setText:@"Backround Music/Noise"];
             if ([NSUserDefaultsHelper isBackgroundMusicOn] == YES) {
                 [switchView setOn:YES];
                 
@@ -220,7 +220,7 @@
             cell.textLabel.text = @"Meter Display Shape";
         }else if (indexPath.row == 3)
         {
-            cell.textLabel.text = @"Background music selection";
+            cell.textLabel.text = @"Background Music Selection";
         }
         else if (indexPath.row == 11)
         {
@@ -438,13 +438,17 @@
     if ([myswitch isOn]) {
         [NSUserDefaultsHelper setBackgroundMusicOn:YES];
         
-        [IDPSoundBoard runBackgroundSound];
+        [IDPSoundBoard restartBackgroundSound];
         
         
     } else {
         [NSUserDefaultsHelper setBackgroundMusicOn:FALSE];
         
-        [IDPSoundBoard stopBackgroundSoundRunning];
+        if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
+            [IDPSoundBoard restartBackgroundSound];
+        } else {
+            [IDPSoundBoard stopBackgroundSoundRunning];
+        }
         
     }
     

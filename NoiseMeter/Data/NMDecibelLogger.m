@@ -232,7 +232,7 @@
 
 /**
  *  当在前台时，通过timerFire，对_currentReading进行更新，从而实现KVO
- *  在后台时，通过runBackgroundSound实现Mute音乐的背景loop播放，从而保持代码一直处于活跃状态，_currentReading的更新也是通过timerFire
+ *  在后台时，通过restartBackgroundSound实现Mute音乐的背景loop播放，从而保持代码一直处于活跃状态，_currentReading的更新也是通过timerFire
  */
 - (void)timerFire
 {

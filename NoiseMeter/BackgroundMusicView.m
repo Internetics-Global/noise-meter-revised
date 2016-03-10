@@ -198,7 +198,7 @@
         [NSUserDefaultsHelper setBackgroundMusicFileName:_soundFileName[indexPath.row]];
         
         if ([NSUserDefaultsHelper isBackgroundMusicOn]) {
-            [IDPSoundBoard runBackgroundSound];
+            [IDPSoundBoard restartBackgroundSound];
         }
         
         [self dismissViewControllerAnimated:YES completion:nil];

@@ -435,9 +435,9 @@ static void checkError(OSStatus err,const char *message){
 /**
  *  使用场合：仅在后台时被激活（前台不被激活）
  *  1. 当在前台时，通过timerFire，对_currentReading进行更新，从而实现KVO
- *  2. 在后台时，如果没有音乐播放，则timerFire无法执行。通过runBackgroundSound实现Mute音乐的背景loop播放，从而保持代码一直处于活跃状态，_currentReading的更新也是通过timerFire
+ *  2. 在后台时，如果没有音乐播放，则timerFire无法执行。通过restartBackgroundSound实现Mute音乐的背景loop播放，从而保持代码一直处于活跃状态，_currentReading的更新也是通过timerFire
  */
-- (void) runBackgroundSound {
+- (void) restartBackgroundSound {
     
     [self removeAudioForKey:Key_PlayerBackground];
     
@@ -484,8 +484,8 @@ static void checkError(OSStatus err,const char *message){
     
 }
 
-+ (void) runBackgroundSound {
-    [[self sharedInstance] runBackgroundSound];
++ (void) restartBackgroundSound {
+    [[self sharedInstance] restartBackgroundSound];
 }
 
 

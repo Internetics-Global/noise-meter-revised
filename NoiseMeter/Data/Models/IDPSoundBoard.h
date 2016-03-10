@@ -79,7 +79,7 @@ typedef void(^PlayFinishBlock)(BOOL finishSuccess);
  *  Keep running in background to keep alive during background running
  *  该方法内部保证background的音频播放只有一个，即即便多次运行这个方法，也只能实现一个background播放
  */
-+ (void) runBackgroundSound;
++ (void) restartBackgroundSound;
 
 /**
  *  1. stop the player
