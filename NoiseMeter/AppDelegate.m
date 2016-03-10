@@ -83,10 +83,10 @@
     }
     
     
-    if (TARGET_IPHONE_SIMULATOR) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert You are using simulator" message:@"Background running and IAP are not supported on simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
+//    if (TARGET_IPHONE_SIMULATOR) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert You are using simulator" message:@"Background running and IAP are not supported on simulator" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
     
     double delayInSeconds = 5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -127,11 +127,7 @@
     
     if ([NSUserDefaultsHelper isNotAllowBackgroundRunning]) {
       [[NMDecibelLogger defaultLogger] stopLogging];
-        [IDPSoundBoard stopBackgroundSoundRunning];
     } else {
-        if ([NSUserDefaultsHelper isProVersion]) {
-            [IDPSoundBoard runBackgroundSound];
-        }
     }
 	
 }
@@ -144,11 +140,23 @@
         [[NMDecibelLogger defaultLogger] startLogging];
     }
     
-    if ([NSUserDefaultsHelper isProVersion] && ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE)) {
-        [IDPSoundBoard stopBackgroundSoundRunning];
-    }
+//    if ([NSUserDefaultsHelper isProVersion] && ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE)) {
+//        [IDPSoundBoard stopBackgroundSoundRunning];
+//    }
     
     [Appirater appEnteredForeground:YES];
+}
+
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        [IDPSoundBoard runBackgroundSound];
+    });
+
+    
 }
 
 

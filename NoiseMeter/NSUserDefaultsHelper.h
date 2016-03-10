@@ -61,4 +61,13 @@ typedef NS_ENUM(NSInteger, MeterDisplayType) {
 + (void) setBackgroundMusicFileName:(NSString *) backgroundMusicFileName;
 
 
++ (BOOL) isBackgroundMusicOn;
++ (void) setBackgroundMusicOn:(BOOL) flag;
+
+
++ (float) getBackgroundMusicVolume;
++ (void) setBackgroundMusicVolume:(float) volum;
++ (NSString *) muteBackgroundMusicFileName;
+
+
 @end

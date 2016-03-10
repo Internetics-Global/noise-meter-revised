@@ -13,7 +13,7 @@
 
 + (BOOL) isProVersion {
     
-    //return YES; //only for debug
+//    return YES; //only for debug
     
 #ifdef TARGET_PRO_VERSION
     return YES;
@@ -151,6 +151,11 @@
     return string;
 }
 
+
++ (NSString *) muteBackgroundMusicFileName {
+    return @"demo.mp3";
+}
+
 + (void) setBackgroundMusicFileName:(NSString *) backgroundMusicFileName {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:backgroundMusicFileName forKey:@"BACKGROUND_MUSIC_FILE_NAME"];
@@ -178,6 +183,48 @@
 }
 
 
+
++ (BOOL) isBackgroundMusicOn {
+    BOOL flag = YES;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults objectForKey:@"BACKGROUND_MUSIC_ON"]) {
+        flag = [userDefaults boolForKey:@"BACKGROUND_MUSIC_ON"];
+    }
+    else {
+        flag = YES;
+    }
+    return flag;
+}
+
++ (void) setBackgroundMusicOn:(BOOL) flag {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:flag forKey:@"BACKGROUND_MUSIC_ON"];
+    [userDefaults synchronize];
+}
+
+
++ (float) getBackgroundMusicVolume{
+    float volume = 0;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([userDefaults floatForKey:@"BACKGROUND_MUSIC_VOLUME"]) {
+        volume = [userDefaults floatForKey:@"BACKGROUND_MUSIC_VOLUME"];
+    }
+    else {
+        volume = 0.2;
+    }
+    
+    return volume;
+    
+}
+
+
++ (void) setBackgroundMusicVolume:(float) volume {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:volume forKey:@"BACKGROUND_MUSIC_VOLUME"];
+    [userDefaults synchronize];
+
+}
 
 
 @end

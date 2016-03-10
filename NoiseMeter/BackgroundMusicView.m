@@ -8,12 +8,16 @@
 
 #import "BackgroundMusicView.h"
 #import <Parse/PFAnalytics.h>
+#import "IDPSoundBoard.h"
 
 
 @implementation BackgroundMusicView {
     
     NSArray *_soundName; //the name shown on list
     NSArray *_soundFileName;//the file name
+    
+    UILabel *_volumeSlideDeslabel;
+    UISlider *_volumeSlider;
 }
 
 
@@ -31,24 +35,67 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _soundName = [NSArray arrayWithObjects:@"Mute",@"Birds",@"Birds at sea",@"Nature",@"Piano",nil];
-    _soundFileName = [NSArray arrayWithObjects:@"demo.mp3",@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",nil];
+    _soundName = [NSArray arrayWithObjects:@"Birds",@"Birds at sea",@"Nature",@"Piano",nil];
+    _soundFileName = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",nil];
     
-    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, CGRectGetMaxY(self.view.frame) - KTopLogoHeight) style:UITableViewStyleGrouped];
+    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 260) style:UITableViewStyleGrouped];
     _alertTable.delegate = self;
     _alertTable.dataSource = self;
     _alertTable.opaque = NO;
+    _alertTable.scrollEnabled = FALSE;
     _alertTable.backgroundView = nil;
     _alertTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     _alertTable.separatorColor = [UIColor colorWithRed:97.0/255 green:97.0/255 blue:97.0/255 alpha:1];
     _alertTable.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
-    
     [self.view addSubview:_alertTable];
+    
+    
+    _volumeSlideDeslabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_alertTable.frame), 320-15*2, 15)];
+    _volumeSlideDeslabel.textAlignment = NSTextAlignmentLeft;
+    _volumeSlideDeslabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",[NSUserDefaultsHelper getBackgroundMusicVolume]];
+    _volumeSlideDeslabel.numberOfLines = 1;
+    _volumeSlideDeslabel.textColor = [UIColor whiteColor];
+    _volumeSlideDeslabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_volumeSlideDeslabel];
+    
+    _volumeSlider= [[UISlider alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlideDeslabel.frame) + 10, 320 - 15*2, 20)];
+    _volumeSlider.backgroundColor = [UIColor grayColor];
+    _volumeSlider.minimumValue = 0;
+    _volumeSlider.maximumValue = 1.0;
+    _volumeSlider.continuous = NO;
+    _volumeSlider.value = [NSUserDefaultsHelper getBackgroundMusicVolume];
+    _volumeSlider.tintColor = [UIColor greenColor];
+    [_volumeSlider addTarget:self action:@selector(volumeSliderChanged:) forControlEvents:UIControlEventValueChanged];
+    [_volumeSlider setBackgroundColor:[UIColor clearColor]];
+    [self.view addSubview: _volumeSlider];
+    
+    UILabel *volumeMinlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlider.frame), 20, 15)];
+    volumeMinlabel.textAlignment = NSTextAlignmentLeft;
+    volumeMinlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+    volumeMinlabel.text = @"0";
+    volumeMinlabel.numberOfLines = 1;
+    volumeMinlabel.textColor = [UIColor whiteColor];
+    volumeMinlabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:volumeMinlabel];
+    
+    UILabel *volumeMaxlabel = [[UILabel alloc] initWithFrame:CGRectMake(295, CGRectGetMaxY(_volumeSlider.frame), 20, 15)];
+    volumeMaxlabel.textAlignment = NSTextAlignmentLeft;
+    volumeMaxlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+    volumeMaxlabel.text = @"1";
+    volumeMaxlabel.numberOfLines = 1;
+    volumeMaxlabel.textColor = [UIColor whiteColor];
+    volumeMaxlabel.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:volumeMaxlabel];
+    
+    
+    
     
     if (SYSTEM_VERSION_LESS_THAN(@"5.0")) {
         [self viewWillAppear:YES];
     }
 
+    self.view.backgroundColor = [UIColor colorWithRed:102.0/255 green:102.0/255 blue:102.0/255 alpha:1];
     
 }
 
@@ -61,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (6);
+    return (5);
 }
 
 
@@ -110,14 +157,6 @@
     }
     else if (indexPath.row == 4)
     {
-        cell.textLabel.text = _soundName[4];
-        
-        if ([_soundFileName[4] isEqualToString:fileName]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    }
-    else if (indexPath.row == 5)
-    {
         cell.textLabel.text = @"Select from library";
     }
     
@@ -144,7 +183,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         
         MPMediaPickerController *picker =
         [[MPMediaPickerController alloc]
@@ -173,6 +212,18 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+
+- (void) volumeSliderChanged:(UISlider *) slider {
+    
+    float volume = slider.value;
+    [NSUserDefaultsHelper setBackgroundMusicVolume:volume];
+    
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",volume];
+    
+    [IDPSoundBoard updateBackgroundRunningVolume];
+    
 }
 
 

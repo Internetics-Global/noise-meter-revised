@@ -87,4 +87,9 @@ typedef void(^PlayFinishBlock)(BOOL finishSuccess);
  */
 + (void) stopBackgroundSoundRunning;
 
+/*
+ * volume is from getBackgroundMusicVolume
+*/
++ (void) updateBackgroundRunningVolume;
+
 @end

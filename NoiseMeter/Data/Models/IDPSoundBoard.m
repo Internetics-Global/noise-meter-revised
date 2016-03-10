@@ -439,11 +439,21 @@ static void checkError(OSStatus err,const char *message){
  */
 - (void) runBackgroundSound {
     
+    [self removeAudioForKey:Key_PlayerBackground];
+    
     //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
     AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
     if (player == nil) {
-        NSString *backgroundMusicFileName = [NSUserDefaultsHelper backgroundMusicFileName];
+        
+        NSString *backgroundMusicFileName;
+        
+        if ([NSUserDefaultsHelper isBackgroundMusicOn]) {
+            backgroundMusicFileName = [NSUserDefaultsHelper backgroundMusicFileName];
+        } else {
+            backgroundMusicFileName = [NSUserDefaultsHelper muteBackgroundMusicFileName];
+        }
+        
         if (backgroundMusicFileName!= nil && [backgroundMusicFileName rangeOfString:IPOD_MUSIC_IDENTIFIER].location != NSNotFound) {
             [IDPSoundBoard addAudioAtPath:backgroundMusicFileName forKey:Key_PlayerBackground forType:EnumSoundType_Background];
         } else {
@@ -457,11 +467,20 @@ static void checkError(OSStatus err,const char *message){
     if ([player isPlaying]) {
         NSLog(@"%s:Already background running",__FUNCTION__);
     } else {
-        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0 withVolume:0.2];
+        float volume = [NSUserDefaultsHelper getBackgroundMusicVolume];
+        [IDPSoundBoard playAudioForKey:Key_PlayerBackground fadeInInterval:2.0 withVolume:volume];
         NSLog(@"%s:Begin background running",__FUNCTION__);
     }
     
     //    });
+    
+}
+
++ (void) updateBackgroundRunningVolume {
+    
+    AVAudioPlayer *audioPlayer = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
+    float volume = [NSUserDefaultsHelper getBackgroundMusicVolume];
+    audioPlayer.volume = volume;
     
 }
 
