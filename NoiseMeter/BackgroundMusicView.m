@@ -61,7 +61,7 @@
     
     _volumeSlider= [[UISlider alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlideDeslabel.frame) + 10, 320 - 15*2, 20)];
     _volumeSlider.backgroundColor = [UIColor grayColor];
-    _volumeSlider.minimumValue = 0;
+    _volumeSlider.minimumValue = 0.01;
     _volumeSlider.maximumValue = 1.0;
     _volumeSlider.continuous = NO;
     _volumeSlider.value = [NSUserDefaultsHelper getBackgroundMusicVolume];
@@ -70,16 +70,16 @@
     [_volumeSlider setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview: _volumeSlider];
     
-    UILabel *volumeMinlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlider.frame), 20, 15)];
+    UILabel *volumeMinlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlider.frame) + 5, 25, 15)];
     volumeMinlabel.textAlignment = NSTextAlignmentLeft;
     volumeMinlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    volumeMinlabel.text = @"0";
+    volumeMinlabel.text = @"0.01";
     volumeMinlabel.numberOfLines = 1;
     volumeMinlabel.textColor = [UIColor whiteColor];
     volumeMinlabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:volumeMinlabel];
     
-    UILabel *volumeMaxlabel = [[UILabel alloc] initWithFrame:CGRectMake(295, CGRectGetMaxY(_volumeSlider.frame), 20, 15)];
+    UILabel *volumeMaxlabel = [[UILabel alloc] initWithFrame:CGRectMake(295, CGRectGetMaxY(_volumeSlider.frame) + 5, 20, 15)];
     volumeMaxlabel.textAlignment = NSTextAlignmentLeft;
     volumeMaxlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
     volumeMaxlabel.text = @"1";
@@ -197,7 +197,11 @@
     } else {
         [NSUserDefaultsHelper setBackgroundMusicFileName:_soundFileName[indexPath.row]];
         
-        [self dismissModalViewControllerAnimated:YES];
+        if ([NSUserDefaultsHelper isBackgroundMusicOn]) {
+            [IDPSoundBoard runBackgroundSound];
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
@@ -220,7 +224,7 @@
     float volume = slider.value;
     [NSUserDefaultsHelper setBackgroundMusicVolume:volume];
     
-    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",volume];
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.2f",volume];
     
     [IDPSoundBoard updateBackgroundRunningVolume];
     
