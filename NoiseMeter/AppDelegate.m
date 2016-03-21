@@ -150,7 +150,7 @@
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     
-    if ([NSUserDefaultsHelper isProVersion]) {
+    if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{

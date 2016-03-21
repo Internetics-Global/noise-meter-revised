@@ -441,11 +441,12 @@
         if ([myswitch isOn]) {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:NO];
             APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = NO;
+            [IDPSoundBoard restartBackgroundSound];
             
         } else {
             [NSUserDefaultsHelper setNotAllowBackgroundRunningFlag:YES];
             APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = YES;
-//            [IDPSoundBoard stopBackgroundSoundRunning];
+            [IDPSoundBoard stopBackgroundSoundRunning];
             
         }
     }
