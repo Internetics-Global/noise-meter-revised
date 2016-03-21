@@ -259,6 +259,12 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    if (url) {
+        if ([NSUserDefaultsHelper isBackgroundMusicOn]) {
+            [IDPSoundBoard restartBackgroundSound];
+        }
+    }
+    
 }
 - (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
     [self dismissViewControllerAnimated:YES completion:nil];
