@@ -148,7 +148,7 @@
             [switchView addTarget:self action:@selector(backgroundMusicSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Backround Music/Noise"];
-            if ([NSUserDefaultsHelper isBackgroundMusicOn] == YES) {
+            if ([NSUserDefaultsHelper isBackgroundMusicOn] == YES && [NSUserDefaultsHelper isProVersion]) {
                 [switchView setOn:YES];
                 
             } else {
@@ -434,6 +434,21 @@
 - (void) backgroundMusicSwitchClicked:(id) sender {
     
     UISwitch *myswitch = (UISwitch *)sender;
+    
+    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
+        
+        [myswitch setOn:NO];
+        
+        [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [self showPurchaseView];
+            }
+            
+        }];
+        
+        return;
+    }
+    
     
     if ([myswitch isOn]) {
         [NSUserDefaultsHelper setBackgroundMusicOn:YES];

@@ -150,11 +150,15 @@
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if ([NSUserDefaultsHelper isProVersion]) {
         
-        [IDPSoundBoard restartBackgroundSound];
-    });
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            
+            [IDPSoundBoard restartBackgroundSound];
+        });
+        
+    }
 
     
 }
