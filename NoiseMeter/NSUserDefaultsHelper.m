@@ -185,22 +185,7 @@
 
 
 + (BOOL) isBackgroundMusicOn {
-    BOOL flag = YES;
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    if ([userDefaults objectForKey:@"BACKGROUND_MUSIC_ON"]) {
-        flag = [userDefaults boolForKey:@"BACKGROUND_MUSIC_ON"];
-    }
-    else {
-        flag = YES;
-    }
-    return flag;
-}
-
-+ (void) setBackgroundMusicOn:(BOOL) flag {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:flag forKey:@"BACKGROUND_MUSIC_ON"];
-    [userDefaults synchronize];
+    return [NSUserDefaultsHelper isProVersion];
 }
 
 

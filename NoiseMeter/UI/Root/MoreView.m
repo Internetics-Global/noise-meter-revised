@@ -103,14 +103,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 16;
+    return 15;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     
-    if ((indexPath.row == 0) || (indexPath.row == 4) || (indexPath.row == 5) || (indexPath.row == 6) || (indexPath.row == 7)|| (indexPath.row == 8) || (indexPath.row == 9) || (indexPath.row == 10)) {
+    if ((indexPath.row == 0) || (indexPath.row == 4) || (indexPath.row == 5) || (indexPath.row == 6) || (indexPath.row == 7)|| (indexPath.row == 8) || (indexPath.row == 9)) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CellToggle"];
         UISwitch *switchView;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellToggle"];
@@ -118,7 +118,7 @@
 //        switchView.transform = CGAffineTransformMakeScale(0.75, 0.75);
         cell.accessoryView = switchView;
         
-        if (indexPath.row == 6) {
+        if (indexPath.row == 5) {
             
             [switchView addTarget:self action:@selector(speakerOutputSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
@@ -129,7 +129,7 @@
                 [switchView setOn:YES];
             }
             
-        } else if (indexPath.row == 5) {
+        } else if (indexPath.row == 4) {
             [switchView addTarget:self action:@selector(backgroundRunningSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Run App In The Background"];
@@ -144,16 +144,6 @@
             } else {
                 [switchView setOn:NO];
             }
-        } else if (indexPath.row == 4) {
-            [switchView addTarget:self action:@selector(backgroundMusicSwitchClicked:) forControlEvents:UIControlEventValueChanged];
-            
-            [cell.textLabel setText:@"Backround Music/Noise"];
-            if ([NSUserDefaultsHelper isBackgroundMusicOn] == YES && [NSUserDefaultsHelper isProVersion]) {
-                [switchView setOn:YES];
-                
-            } else {
-                [switchView setOn:NO];
-            }
         } else if (indexPath.row == 0) {
             [switchView addTarget:self action:@selector(pauseLoggingSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
@@ -164,7 +154,7 @@
                 [switchView setOn:YES];
                 
             }
-        } else if (indexPath.row == 7) {
+        } else if (indexPath.row == 6) {
             [switchView addTarget:self action:@selector(ignoreSuddenNoiseSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             
             [cell.textLabel setText:@"Ignore Sudden Noise"];
@@ -174,7 +164,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 8) {
+        } else if (indexPath.row == 7) {
             [switchView addTarget:self action:@selector(delayAlarmSoundSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Delay Before Sounding Alert"];
             if ([NSUserDefaultsHelper isDelayAlarmSound] == YES) {
@@ -183,7 +173,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 9) {
+        } else if (indexPath.row == 8) {
             [switchView addTarget:self action:@selector(continuousModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Continuous Mode"];
             if ([NSUserDefaultsHelper isContinuousMode] == YES) {
@@ -192,7 +182,7 @@
                 [switchView setOn:NO];
                 
             }
-        } else if (indexPath.row == 10) {
+        } else if (indexPath.row == 9) {
             [switchView addTarget:self action:@selector(silentModeSwitchClicked:) forControlEvents:UIControlEventValueChanged];
             [cell.textLabel setText:@"Silent Mode"];
             if ([NSUserDefaultsHelper isSilentMode] == YES) {
@@ -222,23 +212,23 @@
         {
             cell.textLabel.text = @"Background Music Selection";
         }
-        else if (indexPath.row == 11)
+        else if (indexPath.row == 10)
         {
             cell.textLabel.text = @"Instructions / Tips";
         }
-        else if (indexPath.row == 12)
+        else if (indexPath.row == 11)
         {
             cell.textLabel.text = @"About";
         }
-        else if (indexPath.row == 13)
+        else if (indexPath.row == 12)
         {
             cell.textLabel.text = @"Visit developer's website";
         }
-        else if (indexPath.row == 14)
+        else if (indexPath.row == 13)
         {
             cell.textLabel.text = @"Tell a Friend";
         }
-        else if (indexPath.row == 15)
+        else if (indexPath.row == 14)
         {
             cell.textLabel.text = @"Support";
         }
@@ -332,7 +322,7 @@
         }
         
     }
-    else if(indexPath.row == 11)
+    else if(indexPath.row == 10)
     {
         double delayInSeconds = 0.45;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -342,7 +332,7 @@
         });
 
     }
-    else if (indexPath.row == 12)
+    else if (indexPath.row == 11)
     {
         double delayInSeconds = 0.45;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -351,7 +341,7 @@
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:web animated:YES completion:nil];
         });
     }
-    else if(indexPath.row == 13)
+    else if(indexPath.row == 12)
     {
         double delayInSeconds = 0.45;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -361,7 +351,7 @@
         });
     }
     
-    else if ((indexPath.row == 14) || (indexPath.row ==15))
+    else if ((indexPath.row == 13) || (indexPath.row ==14))
     {
         if ([MFMailComposeViewController canSendMail])
         {
@@ -371,7 +361,7 @@
             }
             _mailer = [[MFMailComposeViewController alloc] init];
             _mailer.mailComposeDelegate = self;
-            if (indexPath.row == 14)
+            if (indexPath.row == 13)
             {
                 [_mailer setSubject:@"Keep the Noise Down"];
                 [_mailer setMessageBody:@"Hi,<br><br>I just found this fun app called Keep The Noise down. It measures the noise levels in your house, workplace or classroom and an alarm triggers if you go over the limit!<br><br>Check it out at <a href=\"http://www.noisedown.com/app\">http://www.noisedown.com/app</a>" isHTML:YES];
@@ -396,7 +386,7 @@
                 
             }];
         }
-    } else if (indexPath.row == 16) {
+    } else if (indexPath.row == 15) {
         
         [self showPurchaseView];
         
@@ -431,43 +421,6 @@
     
 }
 
-- (void) backgroundMusicSwitchClicked:(id) sender {
-    
-    UISwitch *myswitch = (UISwitch *)sender;
-    
-    if ([NSUserDefaultsHelper isProVersion] == FALSE) {
-        
-        [myswitch setOn:NO];
-        
-        [UIAlertView showWithTitle:@"This is a Noise Down PRO function" message:@"You can upgrade the app to get it!" style:UIAlertViewStyleDefault cancelButtonTitle:@"Not yet" otherButtonTitles:@[@"More details"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (buttonIndex == 1) {
-                [self showPurchaseView];
-            }
-            
-        }];
-        
-        return;
-    }
-    
-    
-    if ([myswitch isOn]) {
-        [NSUserDefaultsHelper setBackgroundMusicOn:YES];
-        
-        [IDPSoundBoard restartBackgroundSound];
-        
-        
-    } else {
-        [NSUserDefaultsHelper setBackgroundMusicOn:FALSE];
-        
-        if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
-            [IDPSoundBoard restartBackgroundSound];
-        } else {
-            [IDPSoundBoard stopBackgroundSoundRunning];
-        }
-        
-    }
-    
-}
 
 - (void) backgroundRunningSwitchClicked: (id) sender {
     
