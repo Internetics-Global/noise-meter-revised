@@ -73,7 +73,7 @@
     UILabel *volumeMinlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlider.frame) + 5, 25, 15)];
     volumeMinlabel.textAlignment = NSTextAlignmentLeft;
     volumeMinlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    volumeMinlabel.text = @"0.01";
+    volumeMinlabel.text = @"1";
     volumeMinlabel.numberOfLines = 1;
     volumeMinlabel.textColor = [UIColor whiteColor];
     volumeMinlabel.backgroundColor = [UIColor clearColor];
@@ -82,7 +82,7 @@
     UILabel *volumeMaxlabel = [[UILabel alloc] initWithFrame:CGRectMake(295, CGRectGetMaxY(_volumeSlider.frame) + 5, 20, 15)];
     volumeMaxlabel.textAlignment = NSTextAlignmentLeft;
     volumeMaxlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    volumeMaxlabel.text = @"1";
+    volumeMaxlabel.text = @"10";
     volumeMaxlabel.numberOfLines = 1;
     volumeMaxlabel.textColor = [UIColor whiteColor];
     volumeMaxlabel.backgroundColor = [UIColor clearColor];
