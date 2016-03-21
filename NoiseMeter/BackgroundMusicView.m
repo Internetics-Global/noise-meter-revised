@@ -127,48 +127,16 @@
     
     NSString *fileName = [NSUserDefaultsHelper backgroundMusicFileName];
     
-    if (indexPath.row == 0)
+    if (indexPath.row >= 0 && indexPath.row <= 4)
     {
-        cell.textLabel.text = _soundName[0];
+        cell.textLabel.text = _soundName[indexPath.row];
         
-        if ([_soundFileName[0] isEqualToString:fileName]) {
+        if ([_soundFileName[indexPath.row] isEqualToString:fileName]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellStyleDefault;
         }
-    }
-    
-    else if (indexPath.row == 1)
-    {
-        cell.textLabel.text = _soundName[1];
-        
-        if ([_soundFileName[1] isEqualToString:fileName]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    }
-    else if (indexPath.row == 2)
-    {
-        cell.textLabel.text = _soundName[2];
-        
-        if ([_soundFileName[2] isEqualToString:fileName]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    }
-    else if (indexPath.row == 3)
-    {
-        cell.textLabel.text = _soundName[3];
-        
-        if ([_soundFileName[3] isEqualToString:fileName]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    }
-    else if (indexPath.row == 4)
-    {
-        cell.textLabel.text = _soundName[4];
-        
-        if ([_soundFileName[4] isEqualToString:fileName]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    }
-    else if (indexPath.row == 5)
+    } else if (indexPath.row == 5)
     {
         cell.textLabel.text = @"Select from library";
     }
@@ -255,14 +223,17 @@
     
     MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
     NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];
-    [NSUserDefaultsHelper setBackgroundMusicFileName:[url absoluteString]];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
     if (url) {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:[url absoluteString]];
         if ([NSUserDefaultsHelper isBackgroundMusicOn]) {
             [IDPSoundBoard restartBackgroundSound];
         }
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Not supported, please select another music." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
     }
     
 }
