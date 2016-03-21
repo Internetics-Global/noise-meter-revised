@@ -12,7 +12,7 @@
 
 #define K_Maximum_Volume           0.3f
 #define K_Min_Volume               0.03f
-#define K_Maximum_Volume_Nominal   10.0f
+#define K_Maximum_Volume_Nominal   30.0f
 #define K_Min_Volume_Nominal        1.0f
 
 
@@ -58,7 +58,7 @@
     _volumeSlideDeslabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_alertTable.frame), 320-15*2, 15)];
     _volumeSlideDeslabel.textAlignment = NSTextAlignmentLeft;
     _volumeSlideDeslabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",[self getNominalVolume:[NSUserDefaultsHelper getBackgroundMusicVolume]]];
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %d",(int)[self getNominalVolume:[NSUserDefaultsHelper getBackgroundMusicVolume]]];
     _volumeSlideDeslabel.numberOfLines = 1;
     _volumeSlideDeslabel.textColor = [UIColor whiteColor];
     _volumeSlideDeslabel.backgroundColor = [UIColor clearColor];
@@ -239,14 +239,14 @@
     
     float nominalVolume = [self getNominalVolume:volume];
     
-    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",nominalVolume];
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %d",(int)nominalVolume];
     
     [IDPSoundBoard updateBackgroundRunningVolume];
     
 }
 
 - (float) getNominalVolume :(float)realVolume {
-    float nominalVolume = (K_Maximum_Volume_Nominal - K_Min_Volume_Nominal)/(K_Maximum_Volume - K_Min_Volume) * realVolume;
+    float nominalVolume = (K_Maximum_Volume_Nominal - K_Min_Volume_Nominal)/(K_Maximum_Volume - K_Min_Volume) * (realVolume - K_Min_Volume) + 1;
     return nominalVolume;
 }
 
