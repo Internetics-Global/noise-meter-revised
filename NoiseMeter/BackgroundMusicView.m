@@ -10,6 +10,11 @@
 #import <Parse/PFAnalytics.h>
 #import "IDPSoundBoard.h"
 
+#define K_Maximum_Volume           0.3f
+#define K_Min_Volume               0.03f
+#define K_Maximum_Volume_Nominal   10.0f
+#define K_Min_Volume_Nominal        1.0f
+
 
 @implementation BackgroundMusicView {
     
@@ -53,7 +58,7 @@
     _volumeSlideDeslabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_alertTable.frame), 320-15*2, 15)];
     _volumeSlideDeslabel.textAlignment = NSTextAlignmentLeft;
     _volumeSlideDeslabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",[NSUserDefaultsHelper getBackgroundMusicVolume]];
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",[self getNominalVolume:[NSUserDefaultsHelper getBackgroundMusicVolume]]];
     _volumeSlideDeslabel.numberOfLines = 1;
     _volumeSlideDeslabel.textColor = [UIColor whiteColor];
     _volumeSlideDeslabel.backgroundColor = [UIColor clearColor];
@@ -61,8 +66,8 @@
     
     _volumeSlider= [[UISlider alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlideDeslabel.frame) + 10, 320 - 15*2, 20)];
     _volumeSlider.backgroundColor = [UIColor grayColor];
-    _volumeSlider.minimumValue = 0.01;
-    _volumeSlider.maximumValue = 1.0;
+    _volumeSlider.minimumValue = K_Min_Volume;
+    _volumeSlider.maximumValue = K_Maximum_Volume;
     _volumeSlider.continuous = NO;
     _volumeSlider.value = [NSUserDefaultsHelper getBackgroundMusicVolume];
     _volumeSlider.tintColor = [UIColor greenColor];
@@ -73,7 +78,7 @@
     UILabel *volumeMinlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_volumeSlider.frame) + 5, 25, 15)];
     volumeMinlabel.textAlignment = NSTextAlignmentLeft;
     volumeMinlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    volumeMinlabel.text = @"1";
+    volumeMinlabel.text = [NSString stringWithFormat:@"%d",(int)K_Min_Volume_Nominal];
     volumeMinlabel.numberOfLines = 1;
     volumeMinlabel.textColor = [UIColor whiteColor];
     volumeMinlabel.backgroundColor = [UIColor clearColor];
@@ -82,7 +87,7 @@
     UILabel *volumeMaxlabel = [[UILabel alloc] initWithFrame:CGRectMake(295, CGRectGetMaxY(_volumeSlider.frame) + 5, 20, 15)];
     volumeMaxlabel.textAlignment = NSTextAlignmentLeft;
     volumeMaxlabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    volumeMaxlabel.text = @"10";
+    volumeMaxlabel.text = [NSString stringWithFormat:@"%d",(int)K_Maximum_Volume_Nominal];
     volumeMaxlabel.numberOfLines = 1;
     volumeMaxlabel.textColor = [UIColor whiteColor];
     volumeMaxlabel.backgroundColor = [UIColor clearColor];
@@ -232,10 +237,17 @@
     float volume = slider.value;
     [NSUserDefaultsHelper setBackgroundMusicVolume:volume];
     
-    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.2f",volume];
+    float nominalVolume = [self getNominalVolume:volume];
+    
+    _volumeSlideDeslabel.text = [NSString stringWithFormat:@"Set volume: %.1f",nominalVolume];
     
     [IDPSoundBoard updateBackgroundRunningVolume];
     
+}
+
+- (float) getNominalVolume :(float)realVolume {
+    float nominalVolume = (K_Maximum_Volume_Nominal - K_Min_Volume_Nominal)/(K_Maximum_Volume - K_Min_Volume) * realVolume;
+    return nominalVolume;
 }
 
 
