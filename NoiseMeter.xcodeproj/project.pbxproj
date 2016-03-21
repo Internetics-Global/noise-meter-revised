@@ -388,6 +388,8 @@
 		88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */; };
 		88DDE1021A9EA4D30056D2E6 /* orange_button_for_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */; };
 		88DDE1041A9EAD030056D2E6 /* capture_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */; };
+		88E020081C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88E020071C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 */; };
+		88E020091C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 88E020071C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 */; };
 		88F64FB11AA7E58200379FF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F64FB01AA7E58200379FF2 /* StoreKit.framework */; };
 		88F64FB21AA7E7F500379FF2 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88818C601799F58F007B386F /* PurchaseViewController.m */; };
 		88F64FB31AA7E8BA00379FF2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F64FB01AA7E58200379FF2 /* StoreKit.framework */; };
@@ -695,6 +697,7 @@
 		88DDE0FF1A9E99B10056D2E6 /* settings_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings_title@2x.png"; path = "NoiseMeter/Resources/Images/Buttons/settings_title@2x.png"; sourceTree = SOURCE_ROOT; };
 		88DDE1011A9EA4D30056D2E6 /* orange_button_for_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange_button_for_level@2x.png"; sourceTree = "<group>"; };
 		88DDE1031A9EAD030056D2E6 /* capture_save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_save@2x.png"; sourceTree = "<group>"; };
+		88E020071C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bg_loop_guitar.mp3; path = NoiseMeter/bg_loop_guitar.mp3; sourceTree = SOURCE_ROOT; };
 		88F64FB01AA7E58200379FF2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88FA08FF18C2A8960061FA0F /* soundOnButton0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton0@2x.png"; sourceTree = "<group>"; };
 		88FA090018C2A8960061FA0F /* soundOnButton1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton1@2x.png"; sourceTree = "<group>"; };
@@ -990,6 +993,7 @@
 		11FBD43615117B7D00FF47C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				88E020071C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 */,
 				8822FE3A1C9002D6004FD2AA /* bg_loop_birds_at_sea.mp3 */,
 				8822FE3B1C9002D6004FD2AA /* bg_loop_birds.mp3 */,
 				8822FE3C1C9002D6004FD2AA /* bg_loop_nature.mp3 */,
@@ -1420,6 +1424,7 @@
 				888F688C1A9416340036D6F3 /* top_logo-pro-classroom@2x.png in Resources */,
 				88BEFE4F18A1FCB100399680 /* 1.png in Resources */,
 				887945B018ADB10100C6C88F /* commonButtonBackground@2x.png in Resources */,
+				88E020081C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 in Resources */,
 				8822FE421C9002D6004FD2AA /* bg_loop_nature.mp3 in Resources */,
 				11AC530E1505D3F20093C7AB /* icon_scores@2x.png in Resources */,
 				8871690F1A8A0FF600FD5B75 /* playback@2x.png in Resources */,
@@ -1537,6 +1542,7 @@
 				88DD57E91AA7E1C800196F98 /* commonButtonBackground@2x.png in Resources */,
 				88DD57EA1AA7E1C800196F98 /* icon_scores@2x.png in Resources */,
 				88DD57EB1AA7E1C800196F98 /* playback@2x.png in Resources */,
+				88E020091C9F97EA00E4FBD3 /* bg_loop_guitar.mp3 in Resources */,
 				88DD57EC1AA7E1C800196F98 /* loop.mp3 in Resources */,
 				88DD57ED1AA7E1C800196F98 /* soundOnButton@2x.png in Resources */,
 				88DD57EE1AA7E1C800196F98 /* button_capture.png in Resources */,

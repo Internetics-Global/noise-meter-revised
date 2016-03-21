@@ -35,10 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _soundName = [NSArray arrayWithObjects:@"Birds",@"Birds at sea",@"Nature",@"Piano",nil];
-    _soundFileName = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",nil];
+    _soundName = [NSArray arrayWithObjects:@"Birds",@"Birds at sea",@"Nature",@"Piano",@"Guitar",nil];
+    _soundFileName = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",@"bg_loop_guitar.mp3",nil];
     
-    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 260) style:UITableViewStyleGrouped];
+    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 290) style:UITableViewStyleGrouped];
     _alertTable.delegate = self;
     _alertTable.dataSource = self;
     _alertTable.opaque = NO;
@@ -108,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (5);
+    return (6);
 }
 
 
@@ -157,6 +157,14 @@
     }
     else if (indexPath.row == 4)
     {
+        cell.textLabel.text = _soundName[4];
+        
+        if ([_soundFileName[4] isEqualToString:fileName]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+    }
+    else if (indexPath.row == 5)
+    {
         cell.textLabel.text = @"Select from library";
     }
     
@@ -183,7 +191,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         
         MPMediaPickerController *picker =
         [[MPMediaPickerController alloc]
