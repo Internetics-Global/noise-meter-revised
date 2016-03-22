@@ -43,7 +43,7 @@
     _soundName = [NSArray arrayWithObjects:@"Birds",@"Birds at sea",@"Nature",@"Piano",@"Guitar",nil];
     _soundFileName = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",@"bg_loop_guitar.mp3",nil];
     
-    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 290) style:UITableViewStyleGrouped];
+    _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 260) style:UITableViewStyleGrouped];
     _alertTable.delegate = self;
     _alertTable.dataSource = self;
     _alertTable.opaque = NO;
@@ -113,7 +113,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return (6);
+    return (5);
 }
 
 
@@ -136,10 +136,11 @@
         } else {
             cell.accessoryType = UITableViewCellStyleDefault;
         }
-    } else if (indexPath.row == 5)
-    {
-        cell.textLabel.text = @"Select from library";
     }
+//    else if (indexPath.row == 5)
+//    {
+//        cell.textLabel.text = @"Select from library";   //deprecated since we can not play music from Apple music, see https://forums.developer.apple.com/thread/7791
+//    }
     
     
     
