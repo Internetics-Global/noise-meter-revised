@@ -11,7 +11,7 @@
 #import "IDPSoundBoard.h"
 
 #define K_Maximum_Volume           0.8f
-#define K_Min_Volume               0.1f
+#define K_Min_Volume               0.001f
 #define K_Maximum_Volume_Nominal   30.0f
 #define K_Min_Volume_Nominal        1.0f
 
