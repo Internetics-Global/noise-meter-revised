@@ -443,7 +443,7 @@
             APP_DELEGATE.isNotAllowBackgroundRunningWhenLastMeterOff = NO;
             [IDPSoundBoard restartBackgroundSound];
             
-            [UIAlertView showWithTitle:@"Alert" message:@"Background mode is turned on. The app will now run in the background, recording the last ten seconds of sound before the alert sounds. Please note - light background music will now play and choice of song and volume can be controlled from Settings." style:UIAlertViewStyleDefault cancelButtonTitle:@"Settings" otherButtonTitles:@[@"OK"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Background mode" message:@"Background mode is turned on. The app will now run in the background, recording the last ten seconds of sound before the alert sounds. Please note - light background music will now play and choice of song and volume can be controlled from Settings." style:UIAlertViewStyleDefault cancelButtonTitle:@"Settings" otherButtonTitles:@[@"OK"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if (buttonIndex == 0) {
                     double delayInSeconds = 0.6;
                     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
