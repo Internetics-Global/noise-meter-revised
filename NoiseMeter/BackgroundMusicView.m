@@ -182,7 +182,9 @@
             [IDPSoundBoard restartBackgroundSound];
         }
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [_alertTable reloadData];
+        
+        //[self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
