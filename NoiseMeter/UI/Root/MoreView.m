@@ -210,7 +210,7 @@
             cell.textLabel.text = @"Meter Display Shape";
         }else if (indexPath.row == 3)
         {
-            cell.textLabel.text = @"Background Music Selection";
+            cell.textLabel.text = @"Background music and volume";
         }
         else if (indexPath.row == 10)
         {
