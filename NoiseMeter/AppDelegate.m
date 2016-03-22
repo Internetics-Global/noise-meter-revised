@@ -94,6 +94,8 @@
         [self setupVersionReminder];
     });
     
+     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents]; //allow to show volume control in notification center
+    
     
     return YES;
 }
