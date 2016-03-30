@@ -63,7 +63,7 @@
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     if([def valueForKey:@"alertThreshold"] == nil)
     {
-        [def setValue:[NSNumber numberWithInt:90] forKey:@"alertThreshold"];
+        [def setValue:[NSNumber numberWithInt:95] forKey:@"alertThreshold"];
         [def synchronize];
     }
     if([def valueForKey:@"alarmName"] == nil)

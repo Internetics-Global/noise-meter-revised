@@ -243,9 +243,9 @@
     if (alertThreshold) {
         _slider.value = [alertThreshold integerValue];
     } else {
-        _slider.value = 90;
-        alertThreshold = [NSNumber numberWithInt:90];
-        [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:90]];
+        _slider.value = 95;
+        alertThreshold = [NSNumber numberWithInt:95];
+        [[NMDecibelLogger defaultLogger] setAlertThreshold:[NSNumber numberWithInt:95]];
     }
     [self updateSilderAttachedPositionWithAnimation:NO];
     
