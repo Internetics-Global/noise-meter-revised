@@ -196,7 +196,7 @@
         volume = [userDefaults floatForKey:@"BACKGROUND_MUSIC_VOLUME"];
     }
     else {
-        volume = 0.1;
+        volume = 0.05;
     }
     
     return volume;
