@@ -208,7 +208,29 @@
     
 }
 
-
+#pragma mark – music control on lock view
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    
+    if (event.type == UIEventTypeRemoteControl) {
+        
+        switch (event.subtype) {
+                
+            case UIEventSubtypeRemoteControlPause:
+                [IDPSoundBoard setBackgroundSoundMusicVolume:0.001];
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                [IDPSoundBoard playNextBackgroundMusic];
+                break;
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [IDPSoundBoard playPreviousBackgroundMusic];
+                break;
+            case UIEventSubtypeRemoteControlPlay:
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 
 

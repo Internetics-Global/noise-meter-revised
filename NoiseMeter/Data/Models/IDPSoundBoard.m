@@ -26,6 +26,10 @@ static const void *SoundTypeKey = &SoundTypeKey;
      */
     BOOL                 _isNeedToResumeLogging;
     PlayFinishBlock      _playFinishBlock;
+    
+    
+    NSArray *_backgroundMusicFileNames;
+    
 }
 
 #pragma mark – Life Cycle
@@ -47,6 +51,8 @@ static const void *SoundTypeKey = &SoundTypeKey;
     if (self != nil) {
         _sounds = [NSMutableDictionary dictionary];
         _audio = [NSMutableDictionary dictionary];
+        
+        _backgroundMusicFileNames = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",@"bg_loop_guitar.mp3",nil];
     }
     return self;
 }
@@ -499,7 +505,75 @@ static void checkError(OSStatus err,const char *message){
     [[self sharedInstance] stopBackgroundSoundRunning];
 }
 
+- (void) setBackgroundSoundMusicVolume:(float) volume {
+    
+    AVAudioPlayer *player = [IDPSoundBoard audioPlayerForKey:Key_PlayerBackground];
+    if (player) {
+        player.volume = volume;
+        [NSUserDefaultsHelper setBackgroundMusicVolume:volume];
+    }
+    
+}
 
++ (void) setBackgroundSoundMusicVolume:(float) volume {
+    [[self sharedInstance] setBackgroundSoundMusicVolume:volume];
+}
+
+- (void) playNextBackgroundMusic {
+    
+    NSString *fileName = [NSUserDefaultsHelper backgroundMusicFileName];
+    long size = [_backgroundMusicFileNames count];
+    long index = [_backgroundMusicFileNames indexOfObject:fileName];
+    
+    if (NSNotFound == index || index > size - 2) {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:_backgroundMusicFileNames[0]];
+    } else {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:_backgroundMusicFileNames[index + 1]];
+    }
+    
+    [self restartBackgroundSound];
+    
+}
+
+
++ (void) playNextBackgroundMusic {
+    [[self sharedInstance] playNextBackgroundMusic];
+}
+
+
+
+- (void) playPreviousBackgroundMusic {
+    
+    NSString *fileName = [NSUserDefaultsHelper backgroundMusicFileName];
+    long size = [_backgroundMusicFileNames count];
+    long index = [_backgroundMusicFileNames indexOfObject:fileName];
+    
+    if (NSNotFound == index) {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:_backgroundMusicFileNames[0]];
+    } else if (index == 0) {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:_backgroundMusicFileNames[size-1]];
+    }else {
+        [NSUserDefaultsHelper setBackgroundMusicFileName:_backgroundMusicFileNames[index - 1]];
+    }
+    
+    [self restartBackgroundSound];
+    
+    
+    
+}
+
++ (void) playPreviousBackgroundMusic {
+    [[self sharedInstance] playPreviousBackgroundMusic];
+}
+
+
+- (NSArray *) getBackgroundMusicFiles {
+    return _backgroundMusicFileNames;
+}
+
++ (NSArray *) getBackgroundMusicFiles {
+    return [[self sharedInstance] getBackgroundMusicFiles];
+}
 
 #pragma mark – Memory management
 - (void)dealloc {

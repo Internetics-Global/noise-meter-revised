@@ -92,4 +92,12 @@ typedef void(^PlayFinishBlock)(BOOL finishSuccess);
 */
 + (void) updateBackgroundRunningVolume;
 
++ (void) setBackgroundSoundMusicVolume:(float) volume;
+
+
++ (void) playNextBackgroundMusic;
++ (void) playPreviousBackgroundMusic;
+
++ (NSArray *) getBackgroundMusicFiles;
+
 @end

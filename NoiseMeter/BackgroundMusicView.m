@@ -41,7 +41,7 @@
     [super viewDidLoad];
     
     _soundName = [NSArray arrayWithObjects:@"Birds",@"Birds at sea",@"Nature",@"Piano",@"Guitar",nil];
-    _soundFileName = [NSArray arrayWithObjects:@"bg_loop_birds.mp3",@"bg_loop_birds_at_sea.mp3",@"bg_loop_nature.mp3",@"bg_loop_piano.mp3",@"bg_loop_guitar.mp3",nil];
+    _soundFileName = [IDPSoundBoard getBackgroundMusicFiles];
     
     _alertTable = [[UITableView alloc] initWithFrame:CGRectMake(0, KTopLogoHeight, self.view.frame.size.width, 260) style:UITableViewStyleGrouped];
     _alertTable.delegate = self;
