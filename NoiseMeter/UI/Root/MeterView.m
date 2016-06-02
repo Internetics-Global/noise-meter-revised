@@ -24,6 +24,8 @@
 
 #import "AMPopTip.h"
 
+@import FirebaseAnalytics;
+
 //忽略那种短暂的噪声
 #define K_Second_IgnoreSuddenNoise     0.5
 
@@ -720,8 +722,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"MeterView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"MeterView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     if ([NSUserDefaultsHelper isProVersion]) {
         _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame));

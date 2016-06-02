@@ -18,6 +18,7 @@
 #import "VersionReminder.h"
 
 @import Firebase;
+@import FirebaseAnalytics;
 
 @interface AppDelegate ()
 @end
@@ -30,15 +31,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-//    [ParseCrashReporting enable];
-//#ifdef TARGET_PRO_VERSION
-//    [Parse setApplicationId:@"xQnOZXmWIt7FOlk75RSDLZelhQIt5VQIE13bPX81"
-//                  clientKey:@"f1egk5mV5DQcYk9xsP7dkQVl4r1rrf44FWogXKvb"];
-//#else
-//    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
-//                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
-//#endif
-//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    //In Parse, different GoogleService-Info.plist for different target
+    {
+        //    [ParseCrashReporting enable];
+        //#ifdef TARGET_PRO_VERSION
+        //    [Parse setApplicationId:@"xQnOZXmWIt7FOlk75RSDLZelhQIt5VQIE13bPX81"
+        //                  clientKey:@"f1egk5mV5DQcYk9xsP7dkQVl4r1rrf44FWogXKvb"];
+        //#else
+        //    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
+        //                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
+        //#endif
+        //    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    }
     
     //A utility that reminds your iPhone app's users to review the app.
     [self setAppirater];
@@ -71,17 +75,30 @@
     }
     
     
-    [FIRApp configure];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge
-                                                                                             |UIRemoteNotificationTypeSound
-                                                                                             |UIRemoteNotificationTypeAlert) categories:nil];
+    
+    // Register for remote notifications
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+        // iOS 7.1 or earlier
+        UIRemoteNotificationType allNotificationTypes =
+        (UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge);
+        [application registerForRemoteNotificationTypes:allNotificationTypes];
+    } else {
+        // iOS 8 or later
+        // [END_EXCLUDE]
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-    } else {
-      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     }
+    
+    [FIRApp configure];
+    
+    // Add observer for InstanceID token refresh callback.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
+                                                 name:kFIRInstanceIDTokenRefreshNotification object:nil];
     
     
 //    if (TARGET_IPHONE_SIMULATOR) {
@@ -102,26 +119,58 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//    // Store the deviceToken in the current installation and save it to Parse.
-//    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-//    if ([NSUserDefaultsHelper isProVersion]) {
-//        [currentInstallation setChannels:@[@"pro"]];
-//    } else {
-//        [currentInstallation setChannels:@[@"free"]];
-//    }
-//    [currentInstallation setDeviceTokenFromData:deviceToken];
-//    [currentInstallation saveInBackground];
+    
+    //In Firebase, built-in support on cateogry of free and IAP, so we don't need to do any thing
+    {
+        //    // Store the deviceToken in the current installation and save it to Parse.
+        //    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        //    if ([NSUserDefaultsHelper isProVersion]) {
+        //        [currentInstallation setChannels:@[@"pro"]];
+        //    } else {
+        //        [currentInstallation setChannels:@[@"free"]];
+        //    }
+        //    [currentInstallation setDeviceTokenFromData:deviceToken];
+        //    [currentInstallation saveInBackground];
+    }
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-//    [PFPush handlePush:userInfo];
+
+    NSLog(@"%@", userInfo);
 }
+
+- (void)tokenRefreshNotification:(NSNotification *)notification {
+    // Note that this callback will be fired everytime a new token is generated, including the first
+    // time. So if you need to retrieve the token as soon as it is available this is where that
+    // should be done.
+    NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+    NSLog(@"InstanceID token: %@", refreshedToken);
+    
+    // Connect to FCM since connection may have failed when attempted before having a token.
+    [self connectToFcm];
+    
+    // TODO: If necessary send token to appliation server.
+}
+
+- (void)connectToFcm {
+    [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Unable to connect to FCM. %@", error);
+        } else {
+            NSLog(@"Connected to FCM.");
+        }
+    }];
+}
+
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     NSLog(@"applicationDidEnterBackground");
+    
+    [[FIRMessaging messaging] disconnect];
+    NSLog(@"Disconnected from FCM");
     
     //stop the alarm if it's still playing
     if ([[NMDecibelLogger defaultLogger] playingAlarm]) {
@@ -152,6 +201,8 @@
 
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
+    
+    [self connectToFcm];
     
     if ([NSUserDefaultsHelper isNotAllowBackgroundRunning] == FALSE) {
         

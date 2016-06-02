@@ -161,6 +161,7 @@
 		88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
 		88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C01AA688A400B49EDA /* Security.framework */; };
 		88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C21AA6895300B49EDA /* Accounts.framework */; };
+		88BA21351CFFE58700266B52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88BA21341CFFE58700266B52 /* GoogleService-Info.plist */; };
 		88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1418A1DEB000399680 /* cancel@2x.png */; };
 		88BEFE1718A1E42C00399680 /* soundOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */; };
 		88BEFE4F18A1FCB100399680 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE3E18A1FCB000399680 /* 1.png */; };
@@ -648,6 +649,7 @@
 		88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		88B9C3C01AA688A400B49EDA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		88B9C3C21AA6895300B49EDA /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		88BA21341CFFE58700266B52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Firebase/NoiseMeter/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		88BEFE1418A1DEB000399680 /* cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel@2x.png"; sourceTree = "<group>"; };
 		88BEFE1618A1E42B00399680 /* soundOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soundOnButton@2x.png"; sourceTree = "<group>"; };
 		88BEFE3E18A1FCB000399680 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = Meters/1.png; sourceTree = "<group>"; };
@@ -783,6 +785,7 @@
 		110F12EA14EDD52E00BE4481 = {
 			isa = PBXGroup;
 			children = (
+				88BA21311CFFE56E00266B52 /* Firebase */,
 				9AB05EB2177BDEF10029CB48 /* Icon.png */,
 				9A81D9291BFDB1720057A804 /* appicon120x120.png */,
 				9A81D92C1BFDB25E0057A804 /* appicon2-120x120.png */,
@@ -1199,6 +1202,30 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
+		88BA21311CFFE56E00266B52 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				88BA21331CFFE57B00266B52 /* NoiseMeterPro */,
+				88BA21321CFFE57500266B52 /* NoiseMeter */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
+		88BA21321CFFE57500266B52 /* NoiseMeter */ = {
+			isa = PBXGroup;
+			children = (
+				88BA21341CFFE58700266B52 /* GoogleService-Info.plist */,
+			);
+			name = NoiseMeter;
+			sourceTree = "<group>";
+		};
+		88BA21331CFFE57B00266B52 /* NoiseMeterPro */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NoiseMeterPro;
+			sourceTree = "<group>";
+		};
 		88BEFE3D18A1FC9400399680 /* Meters */ = {
 			isa = PBXGroup;
 			children = (
@@ -1456,6 +1483,7 @@
 				88BEFE5C18A1FCB100399680 /* 14.png in Resources */,
 				8822FE441C9002D6004FD2AA /* bg_loop_piano.mp3 in Resources */,
 				88DDE1001A9E99B10056D2E6 /* settings_title@2x.png in Resources */,
+				88BA21351CFFE58700266B52 /* GoogleService-Info.plist in Resources */,
 				8871690E1A8A0FF600FD5B75 /* playback.png in Resources */,
 				88BEFE5218A1FCB100399680 /* 4.png in Resources */,
 				883069B418B4CC460067750A /* siren_wail.caf in Resources */,

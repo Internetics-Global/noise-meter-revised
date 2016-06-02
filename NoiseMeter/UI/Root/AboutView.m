@@ -9,6 +9,8 @@
 #import "AboutView.h"
 #import "FileHelper.h"
 
+@import FirebaseAnalytics;
+
 @interface AboutView ()
 
 @end
@@ -55,8 +57,10 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-//    NSDictionary *dimensions = @{@"category": @"AboutView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"AboutView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
+    
+    
 
 }
 

@@ -8,6 +8,7 @@
 
 #import "InternalWebView.h"
 #import "FileHelper.h"
+@import FirebaseAnalytics;
 
 @interface InternalWebView ()
 
@@ -71,8 +72,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"InternalWebView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"InternalWebView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
 }
 

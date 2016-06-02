@@ -10,6 +10,8 @@
 
 #import "FileHelper.h"
 
+@import FirebaseAnalytics;
+
 #ifndef TARGET_PRO_VERSION
 #import "RMStore.h"
 #endif
@@ -109,8 +111,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"PurchaseView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"PurchaseView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
 
 }
 

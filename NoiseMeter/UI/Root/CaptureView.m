@@ -14,6 +14,7 @@
 #import "SoundLevelCapture.h"
 #import "FileHelper.h"
 #import "NSUserDefaultsHelper.h"
+@import FirebaseAnalytics;
 
 
 @interface CaptureView () {
@@ -264,8 +265,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"CaptureView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"CaptureView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

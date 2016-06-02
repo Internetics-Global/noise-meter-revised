@@ -12,6 +12,8 @@
 #import "FileHelper.h"
 #import "PurchaseViewController.h"
 
+@import FirebaseAnalytics;
+
 @interface SelectAlertView ()
 
 @end
@@ -176,8 +178,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"SelectedAlertView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"SelectedAlertView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
 
 }
 

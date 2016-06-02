@@ -8,6 +8,8 @@
 
 #import "SelectMeterView.h"
 
+@import FirebaseAnalytics;
+
 @implementation SelectMeterView
 
 - (void)loadView
@@ -108,8 +110,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"SlectMeterView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+     NSDictionary *dimensions = @{@"view_page": @"SlectMeterView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
 }
 

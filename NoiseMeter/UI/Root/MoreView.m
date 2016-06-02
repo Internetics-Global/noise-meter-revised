@@ -24,6 +24,8 @@
 
 #import "UIViewController+REFrostedViewController.h"
 
+@import FirebaseAnalytics;
+
 
 @interface MoreView ()
 
@@ -402,8 +404,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"MoreView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"MoreView Screen"};
+   [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     [_optionTable reloadData];
 }

@@ -8,6 +8,7 @@
 
 #import "BackgroundMusicView.h"
 #import "IDPSoundBoard.h"
+@import FirebaseAnalytics;
 
 #define K_Maximum_Volume           0.2f
 #define K_Min_Volume               0.001f
@@ -192,8 +193,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"BackgroundMusicView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"BackgroundMusicView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
 }
 

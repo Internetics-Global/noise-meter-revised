@@ -22,6 +22,8 @@
 
 #import "AMPopTip.h"
 
+@import FirebaseAnalytics;
+
 
 @interface ScoreView () <MFMailComposeViewControllerDelegate,SWTableViewCellDelegate> {
     ScoreArrayDataSource *_scoreArrayDataSource;
@@ -141,8 +143,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    NSDictionary *dimensions = @{@"category": @"ScoreView Screen"};
-//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+    NSDictionary *dimensions = @{@"view_page": @"ScoreView Screen"};
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     [self reloadData];
 
