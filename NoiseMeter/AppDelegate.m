@@ -17,6 +17,8 @@
 
 #import "VersionReminder.h"
 
+@import Firebase;
+
 @interface AppDelegate ()
 @end
 
@@ -68,6 +70,8 @@
         [[UITabBar appearance] setTintColor:[UIColor colorWithRed:56.0/255 green:172.0/255 blue:238.0/255 alpha:1]];
     }
     
+    
+    [FIRApp configure];
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge

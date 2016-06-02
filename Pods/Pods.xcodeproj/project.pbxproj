@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A253817A73E2C54899B10AFC322040A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		50CB3AFFD57E66EC63C77551C1293EC0 /* Pods-NoiseMeter PRO-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2725DB6995C2BFABEEFC40FC7A0F /* Pods-NoiseMeter PRO-dummy.m */; };
+		6D26A689DFAC4AED08C90F98AAF80947 /* Pods-NoiseMeter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB25E4022B098509B5D90D96C2A4929 /* Pods-NoiseMeter-dummy.m */; };
+		8DCF609F484CC2F4D983B86DED08EDC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05CEEFF9F5D573912AEB12A15642504F /* Pods-NoiseMeter-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NoiseMeter-frameworks.sh"; sourceTree = "<group>"; };
+		196DE34A12221AA41493660346943956 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		1C0B12A860104FA9B148978127550144 /* GoogleIPhoneUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleIPhoneUtilities.framework; path = Frameworks/GoogleIPhoneUtilities.framework; sourceTree = "<group>"; };
+		1CB25E4022B098509B5D90D96C2A4929 /* Pods-NoiseMeter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NoiseMeter-dummy.m"; sourceTree = "<group>"; };
+		20D5254FC308E8637E37BF06101026CF /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		22FDDB9806A0FBA6877D1A3622CB0533 /* Pods-NoiseMeter PRO-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NoiseMeter PRO-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2627D0B10A819A0A6589A79987B0C9E4 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		44B53CAB5E6FFF4B93F5381A16B1D828 /* Pods-NoiseMeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NoiseMeter.debug.xcconfig"; sourceTree = "<group>"; };
+		472C4423DEC53D641C82F8FCD7D0D905 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
+		4752EE72BF9B688D18541A932AF08CA5 /* libPods-NoiseMeter PRO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoiseMeter PRO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEC531B31A9DEAF1AA0F8AF506EB7B8 /* Pods-NoiseMeter-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NoiseMeter-acknowledgements.markdown"; sourceTree = "<group>"; };
+		54268CCBBC7A2913812FE21ECED9F549 /* Pods-NoiseMeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NoiseMeter.release.xcconfig"; sourceTree = "<group>"; };
+		567746401AD2D909D3D82D9E8D77D219 /* Pods-NoiseMeter-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NoiseMeter-resources.sh"; sourceTree = "<group>"; };
+		6954F727DA8421F392D206D0B01CF25C /* libPods-NoiseMeter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoiseMeter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83CD2725DB6995C2BFABEEFC40FC7A0F /* Pods-NoiseMeter PRO-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NoiseMeter PRO-dummy.m"; sourceTree = "<group>"; };
+		88914EF9CACB16C6248A812C3E1126DC /* FIRMessaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRMessaging.h; path = Headers/Public/FIRMessaging.h; sourceTree = "<group>"; };
+		89CB577C01EDF4960AB62D60E707F501 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9C202DDA16C95A349A05E53E205DD4C9 /* Pods-NoiseMeter PRO-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NoiseMeter PRO-acknowledgements.plist"; sourceTree = "<group>"; };
+		AD178B9CAFDA1FC61924BF579877B8EC /* Pods-NoiseMeter PRO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NoiseMeter PRO.release.xcconfig"; sourceTree = "<group>"; };
+		B372E912F7D254802F0C7550BBDA666A /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Headers/Public/FIRInstanceID.h; sourceTree = "<group>"; };
+		BC9488AC800415C1EAFE5837F299D106 /* Pods-NoiseMeter PRO-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NoiseMeter PRO-frameworks.sh"; sourceTree = "<group>"; };
+		CA3826CCD663C4CE0EEED465DDB6F952 /* Pods-NoiseMeter-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NoiseMeter-acknowledgements.plist"; sourceTree = "<group>"; };
+		CBA4FCB745CF33F7B5CEB1474B496F6F /* Pods-NoiseMeter PRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NoiseMeter PRO.debug.xcconfig"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DE581B01212AF639643DF4BDA925E600 /* Pods-NoiseMeter PRO-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NoiseMeter PRO-resources.sh"; sourceTree = "<group>"; };
+		E973DE4B829CB1494882FFA38B0AFA2C /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Headers/Firebase.h; sourceTree = "<group>"; };
+		F2E3F68C29AC36663C4F81FE234FE9B4 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Frameworks/FirebaseMessaging.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10C75B041EC988EC9734C6257DEB02E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DCF609F484CC2F4D983B86DED08EDC5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8339A9416676843F61CA2270E5F418B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A253817A73E2C54899B10AFC322040A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0FFCC4150E618FBE331E73A6660042B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C0B12A860104FA9B148978127550144 /* GoogleIPhoneUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23C62B7D3064D98E3927DC5FD0981C9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2E3F68C29AC36663C4F81FE234FE9B4 /* FirebaseMessaging.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2EC287C08708410CA2A47193989366C7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C472CD805B4B421E3560ED23088E00D7 /* Pods-NoiseMeter */,
+				F2F00AC75610E55D2050ACCA6A66F92C /* Pods-NoiseMeter PRO */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		37A328B5358093AF25164D2A179D6FD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6954F727DA8421F392D206D0B01CF25C /* libPods-NoiseMeter.a */,
+				4752EE72BF9B688D18541A932AF08CA5 /* libPods-NoiseMeter PRO.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		464B42A745AD6AEDDA736BDFCC02385B /* FirebaseInstanceID */ = {
+			isa = PBXGroup;
+			children = (
+				B372E912F7D254802F0C7550BBDA666A /* FIRInstanceID.h */,
+				7F390C43DCC35513087581E7D16A2DBB /* Frameworks */,
+			);
+			path = FirebaseInstanceID;
+			sourceTree = "<group>";
+		};
+		480AC8666B1587333239BDEFD5A09C61 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				E973DE4B829CB1494882FFA38B0AFA2C /* Firebase.h */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		4B64F1DF9E5A1DC82E30DA24DD5A9BF0 /* GoogleUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				8137F232B115241C6CB84E9E22629A3A /* Frameworks */,
+			);
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		4D295DDD3DF41C4E15F489B6BD260EA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E43525F0F592D2EB2445F72AD839AD6 /* Firebase */,
+				6B996E6307B3991DC5ED177A517E494D /* FirebaseAnalytics */,
+				464B42A745AD6AEDDA736BDFCC02385B /* FirebaseInstanceID */,
+				F67460DCC66A6B43964DD9F786A690AB /* FirebaseMessaging */,
+				4E60C599EFBC7C7E64669F7727B7D445 /* GoogleInterchangeUtilities */,
+				8550173C9C0A593D4C6136EAC8E81FB0 /* GoogleIPhoneUtilities */,
+				ADE0FE92B9C3819605C1D88E46CD24E6 /* GoogleSymbolUtilities */,
+				4B64F1DF9E5A1DC82E30DA24DD5A9BF0 /* GoogleUtilities */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4E60C599EFBC7C7E64669F7727B7D445 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				664BDA1DB86274BA6435FAB19E477153 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
+			sourceTree = "<group>";
+		};
+		664BDA1DB86274BA6435FAB19E477153 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2627D0B10A819A0A6589A79987B0C9E4 /* GoogleInterchangeUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B996E6307B3991DC5ED177A517E494D /* FirebaseAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				C51209B61467DC872ED43B8A72CA7A47 /* Frameworks */,
+			);
+			path = FirebaseAnalytics;
+			sourceTree = "<group>";
+		};
+		6E43525F0F592D2EB2445F72AD839AD6 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				480AC8666B1587333239BDEFD5A09C61 /* Analytics */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				4D295DDD3DF41C4E15F489B6BD260EA2 /* Pods */,
+				37A328B5358093AF25164D2A179D6FD8 /* Products */,
+				2EC287C08708410CA2A47193989366C7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7F390C43DCC35513087581E7D16A2DBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89CB577C01EDF4960AB62D60E707F501 /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8137F232B115241C6CB84E9E22629A3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20D5254FC308E8637E37BF06101026CF /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8550173C9C0A593D4C6136EAC8E81FB0 /* GoogleIPhoneUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				0FFCC4150E618FBE331E73A6660042B5 /* Frameworks */,
+			);
+			path = GoogleIPhoneUtilities;
+			sourceTree = "<group>";
+		};
+		ADE0FE92B9C3819605C1D88E46CD24E6 /* GoogleSymbolUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F2B96B6DC24D390B8C6791D705B52FC4 /* Frameworks */,
+			);
+			path = GoogleSymbolUtilities;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C472CD805B4B421E3560ED23088E00D7 /* Pods-NoiseMeter */ = {
+			isa = PBXGroup;
+			children = (
+				4FEC531B31A9DEAF1AA0F8AF506EB7B8 /* Pods-NoiseMeter-acknowledgements.markdown */,
+				CA3826CCD663C4CE0EEED465DDB6F952 /* Pods-NoiseMeter-acknowledgements.plist */,
+				1CB25E4022B098509B5D90D96C2A4929 /* Pods-NoiseMeter-dummy.m */,
+				05CEEFF9F5D573912AEB12A15642504F /* Pods-NoiseMeter-frameworks.sh */,
+				567746401AD2D909D3D82D9E8D77D219 /* Pods-NoiseMeter-resources.sh */,
+				44B53CAB5E6FFF4B93F5381A16B1D828 /* Pods-NoiseMeter.debug.xcconfig */,
+				54268CCBBC7A2913812FE21ECED9F549 /* Pods-NoiseMeter.release.xcconfig */,
+			);
+			name = "Pods-NoiseMeter";
+			path = "Target Support Files/Pods-NoiseMeter";
+			sourceTree = "<group>";
+		};
+		C51209B61467DC872ED43B8A72CA7A47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				196DE34A12221AA41493660346943956 /* FirebaseAnalytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2B96B6DC24D390B8C6791D705B52FC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				472C4423DEC53D641C82F8FCD7D0D905 /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2F00AC75610E55D2050ACCA6A66F92C /* Pods-NoiseMeter PRO */ = {
+			isa = PBXGroup;
+			children = (
+				22FDDB9806A0FBA6877D1A3622CB0533 /* Pods-NoiseMeter PRO-acknowledgements.markdown */,
+				9C202DDA16C95A349A05E53E205DD4C9 /* Pods-NoiseMeter PRO-acknowledgements.plist */,
+				83CD2725DB6995C2BFABEEFC40FC7A0F /* Pods-NoiseMeter PRO-dummy.m */,
+				BC9488AC800415C1EAFE5837F299D106 /* Pods-NoiseMeter PRO-frameworks.sh */,
+				DE581B01212AF639643DF4BDA925E600 /* Pods-NoiseMeter PRO-resources.sh */,
+				CBA4FCB745CF33F7B5CEB1474B496F6F /* Pods-NoiseMeter PRO.debug.xcconfig */,
+				AD178B9CAFDA1FC61924BF579877B8EC /* Pods-NoiseMeter PRO.release.xcconfig */,
+			);
+			name = "Pods-NoiseMeter PRO";
+			path = "Target Support Files/Pods-NoiseMeter PRO";
+			sourceTree = "<group>";
+		};
+		F67460DCC66A6B43964DD9F786A690AB /* FirebaseMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				88914EF9CACB16C6248A812C3E1126DC /* FIRMessaging.h */,
+				23C62B7D3064D98E3927DC5FD0981C9E /* Frameworks */,
+			);
+			path = FirebaseMessaging;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B76027D266C0C9906304D8DB405B70D5 /* Pods-NoiseMeter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4026E3EAEECA77CA67C44DF9BD6A8555 /* Build configuration list for PBXNativeTarget "Pods-NoiseMeter" */;
+			buildPhases = (
+				460E4F326648F806FAE1F57AEBD8C67B /* Sources */,
+				10C75B041EC988EC9734C6257DEB02E4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NoiseMeter";
+			productName = "Pods-NoiseMeter";
+			productReference = 6954F727DA8421F392D206D0B01CF25C /* libPods-NoiseMeter.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C708C271391076BF575CC21913D76EC9 /* Pods-NoiseMeter PRO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABB53C73B61D7CF5654C13ED092F1FBE /* Build configuration list for PBXNativeTarget "Pods-NoiseMeter PRO" */;
+			buildPhases = (
+				77CBC9C5ADCFE572E49F0EDC345D0B71 /* Sources */,
+				A8339A9416676843F61CA2270E5F418B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NoiseMeter PRO";
+			productName = "Pods-NoiseMeter PRO";
+			productReference = 4752EE72BF9B688D18541A932AF08CA5 /* libPods-NoiseMeter PRO.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 37A328B5358093AF25164D2A179D6FD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B76027D266C0C9906304D8DB405B70D5 /* Pods-NoiseMeter */,
+				C708C271391076BF575CC21913D76EC9 /* Pods-NoiseMeter PRO */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		460E4F326648F806FAE1F57AEBD8C67B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D26A689DFAC4AED08C90F98AAF80947 /* Pods-NoiseMeter-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77CBC9C5ADCFE572E49F0EDC345D0B71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50CB3AFFD57E66EC63C77551C1293EC0 /* Pods-NoiseMeter PRO-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C47F0B29C03D42ACD5D21368031E35C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBA4FCB745CF33F7B5CEB1474B496F6F /* Pods-NoiseMeter PRO.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3FA2475660FFC880302AD18E29B2E5FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C6E5FC57441CE55242BFC64EF26042C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B53CAB5E6FFF4B93F5381A16B1D828 /* Pods-NoiseMeter.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D500D6FED414F037406E62AE005224F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD178B9CAFDA1FC61924BF579877B8EC /* Pods-NoiseMeter PRO.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D6B6DFB7248E8802BBB7CE510A86F4A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54268CCBBC7A2913812FE21ECED9F549 /* Pods-NoiseMeter.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F325026B55060D3B22BEC0BAB5FA7344 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FA2475660FFC880302AD18E29B2E5FC /* Debug */,
+				F325026B55060D3B22BEC0BAB5FA7344 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4026E3EAEECA77CA67C44DF9BD6A8555 /* Build configuration list for PBXNativeTarget "Pods-NoiseMeter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6E5FC57441CE55242BFC64EF26042C5 /* Debug */,
+				D6B6DFB7248E8802BBB7CE510A86F4A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABB53C73B61D7CF5654C13ED092F1FBE /* Build configuration list for PBXNativeTarget "Pods-NoiseMeter PRO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C47F0B29C03D42ACD5D21368031E35C /* Debug */,
+				D500D6FED414F037406E62AE005224F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

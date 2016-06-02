@@ -401,6 +401,8 @@
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
 		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
+		A5E99637C80F10758216256C /* libPods-NoiseMeter PRO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94938548E05722A024E29FFE /* libPods-NoiseMeter PRO.a */; };
+		BC5BC8ED58842FAA9431F7DF /* libPods-NoiseMeter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCD9DDD6EBA5146B2AD19A2 /* libPods-NoiseMeter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -472,6 +474,9 @@
 		11F3E5D21519561400549099 /* InternalWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InternalWebView.h; path = UI/Root/InternalWebView.h; sourceTree = "<group>"; };
 		11F3E5D31519561400549099 /* InternalWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InternalWebView.m; path = UI/Root/InternalWebView.m; sourceTree = "<group>"; };
 		11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3E873C99BCBEB5C09F215B75 /* Pods-NoiseMeter PRO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoiseMeter PRO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoiseMeter PRO/Pods-NoiseMeter PRO.debug.xcconfig"; sourceTree = "<group>"; };
+		47C5BE1C97283E6D29853445 /* Pods-NoiseMeter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoiseMeter.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoiseMeter/Pods-NoiseMeter.release.xcconfig"; sourceTree = "<group>"; };
+		5DCD9DDD6EBA5146B2AD19A2 /* libPods-NoiseMeter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoiseMeter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8806B39A179658510085CBF0 /* remove_ad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_ad.png; sourceTree = "<group>"; };
 		8807E75018CFF38B0042AC59 /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
 		8807E75118CFF38B0042AC59 /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
@@ -695,6 +700,8 @@
 		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
 		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
 		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		91D5F2058154EC4D33F057BA /* Pods-NoiseMeter PRO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoiseMeter PRO.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoiseMeter PRO/Pods-NoiseMeter PRO.release.xcconfig"; sourceTree = "<group>"; };
+		94938548E05722A024E29FFE /* libPods-NoiseMeter PRO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoiseMeter PRO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A81D9291BFDB1720057A804 /* appicon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon120x120.png; sourceTree = "<group>"; };
 		9A81D92C1BFDB25E0057A804 /* appicon2-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appicon2-120x120.png"; sourceTree = "<group>"; };
 		9A81D92F1BFDB2F10057A804 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -702,6 +709,7 @@
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		CA4F9B24A61183D893207ACC /* Pods-NoiseMeter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoiseMeter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoiseMeter/Pods-NoiseMeter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -733,6 +741,7 @@
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
+				BC5BC8ED58842FAA9431F7DF /* libPods-NoiseMeter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,6 +773,7 @@
 				88DD57D41AA7E1C800196F98 /* Foundation.framework in Frameworks */,
 				88DD57D51AA7E1C800196F98 /* CoreGraphics.framework in Frameworks */,
 				88DD57D71AA7E1C800196F98 /* CoreData.framework in Frameworks */,
+				A5E99637C80F10758216256C /* libPods-NoiseMeter PRO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +794,7 @@
 				110F12F814EDD52E00BE4481 /* Frameworks */,
 				110F12F614EDD52E00BE4481 /* Products */,
 				88DD58421AA7E1C800196F98 /* NoiseMeter copy-Info.plist */,
+				A6151CCE7209B57449FB504C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -824,6 +835,8 @@
 				110F12FB14EDD52E00BE4481 /* Foundation.framework */,
 				110F12FD14EDD52E00BE4481 /* CoreGraphics.framework */,
 				110F12FF14EDD52E00BE4481 /* CoreData.framework */,
+				5DCD9DDD6EBA5146B2AD19A2 /* libPods-NoiseMeter.a */,
+				94938548E05722A024E29FFE /* libPods-NoiseMeter PRO.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1266,6 +1279,17 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		A6151CCE7209B57449FB504C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA4F9B24A61183D893207ACC /* Pods-NoiseMeter.debug.xcconfig */,
+				47C5BE1C97283E6D29853445 /* Pods-NoiseMeter.release.xcconfig */,
+				3E873C99BCBEB5C09F215B75 /* Pods-NoiseMeter PRO.debug.xcconfig */,
+				91D5F2058154EC4D33F057BA /* Pods-NoiseMeter PRO.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1273,10 +1297,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 110F131214EDD52E00BE4481 /* Build configuration list for PBXNativeTarget "NoiseMeter" */;
 			buildPhases = (
+				3E5E875DC3585C56A8552EB5 /* 📦 Check Pods Manifest.lock */,
 				110F12F114EDD52E00BE4481 /* Sources */,
 				110F12F214EDD52E00BE4481 /* Frameworks */,
 				110F12F314EDD52E00BE4481 /* Resources */,
 				8804610E1A8C1FEF0032A3C8 /* ShellScript */,
+				2E71DBA7916BE154910178BB /* 📦 Embed Pods Frameworks */,
+				0D58774A91FAB013B5C1A3DD /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1291,10 +1318,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88DD583E1AA7E1C800196F98 /* Build configuration list for PBXNativeTarget "NoiseMeter PRO" */;
 			buildPhases = (
+				D83A543FC3651AFF0E2E6D1D /* 📦 Check Pods Manifest.lock */,
 				88DD57781AA7E1C800196F98 /* Sources */,
 				88DD57BC1AA7E1C800196F98 /* Frameworks */,
 				88DD57D81AA7E1C800196F98 /* Resources */,
 				88DD583C1AA7E1C800196F98 /* ShellScript */,
+				F0FE4FE8254074CBE1D6B9F7 /* 📦 Embed Pods Frameworks */,
+				6598BA17D3A19FE764E09466 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1607,6 +1637,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D58774A91FAB013B5C1A3DD /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoiseMeter/Pods-NoiseMeter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E71DBA7916BE154910178BB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoiseMeter/Pods-NoiseMeter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E5E875DC3585C56A8552EB5 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6598BA17D3A19FE764E09466 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoiseMeter PRO/Pods-NoiseMeter PRO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8804610E1A8C1FEF0032A3C8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1632,6 +1722,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
+		D83A543FC3651AFF0E2E6D1D /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F0FE4FE8254074CBE1D6B9F7 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoiseMeter PRO/Pods-NoiseMeter PRO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1885,10 +2005,12 @@
 		};
 		110F131314EDD52E00BE4481 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA4F9B24A61183D893207ACC /* Pods-NoiseMeter.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd (P58QSTF58Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
 				ENABLE_BITCODE = NO;
@@ -1907,7 +2029,7 @@
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
@@ -1917,10 +2039,12 @@
 		};
 		110F131414EDD52E00BE4481 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47C5BE1C97283E6D29853445 /* Pods-NoiseMeter.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Internetics Ltd (P58QSTF58Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clive France (FUUTJUMU86)";
 				ENABLE_BITCODE = NO;
@@ -1935,7 +2059,7 @@
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
@@ -1945,8 +2069,10 @@
 		};
 		88DD583F1AA7E1C800196F98 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E873C99BCBEB5C09F215B75 /* Pods-NoiseMeter PRO.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1965,7 +2091,7 @@
 				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
 				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";
@@ -1976,8 +2102,10 @@
 		};
 		88DD58401AA7E1C800196F98 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91D5F2058154EC4D33F057BA /* Pods-NoiseMeter PRO.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kuang yuang (HDK2922LNQ)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1991,7 +2119,7 @@
 				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
 				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";
