@@ -404,8 +404,11 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"view_page": @"MoreView Screen"};
-   [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"MoreView"
+                                 };
+    [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     [_optionTable reloadData];
 }

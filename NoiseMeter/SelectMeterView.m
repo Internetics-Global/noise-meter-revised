@@ -110,8 +110,13 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-     NSDictionary *dimensions = @{@"view_page": @"SlectMeterView Screen"};
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"SelectMeterView"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
+    
+    
     
 }
 

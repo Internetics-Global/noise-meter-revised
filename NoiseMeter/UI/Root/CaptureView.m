@@ -265,7 +265,10 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"view_page": @"CaptureView Screen"};
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"CaptureView"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
 }
 

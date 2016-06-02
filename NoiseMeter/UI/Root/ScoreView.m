@@ -143,7 +143,10 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"view_page": @"ScoreView Screen"};
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"ScoreView"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     [self reloadData];

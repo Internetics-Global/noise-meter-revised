@@ -234,8 +234,11 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    NSDictionary *dimensions = @{@"view_page": @"AlertView Screen"};
+
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"AlertViewV2"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];

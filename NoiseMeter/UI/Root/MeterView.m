@@ -722,7 +722,10 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"view_page": @"MeterView Screen"};
+    NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"MeterView"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     if ([NSUserDefaultsHelper isProVersion]) {

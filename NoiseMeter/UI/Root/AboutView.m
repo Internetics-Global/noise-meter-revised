@@ -57,7 +57,11 @@
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSDictionary *dimensions = @{@"view_page": @"AboutView Screen"};
+    NSDictionary *dimensions = @{
+      kFIRParameterItemCategory:@"view_page",
+      kFIRParameterItemName:@"AboutView"
+      };
+    
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
     

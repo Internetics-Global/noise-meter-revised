@@ -72,7 +72,10 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"view_page": @"InternalWebView Screen"};
+     NSDictionary *dimensions = @{
+                                 kFIRParameterItemCategory:@"view_page",
+                                 kFIRParameterItemName:@"InternalWebView"
+                                 };
     [FIRAnalytics logEventWithName:kFIREventViewItem parameters:dimensions];
     
 }
