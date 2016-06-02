@@ -7,7 +7,6 @@
 //
 
 #import "BackgroundMusicView.h"
-#import <Parse/PFAnalytics.h>
 #import "IDPSoundBoard.h"
 
 #define K_Maximum_Volume           0.2f
@@ -193,8 +192,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"category": @"BackgroundMusicView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"BackgroundMusicView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
 }
 

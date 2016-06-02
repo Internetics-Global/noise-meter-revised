@@ -99,7 +99,6 @@
 		883F1F5E18BBF0880030A716 /* RMStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 883F1F5D18BBF0880030A716 /* RMStore.m */; };
 		88570E6918A340B400BF526F /* top_logo-pro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88570E6818A340B400BF526F /* top_logo-pro@2x.png */; };
 		88570E6C18A340E700BF526F /* NSUserDefaultsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */; };
-		8859F11D1AA7140D00EC88D8 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */; };
 		8859F11F1AA7186700EC88D8 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */; };
 		8865DC5C177BC29700DA6634 /* AppiraterLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8865DC59177BC28900DA6634 /* AppiraterLocalizable.strings */; };
 		886712871A899E80007101FD /* shareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 886712861A899E80007101FD /* shareButton@2x.png */; };
@@ -157,8 +156,6 @@
 		88B4735A189A182C005668AC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B47359189A182C005668AC /* FileHelper.m */; };
 		88B87C7E1AA4269B004ECF76 /* AlertViewV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */; };
 		88B87C801AA43DC5004ECF76 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88B87C7F1AA43DC5004ECF76 /* back@2x.png */; };
-		88B9C3B81AA6885100B49EDA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B61AA6885100B49EDA /* Bolts.framework */; };
-		88B9C3B91AA6885100B49EDA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B71AA6885100B49EDA /* Parse.framework */; };
 		88B9C3BB1AA6888C00B49EDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */; };
 		88B9C3BD1AA6889500B49EDA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */; };
 		88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
@@ -261,7 +258,6 @@
 		88DD57BB1AA7E1C800196F98 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 887632571A8E2E71004D14FA /* SDImageCache.m */; };
 		88DD57BD1AA7E1C800196F98 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */; };
 		88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C21AA6895300B49EDA /* Accounts.framework */; };
-		88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */; };
 		88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A5613118D038F700080210 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3C01AA688A400B49EDA /* Security.framework */; };
 		88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */; };
@@ -277,13 +273,11 @@
 		88DD57CD1AA7E1C800196F98 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88376CE6177BB4A700F9F477 /* SystemConfiguration.framework */; };
 		88DD57CE1AA7E1C800196F98 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDE21518016400DE0A64 /* libz.dylib */; };
 		88DD57CF1AA7E1C800196F98 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140FDD91517FE0F00DE0A64 /* CoreTelephony.framework */; };
-		88DD57D01AA7E1C800196F98 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B61AA6885100B49EDA /* Bolts.framework */; };
 		88DD57D11AA7E1C800196F98 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBD43E15117C6000FF47C2 /* AudioToolbox.framework */; };
 		88DD57D21AA7E1C800196F98 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110AC87C14FE1B6000F86262 /* AVFoundation.framework */; };
 		88DD57D31AA7E1C800196F98 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12F914EDD52E00BE4481 /* UIKit.framework */; };
 		88DD57D41AA7E1C800196F98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FB14EDD52E00BE4481 /* Foundation.framework */; };
 		88DD57D51AA7E1C800196F98 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FD14EDD52E00BE4481 /* CoreGraphics.framework */; };
-		88DD57D61AA7E1C800196F98 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B9C3B71AA6885100B49EDA /* Parse.framework */; };
 		88DD57D71AA7E1C800196F98 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110F12FF14EDD52E00BE4481 /* CoreData.framework */; };
 		88DD57D91AA7E1C800196F98 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88A5613918D0400D00080210 /* share@2x.png */; };
 		88DD57DA1AA7E1C800196F98 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 88BEFE6918A20E9300399680 /* 18.png */; };
@@ -527,7 +521,6 @@
 		88570E6A18A340E700BF526F /* NSUserDefaultsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsHelper.h; sourceTree = "<group>"; };
 		88570E6B18A340E700BF526F /* NSUserDefaultsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsHelper.m; sourceTree = "<group>"; };
 		8859F11A1AA7138300EC88D8 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Support/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		8859F11E1AA7186700EC88D8 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		8865DC5A177BC28900DA6634 /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
 		8865DC5B177BC29700DA6634 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/AppiraterLocalizable.strings; sourceTree = "<group>"; };
@@ -645,8 +638,6 @@
 		88B87C7C1AA4269B004ECF76 /* AlertViewV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewV2.h; sourceTree = "<group>"; };
 		88B87C7D1AA4269B004ECF76 /* AlertViewV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewV2.m; sourceTree = "<group>"; };
 		88B87C7F1AA43DC5004ECF76 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "NoiseMeter/Resources/Images/Icons/back@2x.png"; sourceTree = SOURCE_ROOT; };
-		88B9C3B61AA6885100B49EDA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Support/Bolts.framework; sourceTree = "<group>"; };
-		88B9C3B71AA6885100B49EDA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Support/Parse.framework; sourceTree = "<group>"; };
 		88B9C3BA1AA6888C00B49EDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		88B9C3BC1AA6889500B49EDA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		88B9C3BE1AA6889D00B49EDA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -720,7 +711,6 @@
 			files = (
 				8859F11F1AA7186700EC88D8 /* libstdc++.6.dylib in Frameworks */,
 				88B9C3C31AA6895300B49EDA /* Accounts.framework in Frameworks */,
-				8859F11D1AA7140D00EC88D8 /* ParseCrashReporting.framework in Frameworks */,
 				88A5613218D038F700080210 /* Social.framework in Frameworks */,
 				88B9C3C11AA688A400B49EDA /* Security.framework in Frameworks */,
 				88B9C3BF1AA6889D00B49EDA /* QuartzCore.framework in Frameworks */,
@@ -737,13 +727,11 @@
 				1140FDE31518016400DE0A64 /* libz.dylib in Frameworks */,
 				1140FDDA1517FE0F00DE0A64 /* CoreTelephony.framework in Frameworks */,
 				88F64FB11AA7E58200379FF2 /* StoreKit.framework in Frameworks */,
-				88B9C3B81AA6885100B49EDA /* Bolts.framework in Frameworks */,
 				11FBD43F15117C6000FF47C2 /* AudioToolbox.framework in Frameworks */,
 				110AC87D14FE1B6000F86262 /* AVFoundation.framework in Frameworks */,
 				110F12FA14EDD52E00BE4481 /* UIKit.framework in Frameworks */,
 				110F12FC14EDD52E00BE4481 /* Foundation.framework in Frameworks */,
 				110F12FE14EDD52E00BE4481 /* CoreGraphics.framework in Frameworks */,
-				88B9C3B91AA6885100B49EDA /* Parse.framework in Frameworks */,
 				110F130014EDD52E00BE4481 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,7 +743,6 @@
 				88F64FB31AA7E8BA00379FF2 /* StoreKit.framework in Frameworks */,
 				88DD57BD1AA7E1C800196F98 /* libstdc++.6.dylib in Frameworks */,
 				88DD57BE1AA7E1C800196F98 /* Accounts.framework in Frameworks */,
-				88DD57BF1AA7E1C800196F98 /* ParseCrashReporting.framework in Frameworks */,
 				88DD57C01AA7E1C800196F98 /* Social.framework in Frameworks */,
 				88DD57C21AA7E1C800196F98 /* Security.framework in Frameworks */,
 				88DD57C31AA7E1C800196F98 /* QuartzCore.framework in Frameworks */,
@@ -771,13 +758,11 @@
 				88DD57CD1AA7E1C800196F98 /* SystemConfiguration.framework in Frameworks */,
 				88DD57CE1AA7E1C800196F98 /* libz.dylib in Frameworks */,
 				88DD57CF1AA7E1C800196F98 /* CoreTelephony.framework in Frameworks */,
-				88DD57D01AA7E1C800196F98 /* Bolts.framework in Frameworks */,
 				88DD57D11AA7E1C800196F98 /* AudioToolbox.framework in Frameworks */,
 				88DD57D21AA7E1C800196F98 /* AVFoundation.framework in Frameworks */,
 				88DD57D31AA7E1C800196F98 /* UIKit.framework in Frameworks */,
 				88DD57D41AA7E1C800196F98 /* Foundation.framework in Frameworks */,
 				88DD57D51AA7E1C800196F98 /* CoreGraphics.framework in Frameworks */,
-				88DD57D61AA7E1C800196F98 /* Parse.framework in Frameworks */,
 				88DD57D71AA7E1C800196F98 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1269,9 +1254,6 @@
 		88DDF47D189B19A300138ADF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				8859F11C1AA7140D00EC88D8 /* ParseCrashReporting.framework */,
-				88B9C3B61AA6885100B49EDA /* Bolts.framework */,
-				88B9C3B71AA6885100B49EDA /* Parse.framework */,
 				888503AB1A9FE33B0062A025 /* AMPopTip */,
 				88CB2AFC1A9E056000288902 /* REFrostedViewController */,
 				880E85861A9D51A700EB3926 /* BCTabBarController */,
@@ -1295,7 +1277,6 @@
 				110F12F214EDD52E00BE4481 /* Frameworks */,
 				110F12F314EDD52E00BE4481 /* Resources */,
 				8804610E1A8C1FEF0032A3C8 /* ShellScript */,
-				8859F1201AA71AEA00EC88D8 /* Run Script (Parse) */,
 			);
 			buildRules = (
 			);
@@ -1314,7 +1295,6 @@
 				88DD57BC1AA7E1C800196F98 /* Frameworks */,
 				88DD57D81AA7E1C800196F98 /* Resources */,
 				88DD583C1AA7E1C800196F98 /* ShellScript */,
-				88DD583D1AA7E1C800196F98 /* Run Script (Parse) */,
 			);
 			buildRules = (
 			);
@@ -1640,20 +1620,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
 		};
-		8859F1201AA71AEA00EC88D8 /* Run Script (Parse) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script (Parse)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "exit 0\nif [ $CONFIGURATION == Release ]; then\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
-		};
 		88DD583C1AA7E1C800196F98 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1666,20 +1632,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION == Debug ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n#increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
-		};
-		88DD583D1AA7E1C800196F98 /* Run Script (Parse) */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script (Parse)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION == Release ]; then\nexport PATH=/usr/local/bin:$PATH\ncd ${PROJECT_DIR}/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1955,7 +1907,7 @@
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
@@ -1983,7 +1935,7 @@
 				INFOPLIST_FILE = "NoiseMeter/NoiseMeter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81b0004c-c6d5-4ccd-8e0d-19fef355f5ff";
@@ -2013,7 +1965,7 @@
 				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
 				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";
@@ -2039,7 +1991,7 @@
 				INFOPLIST_FILE = "NoiseMeter copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.internetics.noisedown;
 				PRODUCT_NAME = "NoiseMeter copy";
 				PROVISIONING_PROFILE = "29d2fe27-809a-48de-9aa1-31d2adde2094";

@@ -9,7 +9,6 @@
 #import "PurchaseViewController.h"
 
 #import "FileHelper.h"
-#import <Parse/PFAnalytics.h>
 
 #ifndef TARGET_PRO_VERSION
 #import "RMStore.h"
@@ -110,8 +109,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"category": @"PurchaseView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"PurchaseView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
 
 }
 

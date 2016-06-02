@@ -23,7 +23,6 @@
 #import "BackgroundMusicView.h"
 
 #import "UIViewController+REFrostedViewController.h"
-#import <Parse/PFAnalytics.h>
 
 
 @interface MoreView ()
@@ -403,8 +402,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"category": @"MoreView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"MoreView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
     [_optionTable reloadData];
 }

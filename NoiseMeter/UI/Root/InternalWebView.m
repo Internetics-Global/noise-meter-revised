@@ -7,7 +7,6 @@
 //
 
 #import "InternalWebView.h"
-#import <Parse/PFAnalytics.h>
 #import "FileHelper.h"
 
 @interface InternalWebView ()
@@ -72,8 +71,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"category": @"InternalWebView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"InternalWebView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
 }
 

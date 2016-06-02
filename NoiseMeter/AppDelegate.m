@@ -14,9 +14,6 @@
 #import "FileHelper.h"
 #import "REFrostedViewController.h"
 #import "MoreView.h"
-#import <ParseCrashReporting/ParseCrashReporting.h>
-#import <Parse/Parse.h>
-#import <Parse/PFAnalytics.h>
 
 #import "VersionReminder.h"
 
@@ -31,15 +28,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [ParseCrashReporting enable];
-#ifdef TARGET_PRO_VERSION
-    [Parse setApplicationId:@"xQnOZXmWIt7FOlk75RSDLZelhQIt5VQIE13bPX81"
-                  clientKey:@"f1egk5mV5DQcYk9xsP7dkQVl4r1rrf44FWogXKvb"];
-#else
-    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
-                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
-#endif
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    [ParseCrashReporting enable];
+//#ifdef TARGET_PRO_VERSION
+//    [Parse setApplicationId:@"xQnOZXmWIt7FOlk75RSDLZelhQIt5VQIE13bPX81"
+//                  clientKey:@"f1egk5mV5DQcYk9xsP7dkQVl4r1rrf44FWogXKvb"];
+//#else
+//    [Parse setApplicationId:@"KRILAj7tzOBrSGLs7DJHmWbCrGnlUZr44YGebIGK"
+//                  clientKey:@"HtoZ3RftAr6CWkrZnORvsvzwPGOpbRrK2YdIMozh"];
+//#endif
+//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     //A utility that reminds your iPhone app's users to review the app.
     [self setAppirater];
@@ -101,20 +98,20 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Store the deviceToken in the current installation and save it to Parse.
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if ([NSUserDefaultsHelper isProVersion]) {
-        [currentInstallation setChannels:@[@"pro"]];
-    } else {
-        [currentInstallation setChannels:@[@"free"]];
-    }
-    [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation saveInBackground];
+//    // Store the deviceToken in the current installation and save it to Parse.
+//    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+//    if ([NSUserDefaultsHelper isProVersion]) {
+//        [currentInstallation setChannels:@[@"pro"]];
+//    } else {
+//        [currentInstallation setChannels:@[@"free"]];
+//    }
+//    [currentInstallation setDeviceTokenFromData:deviceToken];
+//    [currentInstallation saveInBackground];
 }
 
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [PFPush handlePush:userInfo];
+//    [PFPush handlePush:userInfo];
 }
 
 

@@ -11,7 +11,6 @@
 #import "SoundLevelView.h"
 #import "UIButton+Extensions.h"
 #import "AMPopTip.h"
-#import <Parse/PFAnalytics.h>
 
 #define K_Square_Width  70.0
 #define K_Meter_Square_Background_Color  [UIColor colorWithRed:80.0/255 green:80.0/255 blue:80.0/255 alpha:0.6]
@@ -234,8 +233,8 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSDictionary *dimensions = @{@"category": @"AlertView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"AlertView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
     [[NMDecibelLogger defaultLogger] addObserver:self forKeyPath:@"currentReading" options:NSKeyValueObservingOptionNew context:NULL];
     

@@ -23,7 +23,6 @@
 #import "UIButton+Extensions.h"
 
 #import "AMPopTip.h"
-#import <Parse/PFAnalytics.h>
 
 //忽略那种短暂的噪声
 #define K_Second_IgnoreSuddenNoise     0.5
@@ -721,8 +720,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSDictionary *dimensions = @{@"category": @"MeterView Screen"};
-    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
+//    NSDictionary *dimensions = @{@"category": @"MeterView Screen"};
+//    [PFAnalytics trackEvent:@"page" dimensions:dimensions];
     
     if ([NSUserDefaultsHelper isProVersion]) {
         _topScoreTable.frame = CGRectMake(0, CGRectGetMaxY(_meterBackground.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(_meterBackground.frame));
