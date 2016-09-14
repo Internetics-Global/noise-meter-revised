@@ -62,5 +62,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>$(PRODUCT_NAME) uses microphone</string>
 </dict>
 </plist>
