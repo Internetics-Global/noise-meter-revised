@@ -139,11 +139,14 @@
 		88FF307218AC606400B6E5BD /* CreateAlarmSoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */; };
 		88FF307318AC606400B6E5BD /* CreateAlarmSoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */; };
 		88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 88FF307418AC6D1800B6E5BD /* closeButton@2x.png */; };
+		9A4D01A3249B4E0B00AB7C7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A4D01A2249B4E0B00AB7C7B /* LaunchScreen.storyboard */; };
 		9AB05EA8177AC92E0029CB48 /* top_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA6177AC92E0029CB48 /* top_logo.png */; };
 		9AB05EA9177AC92E0029CB48 /* top_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */; };
 		9AB05EAF177AC9710029CB48 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */; };
 		9AB05EB1177BDEE50029CB48 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB0177BDEE50029CB48 /* Icon@2x.png */; };
 		9AB05EB3177BDEF10029CB48 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB05EB2177BDEF10029CB48 /* Icon.png */; };
+		9AB2248A249C97ED005AE133 /* noisedown-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB22489249C97ED005AE133 /* noisedown-logo.png */; };
+		9AB2248C249C98C8005AE133 /* noise_down_text_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB2248B249C98C8005AE133 /* noise_down_text_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -356,11 +359,14 @@
 		88FF307018AC606400B6E5BD /* CreateAlarmSoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateAlarmSoundViewController.m; path = UI/Root/CreateAlarmSoundViewController.m; sourceTree = "<group>"; };
 		88FF307118AC606400B6E5BD /* CreateAlarmSoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateAlarmSoundViewController.xib; path = UI/Root/CreateAlarmSoundViewController.xib; sourceTree = "<group>"; };
 		88FF307418AC6D1800B6E5BD /* closeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closeButton@2x.png"; sourceTree = "<group>"; };
+		9A4D01A2249B4E0B00AB7C7B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9AB05EA6177AC92E0029CB48 /* top_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_logo.png; sourceTree = "<group>"; };
 		9AB05EA7177AC92E0029CB48 /* top_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@2x.png"; sourceTree = "<group>"; };
 		9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AB05EB0177BDEE50029CB48 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9AB05EB2177BDEF10029CB48 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9AB22489249C97ED005AE133 /* noisedown-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noisedown-logo.png"; sourceTree = "<group>"; };
+		9AB2248B249C98C8005AE133 /* noise_down_text_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noise_down_text_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +406,8 @@
 				9AB05EAE177AC9710029CB48 /* Default-568h@2x.png */,
 				11AC52F91505D3950093C7AB /* Default@2x.png */,
 				11AC52F71505D3850093C7AB /* Default.png */,
+				9AB22489249C97ED005AE133 /* noisedown-logo.png */,
+				9AB2248B249C98C8005AE133 /* noise_down_text_logo.png */,
 				110F130114EDD52E00BE4481 /* NoiseMeter */,
 				110F12F814EDD52E00BE4481 /* Frameworks */,
 				110F12F614EDD52E00BE4481 /* Products */,
@@ -575,6 +583,7 @@
 		8829A77518AD6B8B00DA41F9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9A4D01A2249B4E0B00AB7C7B /* LaunchScreen.storyboard */,
 				11AC52EE1505D3010093C7AB /* RootView.h */,
 				11AC52EF1505D3010093C7AB /* RootView.m */,
 				11AC531B1505D4420093C7AB /* MeterView.h */,
@@ -883,6 +892,7 @@
 				88BEFE5B18A1FCB100399680 /* 13.png in Resources */,
 				88A95E4418A4803000E56939 /* mic.png in Resources */,
 				88A95E4518A4803000E56939 /* noads.png in Resources */,
+				9AB2248A249C97ED005AE133 /* noisedown-logo.png in Resources */,
 				11AC53091505D3F20093C7AB /* icon_alert.png in Resources */,
 				88E8423118B1B69800B0FB50 /* release_notes.md in Resources */,
 				11AC530A1505D3F20093C7AB /* icon_alert@2x.png in Resources */,
@@ -919,6 +929,7 @@
 				880A003918ACD22C00FB84F5 /* upgrade.css in Resources */,
 				88BEFE5F18A1FCB100399680 /* 17.png in Resources */,
 				88A95E4618A4803000E56939 /* recordScreenshot.png in Resources */,
+				9AB2248C249C98C8005AE133 /* noise_down_text_logo.png in Resources */,
 				117D94191516B66A002C5479 /* button_reset.png in Resources */,
 				88BEFE5518A1FCB100399680 /* 7.png in Resources */,
 				88BEFE1518A1DEB000399680 /* cancel@2x.png in Resources */,
@@ -932,6 +943,7 @@
 				117D94251516B8DE002C5479 /* button_info.png in Resources */,
 				880A002818AC83D800FB84F5 /* recordButton.png in Resources */,
 				117D94261516B8DE002C5479 /* button_info@2x.png in Resources */,
+				9A4D01A3249B4E0B00AB7C7B /* LaunchScreen.storyboard in Resources */,
 				880A003518ACB91B00FB84F5 /* upgradeInstruction.html in Resources */,
 				1140FDD11517FBE700DE0A64 /* icon_more.png in Resources */,
 				88FF307518AC6D1800B6E5BD /* closeButton@2x.png in Resources */,
